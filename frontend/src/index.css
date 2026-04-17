@@ -1,21 +1,84 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── Theme tokens ─── */
 :root {
   --bg: #ffffff;
+  --bg-secondary: #f8fafc;
   --text: #111111;
-  --heading: #111111;
+  --heading: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
 }
 
 .dark {
   --bg: #0f172a;
-  --text: #ffffff;
-  --heading: #ffffff;
+  --bg-secondary: #020617;
+  --text: #e2e8f0;
+  --heading: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --card: #1e293b;
+  --card-hover: #334155;
+}
+
+/* ─── Base ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
+/* ─── Typography helpers ─── */
 .heading {
   color: var(--heading);
+  font-family: 'Titillium Web', sans-serif;
+}
+
+/* ─── Scrollbar styling ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 3px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* ─── Marquee pause on hover ─── */
+.marquee-wrapper:hover > div {
+  animation-play-state: paused;
+}
+
+/* ─── Card hover lift ─── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
