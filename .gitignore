@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+sanity-geo-convergence/node_modules/
+frontend/node_modules/
+
+# Environment
+sanity-geo-convergence/.env
+frontend/.env
+mobile-app/.env
+
+# Build outputs
+frontend/dist/
+frontend/build/
+*.egg-info/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
