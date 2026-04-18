@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import CareerPage from './pages/CareerDetails'
 import BlogPage from './pages/Blog'
+import BlogDetails from './pages/BlogDetails'
 
 function App() {
   
@@ -13,6 +14,7 @@ return (
       <Route path="/" element={<LandingPage />} />
       <Route path="/career" element={<CareerPage />} />
       <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<BlogDetails />} />
     </Routes>
 
   </div>

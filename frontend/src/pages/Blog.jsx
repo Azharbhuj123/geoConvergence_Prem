@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import ShortHero from '../components/ShortHero';
@@ -41,6 +42,19 @@ const BLOG_POSTS = [
   },
 ];
 
+function SidebarWidget({ title, children }) {
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="flex items-center gap-3">
+        {/* The blue accent bar from your reference image */}
+        <div className="w-[3px] h-6 bg-[#326FB7]" />
+        <h4 className="text-[20px] font-bold text-[#001D3D]">{title}</h4>
+      </div>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 const POPULAR_TAGS = ['GIS', 'Arc', 'Indoor Mapping', 'tech', 'Scan2Twin', 'Digital Twin', 'ArcGIS'];
 
 const RECENT_POSTS = [
@@ -68,10 +82,7 @@ const RECENT_POSTS = [
 
 function CategoryBadge({ label }) {
   return (
-    <span
-      className="inline-block px-3 py-[5px] text-[10px] font-bold tracking-widest uppercase text-white rounded-[6px]"
-      style={{ background: '#326FB7' }}
-    >
+    <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-[#326FB7]/15 text-[#326FB7] dark:bg-[#326FB7]/20 dark:text-[#60a5fa]">
       {label}
     </span>
   );
@@ -87,9 +98,9 @@ function BlogCard({ post }) {
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {/* Dark gradient at bottom of image */}
+        {/* Gradient overlay at bottom */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        {/* Category badge — overlaid bottom-left of image */}
+        {/* Category badge bottom-left of image */}
         <div className="absolute bottom-4 left-4">
           <CategoryBadge label={post.category} />
         </div>
@@ -104,12 +115,15 @@ function BlogCard({ post }) {
         <p className="text-[13px] sm:text-[14px] text-[var(--muted)] leading-[1.7] line-clamp-3">
           {post.excerpt}
         </p>
-        <button className="self-start mt-1 text-[#326FB7] dark:text-[#60a5fa] text-[13px] font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn">
+        <Link
+          to={`/blog/${post.id}`}
+          className="self-start mt-1 text-[#326FB7] dark:text-[#60a5fa] text-[13px] font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
+        >
           View More
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform duration-200">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-        </button>
+        </Link>
       </div>
     </article>
   );
@@ -241,11 +255,58 @@ export default function BlogPage() {
             </div>
 
             {/* ── Right: Sidebar ── */}
-            <aside className="flex flex-col gap-6 lg:sticky lg:top-6">
-              <SearchBox darkMode={darkMode} />
-              <PopularTags darkMode={darkMode} />
-              <RecentPosts darkMode={darkMode} />
-            </aside>
+              {/* Right Column: Sidebar */}
+          <aside className="flex flex-col gap-12 lg:sticky lg:top-8">
+            
+            {/* Search Widget */}
+            <SidebarWidget title="Search">
+              <div className="relative">
+                <input 
+                  type="text" 
+                  placeholder="Search" 
+                  // value={searchTerm}
+                  // onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full bg-[#f9fafb] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                  </svg>
+                </div>
+              </div>
+            </SidebarWidget>
+
+            {/* Popular Tags Widget */}
+            <SidebarWidget title="Popular Tags">
+              <div className="flex flex-wrap gap-2">
+                {POPULAR_TAGS.map((tag) => (
+                  <button key={tag} className="px-4 py-2 bg-[#f3f4f6] hover:bg-[#326FB7] hover:text-white border border-gray-100 rounded-lg text-[13px] font-semibold text-gray-600 transition-colors">
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </SidebarWidget>
+
+            {/* Recent Posts Widget */}
+            <SidebarWidget title="Recent Post">
+              <div className="flex flex-col gap-6">
+                {RECENT_POSTS.map((post) => (
+                  <div key={post.id} className="flex gap-4 group cursor-pointer">
+                    <div className="w-20 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                      <img src={post.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h5 className="text-[14px] font-bold text-[#001D3D] leading-snug group-hover:text-[#326FB7] line-clamp-2 transition-colors">
+                        {post.title}
+                      </h5>
+                      <p className="text-[12px] text-gray-400 font-medium">{post.date}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SidebarWidget>
+
+          </aside>
           </div>
         </section>
 
