@@ -4,6 +4,7 @@
 /* ─── Theme tokens ─── */
 :root {
   --bg: #ffffff;
+  --slate-bg:#002052;
   --bg-secondary: #f8fafc;
   --text: #111111;
   --heading: #0f172a;
@@ -15,6 +16,8 @@
 
 .dark {
   --bg: #0f172a;
+  --slate-bg:#002052;
+
   --bg-secondary: #020617;
   --text: #e2e8f0;
   --heading: #f1f5f9;

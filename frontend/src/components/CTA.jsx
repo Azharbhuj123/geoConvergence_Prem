@@ -23,6 +23,7 @@ const finalCta = {
 };
 
 export default function CTA({ darkMode, CtaData }) {
+  const {theme} = useThemeStore();
   const data = CtaData || finalCta;
 
   const title = data.title || finalCta.title;
@@ -39,8 +40,10 @@ export default function CTA({ darkMode, CtaData }) {
 
   return (
     <section
-      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${
-        darkMode ? "bg-slate-950" : "bg-slate-50"
+      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${
+        // darkMode ? "bg-slate-950" : "bg-slate-50"
+        theme === 'dark' ? 'dark' : '' 
+        
       }`}
     >
       <div className="max-w-[1440px] mx-auto">
