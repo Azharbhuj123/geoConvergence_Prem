@@ -5,6 +5,8 @@ import LandingPage from './pages/LandingPage'
 import CareerPage from './pages/CareerDetails'
 import SolutionsPage from './pages/SolutionPage'
 import ProductPage from './pages/ProductPage'
+import BlogPage from './pages/Blog'
+import BlogDetails from './pages/BlogDetails'
 
 function App() {
   
@@ -15,6 +17,8 @@ return (
       <Route path="/career" element={<CareerPage />} />
       <Route path="/solutions" element={<SolutionsPage />} />
       <Route path="/products" element={<ProductPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<BlogDetails />} />
     </Routes>
 
   </div>

@@ -3,6 +3,9 @@ import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import ShortHero from '../components/ShortHero';
+import Testimonials from '../components/Testimonials';
 
 // ─── Tab Content ────────────────────────────────────────────────────────────
 const TAB_DATA = {
@@ -198,40 +201,7 @@ function JobTabs({ activeTab, setActiveTab }) {
   );
 }
 
-// ─── Testimonials Section ─────────────────────────────────────────────────────
-
-function Testimonials() {
-  return (
-    <section className="px-4 py-16 sm:px-6 md:px-10 lg:px-[60px] flex flex-col items-center gap-10 bg-[var(--bg)] transition-colors duration-200">
-      <div className="flex flex-col items-center gap-4 text-center">
-        <h2 className=" text-[28px] sm:text-[38px] font-bold text-[var(--heading)] capitalize leading-tight">
-          What Dose Our Customer Say
-        </h2>
-        <p className="text-[var(--muted)] text-[15px] max-w-[520px] leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full max-w-[1320px]">
-        {TESTIMONIALS.map(({ name, featured }) => (
-          <div
-            key={name}
-            className={`bg-[var(--card)] rounded-[20px] p-8 flex flex-col gap-3 shadow-[0_9px_30px_rgba(0,0,0,0.15)] border border-[var(--border)] transition-colors duration-200 ${
-              featured ? 'md:scale-[1.04]' : ''
-            }`}
-          >
-            <p className="text-base font-medium text-[var(--heading)] text-center">{name}</p>
-            <p className="text-[15px] text-[var(--muted)] text-center leading-[1.75]">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
+ 
  
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
@@ -245,9 +215,10 @@ export default function CareerPage() {
     <div className={theme === 'dark' ? 'dark' : ''}>
       <div className=" bg-[var(--bg)]   mx-auto overflow-x-hidden transition-colors duration-200">
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
+            <ShortHero title="Career Details" />
 
         {/* Career Detail */}
-        <section className="px-4 py-10 sm:px-6 md:px-10 lg:px-[60px] lg:py-[60px]">
+        <section className=" max-w-[1440px] mx-auto px-6 lg:px-14 py-5 px-4 py-10 mt-10">
           <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[400px_1fr] gap-6 lg:gap-8 items-start">
 
             {/* Sidebar */}
@@ -269,7 +240,7 @@ export default function CareerPage() {
           </div>
         </section>
 
-        <Testimonials />
+        <Testimonials darkMode={theme == "dark"}   />
         <CTA darkMode={theme == "dark"} />
                     <Footer darkMode={theme === 'dark'} />
         
