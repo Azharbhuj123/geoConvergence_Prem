@@ -33,7 +33,7 @@ export default function LandingPage() {
                 <Stats darkMode={theme === 'dark'} />
                 <Clients darkMode={theme === 'dark'} />
                 <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
-                <Events darkMode={theme === 'dark'} />
+                <Events darkMode={theme === 'dark'} eventsData={data?.events} />
                 <Testimonials darkMode={theme === 'dark'} />
                 <CTA darkMode={theme === 'dark'} CtaData={data?.finalCta} />
             </main>

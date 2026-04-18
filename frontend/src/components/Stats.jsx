@@ -24,17 +24,12 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
 
   return (
     <div
-      className={`flex-1 min-w-[220px] rounded-2xl p-6 sm:p-8 flex flex-col gap-3 transition-all duration-300 ${
-        darkMode ? 'bg-blue-950' : 'bg-blue-50 border border-blue-100'
-      }`}
+      className={`${darkMode ? 'dark' : ''} flex-1 min-w-[220px] rounded-2xl p-6 sm:p-8 flex flex-col gap-3 transition-all duration-300
+        bg-[var(--slate-bg)]
+      `}
     >
-      <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-        {icon}
-      </div>
       <div
-        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums ${
-          darkMode ? 'text-slate-100' : 'text-slate-900'
-        }`}
+        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-slate-100`}
         style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
       >
         {count.toLocaleString()}{suffix}
@@ -44,11 +39,16 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
       }`}>
         {label}
       </div>
+      <div className="w-full flex items-center justify-end">
+      <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
+        {icon}
+      </div>
+      </div>
     </div>
   )
 }
 
-export default function Stats({ darkMode }) {
+export default function Stats({ darkMode, statsData }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -61,7 +61,7 @@ export default function Stats({ darkMode }) {
     return () => observer.disconnect()
   }, [])
 
-  const stats = [
+  const defaultStats = [
     {
       value: 500,
       suffix: 'M+',
@@ -104,6 +104,8 @@ export default function Stats({ darkMode }) {
       ),
     },
   ]
+
+  const stats = statsData || defaultStats;
 
   return (
     <section

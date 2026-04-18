@@ -40,10 +40,10 @@ export default function Events({ darkMode, className, eventsData }) {
               }`}
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)' }}
           >
-            {eventsData.title || "Events & Webinars"}
+            {eventsData?.title || "Events & Webinars"}
           </h2>
           <p className={`text-lg sm:text-xl font-Inter text-[var(--text)]`}>
-            {eventsData.description || "Join us at industry events and webinars to explore the latest in geospatial technology, network with experts, and discover how geoConvergence can transform your operations."}
+            {eventsData?.description || "Join us at industry events and webinars to explore the latest in geospatial technology, network with experts, and discover how geoConvergence can transform your operations."}
           </p>
         </div>
 

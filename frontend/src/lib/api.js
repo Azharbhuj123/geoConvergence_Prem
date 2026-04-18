@@ -44,3 +44,41 @@ export const fetchProductPage = async () => {
   }`;
   return client.fetch(query);
 };
+
+export const fetchScan2Twin = async () => {
+  const query = `*[_type == "scan2Twin"][0]{
+    hero,
+    whatIs,
+    transforming,
+    howItWorks,
+    why,
+    useCases,
+    events,
+    finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchIndoorMapsPage = async () => {
+  const query = `*[_type == "indoorMapsPage"][0]{
+    hero,
+    whatIs,
+    howItWorks,
+    keyFeatures,
+    useCases,
+    finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchCareerPage = async () => {
+  const query = `*[_type == "careerPage"][0]{
+    hero,
+    easySteps,
+    meetTheTeam,
+    coreValues,
+    openPositions,
+    finalCta
+  }`;
+  return client.fetch(query);
+};

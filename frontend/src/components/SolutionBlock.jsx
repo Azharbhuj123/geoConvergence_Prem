@@ -18,9 +18,8 @@ export default function SolutionBlock({
   return (
     <div className={`w-full max-w-[1440px] mx-auto px-6 lg:px-14 ${theme === 'dark' ? 'dark' : ''} ${className}`}>
       <div
-        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-16 lg:py-24 ${
-          imagePosition === "left" ? "lg:flex-row-reverse" : ""
-        }`}
+        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-16 lg:py-24 ${imagePosition === "left" ? "lg:flex-row-reverse" : ""
+          }`}
       >
         {/* Image Side */}
         <div className="w-full lg:w-1/2">
@@ -45,7 +44,7 @@ export default function SolutionBlock({
 
           <div className="space-y-6 text-neutral-600 text-lg leading-8 text-[var(--text)]">
             {Array.isArray(description) ? (
-              description.map((para, i) => <p key={i}>{para}</p>)
+              description.map((para, i) => <p key={i} className="text-[var(--text)]">{para}</p>)
             ) : (
               <p className="text-[var(--text)]">{description}</p>
             )}
