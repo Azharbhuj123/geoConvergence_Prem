@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false)
@@ -10,22 +11,29 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const links = ['Solutions', 'Products', 'Why geoConvergence', 'Resources', 'Career', 'Contact']
+  // const links = ['Solutions', 'Products', 'Why geoConvergence', 'Resources', 'Career', 'Contact']
 
+  const links = [
+    { name: 'Solutions', path: '/solutions' },
+    { name: 'Products', path: '/products' },
+    { name: 'Why geoConvergence', path: '/why' },
+    { name: 'Resources', path: '/resources' },
+    { name: 'Career', path: '/career' },
+    { name: 'Contact', path: '/contact' },
+  ]
   return (
     <>
       {/* Top announcement bar */}
       <div className="w-full bg-blue-700 text-white text-sm text-center py-2 px-4 leading-6 z-50 relative">
-        &nbsp;
+        {'Experience Scan2Twin in action book your live demo today.'}
       </div>
 
       {/* Main navbar */}
       <nav
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? 'shadow-[0px_4px_18px_0px_rgba(0,28,71,0.25)]'
-            : 'shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]'
-        } ${darkMode ? 'bg-slate-900 border-b border-slate-800' : 'bg-white border-b border-slate-100'}`}
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
+          ? 'shadow-[0px_4px_18px_0px_rgba(0,28,71,0.25)]'
+          : 'shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]'
+          } ${darkMode ? 'bg-slate-900 border-b border-slate-800' : 'bg-white border-b border-slate-100'}`}
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-14 py-5 flex justify-between items-center">
           {/* Logo */}
@@ -33,14 +41,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" strokeWidth="1.5" fill="none"/>
-                  <circle cx="9" cy="9" r="2.5" fill="white"/>
+                  <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" strokeWidth="1.5" fill="none" />
+                  <circle cx="9" cy="9" r="2.5" fill="white" />
                 </svg>
               </div>
               <span
-                className={`text-xl font-bold font-['Titillium_Web'] tracking-tight ${
-                  darkMode ? 'text-white' : 'text-slate-900'
-                }`}
+                className={`text-xl font-bold font-['Titillium_Web'] tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'
+                  }`}
               >
                 geoConvergence
               </span>
@@ -50,15 +57,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-7">
             {links.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${
-                  darkMode ? 'text-slate-300' : 'text-neutral-600'
-                }`}
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${darkMode ? 'text-slate-300' : 'text-neutral-600'
+                  }`}
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
 
@@ -74,15 +80,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className={`w-14 h-7 rounded-full transition-all duration-300 relative flex items-center px-1 ${
-                darkMode ? 'bg-blue-700' : 'bg-blue-200'
-              }`}
+              className={`w-14 h-7 rounded-full transition-all duration-300 relative flex items-center px-1 ${darkMode ? 'bg-blue-700' : 'bg-blue-200'
+                }`}
               aria-label="Toggle dark mode"
             >
               <span
-                className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 flex items-center justify-center text-xs ${
-                  darkMode ? 'translate-x-7' : 'translate-x-0'
-                }`}
+                className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 flex items-center justify-center text-xs ${darkMode ? 'translate-x-7' : 'translate-x-0'
+                  }`}
               >
                 {darkMode ? '🌙' : '☀️'}
               </span>
@@ -93,14 +97,12 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <div className="flex lg:hidden items-center gap-3">
             <button
               onClick={toggleDarkMode}
-              className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${
-                darkMode ? 'bg-blue-700' : 'bg-blue-200'
-              }`}
+              className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${darkMode ? 'bg-blue-700' : 'bg-blue-200'
+                }`}
             >
               <span
-                className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
-                  darkMode ? 'translate-x-6' : 'translate-x-0'
-                }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${darkMode ? 'translate-x-6' : 'translate-x-0'
+                  }`}
               />
             </button>
             <button
@@ -121,21 +123,19 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         {/* Mobile menu */}
         {menuOpen && (
           <div
-            className={`lg:hidden border-t px-6 py-4 flex flex-col gap-4 ${
-              darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
-            }`}
+            className={`lg:hidden border-t px-6 py-4 flex flex-col gap-4 ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
+              }`}
           >
             {links.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className={`text-base font-Inter py-1 ${
-                  darkMode ? 'text-slate-300' : 'text-neutral-600'
-                }`}
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`text-base font-Inter py-1 ${darkMode ? 'text-slate-300' : 'text-neutral-600'
+                  }`}
                 onClick={() => setMenuOpen(false)}
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
             <a
               href="#"

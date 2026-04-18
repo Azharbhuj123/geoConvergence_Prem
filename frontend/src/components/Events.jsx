@@ -1,7 +1,7 @@
 import Button from "./UI/Button"
 import { useThemeStore } from "../store/useThemeStore";
 
-export default function Events({ darkMode }) {
+export default function Events({ darkMode, className, eventsData }) {
   const { theme } = useThemeStore();
   const events = [
     {
@@ -28,22 +28,22 @@ export default function Events({ darkMode }) {
 
   return (
     <section
-      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
 
     >
       
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className="mb-12 flex flex-col gap-3">
+        <div className={`mb-12 flex flex-col gap-3 ${className}`}>
           <h2
-            className={`font-bold font-['Titillium_Web'] leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
+            className={`font-bold font-['Titillium_Web'] leading-tight text-[var(--text)]
               }`}
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)' }}
           >
-            Upcoming Events
+            {eventsData.title || "Events & Webinars"}
           </h2>
-          <p className={`text-lg sm:text-xl font-Inter ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-            Meet us where the industry connects.
+          <p className={`text-lg sm:text-xl font-Inter text-[var(--text)]`}>
+            {eventsData.description || "Join us at industry events and webinars to explore the latest in geospatial technology, network with experts, and discover how geoConvergence can transform your operations."}
           </p>
         </div>
 

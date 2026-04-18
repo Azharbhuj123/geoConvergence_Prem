@@ -15,10 +15,10 @@ export default function Hero({ darkMode, hero }) {
   )
 
   // Fallback content if Sanity not configured
-  const title = hero?.title || 'From Reality Capture to Digital Twin'
-  const subtitle = hero?.subtitle || 'We transform complex physical environments into high-fidelity digital assets, providing the precision needed for modern facility intelligence.'
-  const btn1 = hero?.button1 || { text: 'Request Demo', link: '#' }
-  const btn2 = hero?.button2 || { text: 'Explore Solutions', link: '#' }
+  const title = hero?.title 
+  const subtitle = hero?.subtitle 
+  const btn1 = hero?.button1 
+  const btn2 = hero?.button2 
   const bgImage = hero?.backgroundImage ? urlFor(hero.backgroundImage) : null
 
   return (
@@ -66,13 +66,16 @@ export default function Hero({ darkMode, hero }) {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button href={btn1.link} variant="primary">
-              {btn1.text}
-            </Button>
-
-            <Button href={btn2.link} variant="secondary">
-              {btn2.text}
-            </Button>
+            {btn1 && (
+              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-lg font-bold">
+                {btn1.text}
+              </Button>
+            )}
+            {btn2 && (
+              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-lg font-bold">
+                {btn2.text}
+              </Button>
+            )}
           </div>
         </div>
       </div>

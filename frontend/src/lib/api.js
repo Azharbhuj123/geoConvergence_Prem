@@ -17,3 +17,30 @@ export const fetchLandingPage = async () => {
 
   return await client.fetch(query)
 }
+
+export const fetchSolutionsPage = async () => {
+  const query = `*[_type == "solutionsPage"][0]{
+    hero,
+    solutions[]{
+      title,
+      description,
+      button,
+      image
+    },
+    finalCta
+  }`;
+  return client.fetch(query);
+};
+export const fetchProductPage = async () => {
+  const query = `*[_type == "productPage"][0]{
+    hero,
+    solutions[]{
+      title,
+      description,
+      button,
+      image
+    },
+    finalCta
+  }`;
+  return client.fetch(query);
+};

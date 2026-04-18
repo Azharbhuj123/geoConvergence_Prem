@@ -22,8 +22,7 @@ export default function LandingPage() {
         queryKey: ['landingPage'],
         queryFn: fetchLandingPage,
     })  
-
-    console.log('LandingPage received data:', data)
+    
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
