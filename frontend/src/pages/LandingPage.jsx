@@ -21,7 +21,7 @@ export default function LandingPage() {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['landingPage'],
         queryFn: fetchLandingPage,
-    })
+    })  
 
     console.log('LandingPage received data:', data)
     return (
@@ -29,10 +29,10 @@ export default function LandingPage() {
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
             <main>
                 <Hero darkMode={theme === 'dark'} hero={data?.hero} />
-                <Services darkMode={theme === 'dark'} services={data?.services} />
-                <Stats darkMode={theme === 'dark'} />
+                <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
                 <ProjectsMap darkMode={theme === 'dark'} />
-                <FeaturedProducts darkMode={theme === 'dark'} />
+                <Stats darkMode={theme === 'dark'} />
+                <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
                 <Clients darkMode={theme === 'dark'} />
                 <Events darkMode={theme === 'dark'} />
                 <Testimonials darkMode={theme === 'dark'} />

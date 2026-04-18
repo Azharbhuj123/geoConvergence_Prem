@@ -89,22 +89,32 @@ export default defineType({
     }),
 
     // ==================== FEATURED PRODUCTS ====================
-    defineField({
+     defineField({
       name: 'featuredProducts',
       title: 'Featured Products',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({ name: 'title', type: 'string' }),
-            defineField({ name: 'subtitle', type: 'string' }),
-            defineField({ name: 'description', type: 'text' }),
-            defineField({ name: 'image', type: 'image' }),
-            defineField({ name: 'buttonText', type: 'string', initialValue: 'Learn More' }),
-            defineField({ name: 'link', type: 'string' })
-          ]
-        }
+      type: 'object',
+      fields: [
+        defineField({ name: 'sectionTitle', type: 'string' }),
+        defineField({ name: 'sectionSubtitle', type: 'text' }),
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
+                defineField({
+                  name: 'image',
+                  type: 'image',
+                  options: { hotspot: true }
+                })
+              ]
+            }
+          ],
+          validation: Rule => Rule.min(1).max(6)
+        })
       ]
     }),
 
