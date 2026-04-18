@@ -11,31 +11,34 @@ import Testimonials from '../components/Testimonials'
 import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import { useThemeStore } from '../store/useThemeStore'
+import { client } from '../lib/sanity'
+import { useQuery } from '@tanstack/react-query'
+import { fetchLandingPage } from '../lib/api'
 
 export default function LandingPage() {
- const { theme } = useThemeStore()
-   const { toggleTheme } = useThemeStore()
+    const { theme } = useThemeStore();
+    const { toggleTheme } = useThemeStore();
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ['landingPage'],
+        queryFn: fetchLandingPage,
+    })
 
-  useEffect(() => {
-    document.documentElement.className = theme
-  }, [theme])
-
-
-  return (
-    <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
-      <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
-      <main>
-        <Hero darkMode={theme === 'dark'} />
-        <Services darkMode={theme === 'dark'} />
-        <Stats darkMode={theme === 'dark'} />
-        <ProjectsMap darkMode={theme === 'dark'} />
-        <FeaturedProducts darkMode={theme === 'dark'} />
-        <Clients darkMode={theme === 'dark'} />
-        <Events darkMode={theme === 'dark'} />
-        <Testimonials darkMode={theme === 'dark'} />
-        <CTA darkMode={theme === 'dark'} />
-      </main>
-      <Footer darkMode={theme === 'dark'} />
-    </div>
-  )
+    console.log('LandingPage received data:', data)
+    return (
+        <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
+            <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
+            <main>
+                <Hero darkMode={theme === 'dark'} hero={data?.hero} />
+                <Services darkMode={theme === 'dark'} services={data?.services} />
+                <Stats darkMode={theme === 'dark'} />
+                <ProjectsMap darkMode={theme === 'dark'} />
+                <FeaturedProducts darkMode={theme === 'dark'} />
+                <Clients darkMode={theme === 'dark'} />
+                <Events darkMode={theme === 'dark'} />
+                <Testimonials darkMode={theme === 'dark'} />
+                <CTA darkMode={theme === 'dark'} />
+            </main>
+            <Footer darkMode={theme === 'dark'} />
+        </div>
+    )
 }

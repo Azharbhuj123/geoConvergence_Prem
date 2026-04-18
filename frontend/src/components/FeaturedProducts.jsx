@@ -34,13 +34,13 @@ export default function FeaturedProducts({ darkMode }) {
             >
               Feature Products
             </h2>
-            <p className="text-slate-300 text-lg sm:text-xl font-['Inter'] leading-8">
+            <p className="text-slate-300 text-lg sm:text-xl font-Inter leading-8">
               Powered by our Scan2Twin pipeline, these applications transform captured data into actionable, real-world solutions for operations, planning, and decision-making.
             </p>
           </div>
           <a
             href="#"
-            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-lg font-bold font-['Inter'] rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
+            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
           >
             View More
           </a>
@@ -65,7 +65,7 @@ export default function FeaturedProducts({ darkMode }) {
 
               {/* Badge */}
               <div className="absolute top-5 left-5">
-                <span className="px-3 py-1 bg-blue-700/80 backdrop-blur-sm text-white text-xs font-semibold font-['Inter'] rounded-lg uppercase tracking-wider">
+                <span className="px-3 py-1 bg-blue-700/80 backdrop-blur-sm text-white text-xs font-semibold font-Inter rounded-lg uppercase tracking-wider">
                   {product.badge}
                 </span>
               </div>
@@ -75,7 +75,7 @@ export default function FeaturedProducts({ darkMode }) {
                 <h3 className="text-white text-2xl sm:text-4xl font-bold font-['Titillium_Web'] leading-10">
                   {product.name}
                 </h3>
-                <p className="text-white/85 text-base sm:text-lg font-['Inter'] leading-6">
+                <p className="text-white/85 text-base sm:text-lg font-Inter leading-6">
                   {product.description}
                 </p>
               </div>

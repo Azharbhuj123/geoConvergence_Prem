@@ -1,28 +1,15 @@
 import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
+import Button from './UI/Button'
 
-export default function Hero({ darkMode }) {
-  const [hero, setHero] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const query = `*[_type == "hero"][0]{
-      title,
-      subtitle,
-      backgroundImage,
-      button1,
-      button2
-    }`
-    client.fetch(query)
-      .then((data) => { setHero(data); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [])
+export default function Hero({ darkMode, hero }) {
+  const [loading, setLoading] = useState(false)
 
   if (loading) return (
     <div className={`h-screen flex items-center justify-center ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}>
       <div className="flex flex-col items-center gap-3">
         <div className="w-10 h-10 border-4 border-blue-700 border-t-transparent rounded-full animate-spin" />
-        <span className={`font-['Inter'] text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Loading...</span>
+        <span className={`font-Inter text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Loading...</span>
       </div>
     </div>
   )
@@ -36,9 +23,8 @@ export default function Hero({ darkMode }) {
 
   return (
     <section
-      className={`relative min-h-screen flex items-end pb-20 overflow-hidden ${
-        darkMode ? 'bg-slate-950' : 'bg-slate-100'
-      }`}
+      className={`relative min-h-screen flex items-end pb-20 overflow-hidden ${darkMode ? 'bg-slate-950' : 'bg-slate-100'
+        }`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
       {/* Background gradient overlay */}
@@ -74,24 +60,19 @@ export default function Hero({ darkMode }) {
             >
               {title}
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl font-['Inter'] leading-8 max-w-[592px]">
+            <p className="text-white/80 text-lg sm:text-xl font-Inter leading-8 max-w-[592px]">
               {subtitle}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href={btn1.link}
-              className="px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base sm:text-lg font-bold font-['Inter'] rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all text-center leading-7"
-            >
+            <Button href={btn1.link} variant="primary">
               {btn1.text}
-            </a>
-            <a
-              href={btn2.link}
-              className="px-8 py-4 bg-neutral-200 hover:bg-neutral-100 text-blue-700 text-base sm:text-lg font-bold font-['Inter'] rounded-2xl transition-all text-center leading-7"
-            >
+            </Button>
+
+            <Button href={btn2.link} variant="secondary">
               {btn2.text}
-            </a>
+            </Button>
           </div>
         </div>
       </div>

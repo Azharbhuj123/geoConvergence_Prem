@@ -54,7 +54,7 @@ export default function Testimonials({ darkMode }) {
           >
             What Our Customers Say
           </h2>
-          <p className={`text-center text-lg sm:text-xl font-['Inter'] max-w-[678px] ${
+          <p className={`text-center text-lg sm:text-xl font-Inter max-w-[678px] ${
             darkMode ? 'text-slate-400' : 'text-slate-500'
           }`}>
             Organizations across the US trust geoConvergence to power their facility intelligence.
@@ -86,14 +86,14 @@ export default function Testimonials({ darkMode }) {
               >
                 {/* Avatar */}
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold font-['Inter'] text-sm flex-shrink-0`}>
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold font-Inter text-sm flex-shrink-0`}>
                     {t.avatar}
                   </div>
                   <div>
-                    <div className={`text-base sm:text-lg font-medium font-['Inter'] ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}>
+                    <div className={`text-base sm:text-lg font-medium font-Inter ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}>
                       {t.name}
                     </div>
-                    <div className={`text-sm font-['Inter'] ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <div className={`text-sm font-Inter ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                       {t.role}
                     </div>
                   </div>
@@ -101,7 +101,7 @@ export default function Testimonials({ darkMode }) {
 
                 <StarRating />
 
-                <p className={`text-base sm:text-lg font-['Inter'] leading-8 ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}>
+                <p className={`text-base sm:text-lg font-Inter leading-8 ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}>
                   "{t.quote}"
                 </p>
               </div>

@@ -29,7 +29,7 @@ export default function CTA({ darkMode }) {
             >
               Ready to define your<br className="hidden sm:block" /> digital dimension?
             </h2>
-            <p className="text-white text-lg sm:text-xl font-['Inter'] leading-8 max-w-[756px]">
+            <p className="text-white text-lg sm:text-xl font-Inter leading-8 max-w-[756px]">
               Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.
             </p>
           </div>
@@ -37,13 +37,13 @@ export default function CTA({ darkMode }) {
           <div className="relative z-10 flex flex-col sm:flex-row gap-5 sm:gap-7 pt-4">
             <a
               href="#"
-              className="px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-xl sm:text-2xl font-bold font-['Inter'] rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all text-center leading-8"
+              className="px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-xl sm:text-2xl font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all text-center leading-8"
             >
               Schedule a Consultation
             </a>
             <a
               href="#"
-              className="px-8 py-4 bg-neutral-200 hover:bg-neutral-100 text-blue-700 text-xl sm:text-2xl font-bold font-['Inter'] rounded-2xl transition-all text-center leading-7"
+              className="px-8 py-4 bg-neutral-200 hover:bg-neutral-100 text-blue-700 text-xl sm:text-2xl font-bold font-Inter rounded-2xl transition-all text-center leading-7"
             >
               View Case Studies
             </a>

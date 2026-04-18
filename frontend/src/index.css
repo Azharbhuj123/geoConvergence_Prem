@@ -45,6 +45,14 @@ body {
   overflow-x: hidden;
 }
 
+h1, h2, h3, h4 h5 h6 p li {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-Inter {
+  font-family: 'Inter', sans-serif;
+}
+
 /* ─── Typography helpers ─── */
 .heading {
   color: var(--heading);

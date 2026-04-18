@@ -35,7 +35,7 @@ export default function Events({ darkMode }) {
           >
             Upcoming Events
           </h2>
-          <p className={`text-lg sm:text-xl font-['Inter'] ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+          <p className={`text-lg sm:text-xl font-Inter ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
             Meet us where the industry connects.
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function Events({ darkMode }) {
                 <div className="flex flex-col gap-5">
                   {/* Tag */}
                   <div className="inline-flex self-start">
-                    <span className="px-4 py-2 bg-white/30 backdrop-blur-sm text-slate-100 text-base font-['Inter'] rounded-xl">
+                    <span className="px-4 py-2 bg-white/30 backdrop-blur-sm text-slate-100 text-base font-Inter rounded-xl">
                       {event.tag}
                     </span>
                   </div>
@@ -81,18 +81,18 @@ export default function Events({ darkMode }) {
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
                         <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
                       </svg>
-                      <span className="text-slate-100 text-base font-['Inter'] leading-8">{event.date}</span>
+                      <span className="text-slate-100 text-base font-Inter leading-8">{event.date}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
                         <path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/>
                       </svg>
-                      <span className="text-slate-100 text-base font-['Inter'] leading-8">{event.location}</span>
+                      <span className="text-slate-100 text-base font-Inter leading-8">{event.location}</span>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-slate-200 text-base sm:text-lg font-['Inter'] leading-7 line-clamp-3">
+                  <p className="text-slate-200 text-base sm:text-lg font-Inter leading-7 line-clamp-3">
                     {event.description}
                   </p>
 
@@ -100,7 +100,7 @@ export default function Events({ darkMode }) {
                   <div>
                     <a
                       href="#"
-                      className="inline-block px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-base sm:text-lg font-bold font-['Inter'] rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all leading-7"
+                      className="inline-block px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-base sm:text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all leading-7"
                     >
                       Let's Connect
                     </a>

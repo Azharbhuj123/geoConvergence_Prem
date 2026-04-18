@@ -46,7 +46,7 @@ export default function Clients({ darkMode }) {
       className={`py-16 lg:py-20 overflow-hidden ${darkMode ? 'bg-slate-900' : 'bg-neutral-100'}`}
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 mb-10">
-        <p className={`text-sm font-semibold font-['Inter'] uppercase tracking-widest text-center ${
+        <p className={`text-sm font-semibold font-Inter uppercase tracking-widest text-center ${
           darkMode ? 'text-slate-500' : 'text-slate-400'
         }`}>
           Trusted by leading organizations

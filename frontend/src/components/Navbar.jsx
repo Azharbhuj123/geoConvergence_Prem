@@ -53,7 +53,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <a
                 key={link}
                 href="#"
-                className={`text-base font-['Inter'] transition-colors hover:text-blue-700 whitespace-nowrap ${
+                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${
                   darkMode ? 'text-slate-300' : 'text-neutral-600'
                 }`}
               >
@@ -66,7 +66,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="#"
-              className="px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-['Inter'] font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
+              className="px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
             >
               Request Demo
             </a>
@@ -129,7 +129,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <a
                 key={link}
                 href="#"
-                className={`text-base font-['Inter'] py-1 ${
+                className={`text-base font-Inter py-1 ${
                   darkMode ? 'text-slate-300' : 'text-neutral-600'
                 }`}
                 onClick={() => setMenuOpen(false)}
@@ -139,7 +139,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             ))}
             <a
               href="#"
-              className="mt-2 px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-['Inter'] font-semibold rounded-2xl text-center"
+              className="mt-2 px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl text-center"
             >
               Request Demo
             </a>

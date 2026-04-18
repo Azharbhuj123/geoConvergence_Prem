@@ -39,7 +39,7 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
       >
         {count.toLocaleString()}{suffix}
       </div>
-      <div className={`text-sm sm:text-base font-semibold font-['Inter'] uppercase tracking-widest ${
+      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${
         darkMode ? 'text-slate-400' : 'text-slate-500'
       }`}>
         {label}

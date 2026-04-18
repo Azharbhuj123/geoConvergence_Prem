@@ -25,7 +25,7 @@ export default function Footer({ darkMode }) {
               placeholder="Enter Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base font-light font-['Inter'] uppercase outline-none leading-6 min-w-0"
+              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base font-light font-Inter uppercase outline-none leading-6 min-w-0"
             />
             <button className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
@@ -48,7 +48,7 @@ export default function Footer({ darkMode }) {
               </div>
               <span className="text-white text-lg font-bold font-['Titillium_Web'] tracking-tight">geoConvergence</span>
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-['Inter'] leading-6 max-w-xs">
+            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-xs">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-3">
             <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Services</h4>
             {services.map((s) => (
-              <a key={s} href="#" className="text-white/75 text-sm sm:text-base font-['Inter'] hover:text-white transition-colors">
+              <a key={s} href="#" className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
                 {s}
               </a>
             ))}
@@ -67,7 +67,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-3">
             <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Company</h4>
             {company.map((c) => (
-              <a key={c} href="#" className="text-white/75 text-sm sm:text-base font-['Inter'] hover:text-white transition-colors">
+              <a key={c} href="#" className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
                 {c}
               </a>
             ))}
@@ -102,12 +102,12 @@ export default function Footer({ darkMode }) {
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-          <p className="text-white text-xs sm:text-sm font-['Inter'] leading-4">
+          <p className="text-white text-xs sm:text-sm font-Inter leading-4">
             © 2026 geoConvergence. All rights reserved. Precision in every dimension.
           </p>
           <div className="flex gap-6 sm:gap-12">
             {['Terms', 'Privacy', 'Cookies'].map((link) => (
-              <a key={link} href="#" className="text-white text-xs sm:text-sm font-['Inter'] hover:text-blue-300 transition-colors">
+              <a key={link} href="#" className="text-white text-xs sm:text-sm font-Inter hover:text-blue-300 transition-colors">
                 {link}
               </a>
             ))}

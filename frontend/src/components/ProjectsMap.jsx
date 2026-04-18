@@ -15,13 +15,13 @@ export default function ProjectsMap({ darkMode }) {
             >
               Projects Across the United States
             </h2>
-            <p className={`text-lg font-['Inter'] leading-7 ${darkMode ? 'text-slate-300' : 'text-slate-500'}`}>
+            <p className={`text-lg font-Inter leading-7 ${darkMode ? 'text-slate-300' : 'text-slate-500'}`}>
               Scale and precision delivered coast to coast.
             </p>
           </div>
           <a
             href="#"
-            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-lg font-bold font-['Inter'] rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
+            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
           >
             View Map
           </a>
@@ -59,7 +59,7 @@ export default function ProjectsMap({ darkMode }) {
           {/* Overlay label */}
           <div className="absolute bottom-6 left-6 flex items-center gap-3">
             <div className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white" />
-            <span className={`text-sm font-['Inter'] font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+            <span className={`text-sm font-Inter font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Active project locations
             </span>
           </div>
