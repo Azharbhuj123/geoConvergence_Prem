@@ -1,4 +1,7 @@
+import { useThemeStore } from "../store/useThemeStore";
+
 export default function Events({ darkMode }) {
+  const { theme } = useThemeStore();
   const events = [
     {
       tag: 'Upcoming Events',
@@ -22,8 +25,10 @@ export default function Events({ darkMode }) {
 
   return (
     <section
-      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : 'bg-slate-50'}`}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
+
     >
+      
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
         <div className="mb-12 flex flex-col gap-3">

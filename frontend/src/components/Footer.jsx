@@ -7,7 +7,7 @@ export default function Footer({ darkMode }) {
   const company = ['Why geoConvergence', 'Products', 'Careers', 'Resources', 'Contact Us']
 
   return (
-    <footer className="bg-sky-950 text-white">
+    <footer className="dark bg-[var(--bg)] text-white">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 pt-14 pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
         <div className="pb-7 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">

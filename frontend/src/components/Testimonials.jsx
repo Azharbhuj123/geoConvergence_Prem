@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useThemeStore } from '../store/useThemeStore';
 
 const testimonials = [
   {
@@ -38,10 +39,12 @@ function StarRating() {
 
 export default function Testimonials({ darkMode }) {
   const [active, setActive] = useState(1)
+  const { theme } = useThemeStore();
 
   return (
+    
     <section
-      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
