@@ -1,5 +1,6 @@
 import Button from "./UI/Button";
 import { urlFor } from "../lib/sanity";
+import { useThemeStore } from "../store/useThemeStore";
 
 const finalCta = {
   title: "Ready to define your digital dimension?",
