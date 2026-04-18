@@ -2,14 +2,15 @@ import { useEffect } from 'react'
 import { useThemeStore } from './store/useThemeStore'
 import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
-import CareerPage from './pages/CareerPage'
 import CareerDetails from './pages/CareerDetails'
+import CareerPage from './pages/CareerPage'
 import SolutionsPage from './pages/SolutionPage'
 import ProductPage from './pages/ProductPage'
 import BlogPage from './pages/Blog'
 import BlogDetails from './pages/BlogDetails'
 import Scan2TwinPage from './pages/Scan2Twin'
 import IndoorMapsPage from './pages/IndoorMapsPage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   
@@ -25,6 +26,7 @@ return (
       <Route path="/blog/:id" element={<BlogDetails />} />
       <Route path="/scan2twin" element={<Scan2TwinPage />} />
       <Route path="/indoormaps" element={<IndoorMapsPage />} />
+      <Route path="/contact" element={<ContactPage />} />
     </Routes>
 
   </div>
