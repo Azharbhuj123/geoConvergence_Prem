@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'landingPage',
@@ -89,7 +89,7 @@ export default defineType({
     }),
 
     // ==================== FEATURED PRODUCTS ====================
-     defineField({
+    defineField({
       name: 'featuredProducts',
       title: 'Featured Products',
       type: 'object',
@@ -144,8 +144,30 @@ export default defineType({
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'subtitle', type: 'text' }),
-        defineField({ name: 'buttonText', type: 'string' }),
-        defineField({ name: 'buttonLink', type: 'string' })
+        defineField({
+          name: 'backgroundImage',
+          type: 'image',
+          title: 'Background Image',
+          options: { hotspot: true }
+        }),
+        defineField({
+          name: 'button1',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        }),
+        defineField({
+          name: 'button2',
+          type: 'object',
+          title: 'Secondary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        })
       ]
     })
   ],

@@ -32,11 +32,11 @@ export default function LandingPage() {
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
                 <ProjectsMap darkMode={theme === 'dark'} />
                 <Stats darkMode={theme === 'dark'} />
-                <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
                 <Clients darkMode={theme === 'dark'} />
+                <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
                 <Events darkMode={theme === 'dark'} />
                 <Testimonials darkMode={theme === 'dark'} />
-                <CTA darkMode={theme === 'dark'} />
+                <CTA darkMode={theme === 'dark'} CtaData={data?.finalCta} />
             </main>
             <Footer darkMode={theme === 'dark'} />
         </div>

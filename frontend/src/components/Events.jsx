@@ -1,3 +1,5 @@
+import Button from "./UI/Button"
+
 export default function Events({ darkMode }) {
   const events = [
     {
@@ -6,8 +8,9 @@ export default function Events({ darkMode }) {
       date: 'February 10–11, 2026',
       location: 'Washington, DC',
       description:
-        'Scan2Twin mobile LiDAR that delivers ArcGIS-ready digital twins, enterprise architecture and custom development solutions for spatial data challenges.',
+        '',
       image: 'https://placehold.co/738x532/0c1424/ffffff?text=FedGIS+2026',
+      btn: null,
     },
     {
       tag: 'Upcoming Events',
@@ -15,8 +18,9 @@ export default function Events({ darkMode }) {
       date: 'February 16–18, 2026',
       location: 'Colorado Convention Center',
       description:
-        "We're demonstrating how our full-stack Scan2Twin solution delivers operational digital twins at scale — transforming LiDAR captures into ArcGIS Indoors environments structured around real facility workflows.",
+        "",
       image: 'https://placehold.co/946x531/0c1424/ffffff?text=Geo+Week+2026',
+      btn: null,
     },
   ]
 
@@ -28,9 +32,8 @@ export default function Events({ darkMode }) {
         {/* Header */}
         <div className="mb-12 flex flex-col gap-3">
           <h2
-            className={`font-bold font-['Titillium_Web'] leading-tight ${
-              darkMode ? 'text-slate-100' : 'text-slate-900'
-            }`}
+            className={`font-bold font-['Titillium_Web'] leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
+              }`}
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)' }}
           >
             Upcoming Events
@@ -79,13 +82,13 @@ export default function Events({ darkMode }) {
                   <div className="flex flex-wrap gap-4 sm:gap-6">
                     <div className="flex items-center gap-2">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                        <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
                       </svg>
                       <span className="text-slate-100 text-base font-Inter leading-8">{event.date}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
-                        <path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/>
+                        <path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z" /><circle cx="12" cy="9" r="2.5" />
                       </svg>
                       <span className="text-slate-100 text-base font-Inter leading-8">{event.location}</span>
                     </div>
@@ -97,14 +100,13 @@ export default function Events({ darkMode }) {
                   </p>
 
                   {/* CTA */}
-                  <div>
-                    <a
-                      href="#"
-                      className="inline-block px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-slate-100 text-base sm:text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all leading-7"
-                    >
-                      Let's Connect
-                    </a>
-                  </div>
+                  {event.btn && (
+                    <div>
+                      <Button href={event.btn.link} variant="primary">
+                        {event.btn.text}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
