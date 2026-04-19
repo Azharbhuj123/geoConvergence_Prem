@@ -96,6 +96,21 @@ const ProductPageData = {
     }
 };
 
+export const Services_Description = ({pageData, theme}) => {
+    return(
+         <div className={`w-full max-w-[1440px] mx-auto px-14 py-24 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
+                    <div className="max-w-[933px]">
+                        <h2 className="text-5xl font-bold font-['Titillium_Web'] leading-[60px] text-[var(--text)] mb-5">
+                            {pageData.servicesIntro.title}
+                        </h2>
+                        <p className="text-xl leading-8 text-[var(--text)]">
+                            {pageData.servicesIntro.description}
+                         </p>
+                    </div>
+                </div>
+    )
+}
+
 export default function ProductPage() {
     const { theme } = useThemeStore();
     const { toggleTheme } = useThemeStore();
@@ -121,16 +136,10 @@ export default function ProductPage() {
                 />
 
                 {/* Services Intro */}
-                <div className={`w-full max-w-[1440px] mx-auto px-14 py-24 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    <div className="max-w-[933px]">
-                        <h2 className="text-5xl font-bold font-['Titillium_Web'] leading-[60px] text-[var(--text)] mb-5">
-                            {pageData.servicesIntro.title}
-                        </h2>
-                        <p className="text-xl leading-8 text-[var(--text)]">
-                            {pageData.servicesIntro.description}
-                        </p>
-                    </div>
-                </div>
+               <Services_Description
+               pageData={pageData}
+               theme={theme}
+               />
 
                 {/* Solution Blocks */}
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>

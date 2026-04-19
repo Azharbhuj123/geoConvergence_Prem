@@ -82,3 +82,59 @@ export const fetchCareerPage = async () => {
   }`;
   return client.fetch(query);
 };
+
+export const fetchLidarScanningPage = async () => {
+  const query = `*[_type == "lidarScanningPage"][0]{
+    hero, coreValues, servicesDescription, solutions, stats, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchThreeDModelingPage = async () => {
+  const query = `*[_type == "threeDModelingPage"][0]{
+    hero, coreValues, servicesDescription, solutions, stats, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchArcGisIndoorsPage = async () => {
+  const query = `*[_type == "arcgisIndoorsPage"][0]{
+    hero, coreValues, servicesDescription, solutions, stats, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchDigitalTwinsPage = async () => {
+  const query = `*[_type == "digitalTwinsPage"][0]{
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchReservAssistPage = async () => {
+  const query = `*[_type == "reservAssistPage"][0]{
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchGeoPrinterPage = async () => {
+  const query = `*[_type == "geoPrinterPage"][0]{
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchScenarioPlannerPage = async () => {
+  const query = `*[_type == "scenarioPlannerPage"][0]{
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchRoomReservPage = async () => {
+  const query = `*[_type == "roomReservPage"][0]{
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+  }`;
+  return client.fetch(query);
+};
