@@ -19,6 +19,12 @@ import ReservAssistPage from './pages/ReservAssistPage'
 import GeoPrinterPage from './pages/GeoPrinterPage'
 import ScenarioPlannerPage from './pages/ScenarioPlannerPage'
 import RoomReservPage from './pages/RoomReservPage'
+import EightStarPage from './pages/EightStarPage'
+import NAVSEASeaportPage from './pages/NAVSEASeaportPage'
+import GSAMasPage from './pages/GSAMasPage'
+import GSS2Page from './pages/GSS2Page'
+import Sba8aPage from './pages/Sba8aPage'
+import HubZonePage from './pages/HubZonePage'
 
 function App() {
   
@@ -43,6 +49,13 @@ return (
       <Route path="/geo-printer" element={<GeoPrinterPage />} />
       <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
       <Route path="/room-reserv" element={<RoomReservPage />} />
+      <Route path="/8star" element={<EightStarPage />} />
+      <Route path="/navsea-seaport" element={<NAVSEASeaportPage />} />
+      <Route path="/gsa-mas" element={<GSAMasPage />} />
+      <Route path="/gss-2.0" element={<GSS2Page />} />
+      <Route path="/sba-8a" element={<Sba8aPage />} />
+      <Route path="/hubzone" element={<HubZonePage />} />
+
     </Routes>
 
   </div>

@@ -37,7 +37,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-14 py-5 flex justify-between items-center">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 flex-shrink-0">
+          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -52,7 +52,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                 geoConvergence
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-7">

@@ -6,104 +6,9 @@ import ShortHero from '../components/ShortHero';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const POPULAR_TAGS = ['GIS', 'Arc', 'Indoor Mapping', 'tech', 'Scan2Twin', 'Digital Twin', 'ArcGIS'];
-
-const RECENT_POSTS = [
-  {
-    id: 1,
-    title: 'Seat-Level Digital Twins: Scaling ArcGIS Indoors and Public Safety',
-    date: 'April 10, 2025',
-    image: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=200&q=75',
-  },
-  {
-    id: 2,
-    title: 'geoConvergence Recognized as an Esri Cornerstone Partner',
-    date: 'February 26, 2025',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=200&q=75',
-  },
-  {
-    id: 3,
-    title: 'Helping Baltimore County Public Schools Build a Sustainable GIS Program',
-    date: 'January 14, 2025',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=200&q=75',
-  },
-];
-
-// 4 gallery images — all GIS / arena / mapping themed
-const GALLERY_IMAGES = [
-  {
-    src: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700&q=80',
-    alt: 'Arena aerial view',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80',
-    alt: 'Stadium seating',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=700&q=80',
-    alt: 'Indoor arena floor',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=80',
-    alt: 'Crowd in venue',
-  },
-];
-
-const INLINE_IMAGE =
-  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=80';
-
-// ─── Article content ──────────────────────────────────────────────────────────
-
-const INTRO =
-  'geoConvergence has spent the last two years working inside some of the largest and most complex entertainment venues in the United States. The challenge: translate a living, breathing arena into a precision digital twin that supports both daily operations and emergency response — at the individual seat level.';
-
-const SECTIONS = [
-  {
-    heading: 'From City Blocks to the Arena Floor',
-    paras: [
-      'When geoConvergence first began working with large-scale sports venues, the challenge was clear: arenas are among the most complex, high-traffic indoor environments in the world. With tens of thousands of fans, layered seating tiers, multiple concourse levels, and operational staff spanning dozens of departments, a traditional floor plan simply could not capture the intelligence needed for modern facility management.',
-      'Our team deployed a full LiDAR scanning campaign across the arena, capturing every seat, aisle, exit, and utility corridor with millimeter-level precision. The raw point cloud data was then processed into a fully navigable ArcGIS Indoors model — seat-level granularity included.',
-    ],
-  },
-  {
-    heading: 'The Anatomy of an Arena',
-    paras: [
-      'An arena is not one building — it is a stack of interconnected environments. Suites, clubs, tunnels, ADA corridors, back-of-house service routes, and media zones all co-exist within the same structure, each with its own operational logic.',
-      'By building a federated indoor GIS model, geoConvergence gave facility managers a single pane of glass to view and query every layer of the building. Want to know which seats have obstructed sightlines? Which exit routes are nearest to section 112? Which concession stands are within 200 meters of any given entrance? The system answers all of these instantly.',
-    ],
-  },
-  {
-    heading: 'Why Spatial Safety Matters',
-    paras: [
-      'Public safety in a venue context is not just about security checkpoints. It is about understanding crowd flow, evacuation routing, emergency response access, and real-time situational awareness during events. geoConvergence integrated Esri\'s public safety workflows directly into the digital twin.',
-      'First responders now have access to pre-positioned indoor maps, updated in real-time with event footprint data. Dispatch logic is informed by spatial proximity — not building number alone. For arenas hosting 20,000+ attendees, this precision routinely makes the difference between a controlled situation and a critical one.',
-    ],
-  },
-  {
-    heading: 'Engineering the Space',
-    paras: [
-      'The ArcGIS Indoors model was not a one-time deliverable. geoConvergence established a living digital twin — a GIS dataset that evolves with the building. When new signage is installed, a section is reconfigured, or a new sponsor activation changes the floorplan, the model is updated to reflect the real world.',
-      'This "evergreen" approach to indoor mapping ensures that the operational intelligence embedded in the system remains accurate and actionable year after year. The arena\'s facilities team was trained to make minor updates independently, while geoConvergence provides quarterly audit and update cycles for any structural changes.',
-    ],
-  },
-  {
-    heading: 'Do it For Public Safety',
-    paras: [
-      'The most important outcome of this engagement was not a map — it was peace of mind. Knowing that every seat, every exit, every service corridor is precisely documented and queryable in real time changes how a venue thinks about safety, operations, and guest experience.',
-      'The seat-level digital twin built by geoConvergence is now the operational backbone of this arena\'s facility intelligence program. It feeds into their work order management system, their event operations dashboard, and their emergency management planning.',
-      'For arenas considering a similar program, geoConvergence recommends starting with a phased approach: capture the primary concourse levels first, validate with operations staff, then expand to suites, tunnels, and back-of-house. The ROI compounds quickly — and the safety benefits begin on day one.',
-    ],
-  },
-  {
-    heading: 'Do it For Public Safety',
-    paras: [
-      'The most important outcome of this engagement was not a map — it was peace of mind. Knowing that every seat, every exit, every service corridor is precisely documented and queryable in real time changes how a venue thinks about safety, operations, and guest experience.',
-    ],
-  },
-];
+import { useQuery } from '@tanstack/react-query';
+import { fetchBlogDetails, fetchBlogPage } from '../lib/api';
+import { pageData } from '../lib/data/page';
 
 // ─── Sidebar Widget ───────────────────────────────────────────────────────────
 
@@ -125,8 +30,31 @@ function SidebarWidget({ title, children }) {
 export default function BlogDetails() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
-  const [activeTag, setActiveTag] = useState(null);
   const { id } = useParams();
+  const [activeTag, setActiveTag] = useState(null);
+
+  // Fetch individual blog details
+  const { data: detailsData } = useQuery({
+    queryKey: ['blogDetails', id],
+    queryFn: () => fetchBlogDetails(id),
+    enabled: !!id,
+  });
+
+  // Fetch blog list for sidebar (tags/recent)
+  const { data: blogPageData } = useQuery({
+    queryKey: ['blogPage'],
+    queryFn: fetchBlogPage,
+  });
+
+  const details = detailsData || pageData.blogDetailsPage;
+  const GALLERY_IMAGES = details.galleryImages;
+  const INLINE_IMAGE = details.inlineImage;
+  const INTRO = details.intro;
+  const SECTIONS = details.sections;
+
+  const blogContent = blogPageData?.blog || pageData.blogPage;
+  const POPULAR_TAGS = blogContent.popularTags;
+  const RECENT_POSTS = blogContent.recentPosts;
 
   return (
     <div className={darkMode ? 'dark' : ''}>

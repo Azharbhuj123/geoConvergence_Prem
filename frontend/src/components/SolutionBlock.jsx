@@ -11,6 +11,7 @@ export default function SolutionBlock({
   imagePosition = "right", // "left" or "right"
   darkMode = false,
   className = "",
+  services=[],
 }) {
   const imgUrl = image ? urlFor(image) : null;
   const { theme } = useThemeStore();
@@ -46,9 +47,19 @@ export default function SolutionBlock({
             {Array.isArray(description) ? (
               description.map((para, i) => <p key={i} className="text-[var(--text)]">{para}</p>)
             ) : (
-              <p className="text-[var(--text)]">{description}</p>
+              <p dangerouslySetInnerHTML={{ __html: description }} className="text-[var(--text)]"></p>
             )}
           </div>
+
+          {Array.isArray(services) && services?.length > 0 && (
+            <div className="mt-[20px]">
+              <ul className="space-y-2">
+                {services.map((service, i) => (
+                  <li key={i} className="text-[var(--text)] list-disc">{service}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {button && (
             <div className="mt-10">
