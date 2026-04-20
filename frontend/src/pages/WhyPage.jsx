@@ -51,30 +51,30 @@ export default function WhyPage() {
                 />
 
                 {/* Certifications */}
-                <Certifications 
-                    data={pageData.certifications} 
-                    darkMode={isDark} 
+                <Certifications
+                    data={pageData.certifications}
+                    darkMode={isDark}
                 />
 
                 {/* Clients Section */}
                 <Clients darkMode={isDark} />
 
                 {/* Contract Vehicles */}
-                <ContractVehicles 
-                    data={pageData.contractVehicles} 
-                    darkMode={isDark} 
+                <ContractVehicles
+                    data={pageData.contractVehicles}
+                    darkMode={isDark}
                 />
 
                 {/* Case Studies */}
-                <CaseStudies 
-                    data={pageData.caseStudies} 
-                    darkMode={isDark} 
+                <CaseStudies
+                    data={pageData.caseStudies}
+                    darkMode={isDark}
                 />
 
                 {/* Team & Leadership */}
-                <TeamLeadership 
-                    data={pageData.teamLeadership} 
-                    darkMode={isDark} 
+                <TeamLeadership
+                    data={pageData.teamLeadership}
+                    darkMode={isDark}
                 />
 
                 {/* Final CTA */}

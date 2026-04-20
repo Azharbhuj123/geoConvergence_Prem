@@ -1,93 +1,71 @@
 import { useEffect, useRef } from 'react'
 
 const clients = [
-  'Air Force Recruiting Service',
-  'Indiana Department Of Transportation',
-  'Baltimore County Public Schools',
-  'Defense Contract Management Agency',
-  'Department of the Army',
-  'State of Indiana',
-  'Indiana University',
-  'State of Michigan',
-  'City of Bakersfield',
-  'Naval Surface Warfare',
-  'Yuma Proving Ground Center',
+  {
+    title: 'Federal Small Business Specialty',
+    subtitle: '2026 Partner of the Year',
+    color: '#4F46E5',
+    logo: '/logos/esri1.png',
+  },
+  {
+    title: 'Esri Partner Conference',
+    subtitle: '2023 Award Winner',
+    color: '#0EA5E9',
+    logo: '/logos/esri2.png',
+  },
+  {
+    title: 'Federal Small Business Specialty',
+    subtitle: '2023 Award Winner',
+    color: '#F97316',
+    logo: '/logos/esri3.png',
+  },
 ]
 
-function LogoItem({ name, darkMode }) {
+function LogoItem({ item }) {
   return (
-    <div className="flex items-center gap-3 flex-shrink-0 px-6">
-      <div
-        className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? 'bg-slate-700' : 'bg-slate-200'
-          }`}
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={darkMode ? '#94a3b8' : '#64748b'} strokeWidth="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
+    <div className="flex items-center gap-3 px-10 min-w-[320px]">
+      <img src={item.logo} alt="" className="w-14 h-14 object-contain" />
+
+      <div className="leading-tight">
+        <h4 className="text-sm font-semibold" style={{ color: item.color }}>
+          {item.title}
+        </h4>
+        <p className="text-xs text-slate-500 mt-1">{item.subtitle}</p>
       </div>
-      <span
-        className={`text-base sm:text-lg font-bold font-['Titillium_Web'] leading-5 max-w-[160px] ${darkMode ? 'text-zinc-400' : 'text-zinc-500'
-          }`}
-      >
-        {name}
-      </span>
     </div>
   )
 }
 
-export default function Clients({ darkMode }) {
-  const track1 = useRef(null)
-  const track2 = useRef(null)
+export default function Clients() {
+  const trackRef = useRef(null)
 
   return (
-    <section
-      className={`py-16 lg:py-20 overflow-hidden ${darkMode ? 'bg-slate-900' : 'bg-neutral-100'}`}
-    >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 mb-10">
-        <p className={`text-sm font-semibold font-Inter uppercase tracking-widest text-center ${darkMode ? 'text-slate-500' : 'text-slate-400'
-          }`}>
-          Trusted by leading organizations
-        </p>
-      </div>
+    <section className="bg-white py-10 overflow-hidden">
 
-      {/* Row 1 - scrolling left */}
-      <div className="relative mb-6">
+      {/* Track */}
+      <div className="relative w-full overflow-hidden">
         <div
-          className="flex items-center"
+          className="flex w-max"
           style={{
-            animation: 'scrollLeft 40s linear infinite',
-            width: 'max-content',
+            animation: 'scroll 20s linear infinite',
           }}
         >
-          {[...clients, ...clients].map((name, i) => (
-            <LogoItem key={i} name={name} darkMode={darkMode} />
+          {/* duplicate for smooth loop */}
+          {[...clients, ...clients, ...clients].map((item, i) => (
+            <LogoItem key={i} item={item} />
           ))}
         </div>
       </div>
 
-      {/* Row 2 - scrolling right */}
-      <div className="relative">
-        <div
-          className="flex items-center"
-          style={{
-            animation: 'scrollRight 35s linear infinite',
-            width: 'max-content',
-          }}
-        >
-          {[...clients.slice(4), ...clients, ...clients.slice(0, 4)].map((name, i) => (
-            <LogoItem key={i} name={name} darkMode={darkMode} />
-          ))}
-        </div>
-      </div>
-
+      {/* CSS Animation */}
       <style>{`
-        @keyframes scrollLeft {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        @keyframes scrollRight {
-          from { transform: translateX(-50%); }
-          to { transform: translateX(0); }
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.33%);
+          }
         }
       `}</style>
     </section>

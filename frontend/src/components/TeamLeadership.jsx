@@ -24,13 +24,13 @@ export default function TeamLeadership({ data, darkMode }) {
   }, []);
 
   return (
-    <section className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14">
-        <div className="mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold font-['Titillium_Web'] mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+    <section className={`py-16 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-14">
+        <div className="mb-12">
+          <h2 className={`text-[32px] md:text-[36px] font-bold mb-3 ${darkMode ? 'text-white' : 'text-[#0B1B3D]'}`}>
             {title}
           </h2>
-          <p className={`text-xl max-w-2xl ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+          <p className={`text-[14px] md:text-[15px] max-w-3xl leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
             {subtitle}
           </p>
         </div>
@@ -39,43 +39,35 @@ export default function TeamLeadership({ data, darkMode }) {
         <div className="relative group">
           <div 
             ref={scrollRef}
-            className="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory no-scrollbar"
+            className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory no-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {members?.map((member, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 w-[300px] md:w-[340px] snap-start"
+                className={`flex-shrink-0 w-[280px] md:w-[320px] snap-start p-3 rounded-2xl ${darkMode ? 'bg-slate-800' : 'bg-[#f5f6f8]'}`}
               >
-                <div className={`relative rounded-t-[40px] overflow-hidden aspect-[4/5] ${darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}>
+                <div className="relative rounded-xl overflow-hidden aspect-[4/3] mb-3">
                   {member.image ? (
                     <img 
                       src={urlFor(member.image)} 
                       alt={member.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-end justify-center bg-gradient-to-b from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800">
-                       <svg className="w-3/4 h-3/4 text-white/30" viewBox="0 0 24 24" fill="currentColor">
+                    <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-700">
+                       <svg className="w-12 h-12 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                        </svg>
                     </div>
                   )}
-
-                  {/* Blue Accent Badge */}
-                  <div className="absolute top-8 right-0 bg-[#0055FE] text-white py-2 px-3 rounded-l-full flex items-center gap-2 shadow-lg">
-                    <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                    </svg>
-                  </div>
                 </div>
 
-                <div className={`p-8 rounded-b-2xl border-b-[6px] border-[#0055FE] ${darkMode ? 'bg-slate-900 text-white' : 'bg-neutral-50 text-slate-900 shadow-sm'}`}>
-                  <h3 className="text-3xl font-bold font-['Titillium_Web'] mb-1 tracking-tight">
+                <div className={`p-4 rounded-xl border ${darkMode ? 'border-slate-700 bg-slate-800' : 'border-[#c6d2e8] bg-transparent'}`}>
+                  <h3 className={`text-lg font-bold mb-1 ${darkMode ? 'text-white' : 'text-[#0B1B3D]'}`}>
                     {member.name}
                   </h3>
-                  <p className={`text-lg font-medium ${darkMode ? 'text-blue-400' : 'text-[#0055FE]'}`}>
+                  <p className={`text-[13px] font-medium ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                     {member.position}
                   </p>
                 </div>
@@ -84,16 +76,16 @@ export default function TeamLeadership({ data, darkMode }) {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-4">
-             {Array.from({ length: Math.ceil((members?.length || 0) / (members?.length > 4 ? 4 : 1)) }).map((_, i) => {
+          <div className="flex justify-center gap-1.5 mt-2">
+             {Array.from({ length: 4 }).map((_, i) => {
                // Simplified dots for visual representation
                return (
                  <div 
                    key={i} 
                    className={`h-2 transition-all duration-300 rounded-full ${
-                     (scrollProgress / 100) * (members?.length || 1) >= (i * (members?.length / 3)) && (scrollProgress / 100) * (members?.length || 1) < ((i+1) * (members?.length / 3)) 
-                     ? 'w-8 bg-[#0055FE]' 
-                     : `w-2 ${darkMode ? 'bg-slate-700' : 'bg-slate-300'}`
+                     i === 0 // Using static active dot for first one as per screenshot, could be dynamic based on scroll
+                     ? 'w-10 bg-[#0055FE]' 
+                     : `w-2 ${darkMode ? 'bg-slate-700' : 'bg-[#f0f0f0]'}`
                    }`}
                  />
                );
