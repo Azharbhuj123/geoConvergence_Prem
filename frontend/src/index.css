@@ -1,12 +1,12 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* ─── Theme tokens ─── */
 :root {
   --bg: #ffffff;
-  --slate-bg:#ffffff;
+  --slate-bg: #ffffff;
 
-  --f6f6f6:#f6f6f6;
+  --f6f6f6: #f6f6f6;
   --bg-secondary: #f8fafc;
   --text: #111111;
   --heading: #0f172a;
@@ -18,9 +18,8 @@
 
 .dark {
   --bg: #0f172a;
-  --slate-bg:#002052;
-  --f6f6f6:#002052;
-
+  --slate-bg: #002052;
+  --f6f6f6: #002052;
   --bg-secondary: #020617;
   --text: #e2e8f0;
   --heading: #f1f5f9;
@@ -44,25 +43,30 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Titillium Web', sans-serif !important;
-  transition: background 0.3s ease, color 0.3s ease;
+  font-family: "Titillium Web", sans-serif !important;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 h5 h6 p li {
-  font-family: 'Inter', sans-serif;
+h1,
+h2,
+h3,
+h4 h5 h6 p li {
+  font-family: "Inter", sans-serif;
 }
 
 .font-Inter {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* ─── Typography helpers ─── */
 .heading {
   color: var(--heading);
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 /* ─── Scrollbar styling ─── */
@@ -90,7 +94,9 @@ h1, h2, h3, h4 h5 h6 p li {
 
 /* ─── Card hover lift ─── */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .card-hover:hover {
   transform: translateY(-4px);

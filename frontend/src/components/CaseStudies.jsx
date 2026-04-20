@@ -8,9 +8,8 @@ export default function CaseStudies({ data, darkMode }) {
   const { title, subtitle, studies } = data;
 
   return (
-    <section className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-[#0B1B3D]'}`}>
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-14">
-
+    <section className="bg-[#0D1B5E] py-20">
+      <div className="max-w-[1200px] mx-auto px-6">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-3xl">
@@ -73,7 +72,6 @@ export default function CaseStudies({ data, darkMode }) {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

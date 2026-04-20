@@ -1,23 +1,29 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { fetchCareerDetails } from '../lib/api';
-import { pageData } from '../lib/data/page';
-import { useThemeStore } from '../store/useThemeStore';
-import Navbar from '../components/Navbar';
-import CTA from '../components/CTA';
-import Footer from '../components/Footer';
-import ShortHero from '../components/ShortHero';
-import Testimonials from '../components/Testimonials';
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCareerDetails } from "../lib/api";
+import { pageData } from "../lib/data/page";
+import { useThemeStore } from "../store/useThemeStore";
+import Navbar from "../components/Navbar";
+import CTA from "../components/CTA";
+import Footer from "../components/Footer";
+import ShortHero from "../components/ShortHero";
+import Testimonials from "../components/Testimonials";
 
 const TESTIMONIALS = [
-  { name: 'Theodore James', featured: false },
-  { name: 'Liam Oliver', featured: true },
-  { name: 'Charlotte Amelia', featured: false },
+  { name: "Theodore James", featured: false },
+  { name: "Liam Oliver", featured: true },
+  { name: "Charlotte Amelia", featured: false },
 ];
 
-const SERVICES = ['Scan2Twin', 'Indoor Mapping', 'LiDAR Scanning', '3D Modeling', 'ArcGIS Indoors'];
-const COMPANY_LINKS = ['About us', 'Careers', 'Contact us', 'Lift Media'];
+const SERVICES = [
+  "Scan2Twin",
+  "Indoor Mapping",
+  "LiDAR Scanning",
+  "3D Modeling",
+  "ArcGIS Indoors",
+];
+const COMPANY_LINKS = ["About us", "Careers", "Contact us", "Lift Media"];
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
@@ -33,18 +39,56 @@ function CvIcon() {
   return (
     <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
       <rect x="10" y="8" width="36" height="48" rx="4" fill="#1a1a2e" />
-      <rect x="16" y="18" width="24" height="3" rx="1.5" fill="white" opacity=".7" />
-      <rect x="16" y="26" width="24" height="3" rx="1.5" fill="white" opacity=".7" />
-      <rect x="16" y="34" width="16" height="3" rx="1.5" fill="white" opacity=".7" />
+      <rect
+        x="16"
+        y="18"
+        width="24"
+        height="3"
+        rx="1.5"
+        fill="white"
+        opacity=".7"
+      />
+      <rect
+        x="16"
+        y="26"
+        width="24"
+        height="3"
+        rx="1.5"
+        fill="white"
+        opacity=".7"
+      />
+      <rect
+        x="16"
+        y="34"
+        width="16"
+        height="3"
+        rx="1.5"
+        fill="white"
+        opacity=".7"
+      />
       <circle cx="46" cy="44" r="12" fill="#326FB7" />
-      <text x="46" y="49" textAnchor="middle" fontSize="13" fill="white" fontWeight="700">CV</text>
+      <text
+        x="46"
+        y="49"
+        textAnchor="middle"
+        fontSize="13"
+        fill="white"
+        fontWeight="700"
+      >
+        CV
+      </text>
     </svg>
   );
 }
 
 function FacebookIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" className="fill-black dark:fill-gray-800">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      className="fill-black dark:fill-gray-800"
+    >
       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
     </svg>
   );
@@ -52,7 +96,15 @@ function FacebookIcon() {
 
 function InstagramIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black dark:text-gray-800">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="text-black dark:text-gray-800"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -62,7 +114,12 @@ function InstagramIcon() {
 
 function LinkedInIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" className="fill-black dark:fill-gray-800">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      className="fill-black dark:fill-gray-800"
+    >
       <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
       <rect x="2" y="9" width="4" height="12" />
       <circle cx="4" cy="4" r="2" />
@@ -81,7 +138,10 @@ function HowToApply({ items }) {
       </div>
       <ul className="flex flex-col gap-2">
         {items.map((item, i) => (
-          <li key={i} className="flex items-center gap-2 text-[var(--muted)] text-[15px] leading-relaxed">
+          <li
+            key={i}
+            className="flex items-center gap-2 text-[var(--muted)] text-[15px] leading-relaxed"
+          >
             <CheckIcon />
             {item}
           </li>
@@ -103,7 +163,7 @@ function SendCVCard() {
       <p className="text-[var(--muted)] text-[15px] leading-relaxed max-w-[240px]">
         Send us your C.V.
         <br />
-        Do you want to work with us? Please, send your CV to{' '}
+        Do you want to work with us? Please, send your CV to{" "}
         <strong className="font-bold">Info123@gmail.com</strong>
       </p>
       <p className="text-[var(--muted)] font-bold text-base">OR</p>
@@ -124,7 +184,9 @@ function JobStats({ stats }) {
         <div
           key={label}
           className={`py-4 px-2 text-center flex flex-col gap-0.5 ${
-            i < stats.length - 1 ? 'border-r border-[#BABABA] dark:border-slate-600' : ''
+            i < stats.length - 1
+              ? "border-r border-[#BABABA] dark:border-slate-600"
+              : ""
           }`}
         >
           <span className=" text-[17px] font-bold text-[var(--heading)] leading-tight">
@@ -148,10 +210,10 @@ function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
-            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all  ${
+            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all cursor-pointer  ${
               activeTab === t.key
-                ? 'bg-[#000941] text-white'
-                : 'bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]'
+                ? "bg-[#000941] text-white"
+                : "bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]"
             }`}
           >
             {t.label}
@@ -169,12 +231,12 @@ function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function CareerPage() {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
   const { theme, toggleTheme } = useThemeStore();
   const { id } = useParams();
 
   const { data } = useQuery({
-    queryKey: ['careerDetails', id],
+    queryKey: ["careerDetails", id],
     queryFn: () => fetchCareerDetails(id),
     enabled: !!id,
   });
@@ -186,9 +248,9 @@ export default function CareerPage() {
   const APPLY_ITEMS = careerDetails.applyItems;
 
   return (
-    <div className={theme === 'dark' ? 'dark' : ''}>
+    <div className={theme === "dark" ? "dark" : ""}>
       <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-colors duration-200">
-        <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
+        <Navbar darkMode={theme === "dark"} toggleDarkMode={toggleTheme} />
         <ShortHero title="Career Details" />
 
         {/* Career Detail */}
@@ -218,9 +280,9 @@ export default function CareerPage() {
           </div>
         </section>
 
-        <Testimonials darkMode={theme === 'dark'} />
-        <CTA darkMode={theme === 'dark'} />
-        <Footer darkMode={theme === 'dark'} />
+        <Testimonials darkMode={theme === "dark"} />
+        <CTA darkMode={theme === "dark"} />
+        <Footer darkMode={theme === "dark"} />
       </div>
     </div>
   );
