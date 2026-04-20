@@ -36,6 +36,7 @@ export default function WhyPage() {
                     darkMode={isDark}
                     hero={pageData.hero}
                     title={pageData.hero.title}
+                    minHeight="min-h-[451px]"
                 />
 
                 {/* Solution Block */}

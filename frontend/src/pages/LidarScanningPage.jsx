@@ -45,7 +45,7 @@ export default function LidarScanningPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} minHeight="min-h-[451px]"/>
 
         {pageData.meetTheTeam && (
           <section className="bg-[var(--bg)]">

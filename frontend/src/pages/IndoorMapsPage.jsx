@@ -47,7 +47,7 @@ export default function IndoorMapsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "IndoorMaps"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "IndoorMaps"} minHeight="min-h-[451px]"/>
 
         {/* What is Indoor Mapping? */}
         {pageData.whatIs && (
