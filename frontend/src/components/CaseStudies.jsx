@@ -9,7 +9,7 @@ export default function CaseStudies({ data, darkMode }) {
 
   return (
     <section className="bg-[#0D1B5E] py-20">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-3xl">

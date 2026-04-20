@@ -8,7 +8,7 @@ export default function Certifications({ data, darkMode }) {
 
   return (
     <section className={`py-20 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6">
 
         {/* Heading */}
         <div className="mb-14">
