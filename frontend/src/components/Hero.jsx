@@ -15,10 +15,10 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
   )
 
   // Fallback content if Sanity not configured
-  const title = hero?.title 
-  const subtitle = hero?.subtitle 
-  const btn1 = hero?.button1 
-  const btn2 = hero?.button2 
+  const title = hero?.title
+  const subtitle = hero?.subtitle
+  const btn1 = hero?.button1
+  const btn2 = hero?.button2
   const bgImage = hero?.backgroundImage ? urlFor(hero.backgroundImage) : null
 
   return (
