@@ -35,6 +35,8 @@ return (
       <Route path="/scan2twin" element={<Scan2TwinPage />} />
       <Route path="/indoormaps" element={<IndoorMapsPage />} />
       <Route path="/contact" element={<ContactPage />} />
+
+      
       <Route path="/lidar-scanning" element={<LidarScanningPage />} />
       <Route path="/3d-modeling" element={<ThreeDModelingPage />} />
       <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />

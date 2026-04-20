@@ -18,18 +18,16 @@ function LogoItem({ name, darkMode }) {
   return (
     <div className="flex items-center gap-3 flex-shrink-0 px-6">
       <div
-        className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${
-          darkMode ? 'bg-slate-700' : 'bg-slate-200'
-        }`}
+        className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${darkMode ? 'bg-slate-700' : 'bg-slate-200'
+          }`}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={darkMode ? '#94a3b8' : '#64748b'} strokeWidth="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       </div>
       <span
-        className={`text-base sm:text-lg font-bold font-['Titillium_Web'] leading-5 max-w-[160px] ${
-          darkMode ? 'text-zinc-400' : 'text-zinc-500'
-        }`}
+        className={`text-base sm:text-lg font-bold font-['Titillium_Web'] leading-5 max-w-[160px] ${darkMode ? 'text-zinc-400' : 'text-zinc-500'
+          }`}
       >
         {name}
       </span>
@@ -46,9 +44,8 @@ export default function Clients({ darkMode }) {
       className={`py-16 lg:py-20 overflow-hidden ${darkMode ? 'bg-slate-900' : 'bg-neutral-100'}`}
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 mb-10">
-        <p className={`text-sm font-semibold font-Inter uppercase tracking-widest text-center ${
-          darkMode ? 'text-slate-500' : 'text-slate-400'
-        }`}>
+        <p className={`text-sm font-semibold font-Inter uppercase tracking-widest text-center ${darkMode ? 'text-slate-500' : 'text-slate-400'
+          }`}>
           Trusted by leading organizations
         </p>
       </div>

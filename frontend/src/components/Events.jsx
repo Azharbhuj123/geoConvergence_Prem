@@ -31,7 +31,7 @@ export default function Events({ darkMode, className, eventsData }) {
       className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
 
     >
-      
+
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
         <div className={`mb-12 flex flex-col gap-3 ${className}`}>

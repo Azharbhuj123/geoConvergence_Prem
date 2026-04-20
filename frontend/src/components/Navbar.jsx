@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import logo from '../assets/logo.png'
+import dark_logo from '../assets/footer_logo.png'
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -35,27 +36,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : 'shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]'
           } ${darkMode ? 'bg-slate-900 border-b border-slate-800' : 'bg-white border-b border-slate-100'}`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-14 py-5 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-5 flex justify-between items-center">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" strokeWidth="1.5" fill="none" />
-                  <circle cx="9" cy="9" r="2.5" fill="white" />
-                </svg>
-              </div>
-              <span
-                className={`text-xl font-bold font-['Titillium_Web'] tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'
-                  }`}
-              >
-                geoConvergence
-              </span>
-            </div>
+            <img src={darkMode ? dark_logo : logo} alt="" />
           </a>
 
           {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-7">
+          <div className="hidden xl:flex items-center gap-6 xl:gap-7">
             {links.map((link) => (
               <Link
                 key={link.name}
@@ -69,7 +57,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           </div>
 
           {/* Right side */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-4">
             <a
               href="#"
               className="px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
@@ -88,13 +76,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                 className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 flex items-center justify-center text-xs ${darkMode ? 'translate-x-7' : 'translate-x-0'
                   }`}
               >
-                {darkMode ? '🌙' : '☀️'}
+                {darkMode ? '' : ''}
               </span>
             </button>
           </div>
 
           {/* Mobile hamburger */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex xl:hidden items-center gap-3">
             <button
               onClick={toggleDarkMode}
               className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${darkMode ? 'bg-blue-700' : 'bg-blue-200'
@@ -123,7 +111,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         {/* Mobile menu */}
         {menuOpen && (
           <div
-            className={`lg:hidden border-t px-6 py-4 flex flex-col gap-4 ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
+            className={`xl:hidden border-t px-6 py-4 flex flex-col gap-4 ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
               }`}
           >
             {links.map((link) => (
