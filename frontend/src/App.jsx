@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import CareerDetails from './pages/CareerDetails'
 import CareerPage from './pages/CareerPage'
+import WhyPage from './pages/WhyPage'
 import SolutionsPage from './pages/SolutionPage'
 import ProductPage from './pages/ProductPage'
 import BlogPage from './pages/Blog'
@@ -27,6 +28,7 @@ return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/career" element={<CareerPage />} />
+      <Route path="/why" element={<WhyPage />} />
       <Route path="/career/:id" element={<CareerDetails />} />
       <Route path="/solutions" element={<SolutionsPage />} />
       <Route path="/products" element={<ProductPage />} />

@@ -138,3 +138,16 @@ export const fetchRoomReservPage = async () => {
   }`;
   return client.fetch(query);
 };
+
+export const fetchWhyPage = async () => {
+  const query = `*[_type == "whyPage"][0]{
+    hero,
+    solutionBlock,
+    certifications,
+    contractVehicles,
+    caseStudies,
+    teamLeadership,
+    finalCta
+  }`;
+  return client.fetch(query);
+};
