@@ -27,7 +27,7 @@ export default function LandingPage() {
         <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
             <main>
-                <Hero darkMode={theme === 'dark'} hero={data?.hero} />
+                <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-screen !items-center" />
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
                 <ProjectsMap darkMode={theme === 'dark'} />
                 <Stats darkMode={theme === 'dark'} />
