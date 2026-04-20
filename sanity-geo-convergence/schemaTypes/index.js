@@ -14,6 +14,7 @@ import reservAssistPage from '../schemas/reservAssistPage'
 import geoPrinterPage from '../schemas/geoPrinterPage'
 import scenarioPlannerPage from '../schemas/scenarioPlannerPage'
 import roomReservPage from '../schemas/roomReservPage'
+import whyPage from '../schemas/whyPage'
 
 import blog from '../schemas/Blog'
 import blogDetails from '../schemas/blogDetails'
@@ -22,6 +23,6 @@ import careerDetails from '../schemas/careerDetails'
 export const schemaTypes = [
   hero, services, landingPage, scan2Twin, indoorMapsPage, careerPage, 
   lidarScanningPage, threeDModelingPage, arcgisIndoorsPage,
-  digitalTwinsPage, reservAssistPage, geoPrinterPage, scenarioPlannerPage, roomReservPage,
-  blog, blogDetails, careerDetails
+  blog, blogDetails, careerDetails,
+  digitalTwinsPage, reservAssistPage, geoPrinterPage, scenarioPlannerPage, roomReservPage, whyPage
 ]

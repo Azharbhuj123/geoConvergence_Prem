@@ -182,3 +182,15 @@ export const fetchCareerDetails = async (slug) => {
   }`;
   return client.fetch(query, { slug });
 };
+export const fetchWhyPage = async () => {
+  const query = `*[_type == "whyPage"][0]{
+    hero,
+    solutionBlock,
+    certifications,
+    contractVehicles,
+    caseStudies,
+    teamLeadership,
+    finalCta
+  }`;
+  return client.fetch(query);
+};

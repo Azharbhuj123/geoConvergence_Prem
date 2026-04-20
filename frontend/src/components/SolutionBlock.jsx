@@ -6,6 +6,8 @@ import { useThemeStore } from "../store/useThemeStore";
 export default function SolutionBlock({
   title,
   description,
+  highlightText,
+  listItems,
   button,
   image,
   imagePosition = "right", // "left" or "right"
@@ -48,6 +50,20 @@ export default function SolutionBlock({
               description.map((para, i) => <p key={i} className="text-[var(--text)]">{para}</p>)
             ) : (
               <p dangerouslySetInnerHTML={{ __html: description }} className="text-[var(--text)]"></p>
+            )}
+
+            {highlightText && (
+              <p className="font-semibold text-[var(--text)]">
+                {highlightText}
+              </p>
+            )}
+
+            {listItems && listItems.length > 0 && (
+              <ul className="list-disc pl-6 space-y-2 text-[var(--text)]">
+                {listItems.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             )}
           </div>
 
