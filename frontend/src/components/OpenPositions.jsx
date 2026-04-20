@@ -23,32 +23,28 @@ export default function OpenPositions({ title, subtitle, jobs }) {
           {jobs?.map((job, idx) => (
             <div
               key={idx}
-              className={`p-8 rounded-2xl flex flex-col md:flex-row gap-6 justify-between border-t-4 border-blue-600 transition-colors ${
-                isDark ? 'bg-slate-800' : 'bg-slate-50'
-              }`}
+              className={`p-8 rounded-2xl flex flex-col md:flex-row gap-6 justify-between border-t-4 border-blue-600 transition-colors ${isDark ? 'bg-slate-800' : 'bg-slate-50'
+                }`}
             >
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h3 className={`text-2xl font-bold font-['Titillium_Web'] uppercase ${
-                      isDark ? 'text-white' : 'text-slate-900'
-                    }`}>
+                    <h3 className={`text-2xl font-bold font-['Titillium_Web'] uppercase ${isDark ? 'text-white' : 'text-slate-900'
+                      }`}>
                       {job.title}
                     </h3>
                     <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full uppercase tracking-wide">
                       {job.type}
                     </span>
                   </div>
-                  <p className={`text-lg mb-6 line-clamp-2 ${
-                    isDark ? 'text-slate-300' : 'text-slate-600'
-                  }`}>
+                  <p className={`text-lg mb-6 line-clamp-2 ${isDark ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                     {job.description}
                   </p>
                 </div>
 
-                <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 font-medium ${
-                  isDark ? 'text-slate-400' : 'text-slate-500'
-                }`}>
+                <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'
+                  }`}>
                   <div className="flex items-center gap-2">
                     <span>📍</span> {job.location}
                   </div>
