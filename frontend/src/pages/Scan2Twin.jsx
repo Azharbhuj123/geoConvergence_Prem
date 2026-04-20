@@ -27,7 +27,7 @@ export default function Scan2Twin() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scan2Twin"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scan2Twin"} minHeight="min-h-[451px]"/>
 
         {/* What is Scan2Twin */}
         {pageData.whatIs && (

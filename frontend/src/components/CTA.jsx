@@ -24,7 +24,7 @@ const finalCta = {
 };
 
 export default function CTA({ darkMode, CtaData }) {
-  const {theme} = useThemeStore();
+  const { theme } = useThemeStore();
   const data = CtaData || finalCta;
 
   const title = data.title || finalCta.title;
@@ -33,21 +33,18 @@ export default function CTA({ darkMode, CtaData }) {
   const btn1 = data.button1 || finalCta.button1;
   const btn2 = data.button2 || finalCta.button2;
 
-  const bgImage = data.backgroundImage
-    ? urlFor(data.backgroundImage)
-    : null;
+  const bgImage = data.backgroundImage ? urlFor(data.backgroundImage) : null;
 
   const hasCustomBackground = !!data.backgroundImage;
 
   return (
     <section
-      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${
+      className={`py-12 lg:py-12    bg-[var(--bg)] ${
         // darkMode ? "bg-slate-950" : "bg-slate-50"
-        theme === 'dark' ? 'dark' : '' 
-        
+        theme === "dark" ? "dark" : ""
       }`}
     >
-      <div className="max-w-[1440px] mx-auto">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-14   ">
         <div
           className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
           style={{

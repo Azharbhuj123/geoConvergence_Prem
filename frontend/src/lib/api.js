@@ -1,9 +1,9 @@
-import axios from 'axios'
-import { client } from './sanity'
+import axios from "axios";
+import { client } from "./sanity";
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
-})
+  baseURL: "http://localhost:3000/api",
+});
 
 export const fetchLandingPage = async () => {
   const query = `*[_type == "landingPage"][0]{
@@ -13,10 +13,10 @@ export const fetchLandingPage = async () => {
     "featuredProducts": featuredProducts,
     "testimonials": testimonials,
     "finalCta": finalCta
-  }`
+  }`;
 
-  return await client.fetch(query)
-}
+  return await client.fetch(query);
+};
 
 export const fetchSolutionsPage = async () => {
   const query = `*[_type == "solutionsPage"][0]{
@@ -139,6 +139,49 @@ export const fetchRoomReservPage = async () => {
   return client.fetch(query);
 };
 
+export const fetchBlogPage = async () => {
+  const query = `*[_type == "blog"][0]{
+    title,
+    blog {
+      posts[] {
+        id, category, title, excerpt, date, "image": image.asset->url, tag
+      },
+      popularTags,
+      recentPosts[] {
+        id, title, date, "image": image.asset->url
+      }
+    }
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchBlogDetails = async (slug) => {
+  const query = `*[_type == "blogDetails" && slug.current == $slug][0]{
+    title,
+    "galleryImages": galleryImages[] {
+      "image": image.asset->url,
+      alt
+    },
+    "inlineImage": inlineImage.asset->url,
+    intro,
+    sections[] {
+      heading,
+      paras
+    }
+  }`;
+  return client.fetch(query, { slug });
+};
+
+export const fetchCareerDetails = async (slug) => {
+  const query = `*[_type == "careerDetails" && slug.current == $slug][0]{
+    title,
+    tabData,
+    tabs,
+    stats,
+    applyItems
+  }`;
+  return client.fetch(query, { slug });
+};
 export const fetchWhyPage = async () => {
   const query = `*[_type == "whyPage"][0]{
     hero,

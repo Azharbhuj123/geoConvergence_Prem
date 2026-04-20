@@ -28,7 +28,7 @@ export default function CareerPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Career"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Career"} minHeight="min-h-[451px]" />
 
         {/* Easy Steps Section */}
         {pageData.easySteps && (

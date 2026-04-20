@@ -28,7 +28,7 @@ export default function DigitalTwinsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} minHeight="min-h-[451px]"/>
 
         {pageData.firstSolution && (
           <section className="bg-[var(--bg)]">

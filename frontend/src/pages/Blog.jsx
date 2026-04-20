@@ -6,41 +6,9 @@ import ShortHero from '../components/ShortHero';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const BLOG_POSTS = [
-  {
-    id: 1,
-    category: 'FACILITIES GIS',
-    title: 'Seat-Level Digital Twins: Scaling ArcGIS Indoors and Public Safety for Multi-Tiered Arenas',
-    excerpt:
-      'geoConvergence helped scale ArcGIS Indoors and Public Safety for Multi-Tiered Arenas to a new level of precision and operational insight.',
-    date: 'April 10, 2025',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75',
-    tag: 'Facilities GIS',
-  },
-  {
-    id: 2,
-    category: 'ESRI PARTNERSHIP',
-    title: 'geoConvergence Recognized as an Esri Cornerstone Partner for 20 Years of Commitment to Esri and ArcGIS Software',
-    excerpt:
-      'This recognition affirms our two-decade commitment to delivering elite GIS solutions and advancing Esri\'s mission across public and private sectors.',
-    date: 'February 26, 2025',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75',
-    tag: 'Partnership',
-  },
-  {
-    id: 3,
-    category: 'INDOOR MAPPING',
-    title: 'Helping Baltimore County Public Schools (BCPS) Build a Sustainable Indoor GIS Program',
-    excerpt:
-      'Helping Baltimore County make every school safer through industry-leading indoor mapping and GIS technology solutions.',
-    date: 'January 14, 2025',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75',
-    tag: 'Indoor Mapping',
-  },
-];
+import { useQuery } from '@tanstack/react-query';
+import { fetchBlogPage } from '../lib/api';
+import { pageData } from '../lib/data/page';
 
 function SidebarWidget({ title, children }) {
   return (
@@ -54,29 +22,6 @@ function SidebarWidget({ title, children }) {
     </div>
   );
 }
-
-const POPULAR_TAGS = ['GIS', 'Arc', 'Indoor Mapping', 'tech', 'Scan2Twin', 'Digital Twin', 'ArcGIS'];
-
-const RECENT_POSTS = [
-  {
-    id: 1,
-    title: 'Seat-Level Digital Twins…',
-    date: 'April 10, 2025',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=75',
-  },
-  {
-    id: 2,
-    title: 'geoConvergence Recognized…',
-    date: 'February 26, 2025',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&q=75',
-  },
-  {
-    id: 3,
-    title: 'Helping Baltimore County Public…',
-    date: 'January 14, 2025',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&q=75',
-  },
-];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -151,13 +96,13 @@ function SearchBox({ darkMode }) {
   );
 }
 
-function PopularTags({ darkMode }) {
+function PopularTags({ darkMode, popularTags }) {
   const [active, setActive] = useState(null);
   return (
     <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
       <h4 className="text-[16px] font-bold text-[var(--heading)]">Popular Tags</h4>
       <div className="flex flex-wrap gap-2">
-        {POPULAR_TAGS.map((tag) => (
+        {popularTags.map((tag) => (
           <button
             key={tag}
             onClick={() => setActive(active === tag ? null : tag)}
@@ -175,12 +120,12 @@ function PopularTags({ darkMode }) {
   );
 }
 
-function RecentPosts({ darkMode }) {
+function RecentPosts({ darkMode, recentPosts }) {
   return (
     <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
       <h4 className="text-[16px] font-bold text-[var(--heading)]">Recent Post</h4>
       <div className="flex flex-col gap-4">
-        {RECENT_POSTS.map((post) => (
+        {recentPosts.map((post) => (
           <div key={post.id} className="flex items-start gap-3 group cursor-pointer">
             <img
               src={post.image}
@@ -206,6 +151,16 @@ export default function BlogPage() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
   const [visibleCount, setVisibleCount] = useState(3);
+
+  const { data } = useQuery({
+    queryKey: ['blogPage'],
+    queryFn: fetchBlogPage,
+  });
+
+  const blogContent = data?.blog || pageData.blogPage;
+  const BLOG_POSTS = blogContent.posts;
+  const POPULAR_TAGS = blogContent.popularTags;
+  const RECENT_POSTS = blogContent.recentPosts;
 
   const visiblePosts = BLOG_POSTS.slice(0, visibleCount);
   const hasMore = visibleCount < BLOG_POSTS.length;
@@ -278,32 +233,12 @@ export default function BlogPage() {
 
             {/* Popular Tags Widget */}
             <SidebarWidget title="Popular Tags">
-              <div className="flex flex-wrap gap-2">
-                {POPULAR_TAGS.map((tag) => (
-                  <button key={tag} className="px-4 py-2 bg-[#f3f4f6] hover:bg-[#326FB7] hover:text-white border border-gray-100 rounded-lg text-[13px] font-semibold text-gray-600 transition-colors">
-                    {tag}
-                  </button>
-                ))}
-              </div>
+              <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
             </SidebarWidget>
 
             {/* Recent Posts Widget */}
             <SidebarWidget title="Recent Post">
-              <div className="flex flex-col gap-6">
-                {RECENT_POSTS.map((post) => (
-                  <div key={post.id} className="flex gap-4 group cursor-pointer">
-                    <div className="w-20 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                      <img src={post.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <h5 className="text-[14px] font-bold text-[#001D3D] leading-snug group-hover:text-[#326FB7] line-clamp-2 transition-colors">
-                        {post.title}
-                      </h5>
-                      <p className="text-[12px] text-gray-400 font-medium">{post.date}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
             </SidebarWidget>
 
           </aside>

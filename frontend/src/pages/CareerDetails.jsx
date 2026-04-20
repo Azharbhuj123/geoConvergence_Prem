@@ -1,52 +1,14 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { fetchCareerDetails } from '../lib/api';
+import { pageData } from '../lib/data/page';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import Hero from '../components/Hero';
 import ShortHero from '../components/ShortHero';
 import Testimonials from '../components/Testimonials';
-
-// ─── Tab Content ────────────────────────────────────────────────────────────
-const TAB_DATA = {
-  overview: `geoConvergence is an award-winning, SBA 8(a) and HUBZone-certified GIS consulting firm
-    specializing in implementing, integrating, and extending core Esri technology. We provide best-in-class
-    geospatial and information technology solutions to commercial and government customers. As we transition
-    into a phase of rapid scaling, we are looking for a strategic partner to support our leadership in
-    driving growth and operational excellence.`,
-  summary: `We are seeking a highly motivated Supervisor to join our growing team. The ideal candidate will
-    have experience in GIS technology, project management, and team leadership. This full-time position
-    offers a competitive package with opportunities for rapid career growth as the company scales.`,
-  responsibilities: `Lead and manage cross-functional teams across geospatial projects. Oversee project
-    delivery timelines and quality assurance. Coordinate with government and commercial clients to ensure
-    alignment on deliverables. Mentor junior staff and contribute to knowledge-sharing initiatives.
-    Report directly to senior leadership on project milestones.`,
-  qualifications: `Bachelor's or Master's degree in GIS, Geography, Computer Science, or a related field.
-    5+ years of experience in geospatial or IT consulting. Proficiency in Esri ArcGIS platform.
-    Strong communication and stakeholder management skills. SBA 8(a) or HUBZone experience is a plus.`,
-};
-
-const TABS = [
-  { key: 'overview', label: 'Company Overview' },
-  { key: 'summary', label: 'Job Summary' },
-  { key: 'responsibilities', label: 'Position Responsibilities' },
-  { key: 'qualifications', label: 'Qualifications' },
-];
-
-const STATS = [
-  { label: 'Post', value: 'Supervisor' },
-  { label: 'Time', value: 'Full Time' },
-  { label: 'Salary', value: 'Negotiable' },
-  { label: 'No. of', value: 'Vacancy 8' },
-];
-
-const APPLY_ITEMS = [
-  'Nunc expedita montes minima.',
-  'Animi atque ornare iaculis.',
-  'Sociosqu scelerisque adipisci.',
-  'Purus eveniet incidi dunt.',
-  'Animi atque ornare iaculis.',
-];
 
 const TESTIMONIALS = [
   { name: 'Theodore James', featured: false },
@@ -110,14 +72,15 @@ function LinkedInIcon() {
 
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
-function HowToApply() {
+function HowToApply({ items }) {
+  if (!items) return null;
   return (
     <div className="bg-[var(--bg-secondary)] rounded-[20px] p-7 flex flex-col gap-5">
       <div className="bg-[#000941] rounded-[14px] py-2.5 px-5 text-white  text-[22px] font-bold text-center leading-snug w-full">
         How To Apply?
       </div>
       <ul className="flex flex-col gap-2">
-        {APPLY_ITEMS.map((item, i) => (
+        {items.map((item, i) => (
           <li key={i} className="flex items-center gap-2 text-[var(--muted)] text-[15px] leading-relaxed">
             <CheckIcon />
             {item}
@@ -153,14 +116,15 @@ function SendCVCard() {
 
 // ─── Main Right Panel ─────────────────────────────────────────────────────────
 
-function JobStats() {
+function JobStats({ stats }) {
+  if (!stats) return null;
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 border-t-none border-[var(--border)] mt-20">
-      {STATS.map(({ label, value }, i) => (
+      {stats.map(({ label, value }, i) => (
         <div
           key={label}
           className={`py-4 px-2 text-center flex flex-col gap-0.5 ${
-            i < STATS.length - 1 ? 'border-r border-[#BABABA] dark:border-slate-600' : ''
+            i < stats.length - 1 ? 'border-r border-[#BABABA] dark:border-slate-600' : ''
           }`}
         >
           <span className=" text-[17px] font-bold text-[var(--heading)] leading-tight">
@@ -175,11 +139,12 @@ function JobStats() {
   );
 }
 
-function JobTabs({ activeTab, setActiveTab }) {
+function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
+  if (!tabs || !tabData) return null;
   return (
     <>
       <div className="flex flex-wrap gap-2 mt-5 justify-around">
-        {TABS.map((t) => (
+        {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
@@ -195,35 +160,43 @@ function JobTabs({ activeTab, setActiveTab }) {
       </div>
       <div className="h-[2px] bg-[var(--border)] my-4" />
       <div className="border border-[var(--border)] rounded-[14px] p-6 text-[15px] leading-[1.75] text-[var(--text)] bg-[var(--card)] transition-colors duration-200">
-        {TAB_DATA[activeTab]}
+        {tabData[activeTab]}
       </div>
     </>
   );
 }
 
- 
- 
-
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function CareerPage() {
   const [activeTab, setActiveTab] = useState('overview');
-  const { theme,toggleTheme } = useThemeStore(); // ← reads from Zustand
+  const { theme, toggleTheme } = useThemeStore();
+  const { id } = useParams();
+
+  const { data } = useQuery({
+    queryKey: ['careerDetails', id],
+    queryFn: () => fetchCareerDetails(id),
+    enabled: !!id,
+  });
+
+  const careerDetails = data || pageData.careerDetailsPage;
+  const TAB_DATA = careerDetails.tabData;
+  const TABS = careerDetails.tabs;
+  const STATS = careerDetails.stats;
+  const APPLY_ITEMS = careerDetails.applyItems;
 
   return (
-    // ↓ This single className toggle is all that's needed
     <div className={theme === 'dark' ? 'dark' : ''}>
-      <div className=" bg-[var(--bg)]   mx-auto overflow-x-hidden transition-colors duration-200">
-            <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
-            <ShortHero title="Career Details" />
+      <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-colors duration-200">
+        <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
+        <ShortHero title="Career Details" />
 
         {/* Career Detail */}
-        <section className=" max-w-[1440px] mx-auto px-6 lg:px-14 py-5 px-4 py-10 mt-10">
+        <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
           <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[400px_1fr] gap-6 lg:gap-8 items-start">
-
             {/* Sidebar */}
             <div className="flex flex-col gap-6">
-              <HowToApply />
+              <HowToApply items={APPLY_ITEMS} />
               <SendCVCard />
             </div>
 
@@ -234,16 +207,20 @@ export default function CareerPage() {
                 alt="Professional working at laptop"
                 className="w-full h-[220px] sm:h-[300px] lg:h-[360px] object-cover rounded-[20px]"
               />
-              <JobStats />
-              <JobTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+              <JobStats stats={STATS} />
+              <JobTabs
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                tabs={TABS}
+                tabData={TAB_DATA}
+              />
             </div>
           </div>
         </section>
 
-        <Testimonials darkMode={theme == "dark"}   />
-        <CTA darkMode={theme == "dark"} />
-                    <Footer darkMode={theme === 'dark'} />
-        
+        <Testimonials darkMode={theme === 'dark'} />
+        <CTA darkMode={theme === 'dark'} />
+        <Footer darkMode={theme === 'dark'} />
       </div>
     </div>
   );

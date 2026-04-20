@@ -42,7 +42,7 @@ export default function ContactPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={heroData} title="Contact Us" />
+        <Hero darkMode={isDark} hero={heroData} title="Contact Us" minHeight="min-h-[451px]"/>
 
         {/* Main Contact Section */}
         <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? 'bg-slate-950' : 'bg-[var(--bg)]'}`}>

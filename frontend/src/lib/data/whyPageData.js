@@ -90,14 +90,14 @@ export const whyPageData = {
         title: "Team And Leadership",
         subtitle: "geoConvergence is powered by a multidisciplinary team of geospatial engineers, software developers, designers, and data specialists.",
         members: [
-            { name: "Sarah Jenkins", position: "Chief Executive Officer" },
-            { name: "Marcus Reed", position: "Director of Geospatial Engineering" },
-            { name: "Elena Rostova", position: "Senior Data Scientist" },
-            { name: "David Chen", position: "VP Product Development" },
-            { name: "Aisha Patel", position: "Lead UI/UX Designer" },
-            { name: "Jordan Brooks", position: "Reality Capture Lead" },
-            { name: "Samantha Lee", position: "Client Success Manager" },
-            { name: "Thomas O'Connor", position: "Chief Solutions Architect" }
+            { name: "Sarah Jenkins", position: "Chief Executive Officer", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Marcus Reed", position: "Director of Geospatial Engineering", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Elena Rostova", position: "Senior Data Scientist", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "David Chen", position: "VP Product Development", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Aisha Patel", position: "Lead UI/UX Designer", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Jordan Brooks", position: "Reality Capture Lead", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Samantha Lee", position: "Client Success Manager", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Thomas O'Connor", position: "Chief Solutions Architect", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } }
         ]
     },
     finalCta: {

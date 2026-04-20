@@ -28,7 +28,7 @@ export default function GeoPrinterPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} minHeight="min-h-[451px]"/>
 
         {pageData.firstSolution && (
           <section className="bg-[var(--bg)]">

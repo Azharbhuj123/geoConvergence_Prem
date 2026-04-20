@@ -133,6 +133,7 @@ export default function ProductPage() {
                     darkMode={theme === 'dark'}
                     hero={pageData.hero}
                     title="Solutions"
+                    minHeight="min-h-[451px]"
                 />
 
                 {/* Services Intro */}

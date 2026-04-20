@@ -24,25 +24,24 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
 
   return (
     <div
-      className={`${darkMode ? 'dark' : ''} flex-1 min-w-[220px] rounded-2xl p-6 sm:p-8 flex flex-col gap-3 transition-all duration-300
+      className={`${darkMode ? 'dark' : 'dark'} flex-1 min-w-[220px] rounded-2xl p-6 sm:p-8 flex flex-col gap-3 transition-all duration-300
         bg-[var(--slate-bg)]
       `}
     >
       <div
-        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-slate-100`}
+        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-[var(--text)]`}
         style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
       >
         {count.toLocaleString()}{suffix}
       </div>
-      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${
-        darkMode ? 'text-slate-400' : 'text-slate-500'
-      }`}>
+      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'
+        }`}>
         {label}
       </div>
       <div className="w-full flex items-center justify-end">
-      <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-        {icon}
-      </div>
+        <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
+          {icon}
+        </div>
       </div>
     </div>
   )
@@ -68,7 +67,7 @@ export default function Stats({ darkMode, statsData }) {
       label: 'Sq Ft Scanned',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
         </svg>
       ),
     },
@@ -78,8 +77,8 @@ export default function Stats({ darkMode, statsData }) {
       label: 'Buildings Completed',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
         </svg>
       ),
     },
@@ -89,7 +88,7 @@ export default function Stats({ darkMode, statsData }) {
       label: 'National Projects',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <circle cx="12" cy="10" r="4"/><path d="M12 2a10 10 0 0110 10c0 5.52-10 14-10 14S2 17.52 2 12A10 10 0 0112 2z"/>
+          <circle cx="12" cy="10" r="4" /><path d="M12 2a10 10 0 0110 10c0 5.52-10 14-10 14S2 17.52 2 12A10 10 0 0112 2z" />
         </svg>
       ),
     },
@@ -99,7 +98,7 @@ export default function Stats({ darkMode, statsData }) {
       label: 'Data Accuracy',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+          <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
         </svg>
       ),
     },

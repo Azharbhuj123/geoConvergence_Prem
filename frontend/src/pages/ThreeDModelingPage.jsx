@@ -45,7 +45,7 @@ export default function ThreeDModelingPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "3D Modeling & Point-to-BIM"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "3D Modeling & Point-to-BIM"} minHeight="min-h-[451px]"/>
 
         {pageData.coreValues && (
           <CoreValues 

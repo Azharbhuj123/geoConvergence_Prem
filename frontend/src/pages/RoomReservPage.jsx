@@ -28,7 +28,7 @@ export default function RoomReservPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "RoomReserv"} />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "RoomReserv"} minHeight="min-h-[451px]"/>
 
         {pageData.firstSolution && (
           <section className="bg-[var(--bg)]">

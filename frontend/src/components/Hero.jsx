@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
-export default function Hero({ darkMode, hero }) {
+export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -23,8 +23,8 @@ export default function Hero({ darkMode, hero }) {
 
   return (
     <section
-      className={`relative min-h-screen flex items-end pb-20 overflow-hidden ${darkMode ? 'bg-slate-950' : 'bg-slate-100'
-        }`}
+      className={`relative ${minHeight} flex items-end pb-20 overflow-hidden 
+        ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
       {/* Background gradient overlay */}

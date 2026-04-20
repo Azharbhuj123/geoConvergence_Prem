@@ -4,7 +4,9 @@
 /* ─── Theme tokens ─── */
 :root {
   --bg: #ffffff;
-  --slate-bg:#002052;
+  --slate-bg:#ffffff;
+
+  --f6f6f6:#f6f6f6;
   --bg-secondary: #f8fafc;
   --text: #111111;
   --heading: #0f172a;
@@ -17,6 +19,7 @@
 .dark {
   --bg: #0f172a;
   --slate-bg:#002052;
+  --f6f6f6:#002052;
 
   --bg-secondary: #020617;
   --text: #e2e8f0;
@@ -41,7 +44,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Titillium Web', sans-serif !important;
   transition: background 0.3s ease, color 0.3s ease;
   margin: 0;
   padding: 0;
