@@ -148,7 +148,7 @@ function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
-            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all  ${
+            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all cursor-pointer  ${
               activeTab === t.key
                 ? 'bg-[#000941] text-white'
                 : 'bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]'

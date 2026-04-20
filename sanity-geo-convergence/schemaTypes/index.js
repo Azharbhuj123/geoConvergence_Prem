@@ -21,8 +21,22 @@ import blogDetails from '../schemas/blogDetails'
 import careerDetails from '../schemas/careerDetails'
 
 export const schemaTypes = [
-  hero, services, landingPage, scan2Twin, indoorMapsPage, careerPage, 
-  lidarScanningPage, threeDModelingPage, arcgisIndoorsPage,
-  blog, blogDetails, careerDetails,
-  digitalTwinsPage, reservAssistPage, geoPrinterPage, scenarioPlannerPage, roomReservPage, whyPage
+  hero,
+  services,
+  landingPage,
+  scan2Twin,
+  indoorMapsPage,
+  careerPage,
+  lidarScanningPage,
+  threeDModelingPage,
+  arcgisIndoorsPage,
+  blog,
+  blogDetails,
+  careerDetails,
+  digitalTwinsPage,
+  reservAssistPage,
+  geoPrinterPage,
+  scenarioPlannerPage,
+  roomReservPage,
+  whyPage,
 ]

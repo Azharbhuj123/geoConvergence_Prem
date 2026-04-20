@@ -9,7 +9,6 @@ export default function CaseStudies({ data }) {
   return (
     <section className="bg-[#0D1B5E] py-20">
       <div className="max-w-[1200px] mx-auto px-6">
-
         {/* HEADER */}
         <div className="flex items-center justify-between mb-10">
           <div>
@@ -65,7 +64,6 @@ export default function CaseStudies({ data }) {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import Hero2 from "../assets/hero2.png";
 
-export default function ShortHero({title}) {
+export default function ShortHero({ title }) {
   return (
-    <section 
-      className="relative h-[451px] w-full flex items-center overflow-hidden bg-cover bg-center"
-      style={{ 
-        backgroundImage: `url(${Hero2})`
+    <section
+      className="relative h-[250px] sm:h-[451px]  w-full flex items-center overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${Hero2})`,
       }}
     >
       {/* Gradient Overlay: Adjusted colors to match the deep navy in your image.
@@ -22,13 +22,14 @@ export default function ShortHero({title}) {
           {title}
         </h1>
       </div>
-      
+
       {/* Blueprint/Grid Effect: Reduced opacity to 5% to keep it subtle like the source image */}
-      <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-        style={{ 
-          backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', 
-          backgroundSize: '50px 50px' 
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
         }}
       ></div>
     </section>
