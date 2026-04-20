@@ -1,4 +1,5 @@
 import { urlFor } from "../lib/sanity";
+import Button from "./UI/Button";
 
 export default function Certifications({ data, darkMode }) {
   if (!data) return null;
@@ -6,55 +7,55 @@ export default function Certifications({ data, darkMode }) {
   const { title, subtitle, items } = data;
 
   return (
-    <section className="bg-[#06135e] py-24 text-white">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section className={`py-20 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
 
         {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Titillium_Web']">
-            {title}
+        <div className="mb-14">
+          <h2 className="text-4xl md:text-5xl font-bold font-['Titillium_Web'] mb-4">
+            {title || "Our Certification"}
           </h2>
-          <p className="mt-4 text-gray-200 max-w-2xl mx-auto">
-            {subtitle}
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl">
+            {subtitle || "As an SBA 8(a) Joint Venture, True North Joint Venture, LLC..."}
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-10">
-
+        <div className="grid md:grid-cols-2 gap-8">
           {items?.map((cert, index) => (
             <div
               key={index}
-              className="bg-white text-gray-800 rounded-2xl p-8 flex flex-col justify-between shadow-lg"
+              className={`rounded-3xl p-10 flex flex-col justify-between shadow-xl transition-all duration-300 ${darkMode ? 'bg-slate-900 text-white border border-slate-800' : 'bg-white text-slate-900'}`}
             >
+              <div>
+                {/* Top Image */}
+                <div className="mb-8 h-20 flex items-center">
+                  {cert.image && (
+                    <img
+                      src={urlFor(cert.image)}
+                      alt={cert.name}
+                      className="h-full object-contain"
+                    />
+                  )}
+                </div>
 
-              {/* Top Image */}
-              <div className="mb-6">
-                {cert.image && (
-                  <img
-                    src={urlFor(cert.image)}
-                    alt={cert.name}
-                    className="h-16 object-contain"
-                  />
-                )}
+                {/* Title */}
+                <h3 className="text-2xl font-bold font-['Titillium_Web'] mb-4">
+                  {cert.name}
+                </h3>
+
+                {/* Description */}
+                <p className={`text-lg leading-relaxed mb-10 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
+                  {cert.description ||
+                    "geoConvergence has access to the STARS III vehicle through our Joint Venture, True North Joint Venture, LLC."}
+                </p>
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold mb-3">
-                {cert.name}
-              </h3>
-
-              {/* Description (optional field fallback safe) */}
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                {cert.description ||
-                  "geoConvergence has access to the STARS III vehicle through our Joint Venture, True North Joint Venture, LLC."}
-              </p>
 
               {/* Button */}
               <div>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm transition">
-                  Know More
-                </button>
+                <Button variant="primary" size="sm">
+                  View All
+                </Button>
               </div>
             </div>
           ))}
