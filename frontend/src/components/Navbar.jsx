@@ -18,7 +18,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },
     { name: "Why geoConvergence", path: "/why" },
-    { name: "Resources", path: "/resources" },
+    { name: "blogs", path: "/blog" },
     { name: "Career", path: "/career" },
     { name: "Contact", path: "/contact" },
   ];
