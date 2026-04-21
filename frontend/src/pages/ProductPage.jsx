@@ -98,16 +98,18 @@ const ProductPageData = {
 
 export const Services_Description = ({pageData, theme}) => {
     return(
-         <div className={`w-full max-w-[1440px] mx-auto px-14 py-24 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    <div className="max-w-[933px]">
-                        <h2 className="text-5xl font-bold font-['Titillium_Web'] leading-[60px] text-[var(--text)] mb-5">
-                            {pageData.servicesIntro.title}
-                        </h2>
-                        <p className="text-xl leading-8 text-[var(--text)]">
-                            {pageData.servicesIntro.description}
-                         </p>
-                    </div>
+        <section className={`w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
+            <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+                <div className="max-w-4xl text-center lg:text-left flex flex-col gap-4 sm:gap-6">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-['Titillium_Web'] leading-tight tracking-tight text-[var(--text)]">
+                        {pageData.servicesIntro.title}
+                    </h2>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text)] opacity-80">
+                        {pageData.servicesIntro.description}
+                    </p>
                 </div>
+            </div>
+        </section>
     )
 }
 

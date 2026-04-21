@@ -144,40 +144,46 @@ export default function GSS2Page() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <ShortHero title={"GSA MAS"} />
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
-        <MidSection data={data} />
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
+        <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-12 sm:gap-16 md:gap-20">
+          <MidSection data={data} />
 
-        <div className="w-full   bg-[var(--bg)] font-[Titillium Web, sans-serif]">
-          {/* Header Section */}
-          <div className="mb-10 max-w-4xl">
-            <h2 className=" font-[Titillium Web, sans-serif] text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
-              Advanced Geospatial Support & Mapping Solutions
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">
-              GS&S 2.0 provides high-precision geospatial intelligence,
-              real-time mapping, and mission-ready support to enhance
-              operational planning and decision-making for USAF missions.
-            </p>
-          </div>
+          <div className="w-full flex flex-col gap-10 sm:gap-14 md:gap-16">
+            {/* Header Section */}
+            <div className="max-w-4xl flex flex-col gap-4 sm:gap-6 text-center lg:text-left mx-auto lg:mx-0">
+              <h2 className="font-extrabold font-['Titillium_Web'] text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight text-[#001a41] dark:text-white">
+                Advanced Geospatial Support & Mapping Solutions
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-slate-300 leading-relaxed opacity-90 max-w-2xl">
+                GS&S 2.0 provides high-precision geospatial intelligence,
+                real-time mapping, and mission-ready support to enhance
+                operational planning and decision-making for USAF missions.
+              </p>
+            </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className="bg-[#001a41] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
-              >
-                <div className="text-white opacity-90">{card.icon}</div>
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+              {cards.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-[#001a41] text-white p-6 sm:p-8 md:p-10 rounded-[32px] flex flex-col gap-6 shadow-2xl transition-all duration-300 hover:-translate-y-2 group border border-white/5"
+                >
+                  <div className="text-white opacity-90 transition-transform duration-500 group-hover:scale-110 mb-2">
+                    {card.icon}
+                  </div>
 
-                <h3 className="text-xl font-bold leading-tight mt-2">
-                  {card.title}
-                </h3>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-lg sm:text-xl font-extrabold font-['Titillium_Web'] leading-tight tracking-tight uppercase">
+                      {card.title}
+                    </h3>
 
-                <p className="text-sm text-blue-100 opacity-80 leading-snug">
-                  {card.description}
-                </p>
-              </div>
-            ))}
+                    <p className="text-xs sm:text-sm text-blue-100/80 font-medium leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

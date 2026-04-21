@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
-export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
+export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min-h-screen' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -14,7 +14,6 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
     </div>
   )
 
-  // Fallback content if Sanity not configured
   const title = hero?.title
   const subtitle = hero?.subtitle
   const btn1 = hero?.button1
@@ -23,7 +22,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
   return (
     <section
-      className={`relative ${minHeight} flex items-end pb-20 overflow-hidden 
+      className={`relative ${minHeight} flex items-center lg:items-end py-20 sm:py-24 md:py-28 lg:pb-24 xl:pb-28 overflow-hidden 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
@@ -40,39 +39,35 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
           />
           {/* Blue glow */}
           <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-blue-900/40 to-transparent" />
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-700/20 rounded-full blur-3xl" />
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-700/20 rounded-full blur-[120px]" />
         </div>
       )}
 
       {/* Gradient overlay when bg image exists */}
       {bgImage && (
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/10" />
+        <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-slate-950/90 sm:from-slate-950/80 via-slate-950/70 to-slate-950/20" />
       )}
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14">
-        <div className="max-w-[653px] mx-auto md:mx-0 text-center md:text-left flex flex-col items-center md:items-start">
-          <div className="flex flex-col gap-7 mb-12 items-center md:items-start md:gap-9 lg:gap-11 md:mb-16">
-            <h1
-              className="text-white font-bold font-['Titillium_Web'] leading-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: '1.1' }}
-            >
+      <div className="relative z-10 w-full max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-4xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left gap-8 sm:gap-10 md:gap-12 transition-all">
+          <div className="flex flex-col gap-6 sm:gap-7 lg:gap-8 max-w-[760px]">
+            <h1 className="text-white font-extrabold font-['Titillium_Web'] leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl drop-shadow-2xl">
               {title}
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl md:text-2xl font-Inter leading-8 md:leading-relaxed max-w-[592px]">
+            <p className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium font-Inter leading-relaxed drop-shadow-xl max-w-2xl">
               {subtitle}
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full md:gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start w-full sm:w-auto">
             {btn1 && (
-              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-lg font-bold md:px-12 md:py-5">
+              <Button href={btn1.link} variant="primary" size="lg" className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-lg font-bold md:px-12 md:py-5">
+              <Button href={btn2.link} variant="secondary" size="lg" className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
                 {btn2.text}
               </Button>
             )}

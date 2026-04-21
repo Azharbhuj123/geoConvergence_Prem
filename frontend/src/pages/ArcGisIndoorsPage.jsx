@@ -72,12 +72,12 @@ export default function ArcGisIndoorsPage() {
         </section>
 
         {pageData.stats && (
-          <div className="py-12 bg-[var(--bg)]">
-            <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 mb-8">
-              <h2 className="text-4xl lg:text-5xl font-bold font-['Titillium_Web'] text-[var(--text)] mb-4">
+          <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg)]">
+            <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-12 text-center lg:text-left flex flex-col gap-4 sm:gap-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold font-['Titillium_Web'] text-[var(--text)] leading-tight tracking-tight">
                 {pageData.stats.sectionTitle}
               </h2>
-              <p className="text-xl text-[var(--text)] text-opacity-80 max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--text)] opacity-80 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
                 {pageData.stats.sectionSubtitle}
               </p>
             </div>

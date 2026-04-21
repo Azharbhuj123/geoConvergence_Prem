@@ -167,91 +167,59 @@ export default function BlogPage() {
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-colors duration-200">
-
-        {/* Navbar */}
+      <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-all duration-300">
         <Navbar darkMode={darkMode} toggleDarkMode={toggleTheme} />
-
-        {/* Hero */}
         <ShortHero title="Blogs" />
 
         {/* ── Blog Section ── */}
-        <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-14 mt-4">
-          <div className="mb-10">
-            <h2
-              className="font-bold text-[var(--heading)] font-['Titillium_Web']"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
-            >
-              Our Latest News &amp; Blogs
-            </h2>
-            <div className="mt-2 w-16 h-1 rounded-full bg-gradient-to-r from-[#326FB7] to-[#0C59DB]" />
-          </div>
-
-          {/* Grid: posts left + sidebar right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_340px] gap-10 items-start">
-
-            {/* ── Left: Blog Cards ── */}
-            <div className="flex flex-col gap-7">
-              {visiblePosts.map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-
-              {/* Load More */}
-              {hasMore && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    onClick={() => setVisibleCount((c) => c + 3)}
-                    className="px-9 py-3 rounded-[14px] bg-gradient-to-br from-[#0043AC] to-[#0C59DB] text-white font-bold text-[15px] shadow-[0_8px_20px_-6px_rgba(12,89,219,0.4)] hover:opacity-90 transition-opacity"
-                  >
-                    View More
-                  </button>
-                </div>
-              )}
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+            <div className="mb-10 sm:mb-14 md:mb-16 text-center lg:text-left flex flex-col items-center lg:items-start gap-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[var(--heading)] font-['Titillium_Web'] tracking-tight leading-tight">
+                Our Latest News & Blogs
+              </h2>
+              <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 shadow-lg shadow-blue-500/20" />
             </div>
 
-            {/* ── Right: Sidebar ── */}
-              {/* Right Column: Sidebar */}
-          <aside className="flex flex-col gap-12 lg:sticky lg:top-8">
-            
-            {/* Search Widget */}
-            <SidebarWidget title="Search">
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search" 
-                  // value={searchTerm}
-                  // onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-[#f9fafb] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-                  </svg>
-                </div>
+            {/* Grid: posts left + sidebar right */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-10 sm:gap-14 xl:gap-16 items-start">
+
+              {/* ── Left: Blog Cards ── */}
+              <div className="flex flex-col gap-8 sm:gap-10">
+                {visiblePosts.map((post) => (
+                  <BlogCard key={post.id} post={post} />
+                ))}
+
+                {/* Load More */}
+                {hasMore && (
+                  <div className="flex justify-center mt-6">
+                    <button
+                      onClick={() => setVisibleCount((c) => c + 3)}
+                      className="px-10 py-4 rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white font-extrabold text-base shadow-xl shadow-blue-600/20 hover:scale-105 active:scale-95 transition-all duration-300"
+                    >
+                      View More Posts
+                    </button>
+                  </div>
+                )}
               </div>
-            </SidebarWidget>
 
-            {/* Popular Tags Widget */}
-            <SidebarWidget title="Popular Tags">
-              <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
-            </SidebarWidget>
+              {/* ── Right: Sidebar ── */}
+              <aside className="flex flex-col gap-10 lg:gap-12 lg:sticky lg:top-8">
+                {/* Search Widget */}
+                <SearchBox darkMode={darkMode} />
 
-            {/* Recent Posts Widget */}
-            <SidebarWidget title="Recent Post">
-              <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
-            </SidebarWidget>
+                {/* Popular Tags Widget */}
+                <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
 
-          </aside>
+                {/* Recent Posts Widget */}
+                <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
+              </aside>
+            </div>
           </div>
         </section>
 
-        {/* Testimonials */}
         <Testimonials darkMode={darkMode} />
-
-        {/* CTA */}
         <CTA darkMode={darkMode} />
-
-        {/* Footer */}
         <Footer darkMode={darkMode} />
       </div>
     </div>

@@ -32,30 +32,31 @@ export default function CareerPage() {
 
         {/* Easy Steps Section */}
         {pageData.easySteps && (
-          <section className="py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]">
-            <div className="max-w-[1440px] mx-auto text-center">
-              <h2 className="text-4xl lg:text-5xl font-bold font-['Titillium_Web'] text-[var(--text)] mb-6">
-                {pageData.easySteps.sectionTitle}
-              </h2>
-              <p className="text-xl text-[var(--text)] mx-auto max-w-3xl opacity-80 mb-16">
-                {pageData.easySteps.sectionSubtitle}
-              </p>
+          <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
+            <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+              <div className="flex flex-col gap-4 sm:gap-6 mb-10 sm:mb-14 md:mb-16 text-center">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold font-['Titillium_Web'] text-[var(--text)] leading-tight tracking-tight">
+                  {pageData.easySteps.sectionTitle}
+                </h2>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--text)] mx-auto max-w-3xl opacity-80 leading-relaxed">
+                  {pageData.easySteps.sectionSubtitle}
+                </p>
+              </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 {pageData.easySteps.cards?.map((card, idx) => (
-                  <div key={idx} className={`p-8 rounded-2xl flex flex-col items-center text-center transition-transform hover:-translate-y-2 shadow-sm border ${
-                    isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'
+                  <div key={idx} className={`p-6 sm:p-8 rounded-[28px] flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-lg border ${
+                    isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
                   }`}>
-                    {/* Placeholder for icon if image is not provided strictly */}
-                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl text-blue-600 dark:text-blue-300 flex items-center justify-center mb-6">
-                      <span className="text-2xl font-bold">{idx + 1}</span>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-blue-600/10 dark:bg-blue-600/20 rounded-2xl text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 sm:mb-6">
+                      <span className="text-xl sm:text-2xl font-black font-['Titillium_Web']">{idx + 1}</span>
                     </div>
-                    <h3 className={`text-2xl font-bold font-['Titillium_Web'] mb-4 ${
+                    <h3 className={`text-lg sm:text-xl md:text-2xl font-extrabold font-['Titillium_Web'] mb-2 sm:mb-4 leading-tight ${
                       isDark ? 'text-white' : 'text-slate-900'
                     }`}>
                       {card.title}
                     </h3>
-                    <p className={`text-base leading-relaxed ${
+                    <p className={`text-sm sm:text-base leading-relaxed opacity-80 ${
                       isDark ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       {card.description}

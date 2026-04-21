@@ -34,19 +34,17 @@ export default function CTA({ darkMode, CtaData }) {
   const btn2 = data.button2 || finalCta.button2;
 
   const bgImage = data.backgroundImage ? urlFor(data.backgroundImage) : null;
-
   const hasCustomBackground = !!data.backgroundImage;
 
   return (
     <section
-      className={`py-12 md:py-16 lg:py-20    bg-[var(--bg)] ${
-        // darkMode ? "bg-slate-950" : "bg-slate-50"
+      className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-[var(--bg)] ${
         theme === "dark" ? "dark" : ""
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-14   ">
+      <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div
-          className="relative rounded-3xl overflow-hidden p-10 sm:p-14 md:p-16 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
+          className="relative rounded-[32px] overflow-hidden p-6 sm:p-10 md:p-14 lg:p-20 xl:p-24 flex flex-col items-center gap-6 sm:gap-8 md:gap-10 bg-cover bg-center"
           style={{
             backgroundImage: bgImage ? `url(${bgImage})` : "none",
           }}
@@ -73,22 +71,23 @@ export default function CTA({ darkMode, CtaData }) {
           )}
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-            <h2 className="text-white font-bold leading-tight text-[clamp(2rem,5vw,3.75rem)] drop-shadow-xl">
+          <div className="relative z-10 flex flex-col items-center gap-4 sm:gap-6 text-center">
+            <h2 className="text-white font-extrabold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl drop-shadow-2xl max-w-4xl">
               {title}
             </h2>
 
-            <p className="text-white text-lg sm:text-xl leading-8 max-w-[756px] drop-shadow-xl">
+            <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl drop-shadow-xl opacity-90">
               {subtitle}
             </p>
           </div>
 
           {/* Buttons */}
-          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-5 sm:gap-7 pt-4 w-full">
+          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 pt-4 w-full">
             <Button
               href={btn1.link}
               variant="primary"
-              className="px-12 py-4 text-lg"
+              size="lg"
+              className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]"
             >
               {btn1.text}
             </Button>
@@ -96,7 +95,8 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn2.link}
               variant="secondary"
-              className="px-12 py-4 text-lg"
+              size="lg"
+              className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]"
             >
               {btn2.text}
             </Button>

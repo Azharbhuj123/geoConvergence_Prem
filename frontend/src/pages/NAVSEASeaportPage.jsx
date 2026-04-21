@@ -25,8 +25,8 @@ export default function NAVSEASeaportPage() {
         <ShortHero title={data.hero.title} />
 
         {/* Main Content Section */}
-        <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
-          <div className="">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
+          <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-16 sm:gap-20 md:gap-24">
             {/* Top Row: Card and Description */}
             <MidSection data={data} />
 
@@ -54,7 +54,6 @@ export default function NAVSEASeaportPage() {
           </div>
         </section>
         <CTA darkMode={isDark} />
-
       </main>
 
       <Footer darkMode={isDark} />

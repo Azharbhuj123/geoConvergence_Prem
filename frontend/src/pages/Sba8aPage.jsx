@@ -43,172 +43,108 @@ export default function Sba8aPage() {
     >
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
-      <ShortHero title={"GSA MAS"} />
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
-        <MidSection data={data} />
+      <ShortHero title={"8(a) Sole Source"} />
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
+        <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-12 sm:gap-16 md:gap-20">
+          <MidSection data={data} />
 
-        <div className="w-full min-h-screen bg-[var(--bg)] font-['Titillium_Web']   space-y-8">
-          {/* Top Header Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {contactInfo.map((card, idx) => (
-              <div
-                key={idx}
-                className="bg-[#001a41] text-white p-8 rounded-2xl shadow-lg border border-white/10"
-              >
-                <h3 className="text-xl font-bold mb-6 pb-2 border-b border-white/20 ">
-                  {card.company}
-                </h3>
-                <ul className="space-y-3">
-                  {card.details.map((line, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start text-sm md:text-base opacity-90"
-                    >
-                      <span className="mr-3 mt-1.5 w-1.5 h-1.5 bg-white rounded-full flex-shrink-0" />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Main Content Area */}
-          <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 border border-[var(--border)]">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[620px]">
-              How to award a streamlined 8(a) Sole Source Contract:
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm md:text-base text-gray-700 dark:text-[var(--muted)] leading-relaxed">
-              {/* Left Column Steps */}
-              <div className="space-y-6">
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      1.
-                    </span>{" "}
-                    Discuss project with geoConvergence and establish technical
-                    requirements, a time frame, and a price estimate.
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      2.
-                    </span>{" "}
-                    Contact your Contracting Officer (KO), Agency Small Business
-                    Specialist, or Vernice Mathis, SBA Business Opportunity
-                    Specialist supporting geoConvergence, for assistance and
-                    provide a package that includes the requirements
-                    description, estimated period of performance, applicable
-                    NAICS code, anticipated dollar value, etc. IAW FAR19.804-2
-                    “Agency Offering”. (geoConvergence can help you prepare this
-                    package.)
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      3.
-                    </span>{" "}
-                    The KO will send an Offering Letter to the SBA requesting
-                    permission to conduct sole source negotiations with
-                    geoConvergence. (geoConvergence will have already alerted
-                    their Business Opportunity Specialist to expect the package
-                    in order to expedite the process.)
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      4.
-                    </span>{" "}
-                    The SBA confirms eligibility of geoConvergence and
-                    authorizes the negotiations.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Column Steps */}
-              <div className="space-y-6">
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      5.
-                    </span>{" "}
-                    The KO negotiates with geoConvergence.
-                  </p>
-                  <ul className="mt-2 ml-6 space-y-2 list-disc opacity-80">
-                    <li>
-                      Simplified Acquisition efforts do not require a technical
-                      proposal; the KO sends RFQ to geoConvergence requesting
-                      cost proposal; upon receipt, KO negotiates cost and terms
-                      with geoConvergence.
-                    </li>
-                    <li>
-                      If the estimate exceeds the Simplified Acquisition
-                      Threshold (currently $250K), the KO sends RFP to
-                      geoConvergence requesting technical and cost proposals;
-                      upon receipt, KO negotiates cost and terms with
-                      geoConvergence.
-                    </li>
+          <div className="w-full flex flex-col gap-10 sm:gap-14 md:gap-16">
+            {/* Top Header Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+              {contactInfo.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[#001a41] text-white p-6 sm:p-8 md:p-10 rounded-[32px] shadow-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <h3 className="text-xl sm:text-2xl font-extrabold font-['Titillium_Web'] mb-6 pb-4 border-b border-white/20 tracking-tight">
+                    {card.company}
+                  </h3>
+                  <ul className="space-y-4">
+                    {card.details.map((line, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start text-sm sm:text-base opacity-90 leading-relaxed"
+                      >
+                        <span className="mr-3 mt-2 w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+                        {line}
+                      </li>
+                    ))}
                   </ul>
                 </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      6.
-                    </span>{" "}
-                    Upon completion of negotiations, KO prepares a contract
-                    award document and sends to geoConvergence for signature.
-                  </p>
+              ))}
+            </div>
+
+            {/* Main Content Area */}
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] shadow-2xl p-6 sm:p-10 md:p-14 lg:p-16 xl:p-20 border border-[var(--border)] overflow-hidden">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#001a41] dark:text-white mb-8 sm:mb-10 max-w-2xl leading-tight tracking-tight">
+                How to award a streamlined 8(a) Sole Source Contract:
+              </h2>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 text-sm sm:text-base md:text-lg text-gray-700 dark:text-slate-300 leading-relaxed">
+                {/* Left Column Steps */}
+                <div className="space-y-6 sm:space-y-8">
+                  {[
+                    "Discuss project with geoConvergence and establish technical requirements, a time frame, and a price estimate.",
+                    "Contact your Contracting Officer (KO), Agency Small Business Specialist, or Vernice Mathis, SBA Business Opportunity Specialist supporting geoConvergence, for assistance and provide a package that includes the requirements description, estimated period of performance, applicable NAICS code, anticipated dollar value, etc. IAW FAR19.804-2 “Agency Offering”. (geoConvergence can help you prepare this package.)",
+                    "The KO will send an Offering Letter to the SBA requesting permission to conduct sole source negotiations with geoConvergence. (geoConvergence will have already alerted their Business Opportunity Specialist to expect the package in order to expedite the process.)",
+                    "The SBA confirms eligibility of geoConvergence and authorizes the negotiations."
+                  ].map((step, i) => (
+                    <div key={i} className="flex gap-4">
+                      <span className="font-black text-[#001a41] dark:text-blue-500 text-lg sm:text-xl lg:text-2xl shrink-0 leading-none">{i + 1}.</span>
+                      <p>{step}</p>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      7.
-                    </span>{" "}
-                    Upon receipt of the executed contract from geoConvergence,
-                    the KO signs contract and sends it to the SBA.
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
-                      8.
-                    </span>{" "}
-                    Contract performance begins. Although the duration can vary
-                    considerably depending on complexity and urgency, this
-                    entire acquisition process has been accomplished in as
-                    little as two weeks.
-                  </p>
+
+                {/* Right Column Steps */}
+                <div className="space-y-6 sm:space-y-8">
+                  <div className="flex gap-4">
+                    <span className="font-black text-[#001a41] dark:text-blue-500 text-lg sm:text-xl lg:text-2xl shrink-0 leading-none">5.</span>
+                    <div className="flex flex-col gap-4">
+                      <p>The KO negotiates with geoConvergence.</p>
+                      <ul className="space-y-3 list-none opacity-90 border-l-2 border-blue-600/30 pl-4 sm:pl-6">
+                        <li className="text-sm sm:text-base italic">
+                          Simplified Acquisition efforts do not require a technical proposal; the KO sends RFQ to geoConvergence requesting cost proposal; upon receipt, KO negotiates cost and terms with geoConvergence.
+                        </li>
+                        <li className="text-sm sm:text-base italic">
+                          If the estimate exceeds the Simplified Acquisition Threshold (currently $250K), the KO sends RFP to geoConvergence requesting technical and cost proposals; upon receipt, KO negotiates cost and terms with geoConvergence.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {[
+                    "Upon completion of negotiations, KO prepares a contract award document and sends to geoConvergence for signature.",
+                    "Upon receipt of the executed contract from geoConvergence, the KO signs contract and sends it to the SBA.",
+                    "Contract performance begins. Although the duration can vary considerably depending on complexity and urgency, this entire acquisition process has been accomplished in as little as two weeks."
+                  ].map((step, i) => (
+                    <div key={i + 6} className="flex gap-4">
+                      <span className="font-black text-[#001a41] dark:text-blue-500 text-lg sm:text-xl lg:text-2xl shrink-0 leading-none">{i + 6}.</span>
+                      <p>{step}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
 
-            {/* Feature Image Placeholder */}
-            <div className="my-12 rounded-xl overflow-hidden shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
-                alt="Modern Architecture"
-                className="w-full h-[300px] object-cover"
-              />
-            </div>
+              {/* Feature Image */}
+              <div className="mt-12 sm:mt-16 md:mt-20 rounded-[28px] overflow-hidden shadow-2xl relative group">
+                <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
+                  alt="Professional Contract Management"
+                  className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
 
-            {/* Section 1: Contract Types */}
-            <div className="mt-10">
-              <h3 className="text-2xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
-                1. Contract Types
-              </h3>
-              <p className="text-gray-700 dark:text-[var(--muted)] leading-relaxed    pl-4">
-                There are no additional limitations in terms of contract type to
-                be awarded under the 8(a) program. Cost-reimbursable, fixed
-                price, time, and materials (and their variations) can be issued.
-                We generally recommend a broadly scoped master contract from
-                which task orders may be issued. This method provides the
-                customer with maximum flexibility and control without a
-                requisite commitment to utilize the full value of the contract.
-              </p>
+              {/* Section 1: Contract Types */}
+              <div className="mt-12 sm:mt-16 md:mt-20 flex flex-col gap-4 sm:gap-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#001a41] dark:text-white tracking-tight">
+                  1. Contract Types
+                </h3>
+                <div className="h-1 lg:h-1.5 w-20 bg-blue-600 rounded-full" />
+                <p className="text-gray-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base md:text-lg max-w-4xl">
+                  There are no additional limitations in terms of contract type to be awarded under the 8(a) program. Cost-reimbursable, fixed price, time, and materials (and their variations) can be issued. We generally recommend a broadly scoped master contract from which task orders may be issued. This method provides the customer with maximum flexibility and control without a requisite commitment to utilize the full value of the contract.
+                </p>
+              </div>
             </div>
           </div>
         </div>
