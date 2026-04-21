@@ -1,3 +1,5 @@
+import Button from "./UI/Button";
+
 export default function ProjectsMap({ darkMode }) {
   return (
     <section
@@ -10,7 +12,7 @@ export default function ProjectsMap({ darkMode }) {
             <h2
               className={`font-bold font-['Titillium_Web'] leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
                 }`}
-              style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
               Projects Across the United States
             </h2>
@@ -18,12 +20,9 @@ export default function ProjectsMap({ darkMode }) {
               Scale and precision delivered coast to coast.
             </p>
           </div>
-          <a
-            href="#"
-            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
-          >
+          <Button size="sm">
             View Map
-          </a>
+          </Button>
         </div>
 
         {/* Map placeholder */}

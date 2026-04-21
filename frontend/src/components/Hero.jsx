@@ -55,8 +55,8 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
         <div className="max-w-[653px]">
           <div className="flex flex-col gap-7 mb-12">
             <h1
-              className="text-white font-bold font-['Titillium_Web'] leading-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: '1.1' }}
+              className="text-white font-bold font-['Titillium_Web'] leading-tight text-sm lg:text-lg"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: '1.1' }}
             >
               {title}
             </h1>
@@ -67,12 +67,12 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
           <div className="flex flex-col sm:flex-row gap-4">
             {btn1 && (
-              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-lg font-bold">
+              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-sm lg:text-lg font-bold">
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-lg font-bold">
+              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-sm lg:text-lg font-bold">
                 {btn2.text}
               </Button>
             )}

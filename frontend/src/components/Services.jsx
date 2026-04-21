@@ -70,7 +70,7 @@ export default function Services({ darkMode, services, variant = "default", clas
                 "font-bold font-['Titillium_Web'] leading-tight",
                 theme.title
               )}
-              style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 3rem)" }}
             >
               {services?.sectionTitle || 'Connect Your Spaces to Smart Digital Twin'}
             </h2>
@@ -78,7 +78,7 @@ export default function Services({ darkMode, services, variant = "default", clas
               {services?.sectionSubtitle || 'Bringing the gap from scan data to fully operational BIM models.'}
             </p>
           </div>
-          <Button href="#" variant="primary">
+          <Button href="#" variant="primary" className="text-sm lg:text-lg">
             {'View More'}
           </Button>
         </div>

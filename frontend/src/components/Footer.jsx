@@ -25,7 +25,7 @@ export default function Footer({ darkMode }) {
               placeholder="Enter Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base font-light font-Inter uppercase outline-none leading-6 min-w-0"
+              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base  font-light font-Inter uppercase outline-none leading-6 min-w-0"
             />
             <button className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">

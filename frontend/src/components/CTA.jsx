@@ -42,7 +42,7 @@ export default function CTA({ darkMode, CtaData }) {
       className={`py-12 lg:py-12    bg-[var(--bg)] ${
         // darkMode ? "bg-slate-950" : "bg-slate-50"
         theme === "dark" ? "dark" : ""
-      }`}
+        }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-14   ">
         <div
@@ -88,7 +88,7 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn1.link}
               variant="primary"
-              className="px-12 py-4 text-lg"
+              className="px-12 py-4 text-sm lg:text-lg"
             >
               {btn1.text}
             </Button>
@@ -96,7 +96,7 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn2.link}
               variant="secondary"
-              className="px-12 py-4 text-lg"
+              className="px-12 py-4 text-sm lg:text-lg"
             >
               {btn2.text}
             </Button>
