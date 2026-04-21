@@ -63,8 +63,8 @@ export default function Services({ darkMode, services, variant = "default", clas
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header row */}
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 mb-12">
-          <div className="flex flex-col gap-5 max-w-[933px]">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 md:gap-8 lg:gap-10 mb-12 md:mb-16 items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col gap-5 max-w-[933px] items-center md:items-start">
             <h2
               className={clsx(
                 "font-bold font-['Titillium_Web'] leading-tight",
@@ -74,11 +74,11 @@ export default function Services({ darkMode, services, variant = "default", clas
             >
               {services?.sectionTitle || 'Connect Your Spaces to Smart Digital Twin'}
             </h2>
-            <p className={clsx("text-lg sm:text-xl font-Inter leading-8", theme.subtitle)}>
+            <p className={clsx("text-lg sm:text-xl md:text-2xl font-Inter leading-8 md:leading-relaxed", theme.subtitle)}>
               {services?.sectionSubtitle || 'Bringing the gap from scan data to fully operational BIM models.'}
             </p>
           </div>
-          <Button href="#" variant="primary">
+          <Button href="#" variant="primary" className="mx-auto md:mx-0 md:px-8 md:py-4">
             {'View More'}
           </Button>
         </div>
@@ -102,7 +102,7 @@ export default function Services({ darkMode, services, variant = "default", clas
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5">
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5 items-center md:items-start text-center md:text-left">
                 <h3 className="text-white text-2xl sm:text-3xl font-bold font-['Titillium_Web'] leading-8">
                   {step.title}
                 </h3>

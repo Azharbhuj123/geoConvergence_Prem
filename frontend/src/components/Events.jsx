@@ -28,13 +28,13 @@ export default function Events({ darkMode, className, eventsData }) {
 
   return (
     <section
-      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 md:py-24 lg:py-28 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
 
     >
 
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className={`mb-12 flex flex-col gap-3 ${className}`}>
+        <div className={`mb-12 flex flex-col gap-3 items-center md:items-start text-center md:text-left ${className}`}>
           <h2
             className={`font-bold font-['Titillium_Web'] leading-tight text-[var(--text)]
               }`}
@@ -47,7 +47,7 @@ export default function Events({ darkMode, className, eventsData }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-8 lg:gap-10">
           {events.map((event) => (
             <div
               key={event.title}
@@ -66,9 +66,9 @@ export default function Events({ darkMode, className, eventsData }) {
 
               {/* Content */}
               <div className="relative z-10 h-full p-7 sm:p-8 flex flex-col justify-end gap-5">
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
                   {/* Tag */}
-                  <div className="inline-flex self-start">
+                  <div className="inline-flex self-center md:self-start">
                     <span className="px-4 py-2 bg-white/30 backdrop-blur-sm text-slate-100 text-base font-Inter rounded-xl">
                       {event.tag}
                     </span>
@@ -83,7 +83,7 @@ export default function Events({ darkMode, className, eventsData }) {
                   </h3>
 
                   {/* Date & Location */}
-                  <div className="flex flex-wrap gap-4 sm:gap-6">
+                  <div className="flex flex-wrap gap-4 sm:gap-6 justify-center md:justify-start">
                     <div className="flex items-center gap-2">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />

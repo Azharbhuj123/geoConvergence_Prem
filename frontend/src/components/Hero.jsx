@@ -52,27 +52,27 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
       {/* Hero content */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14">
-        <div className="max-w-[653px]">
-          <div className="flex flex-col gap-7 mb-12">
+        <div className="max-w-[653px] mx-auto md:mx-0 text-center md:text-left flex flex-col items-center md:items-start">
+          <div className="flex flex-col gap-7 mb-12 items-center md:items-start md:gap-9 lg:gap-11 md:mb-16">
             <h1
               className="text-white font-bold font-['Titillium_Web'] leading-tight"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: '1.1' }}
             >
               {title}
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl font-Inter leading-8 max-w-[592px]">
+            <p className="text-white/80 text-lg sm:text-xl md:text-2xl font-Inter leading-8 md:leading-relaxed max-w-[592px]">
               {subtitle}
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full md:gap-6">
             {btn1 && (
-              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-lg font-bold">
+              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-lg font-bold md:px-12 md:py-5">
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-lg font-bold">
+              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-lg font-bold md:px-12 md:py-5">
                 {btn2.text}
               </Button>
             )}

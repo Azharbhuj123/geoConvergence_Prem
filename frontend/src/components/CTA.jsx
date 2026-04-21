@@ -39,14 +39,14 @@ export default function CTA({ darkMode, CtaData }) {
 
   return (
     <section
-      className={`py-12 lg:py-12    bg-[var(--bg)] ${
+      className={`py-12 md:py-16 lg:py-20    bg-[var(--bg)] ${
         // darkMode ? "bg-slate-950" : "bg-slate-50"
         theme === "dark" ? "dark" : ""
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-14   ">
         <div
-          className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
+          className="relative rounded-3xl overflow-hidden p-10 sm:p-14 md:p-16 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
           style={{
             backgroundImage: bgImage ? `url(${bgImage})` : "none",
           }}
@@ -84,7 +84,7 @@ export default function CTA({ darkMode, CtaData }) {
           </div>
 
           {/* Buttons */}
-          <div className="relative z-10 flex flex-col sm:flex-row gap-5 sm:gap-7 pt-4">
+          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-5 sm:gap-7 pt-4 w-full">
             <Button
               href={btn1.link}
               variant="primary"

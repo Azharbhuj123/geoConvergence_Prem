@@ -25,7 +25,7 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
   return (
     <div
       className={`${darkMode ? 'dark' : 'dark'} flex-1 min-w-[220px] rounded-2xl p-6 sm:p-8 flex flex-col gap-3 transition-all duration-300
-        bg-[var(--slate-bg)]
+        bg-[var(--slate-bg)] items-center md:items-start text-center md:text-left
       `}
     >
       <div
@@ -39,7 +39,7 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
         }`}>
         {label}
       </div>
-      <div className="w-full flex items-center justify-end">
+      <div className="w-full flex items-center justify-center md:justify-end mt-2 md:mt-0">
         <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
           {icon}
         </div>
@@ -112,10 +112,10 @@ export default function Stats({ darkMode, statsData }) {
   return (
     <section
       ref={ref}
-      className={`py-16 lg:py-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"}`}
+      className={`py-16 md:py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"}`}
     >
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-wrap gap-5 sm:gap-7">
+        <div className="flex flex-wrap gap-5 sm:gap-7 justify-center md:justify-start">
           {stats.map((stat) => (
             <StatCard
               key={stat.label}

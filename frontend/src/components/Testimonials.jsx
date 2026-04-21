@@ -44,7 +44,7 @@ export default function Testimonials({ darkMode }) {
   return (
     
     <section
-      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 md:py-24 lg:py-28 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
@@ -65,7 +65,7 @@ export default function Testimonials({ darkMode }) {
         </div>
 
         {/* Cards */}
-        <div className="relative flex flex-col md:flex-row items-stretch justify-center gap-5 lg:gap-7">
+        <div className="relative flex flex-col lg:flex-row items-stretch justify-center gap-5 md:gap-8 lg:gap-7">
           {testimonials.map((t, i) => {
             const isCenter = i === active
             return (
@@ -88,11 +88,11 @@ export default function Testimonials({ darkMode }) {
                 }}
               >
                 {/* Avatar */}
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
                   <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold font-Inter text-sm flex-shrink-0`}>
                     {t.avatar}
                   </div>
-                  <div>
+                  <div className="flex flex-col items-center md:items-start">
                     <div className={`text-base sm:text-lg font-medium font-Inter ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}>
                       {t.name}
                     </div>
@@ -102,9 +102,11 @@ export default function Testimonials({ darkMode }) {
                   </div>
                 </div>
 
-                <StarRating />
+                <div className="flex justify-center md:justify-start w-full">
+                  <StarRating />
+                </div>
 
-                <p className={`text-base sm:text-lg font-Inter leading-8 ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}>
+                <p className={`text-center md:text-left text-base sm:text-lg font-Inter leading-8 ${darkMode ? 'text-neutral-300' : 'text-neutral-600'}`}>
                   "{t.quote}"
                 </p>
               </div>

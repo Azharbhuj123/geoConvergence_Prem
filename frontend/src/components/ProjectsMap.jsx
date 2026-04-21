@@ -5,8 +5,8 @@ export default function ProjectsMap({ darkMode }) {
     >
       <div className="max-w-[1440px] mx-auto flex flex-col gap-12">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 md:gap-8 lg:gap-10 items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col gap-2 items-center md:items-start">
             <h2
               className={`font-bold font-['Titillium_Web'] leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
                 }`}
@@ -20,7 +20,7 @@ export default function ProjectsMap({ darkMode }) {
           </div>
           <a
             href="#"
-            className="self-start lg:self-auto flex-shrink-0 px-8 py-4 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
+            className="self-center md:self-auto flex-shrink-0 px-8 py-4 md:px-10 md:py-4 lg:px-12 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-lg font-bold font-Inter rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
           >
             View Map
           </a>
