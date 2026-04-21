@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./UI/Button";
+import { useWindowSize } from "../store/useThemeStore";
 
 export default function ContractVehicles({ data, darkMode }) {
   if (!data) return null;
