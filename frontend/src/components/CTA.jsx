@@ -1,6 +1,6 @@
 import Button from "./UI/Button";
 import { urlFor } from "../lib/sanity";
-import { useThemeStore } from "../store/useThemeStore";
+import { useThemeStore, useWindowSize } from "../store/useThemeStore";
 
 const finalCta = {
   title: "Ready to define your digital dimension?",
@@ -35,12 +35,13 @@ export default function CTA({ darkMode, CtaData }) {
 
   const bgImage = data.backgroundImage ? urlFor(data.backgroundImage) : null;
   const hasCustomBackground = !!data.backgroundImage;
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section
-      className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-[var(--bg)] ${
-        theme === "dark" ? "dark" : ""
-      }`}
+      className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-[var(--bg)] ${theme === "dark" ? "dark" : ""
+        }`}
     >
       <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div
@@ -86,7 +87,7 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn1.link}
               variant="primary"
-              size="lg"
+              size={isLarge ? "lg" : "sm"}
               className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]"
             >
               {btn1.text}
@@ -95,7 +96,7 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn2.link}
               variant="secondary"
-              size="lg"
+              size={isLarge ? "lg" : "sm"}
               className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]"
             >
               {btn2.text}

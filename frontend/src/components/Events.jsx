@@ -1,5 +1,5 @@
 import Button from "./UI/Button"
-import { useThemeStore } from "../store/useThemeStore";
+import { useThemeStore, useWindowSize } from "../store/useThemeStore";
 
 export default function Events({ darkMode, className, eventsData }) {
   const { theme } = useThemeStore();
@@ -25,6 +25,8 @@ export default function Events({ darkMode, className, eventsData }) {
       btn: null,
     },
   ]
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section
@@ -106,7 +108,7 @@ export default function Events({ darkMode, className, eventsData }) {
                   {/* CTA */}
                   {event.btn && (
                     <div>
-                      <Button href={event.btn.link} variant="primary">
+                      <Button size={isLarge ? "lg" : "sm"} href={event.btn.link} variant="primary">
                         {event.btn.text}
                       </Button>
                     </div>

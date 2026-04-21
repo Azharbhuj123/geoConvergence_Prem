@@ -1,7 +1,7 @@
 // components/SolutionBlock.jsx
 import Button from "./UI/Button";
 import { urlFor } from "../lib/sanity";
-import { useThemeStore } from "../store/useThemeStore";
+import { useThemeStore, useWindowSize } from "../store/useThemeStore";
 
 export default function SolutionBlock({
   title,
@@ -13,10 +13,12 @@ export default function SolutionBlock({
   imagePosition = "right", // "left" or "right"
   darkMode = false,
   className = "",
-  services=[],
+  services = [],
 }) {
   const imgUrl = image ? urlFor(image) : null;
   const { theme } = useThemeStore();
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <div className={`w-full max-w-[1440px] mx-auto px-6 lg:px-14 ${theme === 'dark' ? 'dark' : ''} ${className}`}>
@@ -82,6 +84,7 @@ export default function SolutionBlock({
               <Button
                 href={button.link || "#"}
                 variant="primary"
+                size={isLarge ? "lg" : "sm"}
                 className="px-10 py-4 text-lg font-bold"
               >
                 {button.text || "View More"}

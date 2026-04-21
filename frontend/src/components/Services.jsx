@@ -1,4 +1,5 @@
 import { urlFor } from "../lib/sanity"
+import { useWindowSize } from "../store/useThemeStore";
 import Button from "./UI/Button"
 import clsx from "clsx";
 
@@ -30,8 +31,11 @@ const variants = {
 };
 
 
+
 export default function Services({ darkMode, services, variant = "default", className }) {
   const theme = variants[variant][darkMode ? "dark" : "light"];
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section
@@ -58,7 +62,7 @@ export default function Services({ darkMode, services, variant = "default", clas
             </p>
           </div>
           <div className="pt-4 lg:pt-0">
-            <Button href="#" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px]">
+            <Button href="#" variant="primary" size={isLarge ? "lg" : "sm"} className="w-full sm:w-auto min-w-[200px]">
               {'View More'}
             </Button>
           </div>

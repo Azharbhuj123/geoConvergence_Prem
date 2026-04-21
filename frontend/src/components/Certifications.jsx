@@ -1,10 +1,13 @@
 import { urlFor } from "../lib/sanity";
+import { useWindowSize } from "../store/useThemeStore";
 import Button from "./UI/Button";
 
 export default function Certifications({ data, darkMode }) {
   if (!data) return null;
 
   const { title, subtitle, items } = data;
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section className={`py-16 md:py-20 lg:py-24 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
@@ -53,7 +56,7 @@ export default function Certifications({ data, darkMode }) {
 
               {/* Button */}
               <div className="w-full flex justify-center md:justify-start">
-                <Button variant="primary" size="sm" className="px-6 py-3 md:px-8 md:py-4">
+                <Button variant="primary" size={isLarge ? "lg" : "sm"} className="px-6 py-3 md:px-8 md:py-4">
                   View All
                 </Button>
               </div>

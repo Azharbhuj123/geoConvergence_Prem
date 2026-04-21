@@ -1,11 +1,14 @@
 import React from "react";
 import { urlFor } from "../lib/sanity";
 import Button from "./UI/Button";
+import { useWindowSize } from "../store/useThemeStore";
 
 export default function CaseStudies({ data, darkMode }) {
   if (!data) return null;
 
   const { title, subtitle, studies } = data;
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section className="bg-[#0D1B5E] py-16 md:py-20 lg:py-24">
@@ -22,7 +25,7 @@ export default function CaseStudies({ data, darkMode }) {
             </p>
           </div>
 
-          <Button variant="primary" size="md" className="whitespace-nowrap shrink-0 mx-auto md:mx-0 md:px-8 md:py-4">
+          <Button variant="primary" size={isLarge ? "lg" : "sm"} className="whitespace-nowrap shrink-0 mx-auto md:mx-0 md:px-8 md:py-4">
             View All
           </Button>
         </div>
@@ -62,7 +65,7 @@ export default function CaseStudies({ data, darkMode }) {
                   {study.description}
                 </p>
 
-                <button className="text-[#0055FE] text-sm md:text-base lg:text-lg font-bold hover:text-blue-700 transition-colors duration-300 flex items-center justify-center md:justify-start gap-2 group mx-auto md:mx-0">
+                <button size={isLarge ? "lg" : "sm"} className="text-[#0055FE] text-sm md:text-base lg:text-lg font-bold hover:text-blue-700 transition-colors duration-300 flex items-center justify-center md:justify-start gap-2 group mx-auto md:mx-0">
                   Read More
                   <svg className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

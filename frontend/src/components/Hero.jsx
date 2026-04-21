@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
+import { useWindowSize } from '../store/useThemeStore'
 
 export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min-h-screen' }) {
   const [loading, setLoading] = useState(false)
@@ -19,6 +20,8 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min
   const btn1 = hero?.button1
   const btn2 = hero?.button2
   const bgImage = hero?.backgroundImage ? urlFor(hero.backgroundImage) : null
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section
@@ -62,12 +65,12 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start w-full sm:w-auto">
             {btn1 && (
-              <Button href={btn1.link} variant="primary" size="lg" className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
+              <Button href={btn1.link} variant="primary" size={isLarge ? "lg" : "sm"} className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" size="lg" className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
+              <Button href={btn2.link} variant="secondary" size={isLarge ? "lg" : "sm"} className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
                 {btn2.text}
               </Button>
             )}

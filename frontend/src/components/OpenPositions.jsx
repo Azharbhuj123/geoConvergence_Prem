@@ -1,9 +1,11 @@
-import { useThemeStore } from '../store/useThemeStore';
+import { useThemeStore, useWindowSize } from '../store/useThemeStore';
 import Button from './UI/Button'; // Assuming UI/Button exists, as it's used elsewhere for buttons
 
 export default function OpenPositions({ title, subtitle, jobs }) {
   const { theme } = useThemeStore();
   const isDark = theme === 'dark';
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]`}>
@@ -55,7 +57,7 @@ export default function OpenPositions({ title, subtitle, jobs }) {
               </div>
 
               <div className="flex items-center justify-start sm:justify-end shrink-0">
-                <Button href="#" size="sm" className="w-full shadow-lg hover:shadow-blue-600/20 transition-all">
+                <Button href="#" size={isLarge ? "lg" : "sm"} className="w-full shadow-lg hover:shadow-blue-600/20 transition-all">
                   Apply Today
                 </Button>
               </div>

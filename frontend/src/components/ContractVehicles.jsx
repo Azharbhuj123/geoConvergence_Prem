@@ -5,6 +5,8 @@ export default function ContractVehicles({ data, darkMode }) {
   if (!data) return null;
 
   const { title, subtitle, vehicles } = data;
+  const { width } = useWindowSize()
+  const isLarge = width >= 1024;
 
   return (
     <section className={`w-full py-16 md:py-20 lg:py-24 ${darkMode ? 'bg-slate-900' : 'bg-[#f4f6fb]'}`}>
@@ -51,7 +53,7 @@ export default function ContractVehicles({ data, darkMode }) {
 
             {/* Button */}
             <div className="mt-auto w-full">
-              <Button variant="primary" size="sm" className="w-full">
+              <Button variant="primary" size={isLarge ? "lg" : "sm"} className="w-full">
                 View All
               </Button>
             </div>
