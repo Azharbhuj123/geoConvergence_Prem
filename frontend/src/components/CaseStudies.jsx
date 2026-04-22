@@ -8,15 +8,15 @@ export default function CaseStudies({ data, darkMode }) {
   const { title, subtitle, studies } = data;
 
   return (
-    <section className="bg-[#0D1B5E] py-20">
-      <div className="max-w-[1440px] mx-auto px-6">
+    <section className="bg-[#0D1B5E] py-20 px-6 sm:px-10 xl:px-14">
+      <div className="max-w-[1440px] mx-auto">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-3xl">
-            <h2 className="text-white text-4xl md:text-5xl font-bold font-['Titillium_Web'] mb-6">
+            <h2 className="text-white heading-primary mb-6">
               {title || "Case Studies"}
             </h2>
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-300 text-subtitle leading-relaxed">
               {subtitle ||
                 "At geoConvergence, we don't just visualize spaces — we transform complex physical environments into intelligent, actionable digital assets."}
             </p>

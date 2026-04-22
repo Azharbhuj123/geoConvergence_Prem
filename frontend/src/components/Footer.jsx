@@ -1,14 +1,27 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/footer_logo.png'
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
 
-  const services = ['Scan2Twin', 'Indoor Mapping', 'LiDAR Scanning', '3D Modeling', 'ArcGIS Indoors Implementation']
-  const company = ['Why geoConvergence', 'Products', 'Careers', 'Resources', 'Contact Us']
+ const services = [
+  { name: 'Scan2Twin', path: '/scan2twin' },
+  { name: 'Indoor Mapping', path: '/indoormaps' },
+  { name: 'LiDAR Scanning', path: '/lidar-scanning' },
+  { name: '3D Modeling', path: '/3d-modeling' },
+  { name: 'ArcGIS Indoors Implementation', path: '/arcgis-indoors' },
+]
 
+const company = [
+  { name: 'Why geoConvergence', path: '/why-geoconvergence' },
+  { name: 'Products', path: '/products' },
+  { name: 'Careers', path: '/careers' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Contact Us', path: '/contact' },
+]
   return (
-    <footer className="dark bg-[var(--bg)] text-white">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 pt-14 pb-8 flex flex-col gap-7">
+    <footer className="dark bg-[var(--bg)] px-6 sm:px-8 lg:px-14 text-white">
+      <div className="max-w-[1440px] mx-auto pt-14 pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
         <div className="pb-7 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
@@ -51,9 +64,9 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-3">
             <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Services</h4>
             {services.map((s) => (
-              <a key={s} href="#" className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
-                {s}
-              </a>
+              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
+                {s.name}
+              </Link>
             ))}
           </div>
 
@@ -61,9 +74,9 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-3">
             <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Company</h4>
             {company.map((c) => (
-              <a key={c} href="#" className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
-                {c}
-              </a>
+              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
+                {c.name}
+              </Link>
             ))}
           </div>
 

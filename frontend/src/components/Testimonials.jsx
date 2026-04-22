@@ -44,7 +44,7 @@ export default function Testimonials({ darkMode }) {
   return (
     
     <section
-      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-14  bg-[var(--bg)] `}
+      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-10 xl:px-14  bg-[var(--bg)] `}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
@@ -53,7 +53,7 @@ export default function Testimonials({ darkMode }) {
             className={`text-center font-bold font-['Titillium_Web'] capitalize leading-tight ${
               darkMode ? 'text-slate-100' : 'text-slate-900'
             }`}
-            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)' }}
+            style={{ fontSize: 'clamp(2.5rem, 3.5vw, 3rem)' }}
           >
             What Our Customers Say
           </h2>
@@ -65,7 +65,7 @@ export default function Testimonials({ darkMode }) {
         </div>
 
         {/* Cards */}
-        <div className="relative flex flex-col md:flex-row items-stretch justify-center gap-5 lg:gap-7">
+          <div className="relative flex flex-col lg:flex-row lg:justify-between lg:items-end gap-5">
           {testimonials.map((t, i) => {
             const isCenter = i === active
             return (

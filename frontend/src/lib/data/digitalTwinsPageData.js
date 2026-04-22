@@ -16,7 +16,6 @@ export const digitalTwinsPageData = {
       { title: "Innovation", description: "Pushing boundaries", iconColor: "blue" },
       { title: "Accuracy", description: "Precision in every detail", iconColor: "blue" },
       { title: "Integrity", description: "Honest and transparent", iconColor: "blue" },
-      { title: "Excellence", description: "Delivering the best", iconColor: "blue" }
     ]
   },
   howItWorks: {

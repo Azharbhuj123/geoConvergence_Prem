@@ -10,6 +10,7 @@ import Services from "../components/Services";
 import Stats from "../components/Stats";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { Services_Description } from "../components/Services_Description";
 
 export default function IndoorMapsPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -57,17 +58,18 @@ export default function IndoorMapsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "IndoorMaps"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "IndoorMaps"} minHeight="min-h-[451px]" />
 
         {/* What is Indoor Mapping? */}
         {pageData.whatIs && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.whatIs.title}
               description={pageData.whatIs.description}
               image={pageData.whatIs.image}
               imagePosition="left"
               darkMode={isDark}
+              variant="section"
             />
           </section>
         )}
@@ -83,17 +85,14 @@ export default function IndoorMapsPage() {
 
         {/* Key Features (using Stats for numbers) */}
         {pageData.keyFeatures && (
-          <div className="py-12 bg-[var(--bg)]">
-            <div className="max-w-[1440px] mx-auto mb-8">
-              <h2 className="text-4xl lg:text-5xl font-bold font-['Titillium_Web'] text-[var(--text)] mb-4">
-                {pageData.keyFeatures.sectionTitle}
-              </h2>
-              <p className="text-xl text-[var(--text)] text-opacity-80 max-w-3xl">
-                {pageData.keyFeatures.sectionSubtitle}
-              </p>
-            </div>
-            <Stats darkMode={isDark} statsData={parsedStatsData} />
-          </div>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-20`}>
+            <Services_Description
+              pageData={pageData.keyFeatures}
+              theme={theme}
+              className="!py-0 !px-0"
+            />
+            <Stats darkMode={isDark} statsData={parsedStatsData} className="!px-0" />
+          </section>
         )}
 
         {/* Use Cases */}

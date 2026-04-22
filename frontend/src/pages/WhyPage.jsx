@@ -40,6 +40,7 @@ export default function WhyPage() {
                 />
 
                 {/* Solution Block */}
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
                 <SolutionBlock
                     title={pageData.solutionBlock.title}
                     description={pageData.solutionBlock.description}
@@ -49,7 +50,9 @@ export default function WhyPage() {
                     image={pageData.solutionBlock.image}
                     imagePosition="left"
                     darkMode={isDark}
+                    variant='section'
                 />
+                </section>
 
                 {/* Certifications */}
                 <Certifications

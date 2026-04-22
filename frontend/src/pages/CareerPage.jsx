@@ -41,7 +41,7 @@ export default function CareerPage() {
                 {pageData.easySteps.sectionSubtitle}
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-2 gap-8">
                 {pageData.easySteps.cards?.map((card, idx) => (
                   <div key={idx} className={`p-8 rounded-2xl flex flex-col items-center text-center transition-transform hover:-translate-y-2 shadow-sm border ${
                     isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'
@@ -69,13 +69,14 @@ export default function CareerPage() {
 
         {/* Meet the Team */}
         {pageData.meetTheTeam && (
-          <section className="bg-[var(--bg)]">
+          <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.meetTheTeam.title}
               description={pageData.meetTheTeam.description}
               image={pageData.meetTheTeam.image}
               imagePosition="right"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}

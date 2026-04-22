@@ -7,15 +7,15 @@ export default function Certifications({ data, darkMode }) {
   const { title, subtitle, items } = data;
 
   return (
-    <section className={`py-20 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
-      <div className="max-w-[1440px] mx-auto px-6">
+    <section className={`py-20 px-6 sm:px-10 lg:px-14 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
+      <div className="max-w-[1440px] mx-auto">
 
         {/* Heading */}
         <div className="mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Titillium_Web'] mb-4">
+          <h2 className="heading-primary text-white mb-6">
             {title || "Our Certification"}
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl">
+          <p className="text-subtitle">
             {subtitle || "As an SBA 8(a) Joint Venture, True North Joint Venture, LLC..."}
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function Certifications({ data, darkMode }) {
 
               {/* Button */}
               <div>
-                <Button variant="primary" size="sm">
+                <Button variant="primary">
                   View All
                 </Button>
               </div>

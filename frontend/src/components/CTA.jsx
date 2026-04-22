@@ -39,12 +39,11 @@ export default function CTA({ darkMode, CtaData }) {
 
   return (
     <section
-      className={`py-12 lg:py-12    bg-[var(--bg)] ${
-        // darkMode ? "bg-slate-950" : "bg-slate-50"
+      className={`py-12 lg:py-12 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${
         theme === "dark" ? "dark" : ""
         }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-14   ">
+      <div className="max-w-[1440px] mx-auto">
         <div
           className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
           style={{

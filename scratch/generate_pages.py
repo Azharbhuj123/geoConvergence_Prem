@@ -159,7 +159,7 @@ import {{ {p['name']}Data }} from '../lib/data/{p['name']}Data';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import CoreValues from '../components/CoreValues';
-import Services_Description from '../components/Services_Description';
+import { Services_Description } from '../components/Services_Description';
 import SolutionBlock from '../components/SolutionBlock';
 import Stats from '../components/Stats';
 import CTA from '../components/CTA';

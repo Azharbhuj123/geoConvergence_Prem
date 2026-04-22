@@ -9,16 +9,16 @@ const variants = {
 };
 
 const sizes = {
-  md: "px-8 py-4 text-base sm:text-lg",
   sm: "px-6 py-3 text-sm",
-  lg: "px-10 py-5 text-lg",
+  md: "px-6 py-3 text-sm xl:px-8 xl:py-4 xl:text-base",
+  lg: "px-6 py-3 text-sm xl:px-10 xl:py-5 xl:text-lg",
 };
 
 export default function Button({
   children,
   href,
   variant = "primary",
-  size = "md",
+  size = "lg",
   className,
   ...props
 }) {

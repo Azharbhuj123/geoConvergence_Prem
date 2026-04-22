@@ -28,6 +28,15 @@
   --card: #1e293b;
   --card-hover: #334155;
 }
+@layer components {
+  .heading-primary {
+    @apply text-2xl md:text-4xl xl:text-5xl font-bold font-['Titillium_Web'] text-[var(--heading)];
+  }
+
+  .text-subtitle {
+    @apply text-lg md:text-xl max-w-3xl text-[var(--muted)];
+  }
+}
 
 /* ─── Base ─── */
 *,

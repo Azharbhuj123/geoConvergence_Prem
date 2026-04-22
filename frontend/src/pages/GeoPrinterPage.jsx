@@ -31,7 +31,7 @@ export default function GeoPrinterPage() {
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} minHeight="min-h-[451px]"/>
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -39,6 +39,7 @@ export default function GeoPrinterPage() {
               image={pageData.firstSolution.image}
               imagePosition="right"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
@@ -54,12 +55,12 @@ export default function GeoPrinterPage() {
           <Services 
             darkMode={isDark} 
             services={pageData.howItWorks} 
-            variant="blue" 
+            variant="default" 
           />
         )}
 
         {pageData.secondSolution && (
-          <section className="bg-[var(--slate-bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
              <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
@@ -67,6 +68,7 @@ export default function GeoPrinterPage() {
               image={pageData.secondSolution.image}
               imagePosition="left"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}

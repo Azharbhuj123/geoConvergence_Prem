@@ -11,9 +11,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // const links = ['Solutions', 'Products', 'Why geoConvergence', 'Resources', 'Career', 'Contact']
-
+  
   const links = [
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },

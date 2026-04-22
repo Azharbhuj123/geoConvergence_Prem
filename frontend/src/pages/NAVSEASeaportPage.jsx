@@ -38,6 +38,7 @@ export default function NAVSEASeaportPage() {
               imagePosition="left"
               services={data.firstSolution.services}
               darkMode={isDark}
+              variant="section"
               className={'!max-w-[100%] !mx-0 !px-0'}
             />
 
@@ -49,6 +50,7 @@ export default function NAVSEASeaportPage() {
               imagePosition="right"
               services={data.secondSolution.services}
               darkMode={isDark}
+              variant="section"
               className={'!max-w-[100%] !mx-0 !px-0'}
             />
           </div>

@@ -34,11 +34,10 @@ export default function Events({ darkMode, className, eventsData }) {
 
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className={`mb-12 flex flex-col gap-3 ${className}`}>
+        <div className={`mb-12 flex flex-col gap-3 ${className} max-w-[600px] xl:max-w-[993px]`}>
           <h2
-            className={`font-bold font-['Titillium_Web'] leading-tight text-[var(--text)]
+            className={`font-bold font-['Titillium_Web'] leading-tight text-[var(--text)] text-[clamp(1.5rem,3.5vw,3rem)]
               }`}
-            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)' }}
           >
             {eventsData?.title || "Events & Webinars"}
           </h2>
@@ -52,7 +51,7 @@ export default function Events({ darkMode, className, eventsData }) {
             <div
               key={event.title}
               className="relative rounded-[20px] overflow-hidden group"
-              style={{ minHeight: '531px' }}
+              style={{ height: 'clamp(400px, 30vw, 545px)' }}
             >
               {/* Background image */}
               <img

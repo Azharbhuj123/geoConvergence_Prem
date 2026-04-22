@@ -6,7 +6,7 @@ export default function OpenPositions({ title, subtitle, jobs }) {
   const isDark = theme === 'dark';
 
   return (
-    <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}>
+    <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-10 xl:px-14 bg-[var(--bg)]`}>
       <div className="max-w-[1440px] mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className={`text-4xl lg:text-5xl font-bold font-['Titillium_Web'] mb-6 text-[var(--text)]`}>

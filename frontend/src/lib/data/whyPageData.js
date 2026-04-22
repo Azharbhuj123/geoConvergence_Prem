@@ -29,22 +29,21 @@ export const whyPageData = {
         }
     },
     certifications: {
-        title: "Certifications",
-        subtitle: "Recognized excellence in geospatial technology.",
+        title: "Our Certification",
+        subtitle: "Our work is supported by industry-recognized standards and technical certifications that ensure quality, accuracy, and compliance.",
         items: [
-            { name: "Esri Silver Partner" },
-            { name: "ISO 9001:2015" },
-            { name: "SBA 8(a) Certified" },
-            { name: "HUBZone Certified" }
+            { name: "Esri Silver Partner", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "ISO 9001:2015", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
         ]
     },
     contractVehicles: {
         title: "Contract Vehicles",
-        subtitle: "We streamline procurement through several pre-competed contracts.",
+        subtitle: "geoConvergence offers multiple contract vehicles to simplify procurement and accelerate project delivery.",
         vehicles: [
-            { name: "GSA MAS (Multiple Award Schedule)", description: "Providing IT services and software solutions under GSA Schedule." },
-            { name: "8(a) STARS III", description: "Providing customized IT services and IT services-based solutions." },
-            { name: "Seaport-NxG", description: "Engineering and program management services for the US Navy." }
+            { name: "GSA MAS (Multiple Award Schedule)", description: "Providing IT services and software solutions under GSA Schedule.", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "8(a) STARS III", description: "Providing customized IT services and IT services-based solutions.", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "Seaport-NxG", description: "Engineering and program management services for the US Navy.", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+            { name: "GS&S 2.0", description: "Engineering and program management services for the US Navy.", image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
         ]
     },
     caseStudies: {

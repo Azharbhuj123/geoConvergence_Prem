@@ -48,7 +48,7 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
   );
 }
 
-export default function Stats({ darkMode, statsData }) {
+export default function Stats({ darkMode, statsData, className }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -112,7 +112,7 @@ export default function Stats({ darkMode, statsData }) {
   return (
     <section
       ref={ref}
-      className={`py-16 lg:py-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"}`}
+      className={`py-16 lg:py-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"} ${className}`}
     >
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-wrap gap-5 sm:gap-7">

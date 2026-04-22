@@ -24,13 +24,13 @@ export default function TeamLeadership({ data, darkMode }) {
   }, []);
 
   return (
-    <section className={`py-24 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-14">
+    <section className={`py-20 px-6 sm:px-10 xl:px-14 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
+      <div className="max-w-[1440px] mx-auto">
         <div className="mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold font-['Titillium_Web'] mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+          <h2 className={`heading-primary mb-6`}>
             {title}
           </h2>
-          <p className={`text-lg md:text-xl max-w-3xl leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+          <p className={`text-subtitle leading-relaxed`}>
             {subtitle}
           </p>
         </div>

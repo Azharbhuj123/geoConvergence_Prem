@@ -45,8 +45,8 @@ export const indoorMapsPageData = {
   },
 
   keyFeatures: {
-    sectionTitle: "Key Features",
-    sectionSubtitle: "Deliver precise indoor navigation with real-time positioning and intelligent route guidance designed for complex environments.",
+    title: "Key Features",
+    description: "Deliver precise indoor navigation with real-time positioning and intelligent route guidance designed for complex environments.",
     cards: [
       {
         number: "400+",

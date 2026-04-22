@@ -22,7 +22,7 @@ const variants = {
       subtitle: "text-slate-300",
     },
     dark: {
-      bg: "bg-sky-950",
+      bg: "bg-blue-950",
       title: "text-slate-100",
       subtitle: "text-slate-300",
     },
@@ -64,13 +64,12 @@ export default function Services({ darkMode, services, variant = "default", clas
       <div className="max-w-[1440px] mx-auto">
         {/* Header row */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 mb-12">
-          <div className="flex flex-col gap-5 max-w-[933px]">
+          <div className="flex flex-col gap-5 max-w-[600px] xl:max-w-[993px]">
             <h2
               className={clsx(
-                "font-bold font-['Titillium_Web'] leading-tight",
+                "font-bold font-['Titillium_Web'] leading-tight text-[clamp(1.5rem,3.5vw,3rem)]",
                 theme.title
               )}
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 3rem)" }}
             >
               {services?.sectionTitle || 'Connect Your Spaces to Smart Digital Twin'}
             </h2>
@@ -78,7 +77,7 @@ export default function Services({ darkMode, services, variant = "default", clas
               {services?.sectionSubtitle || 'Bringing the gap from scan data to fully operational BIM models.'}
             </p>
           </div>
-          <Button href="#" variant="primary" className="text-sm lg:text-lg">
+          <Button href="#" variant="primary">
             {'View More'}
           </Button>
         </div>
@@ -89,7 +88,7 @@ export default function Services({ darkMode, services, variant = "default", clas
             <div
               key={step.title}
               className="relative rounded-[20px] overflow-hidden group cursor-pointer"
-              style={{ height: 'clamp(400px, 50vw, 545px)' }}
+              style={{ height: 'clamp(400px, 30vw, 545px)' }}
             >
               {/* Background image */}
               <img

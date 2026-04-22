@@ -39,8 +39,8 @@ export const threeDModelingPageData = {
     }
   ],
   stats: {
-    sectionTitle: "Key Features",
-    sectionSubtitle: "Deliver precise intelligence with real-time data integrations and analytical superiority.",
+    title: "Key Features",
+    description: "Deliver precise intelligence with real-time data integrations and analytical superiority.",
     cards: [
       { number: "400+", label: "Projects Completed" },
       { number: "10+", label: "Years of Experience" },

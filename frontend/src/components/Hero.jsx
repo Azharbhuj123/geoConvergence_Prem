@@ -23,7 +23,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
   return (
     <section
-      className={`relative ${minHeight} flex items-end pb-20 overflow-hidden 
+      className={`relative ${minHeight} flex items-end pb-20 overflow-hidden px-6 sm:px-8 lg:px-14 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
@@ -51,7 +51,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
       )}
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto">
         <div className="max-w-[653px]">
           <div className="flex flex-col gap-7 mb-12">
             <h1
@@ -67,12 +67,12 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
           <div className="flex flex-col sm:flex-row gap-4">
             {btn1 && (
-              <Button href={btn1.link} variant="primary" className="px-10 py-4 text-sm lg:text-lg font-bold">
+              <Button href={btn1.link} size='lg' variant="primary" className="font-bold">
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" className="px-10 py-4 text-sm lg:text-lg font-bold">
+              <Button href={btn2.link} size='lg' variant="secondary" className="font-bold">
                 {btn2.text}
               </Button>
             )}

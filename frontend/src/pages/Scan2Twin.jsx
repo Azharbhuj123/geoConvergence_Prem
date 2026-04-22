@@ -31,23 +31,23 @@ export default function Scan2Twin() {
 
         {/* What is Scan2Twin */}
         {pageData.whatIs && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.whatIs.title}
               description={pageData.whatIs.description}
               image={pageData.whatIs.image}
               imagePosition="left"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
 
         {/* Events (Inverted Background/Theme logic from user snippet) */}
         {pageData.events && (
-          <section className={`${theme === 'dark' ? 'light' : 'dark'} bg-[var(--bg)]`}>
+          <section className={`bg-[var(--bg)]`}>
             <Events
               darkMode={theme === 'dark'}
-              className="text-center"
               eventsData={pageData.events}
             />
           </section>
@@ -62,26 +62,27 @@ export default function Scan2Twin() {
               sectionTitle: pageData.howItWorks.title,
               sectionSubtitle: pageData.howItWorks.subtitle
             }}
-            variant="default"
+            variant="blue"
           />
         )}
 
         {/* Transforming */}
         {pageData.transforming && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.transforming.title}
               description={pageData.transforming.description}
               image={pageData.transforming.image}
               imagePosition="right"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
 
         {/* Why Scan2Twin */}
         {pageData.why && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.why.title}
               description={pageData.why.description}
@@ -89,6 +90,7 @@ export default function Scan2Twin() {
               image={pageData.why.image}
               imagePosition="right"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}

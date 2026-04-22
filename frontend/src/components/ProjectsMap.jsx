@@ -20,7 +20,7 @@ export default function ProjectsMap({ darkMode }) {
               Scale and precision delivered coast to coast.
             </p>
           </div>
-          <Button size="sm">
+          <Button >
             View Map
           </Button>
         </div>

@@ -7,7 +7,7 @@ import { arcgisIndoorsPageData } from '../lib/data/arcgisIndoorsPageData';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import CoreValues from '../components/CoreValues';
-import Services_Description from '../components/Services_Description';
+import { Services_Description } from '../components/Services_Description';
 import SolutionBlock from '../components/SolutionBlock';
 import Stats from '../components/Stats';
 import CTA from '../components/CTA';
@@ -15,7 +15,7 @@ import Footer from '../components/Footer';
 
 export default function ArcGisIndoorsPage() {
   const { theme, toggleTheme } = useThemeStore();
-  
+
   const { data } = useQuery({
     queryKey: ['arcgisIndoorsPage'],
     queryFn: fetchArcGisIndoorsPage,
@@ -45,47 +45,40 @@ export default function ArcGisIndoorsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[451px]" />
 
         {pageData.coreValues && (
-          <CoreValues 
-            title={pageData.coreValues.sectionTitle} 
-            cards={pageData.coreValues.cards} 
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            cards={pageData.coreValues.cards}
           />
         )}
 
-        <Services_Description pageData={pageData} theme={theme} />
-
-        <section className={`bg-[var(--bg)]`}>
-            {pageData.solutions?.map((solution, index) => (
-                <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
-                  <SolutionBlock
-                      title={solution.title}
-                      description={solution.description}
-                      button={solution.buttonText ? { text: solution.buttonText, link: "#" } : null}
-                      image={solution.image}
-                      imagePosition={index % 2 === 0 ? "right" : "left"}
-                      darkMode={isDark}
-                  />
-                </div>
-            ))}
+        <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
+          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
+          {pageData.solutions?.map((solution, index) => (
+            <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
+              <SolutionBlock
+                title={solution.title}
+                description={solution.description}
+                button={solution.buttonText ? { text: solution.buttonText, link: "#" } : null}
+                image={solution.image}
+                imagePosition={index % 2 === 0 ? "right" : "left"}
+                darkMode={isDark}
+              />
+            </div>
+          ))}
         </section>
 
         {pageData.stats && (
-          <div className="py-12 bg-[var(--bg)]">
-            <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-14 mb-8">
-              <h2 className="text-4xl lg:text-5xl font-bold font-['Titillium_Web'] text-[var(--text)] mb-4">
-                {pageData.stats.sectionTitle}
-              </h2>
-              <p className="text-xl text-[var(--text)] text-opacity-80 max-w-3xl">
-                {pageData.stats.sectionSubtitle}
-              </p>
-            </div>
-            <Stats 
-              darkMode={isDark} 
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+            <Services_Description pageData={pageData.stats} theme={theme} />
+            <Stats
+              darkMode={isDark}
               statsData={parsedStatsData}
+              className={"!px-0"}
             />
-          </div>
+          </section>
         )}
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />
