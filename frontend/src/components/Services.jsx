@@ -63,7 +63,7 @@ export default function Services({
 
 <section
   className={clsx(
-    "py-20 px-6 sm:px-8 lg:px-14",
+    "py-20 mb-20 px-6 sm:px-8 lg:px-14",
     !isHex && theme.bg,
     className
   )}

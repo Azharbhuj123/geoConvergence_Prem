@@ -26,7 +26,7 @@ export default function Events({ darkMode, className, eventsData }) {
 
   return (
     <section
-      className={`${theme === "dark" ? "dark" : ""} pb-20 sm:pb-[12rem]   px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
+      className={`${theme === "dark" ? "dark" : ""} pb-20 sm:pb-20 mb-10  px-6 sm:px-8 lg:px-14 bg-[var(--bg)] `}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
