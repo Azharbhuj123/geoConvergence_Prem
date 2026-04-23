@@ -74,7 +74,7 @@ export default function Sba8aPage() {
           </div>
 
           {/* Main Content Area */}
-          <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 border border-[var(--border)]">
+          <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 !mt-15 border border-[var(--border)]">
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[620px]">
               How to award a streamlined 8(a) Sole Source Contract:
             </h2>
@@ -213,7 +213,10 @@ export default function Sba8aPage() {
           </div>
         </div>
       </section>
-      <CTA darkMode={theme === "dark"} />
+      <section className="py-15">
+        <CTA darkMode={theme === "dark"} />
+      </section>
+
       <Footer darkMode={theme === "dark"} />
     </div>
   );

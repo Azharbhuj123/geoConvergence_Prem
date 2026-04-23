@@ -44,7 +44,7 @@ export default function Testimonials({ darkMode }) {
   return (
     
     <section
-      className={`${theme === 'dark' ? 'dark' : ''} py-20 lg:py-24 px-6 sm:px-8 lg:px-10 xl:px-14  bg-[var(--bg)] `}
+      className={`${theme === 'dark' ? 'dark' : ''} pb-20 lg:pb-24 px-6 sm:px-8 lg:px-10 xl:px-14  bg-[var(--bg)] `}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}

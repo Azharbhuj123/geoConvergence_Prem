@@ -56,11 +56,12 @@ export default function ReservAssistPage() {
             darkMode={isDark} 
             services={pageData.howItWorks} 
             variant="default"
+            className={'!py-18'}
           />
         )}
 
         {pageData.secondSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-18`}>
              <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
@@ -77,11 +78,14 @@ export default function ReservAssistPage() {
           <Services 
             darkMode={isDark} 
             services={pageData.useCases} 
-            variant="default" 
+            variant="blue" 
+            button={false}
+            className={'mb-18'}
           />
         )}
-
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        <section className='py-10'>
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
       </main>
 
       <Footer darkMode={isDark} />

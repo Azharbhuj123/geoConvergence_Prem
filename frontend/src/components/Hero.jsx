@@ -67,12 +67,12 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
           <div className="flex flex-col sm:flex-row gap-4">
             {btn1 && (
-              <Button href={btn1.link} size='lg' variant="primary" className="font-bold">
+              <Button href={btn1.link} size='sm' variant="primary"  >
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} size='lg' variant="secondary" className="font-bold">
+              <Button href={btn2.link} size='sm' variant="secondary" >
                 {btn2.text}
               </Button>
             )}

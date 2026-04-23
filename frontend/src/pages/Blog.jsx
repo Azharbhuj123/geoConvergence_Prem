@@ -184,7 +184,6 @@ export default function BlogPage() {
             >
               Our Latest News &amp; Blogs
             </h2>
-            <div className="mt-2 w-16 h-1 rounded-full bg-gradient-to-r from-[#326FB7] to-[#0C59DB]" />
           </div>
 
           {/* Grid: posts left + sidebar right */}
@@ -246,7 +245,8 @@ export default function BlogPage() {
         </section>
 
         {/* Testimonials */}
-        <Testimonials darkMode={darkMode} />
+        <section className="py-15">
+        <Testimonials darkMode={darkMode} /></section>
 
         {/* CTA */}
         <CTA darkMode={darkMode} />

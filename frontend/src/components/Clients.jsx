@@ -61,7 +61,7 @@ function LogoItem({ item, darkMode }) {
 
 export default function Clients({ darkMode }) {
   return (
-    <section className={`py-8 overflow-hidden border-y ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
+    <section className={`pb-8 overflow-hidden border-y ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-gray-100'}`}>
       {/* Track */}
       <div className="relative w-full overflow-hidden max-w-[1440px] mx-auto">
         {/* Gradients for smooth fade effect on edges */}

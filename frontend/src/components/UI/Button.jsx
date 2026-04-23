@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 const variants = {
   primary:
-    "bg-gradient-to-b from-blue-800 to-blue-700 text-white shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600",
+    "bg-gradient-to-b from-blue-800 to-blue-700  bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all",
   secondary:
     "bg-neutral-200 text-blue-700 hover:bg-neutral-100",
 };

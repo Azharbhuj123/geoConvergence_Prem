@@ -2,7 +2,9 @@ export const reservAssistPageData = {
   hero: {
     title: "ReservAssist",
     subtitle: "Advanced solutions in ReservAssist to redefine physical and digital transformations.",
-    backgroundImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+    backgroundImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } },
+     button1: { text: "Explore Services", link: "#" },
+    button2: { text: "Learn More", link: "#" },
   },
   firstSolution: {
     title: "Discover ReservAssist",

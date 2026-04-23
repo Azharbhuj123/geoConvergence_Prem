@@ -1,7 +1,7 @@
 export const careerPageData = {
   hero: {
     title: "Career",
-    subtitle: "Join our mission to redefine how the world understands physical spaces through cutting-edge technology.",
+    subtitle: "",
     backgroundImage: {
       _type: "image",
       asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }

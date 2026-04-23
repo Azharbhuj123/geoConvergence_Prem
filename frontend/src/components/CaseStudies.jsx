@@ -22,7 +22,7 @@ export default function CaseStudies({ data, darkMode }) {
             </p>
           </div>
 
-          <Button variant="primary" size="md" className="whitespace-nowrap shrink-0">
+          <Button variant="primary" size="sm" className="whitespace-nowrap shrink-0">
             View All
           </Button>
         </div>

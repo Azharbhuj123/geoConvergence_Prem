@@ -18,7 +18,7 @@ const ProductPageData = {
     },
 
     hero: {
-        title: "Feature",
+        title: "Products",
         backgroundImage: {
             _type: "image",
             asset: {
@@ -28,7 +28,7 @@ const ProductPageData = {
     },
 
     servicesIntro: {
-        title: "Services",
+        title: "Feature Products",
         description: "Powered by our Scan2Twin pipeline, these applications transform captured data into actionable, real-world solutions for operations, planning, and decision-making."
     },
 
@@ -137,7 +137,7 @@ export default function ProductPage() {
                             description={solution.description}
                             button={{ text: solution.buttonText, link: "#" }}
                             image={solution.image}
-                            imagePosition={index % 2 === 0 ? "right" : "left"}
+                            imagePosition={index % 2 === 0 ? "left" : "right"}
                             darkMode={theme === 'dark'}
                         />
                     ))}

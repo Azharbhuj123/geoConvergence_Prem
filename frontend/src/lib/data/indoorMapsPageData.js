@@ -7,6 +7,10 @@ export const indoorMapsPageData = {
       asset: {
         _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png"
       }
+    },
+    button1: {
+      text: "Contact Us",
+      link: "/contact"
     }
   },
 

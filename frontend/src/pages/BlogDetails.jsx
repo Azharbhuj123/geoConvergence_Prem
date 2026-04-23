@@ -77,7 +77,6 @@ export default function BlogDetails() {
             >
               Our Latest News &amp; Blogs
             </h2>
-            <div className="mt-2 w-16 h-[3px] rounded-full bg-[#326FB7]" />
           </div>
 
           {/* 2-column layout: article + sidebar */}
@@ -234,8 +233,9 @@ export default function BlogDetails() {
         </section>
 
         {/* Testimonials */}
+        <section className="py-15">
         <Testimonials darkMode={darkMode} />
-
+</section>
         {/* CTA */}
         <CTA darkMode={darkMode} />
 

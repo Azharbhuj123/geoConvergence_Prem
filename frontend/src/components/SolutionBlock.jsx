@@ -131,7 +131,7 @@ export default function SolutionBlock({
   return (
     <div className={containerClasses}>
       <div
-        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-12 xl:py-24 ${
+        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-15   xl:py-[45px] ${
           imagePosition === "left" ? "lg:flex-row-reverse" : ""
         }`}
       >
@@ -156,7 +156,7 @@ export default function SolutionBlock({
             {title}
           </h2>
 
-          <div className="space-y-6 text-neutral-600 text-lg leading-8 text-[var(--text)]">
+          <div className="space-y-6 text-neutral-600 text-[18px] leading-[1.75rem] text-[var(--text)]">
             {Array.isArray(description) ? (
               description.map((para, i) => (
                 <p key={i} className="text-[var(--text)]">{para}</p>

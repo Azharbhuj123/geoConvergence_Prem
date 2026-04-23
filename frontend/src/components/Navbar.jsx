@@ -11,7 +11,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  
+
   const links = [
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },
@@ -68,13 +68,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className={`w-14 h-7 rounded-full transition-all duration-300 relative flex items-center px-1 ${
-                darkMode ? "bg-blue-700" : "bg-blue-200"
+              className={`w-14 h-6 rounded-full transition-all duration-300 relative flex items-center px-1  ${
+                darkMode ? "bg-white" : "bg-blue-700/40"
               }`}
               aria-label="Toggle dark mode"
             >
               <span
-                className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 flex items-center justify-center text-xs ${
+                className={`w-5 h-5 rounded-full   shadow-sm transition-transform duration-300 flex items-center bg-blue-700 justify-center text-xs ${
                   darkMode ? "translate-x-7" : "translate-x-0"
                 }`}
               >

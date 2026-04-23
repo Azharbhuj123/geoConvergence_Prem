@@ -58,7 +58,12 @@ export default function IndoorMapsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "IndoorMaps"} minHeight="min-h-[451px]" />
+        <Hero
+          darkMode={isDark}
+          hero={pageData.hero}
+          title={pageData.hero?.title || "IndoorMaps"}
+          minHeight="min-h-[451px]"
+        />
 
         {/* What is Indoor Mapping? */}
         {pageData.whatIs && (
@@ -80,6 +85,7 @@ export default function IndoorMapsPage() {
             darkMode={isDark}
             services={pageData.howItWorks}
             variant="blue"
+            button={false}
           />
         )}
 
@@ -91,7 +97,11 @@ export default function IndoorMapsPage() {
               theme={theme}
               className="!py-0 !px-0"
             />
-            <Stats darkMode={isDark} statsData={parsedStatsData} className="!px-0" />
+            <Stats
+              darkMode={isDark}
+              statsData={parsedStatsData}
+              className="!px-0  py-[3.75rem]"
+            />
           </section>
         )}
 
@@ -101,6 +111,8 @@ export default function IndoorMapsPage() {
             darkMode={isDark}
             services={pageData.useCases}
             variant="default"
+            button={false}
+            className={'!pt-0'}
           />
         )}
 

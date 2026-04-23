@@ -90,12 +90,14 @@ export default function LidarScanningPage() {
             <Stats
               darkMode={isDark}
               statsData={parsedStatsData}
-              className={"!px-0"}
+              className={"!px-0 !pt-15 "}
             />
           </section>
         )}
-
+          <section className="py-15">
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
+
       </main>
 
       <Footer darkMode={isDark} />

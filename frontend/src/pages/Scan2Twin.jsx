@@ -1,33 +1,43 @@
-import { useThemeStore } from '../store/useThemeStore';
-import { useQuery } from '@tanstack/react-query';
-import { fetchScan2Twin } from '../lib/api';
-import { scan2TwinPageData } from '../lib/data/scan2TwinPageData';
+import { useThemeStore } from "../store/useThemeStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetchScan2Twin } from "../lib/api";
+import { scan2TwinPageData } from "../lib/data/scan2TwinPageData";
 
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import SolutionBlock from '../components/SolutionBlock';
-import Services from '../components/Services';
-import Events from '../components/Events';
-import CTA from '../components/CTA';
-import Footer from '../components/Footer';
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import SolutionBlock from "../components/SolutionBlock";
+import Services from "../components/Services";
+import Events from "../components/Events";
+import CTA from "../components/CTA";
+import Footer from "../components/Footer";
 
 export default function Scan2Twin() {
   const { theme, toggleTheme } = useThemeStore();
 
   const { data } = useQuery({
-    queryKey: ['scan2Twin'],
+    queryKey: ["scan2Twin"],
     queryFn: fetchScan2Twin,
   });
 
   const pageData = data || scan2TwinPageData;
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
+
+  console.log(pageData.whatIs.buttonText ? "Yes" : "No");
 
   return (
-    <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+    <div
+      className={isDark ? "dark" : ""}
+      style={{ background: "var(--bg)", color: "var(--text)" }}
+    >
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scan2Twin"} minHeight="min-h-[451px]"/>
+        <Hero
+          darkMode={isDark}
+          hero={pageData.hero}
+          title={pageData.hero?.title || "Scan2Twin"}
+          minHeight="min-h-[550px]"
+        />
 
         {/* What is Scan2Twin */}
         {pageData.whatIs && (
@@ -38,7 +48,7 @@ export default function Scan2Twin() {
               image={pageData.whatIs.image}
               imagePosition="left"
               darkMode={isDark}
-              variant='section'
+              variant="section"
             />
           </section>
         )}
@@ -46,10 +56,7 @@ export default function Scan2Twin() {
         {/* Events (Inverted Background/Theme logic from user snippet) */}
         {pageData.events && (
           <section className={`bg-[var(--bg)]`}>
-            <Events
-              darkMode={theme === 'dark'}
-              eventsData={pageData.events}
-            />
+            <Events darkMode={theme === "dark"} eventsData={pageData.events} />
           </section>
         )}
 
@@ -60,7 +67,7 @@ export default function Scan2Twin() {
             services={{
               ...pageData.howItWorks,
               sectionTitle: pageData.howItWorks.title,
-              sectionSubtitle: pageData.howItWorks.subtitle
+              sectionSubtitle: pageData.howItWorks.subtitle,
             }}
             variant="blue"
           />
@@ -75,7 +82,7 @@ export default function Scan2Twin() {
               image={pageData.transforming.image}
               imagePosition="right"
               darkMode={isDark}
-              variant='section'
+              variant="section"
             />
           </section>
         )}
@@ -86,11 +93,17 @@ export default function Scan2Twin() {
             <SolutionBlock
               title={pageData.why.title}
               description={pageData.why.description}
-              button={pageData.why.buttonText ? { text: pageData.why.buttonText, link: "#" } : null}
+              button={
+                pageData.why.buttonText
+                  ? { text: pageData.why.buttonText, link: "#" }
+                  : null
+              }
+              highlightText={"It delivers:"}
               image={pageData.why.image}
-              imagePosition="right"
+              imagePosition="left"
               darkMode={isDark}
-              variant='section'
+              listItems={pageData.why.listItems}
+              variant="section"
             />
           </section>
         )}
@@ -101,6 +114,7 @@ export default function Scan2Twin() {
             darkMode={isDark}
             services={pageData.useCases}
             variant="default"
+            button={false}
           />
         )}
 

@@ -143,13 +143,13 @@ export default function GSS2Page() {
     >
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
-      <ShortHero title={"GSA MAS"} />
+      <ShortHero title={"GS&S 2.0"} />
       <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
         <MidSection data={data} />
 
-        <div className="w-full   bg-[var(--bg)] font-[Titillium Web, sans-serif]">
+        <div className="w-full   bg-[var(--bg)] py-13 font-[Titillium Web, sans-serif]">
           {/* Header Section */}
-          <div className="mb-10 max-w-4xl">
+          <div className="mb-10  pb-8 max-w-4xl">
             <h2 className=" font-[Titillium Web, sans-serif] text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
               Advanced Geospatial Support & Mapping Solutions
             </h2>

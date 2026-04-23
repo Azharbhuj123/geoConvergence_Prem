@@ -1,12 +1,12 @@
 export const NAVSEASeaportPageData = {
   hero: {
-    title: "8(a) Stars III",
+    title: "NAVSEA Seaport-NxG",
     subtitle:
       "A $50 billion, Best-in-Class contract vehicle providing government access to advanced technologies.",
   },
   contractInfo: {
     logo: "image-9aedb38aefaf4d3ee8418015a0fbaccc866c1ed5-1320x532-png",
-    title: "8(a) STARS III",
+    title: "NAVSEA Seaport-NxG",
     subtitle: "Contract Information:",
     description: "True North Joint Venture, LLC",
     phone: "(855) 447-3939",

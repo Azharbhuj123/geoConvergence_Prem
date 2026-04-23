@@ -74,7 +74,7 @@ export default function HubZonePage() {
           </div>
 
           {/* Main Content Area */}
-          <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 border border-[var(--border)]">
+          <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 !mt-15 border border-[var(--border)]">
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[676px]">
               How to award a streamlined HUBZone Sole Source Contract:
             </h2>
@@ -213,7 +213,10 @@ export default function HubZonePage() {
           </div>
         </div>
       </section>
-      <CTA darkMode={theme === "dark"} />
+      <section className="py-15">
+        <CTA darkMode={theme === "dark"} />
+      </section>
+
       <Footer darkMode={theme === "dark"} />
     </div>
   );

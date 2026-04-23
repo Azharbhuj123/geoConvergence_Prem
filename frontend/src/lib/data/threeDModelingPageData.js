@@ -14,6 +14,19 @@ export const threeDModelingPageData = {
       { title: "Integrity", description: "Honest and transparent", iconColor: "blue" }
     ]
   },
+  whatIs: {
+    title: "What is Scan2Twin?",
+    description: [
+      "Scan2Twin is a process in which physical environments are scanned and transformed into highly accurate 3D digital replicas. These are not just visual models, but intelligent spatial datasets that accurately reflect real-world structures.",
+      "It enables teams to understand and interact with physical spaces in a fully digital environment with precision and contextual awareness.",
+    ],
+    image: {
+      _type: "image",
+      asset: {
+        _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
+      },
+    },
+  },
   servicesDescription: {
     title: "3D Modeling & Point-to-BIM Services Overview",
     description: "Our 3D Modeling & Point-to-BIM services provide end-to-end capabilities tailored to meet complex operational needs, bridging the gap from scan data to fully operational models with efficiency and precision."

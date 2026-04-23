@@ -1,5 +1,5 @@
-import { urlFor } from "../lib/sanity"
-import Button from "./UI/Button"
+import { urlFor } from "../lib/sanity";
+import Button from "./UI/Button";
 import clsx from "clsx";
 
 const variants = {
@@ -17,7 +17,7 @@ const variants = {
   },
   blue: {
     light: {
-      bg: "bg-blue-950",
+    bg: "#09155F",
       title: "text-slate-100",
       subtitle: "text-slate-300",
     },
@@ -29,38 +29,46 @@ const variants = {
   },
 };
 
-
-export default function Services({ darkMode, services, variant = "default", className }) {
+export default function Services({
+  darkMode,
+  services,
+  variant = "default",
+  className,
+  button=true
+}) {
   const steps = [
     {
-      title: 'Capture',
+      title: "Capture",
       description:
-        'High-precision LiDAR and photogrammetry laser scanning of your physical facilities at the speed of walking.',
-      image: 'https://placehold.co/420x545/1e3a5f/ffffff?text=Capture',
+        "High-precision LiDAR and photogrammetry laser scanning of your physical facilities at the speed of walking.",
+      image: "https://placehold.co/420x545/1e3a5f/ffffff?text=Capture",
     },
     {
-      title: 'Process',
+      title: "Process",
       description:
-        'Automated cloud-based processing that converts raw point cloud data into structured BIM-ready architectural models.',
-      image: 'https://placehold.co/420x545/1e3a5f/ffffff?text=Process',
+        "Automated cloud-based processing that converts raw point cloud data into structured BIM-ready architectural models.",
+      image: "https://placehold.co/420x545/1e3a5f/ffffff?text=Process",
     },
     {
-      title: 'Integrate',
+      title: "Integrate",
       description:
-        'Seamlessly deploy your Digital Twin into asset management, wayfinding, and operational planning tools.',
-      image: 'https://placehold.co/420x545/1e3a5f/ffffff?text=Integrate',
+        "Seamlessly deploy your Digital Twin into asset management, wayfinding, and operational planning tools.",
+      image: "https://placehold.co/420x545/1e3a5f/ffffff?text=Integrate",
     },
-  ]
+  ];
   const theme = variants[variant][darkMode ? "dark" : "light"];
 
+  const isHex = theme.bg.startsWith("#");
   return (
-    <section
-      className={clsx(
-        "py-20 lg:py-24 px-6 sm:px-8 lg:px-14",
-        theme.bg,
-        className
-      )}
-    >
+
+<section
+  className={clsx(
+    "py-20 px-6 sm:px-8 lg:px-14",
+    !isHex && theme.bg,
+    className
+  )}
+  style={isHex ? { backgroundColor: theme.bg } : undefined}
+>
       <div className="max-w-[1440px] mx-auto">
         {/* Header row */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 mb-12">
@@ -68,18 +76,29 @@ export default function Services({ darkMode, services, variant = "default", clas
             <h2
               className={clsx(
                 "font-bold font-['Titillium_Web'] leading-tight text-[clamp(1.5rem,3.5vw,3rem)]",
-                theme.title
+                theme.title,
               )}
             >
-              {services?.sectionTitle || 'Connect Your Spaces to Smart Digital Twin'}
+              {services?.sectionTitle ||
+                "Connect Your Spaces to Smart Digital Twin"}
             </h2>
-            <p className={clsx("text-lg sm:text-xl font-Inter leading-8", theme.subtitle)}>
-              {services?.sectionSubtitle || 'Bringing the gap from scan data to fully operational BIM models.'}
+            <p
+              className={clsx(
+                "text-lg sm:text-xl font-Inter leading-8",
+                theme.subtitle,
+              )}
+            >
+              {services?.sectionSubtitle ||
+                "Bringing the gap from scan data to fully operational BIM models."}
             </p>
           </div>
-          <Button href="#" variant="primary">
-            {'View More'}
-          </Button>
+          {button && <Button
+            href="#"
+            variant="primary"
+            className="px-8 py-4 w-50 h-14 relative bg-gradient-to-b from-blue-800 to-blue-700 rounded-2xl inline-flex flex-col justify-center items-center"
+          >
+            {"View More"}
+          </Button>}
         </div>
 
         {/* Cards grid */}
@@ -88,11 +107,11 @@ export default function Services({ darkMode, services, variant = "default", clas
             <div
               key={step.title}
               className="relative rounded-[20px] overflow-hidden group cursor-pointer"
-              style={{ height: 'clamp(400px, 30vw, 545px)' }}
+              style={{ height: "clamp(400px, 30vw, 545px)" }}
             >
               {/* Background image */}
               <img
-                src={step.image ? urlFor(step.image) : ''}
+                src={step.image ? urlFor(step.image) : ""}
                 alt={step.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -114,5 +133,5 @@ export default function Services({ darkMode, services, variant = "default", clas
         </div>
       </div>
     </section>
-  )
+  );
 }

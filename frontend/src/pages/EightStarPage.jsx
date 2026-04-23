@@ -30,7 +30,7 @@ export default function EightStarPage() {
             <MidSection data={data} />
 
             {/* Bottom Row: Data Table Refactored to match Image 1 */}
-            <div className="flex flex-col gap-3 ">
+            <div className="flex flex-col gap-3 pb-20 ">
               {data.tableData.map((row, idx) => (
                 <div
                   key={idx}

@@ -51,7 +51,7 @@ export default function SolutionsPage() {
                             description={solution.description}
                             button={{ text: solution.buttonText, link: "#" }}
                             image={solution.image}
-                            imagePosition={index % 2 === 0 ? "right" : "left"}
+                            imagePosition={index % 2 === 0 ? "left" : "right"}
                             darkMode={theme === 'dark'}
                         />
                     ))}

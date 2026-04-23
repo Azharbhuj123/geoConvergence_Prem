@@ -7,7 +7,7 @@ export default function Certifications({ data, darkMode }) {
   const { title, subtitle, items } = data;
 
   return (
-    <section className={`py-20 px-6 sm:px-10 lg:px-14 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#0B1B3D] text-white'}`}>
+    <section className={`py-20 px-6 sm:px-10 lg:px-14 ${darkMode ? 'bg-slate-950 text-white' : 'bg-[#09155F] text-white'}`}>
       <div className="max-w-[1440px] mx-auto">
 
         {/* Heading */}
@@ -53,8 +53,8 @@ export default function Certifications({ data, darkMode }) {
 
               {/* Button */}
               <div>
-                <Button variant="primary">
-                  View All
+                <Button variant="primary" size="sm" >
+                  Know more
                 </Button>
               </div>
             </div>

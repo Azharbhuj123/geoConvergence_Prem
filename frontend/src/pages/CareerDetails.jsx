@@ -279,8 +279,9 @@ export default function CareerPage() {
             </div>
           </div>
         </section>
-
+    <section className="py-15">
         <Testimonials darkMode={theme === "dark"} />
+        </section>
         <CTA darkMode={theme === "dark"} />
         <Footer darkMode={theme === "dark"} />
       </div>

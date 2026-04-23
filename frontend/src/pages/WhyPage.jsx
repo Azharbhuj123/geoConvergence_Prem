@@ -36,17 +36,17 @@ export default function WhyPage() {
                     darkMode={isDark}
                     hero={pageData.hero}
                     title={pageData.hero.title}
-                    minHeight="min-h-[451px]"
+                    minHeight="min-h-[550px]"
                 />
 
                 {/* Solution Block */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-[6.25rem]`}>
                 <SolutionBlock
                     title={pageData.solutionBlock.title}
                     description={pageData.solutionBlock.description}
                     highlightText={pageData.solutionBlock.highlightText}
                     listItems={pageData.solutionBlock.listItems}
-                    button={pageData.solutionBlock.button}
+                    button={null}
                     image={pageData.solutionBlock.image}
                     imagePosition="left"
                     darkMode={isDark}
@@ -61,7 +61,9 @@ export default function WhyPage() {
                 />
 
                 {/* Clients Section */}
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-[6.25rem]`}>
                 <Clients darkMode={isDark} />
+                </section>
 
                 {/* Contract Vehicles */}
                 <ContractVehicles
@@ -82,10 +84,12 @@ export default function WhyPage() {
                 />
 
                 {/* Final CTA */}
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]   py-[5rem]`}>
                 <CTA
                     darkMode={isDark}
                     CtaData={pageData.finalCta}
                 />
+                </section>
             </main>
 
             <Footer darkMode={isDark} />

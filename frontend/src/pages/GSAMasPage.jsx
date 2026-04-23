@@ -91,7 +91,7 @@ export default function GSAMasPage() {
 
         <div className="font-['Titillium_Web',sans-serif]">
           <h1
-            className="text-2xl font-bold mb-4"
+            className="text-[30px] lg:text-[40px] font-bold mb-4"
             style={{ color: "var(--heading)" }}
           >
             Information Technology – IT Services

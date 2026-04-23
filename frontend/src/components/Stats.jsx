@@ -112,7 +112,7 @@ export default function Stats({ darkMode, statsData, className }) {
   return (
     <section
       ref={ref}
-      className={`py-16 lg:py-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"} ${className}`}
+      className={`pb-16 pt-15 lg:pb-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"} ${className}`}
     >
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-wrap gap-5 sm:gap-7">
