@@ -31,21 +31,39 @@ export const lidarScanningPageData = {
     {
       title: "Phase 1: Discovery & Capture",
       description: "The fundamental first step ensuring rigorous data capture metrics and alignment with overarching operational goals.",
-      buttonText: "Learn More",
+      listItems: [
+        "Ultra-high speed 3D laser scanning of construction sites, assets, and infrastructure",
+        "High-density point cloud registration and georeferencing to existing control points",
+        "Integrated mobile mapping systems for linear assets including roads, railways, and pipelines"
+      ],
+      description2: "Deliverables are built to support clear communication and smooth project execution.",
+      button: { text: "Learn More", link: "#" },
       image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
     },
     {
-      title: "Phase 2: Processing & Modeling",
-      description: "Advanced algorithmic conversion mapping captured coordinates into structured architectural, engineering, or structural environments ready for enterprise integrations.",
-      buttonText: "Learn More",
+      title: "Phase 2: Discovery & Capture",
+      description: "The fundamental first step ensuring rigorous data capture metrics and alignment with overarching operational goals.",
+      listItems: [
+        "Ultra-high speed 3D laser scanning of construction sites, assets, and infrastructure",
+        "High-density point cloud registration and georeferencing to existing control points",
+        "Integrated mobile mapping systems for linear assets including roads, railways, and pipelines"
+      ],
+      description2: "Deliverables are built to support clear communication and smooth project execution.",
+      button: { text: "Learn More", link: "#" },
       image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
     },
     {
-      title: "Phase 3: Deployment",
-      description: "Seamless delivery of actionable insights enabling key stakeholders to achieve complete operational intelligence and navigational readiness.",
-      buttonText: "Learn More",
+      title: "Phase 3: Discovery & Capture",
+      description: "The fundamental first step ensuring rigorous data capture metrics and alignment with overarching operational goals.",
+      listItems: [
+        "Ultra-high speed 3D laser scanning of construction sites, assets, and infrastructure",
+        "High-density point cloud registration and georeferencing to existing control points",
+        "Integrated mobile mapping systems for linear assets including roads, railways, and pipelines"
+      ],
+      description2: "Deliverables are built to support clear communication and smooth project execution.",
+      button: { text: "Learn More", link: "#" },
       image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
-    }
+    },
   ],
   stats: {
     title: "Industries We Serve",

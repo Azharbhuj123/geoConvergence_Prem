@@ -50,6 +50,8 @@ export default defineType({
           type: 'object', fields: [
             defineField({ name: 'title', type: 'string' }),
             defineField({ name: 'description', type: 'text' }),
+            defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }] }),
+            defineField({ name: 'description2', type: 'string' }),
             defineField({ name: 'buttonText', type: 'string' }),
             defineField({ name: 'image', type: 'image', options: { hotspot: true } })
           ]

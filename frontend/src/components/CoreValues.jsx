@@ -1,3 +1,4 @@
+import { urlFor } from "../lib/sanity";
 import { useThemeStore } from "../store/useThemeStore";
 
 export default function CoreValues({ title, subTitle, cards, className }) {
@@ -24,7 +25,9 @@ export default function CoreValues({ title, subTitle, cards, className }) {
           {cards?.map((card, idx) => (
             <div
               key={idx}
-              className={`flex-1 min-w-[300px] max-w-[500px] h-[220px] sm:h-[240px] lg:h-[260px] p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden transition-colors ${isDark ? "bg-slate-800" : "bg-white"
+              className={`flex-1 min-w-[300px] max-w-[500px] 
+  p-8 rounded-2xl flex flex-col justify-between 
+  relative overflow-hidden transition-colors ${isDark ? "bg-slate-800" : "bg-white"
                 }`}
             >
               <div>
@@ -44,18 +47,24 @@ export default function CoreValues({ title, subTitle, cards, className }) {
 
               {/* Icon Circle */}
               <div className="w-full flex items-center justify-end">
-                <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 bg-blue-700  rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
+                {card.iconImage ?
+                  <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 flex items-center justify-center flex-shrink-0">
+                    <img src={urlFor(card.iconImage)} className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24" />
+                  </div>
+                  :
+                  <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 bg-blue-700  rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                    >
+                      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                }
               </div>
             </div>
           ))}

@@ -21,7 +21,8 @@ export default function LidarScanningPage() {
     queryFn: fetchLidarScanningPage,
   });
 
-  const pageData = data || lidarScanningPageData;
+  const pageData = lidarScanningPageData;
+  // const pageData = data || lidarScanningPageData;
   const isDark = theme === 'dark';
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
@@ -76,7 +77,9 @@ export default function LidarScanningPage() {
               <SolutionBlock
                 title={solution.title}
                 description={solution.description}
-                button={solution.buttonText ? { text: solution.buttonText, link: "#" } : null}
+                listItems={solution.listItems}
+                description2={solution.description2}
+                button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
                 imagePosition={index % 2 === 0 ? "right" : "left"}
                 darkMode={isDark}
