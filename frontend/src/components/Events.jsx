@@ -40,7 +40,7 @@ export default function Events({ darkMode, className, eventsData }) {
             {eventsData?.title || "Events & Webinars"}
           </h2>
           <p
-            className={`text-lg sm:text-xl font-Inter w-[763px] text-center text-[var(--text)]`}
+            className={`text-lg sm:text-xl font-Inter   lg:w-[763px]  text-center text-[var(--text)]`}
           >
             {eventsData?.description ||
               "Join us at industry events and webinars to explore the latest in geospatial technology, network with experts, and discover how geoConvergence can transform your operations."}

@@ -73,7 +73,7 @@ export default function CTA({ darkMode, CtaData }) {
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-            <h2 className="w-[685.069px] text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] drop-shadow-xl">
+            <h2 className="lg:w-[685.069px] text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] drop-shadow-xl">
               {title}
             </h2>
 
