@@ -85,14 +85,14 @@ export const fetchCareerPage = async () => {
 
 export const fetchLidarScanningPage = async () => {
   const query = `*[_type == "lidarScanningPage"][0]{
-    hero, coreValues, servicesDescription, solutions, stats, finalCta
+    hero, meetTheTeam, coreValues, servicesDescription, solutions, stats, finalCta
   }`;
   return client.fetch(query);
 };
 
 export const fetchThreeDModelingPage = async () => {
   const query = `*[_type == "threeDModelingPage"][0]{
-    hero, coreValues, servicesDescription, solutions, stats, finalCta
+    hero, whatIs, coreValues, solutions, finalCta
   }`;
   return client.fetch(query);
 };

@@ -24,26 +24,15 @@ export default function ThreeDModelingPage() {
   const pageData = data || threeDModelingPageData;
   const isDark = theme === "dark";
 
-  const parsedStatsData = pageData.stats?.cards?.map((card) => {
-    const valueStr = card.number.replace(/[^0-9]/g, "");
+  const parsedStatsData = pageData.stats?.cards?.map(card => {
+    const valueStr = card.number.replace(/[^0-9]/g, '');
     const value = parseInt(valueStr) || 0;
-    const suffix = card.number.replace(/[0-9]/g, "");
+    const suffix = card.number.replace(/[0-9]/g, '');
     return {
       value,
       suffix,
       label: card.label,
-      icon: (
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-        >
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      ),
+      iconImage: card.iconImage,
     };
   });
 
@@ -95,11 +84,9 @@ export default function ThreeDModelingPage() {
               <SolutionBlock
                 title={solution.title}
                 description={solution.description}
-                button={
-                  solution.buttonText
-                    ? { text: solution.buttonText, link: "#" }
-                    : null
-                }
+                listItems={solution.listItems}
+                description2={solution.description2}
+                button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
                 imagePosition={index % 2 === 0 ? "right" : "left"}
                 darkMode={isDark}
@@ -119,8 +106,8 @@ export default function ThreeDModelingPage() {
           </section>
         )}
         <section className={`py-15`}>
-          
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
 
       </main>

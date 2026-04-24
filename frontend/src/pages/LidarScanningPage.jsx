@@ -21,22 +21,22 @@ export default function LidarScanningPage() {
     queryFn: fetchLidarScanningPage,
   });
 
-  // const pageData = data || lidarScanningPageData;
-  const pageData = lidarScanningPageData;
+  const pageData = data || lidarScanningPageData;
   const isDark = theme === 'dark';
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
-    const valueStr = card.number.replace(/[^0-9]/g, '');
+    const valueStr = card?.number?.replace(/[^0-9]/g, '');
     const value = parseInt(valueStr) || 0;
-    const suffix = card.number.replace(/[0-9]/g, '');
+    const suffix = card?.number?.replace(/[0-9]/g, '');
     return {
       value,
       suffix,
-      label: card.label,
-      iconImage: card.iconImage,
+      label: card?.label,
+      iconImage: card?.iconImage,
     };
   });
 
+  console.log('meethetem', pageData.meetTheTeam);
   return (
     <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
