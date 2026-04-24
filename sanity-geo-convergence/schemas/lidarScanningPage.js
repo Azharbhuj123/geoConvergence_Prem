@@ -65,7 +65,7 @@ export default defineType({
         defineField({ name: 'description', type: 'text' }),
         defineField({
           name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string' })] }
+            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
           ]
         })
       ]

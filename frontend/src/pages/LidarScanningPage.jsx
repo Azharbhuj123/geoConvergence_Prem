@@ -21,8 +21,8 @@ export default function LidarScanningPage() {
     queryFn: fetchLidarScanningPage,
   });
 
-  const pageData = lidarScanningPageData;
   // const pageData = data || lidarScanningPageData;
+  const pageData = lidarScanningPageData;
   const isDark = theme === 'dark';
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
@@ -33,11 +33,7 @@ export default function LidarScanningPage() {
       value,
       suffix,
       label: card.label,
-      icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      )
+      iconImage: card.iconImage,
     };
   });
 

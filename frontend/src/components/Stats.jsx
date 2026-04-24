@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { urlFor } from "../lib/sanity";
 
 function useCountUp(target, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ function useCountUp(target, duration = 2000, start = false) {
   return count;
 }
 
-function StatCard({ value, suffix, label, icon, darkMode, animate }) {
+function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) {
   const count = useCountUp(value, 2200, animate);
 
   return (
@@ -40,9 +41,15 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
         {label}
       </div>
       <div className="w-full flex items-center justify-end">
-        <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-          {icon}
-        </div>
+        {iconImage ?
+          <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 flex items-center justify-center flex-shrink-0">
+            <img src={urlFor(iconImage)} className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24" />
+          </div>
+          :
+          <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
+            {icon}
+          </div>
+        }
       </div>
     </div>
   );

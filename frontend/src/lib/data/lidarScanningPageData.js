@@ -69,10 +69,10 @@ export const lidarScanningPageData = {
     title: "Industries We Serve",
     description: "Deliver precise intelligence with real-time data integrations and analytical superiority.",
     cards: [
-      { number: "400+", label: "Projects Completed" },
-      { number: "10+", label: "Years of Experience" },
-      { number: "50+", label: "Happy Clients" },
-      { number: "99%", label: "Success Rate" }
+      { number: "400+", label: "Projects Completed", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+      { number: "10+", label: "Years of Experience", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+      { number: "50+", label: "Happy Clients", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+      { number: "99%", label: "Success Rate", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } }
     ]
   },
   finalCta: {
