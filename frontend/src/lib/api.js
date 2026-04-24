@@ -99,7 +99,7 @@ export const fetchThreeDModelingPage = async () => {
 
 export const fetchArcGisIndoorsPage = async () => {
   const query = `*[_type == "arcgisIndoorsPage"][0]{
-    hero, coreValues, servicesDescription, solutions, stats, finalCta
+    hero, solutions, finalCta
   }`;
   return client.fetch(query);
 };

@@ -61,7 +61,7 @@ export default function ArcGisIndoorsPage() {
               <SolutionBlock
                 title={solution.title}
                 description={solution.description}
-                button={solution.buttonText ? { text: solution.buttonText, link: "#" } : null}
+                button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
                 imagePosition={index % 2 === 0 ? "right" : "left"}
                 darkMode={isDark}
