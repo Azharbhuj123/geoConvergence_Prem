@@ -16,10 +16,11 @@ export const lidarScanningPageData = {
   },
   coreValues: {
     sectionTitle: "Our Core Values",
+    subTitle: "The core values that drive our success",
     cards: [
-      { title: "Innovation", description: "Pushing boundaries", iconColor: "blue" },
-      { title: "Accuracy", description: "Precision in every detail", iconColor: "blue" },
-      { title: "Integrity", description: "Honest and transparent", iconColor: "blue" }
+      { title: "Innovation", description: "Pushing boundaries", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+      { title: "Accuracy", description: "Precision in every detail", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } },
+      { title: "Integrity", description: "Honest and transparent", iconImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } } }
     ]
   },
   servicesDescription: {

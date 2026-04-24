@@ -28,6 +28,7 @@ export default defineType({
       name: 'coreValues', title: 'Core Values', type: 'object',
       fields: [
         defineField({ name: 'sectionTitle', type: 'string' }),
+        defineField({ name: 'subTitle', type: 'string' }),
         defineField({
           name: 'cards', type: 'array', of: [
             { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'description', type: 'text' }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }

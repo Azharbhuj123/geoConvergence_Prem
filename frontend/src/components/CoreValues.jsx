@@ -1,6 +1,6 @@
 import { useThemeStore } from "../store/useThemeStore";
 
-export default function CoreValues({ title, cards }) {
+export default function CoreValues({ title, subTitle, cards, className }) {
   const { theme } = useThemeStore();
   const isDark = theme === "dark";
 
@@ -9,30 +9,34 @@ export default function CoreValues({ title, cards }) {
       className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"}`}
     >
       <div className="max-w-[1440px] mx-auto">
-        <h2 className="heading-primary   text-white mb-12">
+        <h2 className="heading-primary   text-white mb-6">
           {title || "Our Core Values"}
         </h2>
+        {subTitle && (
+          <p
+            className={`text-subtitle mb-12`}
+          >
+            {subTitle || 'The core values that drive our success'}
+          </p>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {cards?.map((card, idx) => (
             <div
               key={idx}
-              className={`flex-1 min-w-[300px] max-w-[500px] h-[220px] sm:h-[240px] lg:h-[260px] p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden transition-colors ${
-                isDark ? "bg-slate-800" : "bg-white"
-              }`}
+              className={`flex-1 min-w-[300px] max-w-[500px] h-[220px] sm:h-[240px] lg:h-[260px] p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden transition-colors ${isDark ? "bg-slate-800" : "bg-white"
+                }`}
             >
               <div>
                 <h3
-                  className={`text-2xl font-bold font-['Titillium_Web'] uppercase tracking-wide mb-3 ${
-                    isDark ? "text-white" : "text-slate-900"
-                  }`}
+                  className={`text-2xl font-bold font-['Titillium_Web'] uppercase tracking-wide mb-3 ${isDark ? "text-white" : "text-slate-900"
+                    }`}
                 >
                   {card.title}
                 </h3>
                 <p
-                  className={`text-lg font-Inter ${
-                    isDark ? "text-slate-300" : "text-slate-600"
-                  }`}
+                  className={`text-lg font-Inter ${isDark ? "text-slate-300" : "text-slate-600"
+                    }`}
                 >
                   {card.description}
                 </p>

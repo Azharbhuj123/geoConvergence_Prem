@@ -45,7 +45,7 @@ export default function LidarScanningPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} minHeight="min-h-[451px]" />
 
         {pageData.meetTheTeam && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
@@ -63,13 +63,14 @@ export default function LidarScanningPage() {
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
           />
         )}
 
 
         <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
-        <Services_Description pageData={pageData.servicesDescription} theme={theme} />
+          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
               <SolutionBlock
@@ -94,8 +95,8 @@ export default function LidarScanningPage() {
             />
           </section>
         )}
-          <section className="py-15">
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        <section className="py-15">
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
 
       </main>
