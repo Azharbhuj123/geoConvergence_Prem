@@ -6,19 +6,6 @@ export const lidarScanningPageData = {
     button2: { text: "Learn More", link: "#" },
     backgroundImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
   },
-  whatIs: {
-    title: "What is Scan2Twin?",
-    description: [
-      "Scan2Twin is a process in which physical environments are scanned and transformed into highly accurate 3D digital replicas. These are not just visual models, but intelligent spatial datasets that accurately reflect real-world structures.",
-      "It enables teams to understand and interact with physical spaces in a fully digital environment with precision and contextual awareness.",
-    ],
-    image: {
-      _type: "image",
-      asset: {
-        _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
-      },
-    },
-  },
   meetTheTeam: {
     title: "LiDAR Scanning & Reality Capture",
     description: "Unlock unparalleled precision and efficiency in your projects with our state-of-the-art 3D laser scanning services. Whether you’re an architect, engineer, or contractor, our solutions provide the detailed insights necessary to design, build, and maintain with confidence.",
@@ -60,7 +47,7 @@ export const lidarScanningPageData = {
     }
   ],
   stats: {
-    title: "Key Features",
+    title: "Industries We Serve",
     description: "Deliver precise intelligence with real-time data integrations and analytical superiority.",
     cards: [
       { number: "400+", label: "Projects Completed" },
