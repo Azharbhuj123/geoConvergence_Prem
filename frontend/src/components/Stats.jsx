@@ -33,7 +33,7 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
         className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-slate-100`}
         style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)" }}
       >
-        {suffix}
+        {value}{suffix}
       </div>
       <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'
         }`}>

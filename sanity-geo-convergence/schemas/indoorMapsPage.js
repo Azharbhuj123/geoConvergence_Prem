@@ -16,6 +16,15 @@ export default defineType({
         defineField({ name: 'title', type: 'string', title: 'Main Title' }),
         defineField({ name: 'subtitle', type: 'text', title: 'Subtitle' }),
         defineField({
+          name: 'button1',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        }),
+        defineField({
           name: 'backgroundImage',
           type: 'image',
           title: 'Background Image',
@@ -80,19 +89,11 @@ export default defineType({
       title: 'Key Features / Stats',
       type: 'object',
       fields: [
-        defineField({ name: 'sectionTitle', type: 'string' }),
-        defineField({ name: 'sectionSubtitle', type: 'text' }),
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'description', type: 'text' }),
         defineField({
-          name: 'cards',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({ name: 'number', type: 'string' }),
-                defineField({ name: 'label', type: 'string' })
-              ]
-            }
+          name: 'cards', type: 'array', of: [
+            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
           ]
         })
       ]

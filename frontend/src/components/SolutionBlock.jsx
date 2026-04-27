@@ -13,8 +13,8 @@ export default function SolutionBlock({
   image,
   imagePosition = "right", // "left" or "right"
   variant = "card", // "card" or "section"
-  darkMode = false,
   className = "",
+  isInverted = false,
   services = [],
 }) {
   const imgUrl = image ? urlFor(image) : null;
@@ -22,6 +22,7 @@ export default function SolutionBlock({
 
   // Logic for conditional styling
   const isCard = variant === "card";
+  const textColor = isInverted ? "text-white" : "text-[var(--text)]";
 
   const containerClasses = `
     w-full max-w-[1440px] mx-auto 
@@ -53,19 +54,19 @@ export default function SolutionBlock({
 
         {/* Content Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <h2 className="heading-primary mb-8">
+          <h2 className={`heading-primary mb-8 ${textColor}`}>
             {title}
           </h2>
 
           <div className="space-y-6 text-neutral-600 text-[18px] leading-[1.75rem] text-[var(--text)]">
             {Array.isArray(description) ? (
               description.map((para, i) => (
-                <p key={i} className="text-[var(--text)]">{para}</p>
+                <p key={i} className={textColor}>{para}</p>
               ))
             ) : (
               <p
                 dangerouslySetInnerHTML={{ __html: description }}
-                className="text-[var(--text)]"
+                className={textColor}
               ></p>
             )}
 

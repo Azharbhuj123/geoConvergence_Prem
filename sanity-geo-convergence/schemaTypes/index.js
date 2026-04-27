@@ -19,9 +19,11 @@ import whyPage from '../schemas/whyPage'
 import blog from '../schemas/Blog'
 import blogDetails from '../schemas/blogDetails'
 import careerDetails from '../schemas/careerDetails'
+import solutionPage from '../schemas/solutionPage'
 
 export const schemaTypes = [
   hero,
+  solutionPage,
   services,
   landingPage,
   scan2Twin,

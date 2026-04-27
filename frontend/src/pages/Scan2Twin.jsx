@@ -22,8 +22,6 @@ export default function Scan2Twin() {
   const pageData = data || scan2TwinPageData;
   const isDark = theme === "dark";
 
-  console.log(pageData.whatIs.buttonText ? "Yes" : "No");
-
   return (
     <div
       className={isDark ? "dark" : ""}
@@ -73,19 +71,6 @@ export default function Scan2Twin() {
           />
         )}
 
-        {/* Transforming */}
-        {pageData.transforming && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
-            <SolutionBlock
-              title={pageData.transforming.title}
-              description={pageData.transforming.description}
-              image={pageData.transforming.image}
-              imagePosition="right"
-              darkMode={isDark}
-              variant="section"
-            />
-          </section>
-        )}
 
         {/* Why Scan2Twin */}
         {pageData.why && (
@@ -95,7 +80,7 @@ export default function Scan2Twin() {
               description={pageData.why.description}
               button={
                 pageData.why.buttonText
-                  ? { text: pageData.why.buttonText, link: "#" }
+                  ? { text: pageData.why.text, link: "#" }
                   : null
               }
               highlightText={"It delivers:"}

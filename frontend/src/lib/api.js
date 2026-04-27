@@ -9,8 +9,11 @@ export const fetchLandingPage = async () => {
   const query = `*[_type == "landingPage"][0]{
     "hero": hero,
     "services": services,
+    "projectsMap": projectsMap,
     "stats": stats,
+    "clients": clients,
     "featuredProducts": featuredProducts,
+    "events": events,
     "testimonials": testimonials,
     "finalCta": finalCta
   }`;

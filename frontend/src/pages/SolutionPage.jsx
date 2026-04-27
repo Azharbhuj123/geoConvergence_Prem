@@ -52,7 +52,8 @@ export default function SolutionsPage() {
                             button={{ text: solution.buttonText, link: "#" }}
                             image={solution.image}
                             imagePosition={index % 2 === 0 ? "left" : "right"}
-                            darkMode={theme === 'dark'}
+                            className={index === 0 ? "bg-[#002052]" : ""}
+                            isInverted={index === 0}
                         />
                     ))}
                 </section>

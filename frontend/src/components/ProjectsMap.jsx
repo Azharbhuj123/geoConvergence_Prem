@@ -1,6 +1,6 @@
 import Button from "./UI/Button";
 
-export default function ProjectsMap({ darkMode }) {
+export default function ProjectsMap({ darkMode, title, description, button }) {
   return (
     <section
       className={`pb-20 lg:pb-24 px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : ''}`}
@@ -14,26 +14,30 @@ export default function ProjectsMap({ darkMode }) {
                 }`}
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
-              Projects Across the United States
+              {title || "Projects Across the United States"}
             </h2>
             <p className={`text-lg font-Inter leading-7 ${darkMode ? 'text-slate-300' : 'text-slate-500'}`}>
-              Scale and precision delivered coast to coast.
+              {description || "Scale and precision delivered coast to coast."}
             </p>
           </div>
-          <Button className="px-8 py-4 w-45 h-14 relative   inline-flex flex-col justify-center items-center" >
-            View Map
-          </Button>
+          {button && (
+            <a href={button?.link}>
+              <Button className="px-8 py-4 w-45 h-14 relative   inline-flex flex-col justify-center items-center" >
+                {button?.text}
+              </Button>
+            </a>
+          )}
         </div>
 
         {/* Map placeholder */}
         <div
-          className={`w-full rounded-[20px] overflow-hidden flex items-center justify-center relative ${darkMode ? 'bg-slate-800' : 'bg-zinc-200'
+          className={`w-full rounded-[20px] overflow-hidden flex items-center justify-center relative ${darkMode ? 'bg-slate-800' : 'bg-slate-800'
             }`}
           style={{ height: 'clamp(280px, 40vw, 734px)' }}
         >
           {/* US Map SVG silhouette placeholder */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20">
-            <svg viewBox="0 0 900 500" className="w-4/5 h-4/5" fill="currentColor">
+            <svg viewBox="0 0 900 500" className="w-8/5 h-8/5" fill="currentColor">
               <path d="M150,150 Q200,100 300,120 L400,80 Q500,60 600,100 L700,90 Q800,100 850,150 L870,250 Q880,320 820,360 L750,380 Q700,400 650,390 L600,420 Q550,440 480,420 L420,400 Q370,390 320,410 L270,400 Q220,390 200,360 L160,320 Q130,280 140,230 Z" className={darkMode ? 'text-slate-600' : 'text-slate-400'} />
             </svg>
           </div>

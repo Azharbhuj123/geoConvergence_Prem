@@ -51,51 +51,14 @@ export default defineType({
         defineField({ name: 'sectionTitle', type: 'string' }),
         defineField({ name: 'sectionSubtitle', type: 'text' }),
         defineField({
-          name: 'cards',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({ name: 'title', type: 'string' }),
-                defineField({ name: 'description', type: 'text' }),
-                defineField({
-                  name: 'image',
-                  type: 'image',
-                  options: { hotspot: true }
-                })
-              ]
-            }
-          ],
-          validation: Rule => Rule.min(1).max(6)
-        })
-      ]
-    }),
-
-    // ==================== STATS SECTION ====================
-    defineField({
-      name: 'stats',
-      title: 'Stats / Counter Section',
-      type: 'array',
-      of: [
-        {
+          name: 'button',
           type: 'object',
+          title: 'Primary Button',
           fields: [
-            defineField({ name: 'number', type: 'string' }),
-            defineField({ name: 'label', type: 'string' })
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
           ]
-        }
-      ]
-    }),
-
-    // ==================== FEATURED PRODUCTS ====================
-    defineField({
-      name: 'featuredProducts',
-      title: 'Featured Products',
-      type: 'object',
-      fields: [
-        defineField({ name: 'sectionTitle', type: 'string' }),
-        defineField({ name: 'sectionSubtitle', type: 'text' }),
+        }),
         defineField({
           name: 'cards',
           type: 'array',
@@ -118,21 +81,140 @@ export default defineType({
       ]
     }),
 
+    // ==================== Projects / ProjectMAp ====================
+    defineField({
+      name: 'projectsMap',
+      title: 'Projects Map',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'description', type: 'text' }),
+        defineField({
+          name: 'button',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        }),
+      ]
+    }),
+
+    // ==================== STATS SECTION ====================
+    defineField({
+      name: 'stats', title: 'Stats', type: 'object',
+      fields: [
+        defineField({
+          name: 'cards', type: 'array', of: [
+            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
+          ]
+        })
+      ]
+    }),
+
+    // ==================== Clients SECTION ====================
+    defineField({
+      name: 'clients', title: 'Our Clients', type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'subTitle', type: 'text' }),
+        defineField({
+          name: 'cards', type: 'array', of: [
+            { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'subtitle', type: 'string', }), defineField({ name: 'logo', type: 'image', options: { hotspot: true } })] }
+          ]
+        })
+      ]
+    }),
+
+    // ==================== FEATURED PRODUCTS ====================
+    defineField({
+      name: 'featuredProducts',
+      title: 'Featured Products',
+      type: 'object',
+      fields: [
+        defineField({ name: 'sectionTitle', type: 'string' }),
+        defineField({ name: 'sectionSubtitle', type: 'text' }),
+        defineField({
+          name: 'button',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        }),
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
+                defineField({
+                  name: 'image',
+                  type: 'image',
+                  options: { hotspot: true }
+                })
+              ]
+            }
+          ],
+          validation: Rule => Rule.min(1).max(6)
+        })
+      ]
+    }),
+
+    // ==================== Events ====================
+    defineField({
+      name: 'events',
+      title: 'Events',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'description', type: 'text' }),
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'tag', type: 'string' }),
+                defineField({ name: 'date', type: 'string' }),
+                defineField({ name: 'location', type: 'string' }),
+                defineField({ name: 'image', type: 'image' })
+              ]
+            }
+          ]
+        }),
+      ]
+    }),
     // ==================== TESTIMONIALS ====================
     defineField({
       name: 'testimonials',
       title: 'Testimonials',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({ name: 'name', type: 'string' }),
-            defineField({ name: 'position', type: 'string' }),
-            defineField({ name: 'quote', type: 'text' }),
-            defineField({ name: 'image', type: 'image' })
-          ]
-        }
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'subtitle', type: 'text' }),
+        // defineField({
+        //   name: 'cards',
+        //   type: 'array',
+        //   of: [
+        //     {
+        //       type: 'object',
+        //       fields: [
+        //         defineField({ name: 'name', type: 'string' }),
+        //         defineField({ name: 'position', type: 'string' }),
+        //         defineField({ name: 'quote', type: 'text' }),
+        //         defineField({ name: 'image', type: 'image' })
+        //       ]
+        //     }
+        //   ]
+        // }),
       ]
     }),
 

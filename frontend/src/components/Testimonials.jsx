@@ -28,21 +28,21 @@ const testimonials = [
 function StarRating() {
   return (
     <div className="flex gap-1">
-      {[1,2,3,4,5].map(i => (
+      {[1, 2, 3, 4, 5].map(i => (
         <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       ))}
     </div>
   )
 }
 
-export default function Testimonials({ darkMode }) {
+export default function Testimonials({ darkMode, pageData }) {
   const [active, setActive] = useState(1)
   const { theme } = useThemeStore();
 
   return (
-    
+
     <section
       className={`${theme === 'dark' ? 'dark' : ''} pb-20 lg:pb-24 px-6 sm:px-8 lg:px-10 xl:px-14  bg-[var(--bg)] `}
     >
@@ -50,37 +50,33 @@ export default function Testimonials({ darkMode }) {
         {/* Header */}
         <div className="flex flex-col items-center gap-7 mb-14">
           <h2
-            className={`text-center font-bold font-['Titillium_Web'] capitalize leading-tight ${
-              darkMode ? 'text-slate-100' : 'text-slate-900'
-            }`}
+            className={`text-center font-bold font-['Titillium_Web'] capitalize leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
+              }`}
             style={{ fontSize: 'clamp(2.5rem, 3.5vw, 3rem)' }}
           >
-            What Our Customers Say
+            {pageData?.title || "What Our Customers Say"}
           </h2>
-          <p className={`text-center text-lg sm:text-xl font-Inter max-w-[678px] ${
-            darkMode ? 'text-slate-400' : 'text-slate-500'
-          }`}>
-            Organizations across the US trust geoConvergence to power their facility intelligence.
+          <p className={`text-center text-lg sm:text-xl font-Inter max-w-[678px] ${darkMode ? 'text-slate-400' : 'text-slate-500'
+            }`}>
+            {pageData?.subtitle || "Organizations across the US trust geoConvergence to power their facility intelligence."}
           </p>
         </div>
 
         {/* Cards */}
-          <div className="relative flex flex-col lg:flex-row lg:justify-between lg:items-end gap-5">
+        <div className="relative flex flex-col lg:flex-row lg:justify-between lg:items-end gap-5">
           {testimonials.map((t, i) => {
             const isCenter = i === active
             return (
               <div
                 key={t.name}
                 onClick={() => setActive(i)}
-                className={`cursor-pointer transition-all duration-400 rounded-[20px] p-6 sm:p-8 flex flex-col gap-5 ${
-                  isCenter
-                    ? 'shadow-[0px_9px_29.7px_0px_rgba(0,0,0,0.25)] scale-100 md:scale-105 z-10'
-                    : 'opacity-70 scale-95 md:scale-100'
-                } ${
-                  darkMode
+                className={`cursor-pointer transition-all duration-400 rounded-[20px] p-6 sm:p-8 flex flex-col gap-5 ${isCenter
+                  ? 'shadow-[0px_9px_29.7px_0px_rgba(0,0,0,0.25)] scale-100 md:scale-105 z-10'
+                  : 'opacity-70 scale-95 md:scale-100'
+                  } ${darkMode
                     ? isCenter ? 'bg-slate-800' : 'bg-slate-900'
                     : 'bg-white'
-                }`}
+                  }`}
                 style={{
                   flex: isCenter ? '1.2' : '1',
                   minWidth: '0',
@@ -118,9 +114,8 @@ export default function Testimonials({ darkMode }) {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                i === active ? 'bg-blue-700 w-7' : darkMode ? 'bg-slate-700' : 'bg-slate-300'
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === active ? 'bg-blue-700 w-7' : darkMode ? 'bg-slate-700' : 'bg-slate-300'
+                }`}
             />
           ))}
         </div>
