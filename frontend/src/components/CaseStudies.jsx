@@ -47,9 +47,9 @@ export default function CaseStudies({ data, darkMode }) {
                 )}
 
                 {/* TAG BADGE */}
-                <div className="absolute bottom-6 left-6 bg-[#0055FE] text-white text-sm font-bold px-4 py-2 rounded-lg uppercase tracking-wider shadow-md">
-                  {i === 0 ? "UPDATED" : "NEW ITEM"}
-                </div>
+                {/* <div className="absolute bottom-6 left-6 bg-[#0055FE] text-white text-sm font-bold px-4 py-2 rounded-lg uppercase tracking-wider shadow-md">
+                  {i === 0 ? "06 APR 2026" : "19 Feb 2026"}
+                </div> */}
               </div>
 
               {/* CONTENT */}
@@ -62,8 +62,8 @@ export default function CaseStudies({ data, darkMode }) {
                   {study.description}
                 </p>
 
-                <button className="text-[#0055FE] text-base font-bold hover:text-blue-700 transition-colors duration-300 flex items-center gap-2 group">
-                  Read More
+                <button className="text-[var(--text-)] underline text-base font-bold hover:text-blue-700 transition-colors duration-300 flex items-center gap-2 group">
+                  Know More
                   <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

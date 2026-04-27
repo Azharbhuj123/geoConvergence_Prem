@@ -89,7 +89,21 @@ export const indoorMapsPageData = {
       },
     ]
   },
-
+  capabilities: {
+    title: "Capabilities",
+    description: "Deliver precise indoor navigation with real-time positioning and intelligent route guidance designed for complex environments.",
+    highlightText: "Capabilities",
+    listItems: [
+      "Real-Time Indoor Navigation: Step-by-step directions inside complex buildings using Wi-Fi, Bluetooth, and sensor fusion for centimeter-level accuracy.",
+      "Wayfinding & Routing: Custom indoor routing algorithms for optimal paths to destinations, emergency evacuations, and asset tracking.",
+      "Location-Based Services: Context-aware information delivery including indoor geofencing, POI tagging, and personalized alerts.",
+      "Dynamic Space Visualization: Interactive floor plans with real-time occupancy data, room status, and facility management overlays."
+    ],
+    image: {
+      _type: "image",
+      asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+    }
+  },
   finalCta: {
     title: "Ready to define your digital dimension?",
     subtitle: "Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.",

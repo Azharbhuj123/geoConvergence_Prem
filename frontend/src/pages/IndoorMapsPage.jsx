@@ -26,7 +26,7 @@ export default function IndoorMapsPage() {
   // Parse Key Features into Stats component format
   const parsedStatsData = pageData.keyFeatures?.cards?.map(card => {
     const valueStr = card?.number?.replace(/[^0-9]/g, '');
-    const value = parseInt(valueStr) || 0;
+    const value = parseInt(valueStr) || null;
     const suffix = card?.number?.replace(/[0-9]/g, '');
     return {
       value,
@@ -100,6 +100,23 @@ export default function IndoorMapsPage() {
             button={false}
             className={'!pt-0'}
           />
+        )}
+
+
+        {/* Capabilities */}
+        {pageData.capabilities && (
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+            <SolutionBlock
+              title={pageData.capabilities.title}
+              description={pageData.capabilities.description}
+              image={pageData.capabilities.image}
+              highlightText={pageData.capabilities.highlightText}
+              listItems={pageData.capabilities.listItems}
+              imagePosition="right"
+              darkMode={isDark}
+              variant="section"
+            />
+          </section>
         )}
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />

@@ -26,7 +26,7 @@ export default function ThreeDModelingPage() {
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
     const valueStr = card.number.replace(/[^0-9]/g, '');
-    const value = parseInt(valueStr) || 0;
+    const value = parseInt(valueStr) || null;
     const suffix = card.number.replace(/[0-9]/g, '');
     return {
       value,

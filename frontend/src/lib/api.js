@@ -69,6 +69,7 @@ export const fetchIndoorMapsPage = async () => {
     howItWorks,
     keyFeatures,
     useCases,
+    capabilities,
     finalCta
   }`;
   return client.fetch(query);

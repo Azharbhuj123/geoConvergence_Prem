@@ -26,7 +26,7 @@ export default function TeamLeadership({ data, darkMode }) {
   return (
     <section className={`py-20 px-6 sm:px-10 xl:px-14 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
       <div className="max-w-[1440px] mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 flex flex-col items-center">
           <h2 className={`heading-primary mb-6`}>
             {title}
           </h2>
@@ -39,13 +39,13 @@ export default function TeamLeadership({ data, darkMode }) {
         <div className="relative group">
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory no-scrollbar"
+            className="flex flex-wrap justify-center align-center overflow-x-auto gap-8 pb-8 snap-x snap-mandatory no-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {members?.map((member, index) => (
               <div
                 key={index}
-                className={`flex-shrink-0 w-[300px] md:w-[360px] snap-start p-6 rounded-3xl shadow-xl ${darkMode ? 'bg-slate-900 border border-slate-800' : 'bg-[#f4f6fb]'}`}
+                className={`flex-shrink-0 w-[300px] sm:w-[250px] xl:w-[360px] snap-start p-6 rounded-3xl shadow-xl ${darkMode ? 'bg-slate-900 border border-slate-800' : 'bg-[#f4f6fb]'}`}
               >
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
                   {member.image ? (

@@ -128,6 +128,35 @@ export default defineType({
       ]
     }),
 
+    // ==================== CAPABILITIES ====================
+    defineField({
+      name: 'capabilities',
+      title: 'Capabilities',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({
+          name: 'description',
+          type: 'array',
+          of: [{ type: 'string' }]
+        }),
+        defineField({
+          name: 'highlightText',
+          type: 'string'
+        }),
+        defineField({
+          name: 'listItems',
+          type: 'array',
+          of: [{ type: 'string' }]
+        }),
+        defineField({
+          name: 'image',
+          type: 'image',
+          options: { hotspot: true }
+        })
+      ]
+    }),
+
     // ==================== FINAL CTA ====================
     defineField({
       name: 'finalCta',
