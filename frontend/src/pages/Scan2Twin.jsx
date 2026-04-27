@@ -53,7 +53,7 @@ export default function Scan2Twin() {
 
         {/* Events (Inverted Background/Theme logic from user snippet) */}
         {pageData.events && (
-          <section className={`bg-[var(--bg)]`}>
+          <section className={`bg-[var(--bg)] pt-10`}>
             <Events darkMode={theme === "dark"} eventsData={pageData.events} />
           </section>
         )}
