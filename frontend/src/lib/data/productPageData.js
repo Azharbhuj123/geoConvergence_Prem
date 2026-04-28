@@ -72,12 +72,16 @@ export const ProductPageData = {
         description: "Powerful tools designed to handle specific tasks with precision and efficiency. Enhance your workflow with advanced features built to deliver accurate and reliable results.",
         cards: [
             {
+                title: "GeoPrinter",
+                description: "Transform digital data into real-world precision with GeoPrinter. Create location-based outputs that bring accuracy and efficiency to every project.",
                 image: {
                     _type: "image",
                     asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
                 },
             },
             {
+                title: "ReservAssist",
+                description: "Simplify room bookings with a fast and reliable reservation system. RoomReserv helps users check availability, secure spaces instantly, and manage bookings without any hassle.",
                 image: {
                     _type: "image",
                     asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }

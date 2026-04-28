@@ -20,10 +20,12 @@ import blog from '../schemas/Blog'
 import blogDetails from '../schemas/blogDetails'
 import careerDetails from '../schemas/careerDetails'
 import solutionPage from '../schemas/solutionPage'
+import productPage from '../schemas/productPage'
 
 export const schemaTypes = [
   hero,
   solutionPage,
+  productPage,
   services,
   landingPage,
   scan2Twin,

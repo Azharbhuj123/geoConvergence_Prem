@@ -45,6 +45,7 @@ export const fetchProductPage = async () => {
       button,
       image
     },
+    events,
     finalCta
   }`;
   return client.fetch(query);

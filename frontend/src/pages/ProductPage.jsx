@@ -22,6 +22,9 @@ export default function ProductPage() {
     // Use fetched data or fallback
     const pageData = data || ProductPageData;
 
+    console.log("pageData", pageData);
+
+
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
@@ -48,7 +51,8 @@ export default function ProductPage() {
                             key={index}
                             title={solution.title}
                             description={solution.description}
-                            button={{ text: solution.buttonText, link: "#" }}
+                            description2={solution.description2}
+                            button={{ text: solution?.button?.text, link: solution?.button?.link }}
                             image={solution.image}
                             imagePosition={index % 2 === 0 ? "left" : "right"}
                             darkMode={theme === 'dark'}

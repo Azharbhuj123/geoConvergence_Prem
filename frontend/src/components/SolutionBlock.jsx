@@ -88,7 +88,7 @@ export default function SolutionBlock({
           {description2 && (
             <p
               dangerouslySetInnerHTML={{ __html: description2 }}
-              className="text-[var(--text)] font-Inter"
+              className="text-[var(--text)] font-Inter mt-[10px]"
             ></p>
           )}
 
