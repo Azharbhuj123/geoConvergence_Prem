@@ -1,4 +1,5 @@
 import Button from "./UI/Button";
+import ProjectMap from "../assets/projectMap.png"
 
 export default function ProjectsMap({ darkMode, title, description, button }) {
   return (
@@ -37,9 +38,7 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
         >
           {/* US Map SVG silhouette placeholder */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20">
-            <svg viewBox="0 0 900 500" className="w-8/5 h-8/5" fill="currentColor">
-              <path d="M150,150 Q200,100 300,120 L400,80 Q500,60 600,100 L700,90 Q800,100 850,150 L870,250 Q880,320 820,360 L750,380 Q700,400 650,390 L600,420 Q550,440 480,420 L420,400 Q370,390 320,410 L270,400 Q220,390 200,360 L160,320 Q130,280 140,230 Z" className={darkMode ? 'text-slate-600' : 'text-slate-400'} />
-            </svg>
+            <img src={ProjectMap} alt="" srcset="" />
           </div>
 
           {/* Map pins */}
