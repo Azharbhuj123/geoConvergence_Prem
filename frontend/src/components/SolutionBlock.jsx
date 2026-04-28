@@ -61,23 +61,23 @@ export default function SolutionBlock({
           <div className="space-y-6 text-neutral-600 text-[18px] leading-[1.75rem] text-[var(--text)]">
             {Array.isArray(description) ? (
               description.map((para, i) => (
-                <p key={i} className={textColor}>{para}</p>
+                <p key={i} className={`${textColor} font-Inter`}>{para}</p>
               ))
             ) : (
               <p
                 dangerouslySetInnerHTML={{ __html: description }}
-                className={textColor}
+                className={`${textColor} font-Inter`}
               ></p>
             )}
 
             {highlightText && (
-              <p className="font-semibold text-[var(--text)]">
+              <p className="font-semibold text-[var(--text)] font-Inter">
                 {highlightText}
               </p>
             )}
 
             {listItems && listItems.length > 0 && (
-              <ul className="list-disc pl-6 space-y-2 text-[var(--text)]">
+              <ul className="list-disc pl-6 space-y-2 text-[var(--text)] font-Inter">
                 {listItems.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
@@ -88,7 +88,7 @@ export default function SolutionBlock({
           {description2 && (
             <p
               dangerouslySetInnerHTML={{ __html: description2 }}
-              className="text-[var(--text)] mt-[20px]"
+              className="text-[var(--text)] font-Inter"
             ></p>
           )}
 
@@ -96,7 +96,7 @@ export default function SolutionBlock({
             <div className="mt-[20px]">
               <ul className="space-y-2">
                 {services.map((service, i) => (
-                  <li key={i} className="text-[var(--text)] list-disc">{service.title}</li>
+                  <li key={i} className="text-[var(--text)] list-disc font-Inter">{service.title}</li>
                 ))}
               </ul>
             </div>

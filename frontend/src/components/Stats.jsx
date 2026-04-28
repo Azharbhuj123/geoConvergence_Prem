@@ -30,8 +30,8 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
       `}
     >
       <div
-        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-slate-100`}
-        style={{ fontSize: "clamp(1rem, 3vw, 2rem)" }}
+        className={`heading-primary`}
+      // style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
       >
         {value}{suffix}
       </div>

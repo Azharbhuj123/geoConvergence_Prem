@@ -28,6 +28,7 @@
   --card: #1e293b;
   --card-hover: #334155;
 }
+
 @layer components {
   .heading-primary {
     @apply text-2xl md:text-4xl xl:text-[2.25rem] font-bold font-['Titillium_Web'] text-[var(--heading)];
@@ -61,10 +62,8 @@ body {
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4 h5 h6 p li {
+p,
+li {
   font-family: "Inter", sans-serif;
 }
 
@@ -82,9 +81,11 @@ h4 h5 h6 p li {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 3px;
@@ -97,7 +98,7 @@ h4 h5 h6 p li {
 }
 
 /* ─── Marquee pause on hover ─── */
-.marquee-wrapper:hover > div {
+.marquee-wrapper:hover>div {
   animation-play-state: paused;
 }
 
@@ -107,6 +108,7 @@ h4 h5 h6 p li {
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
+
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);

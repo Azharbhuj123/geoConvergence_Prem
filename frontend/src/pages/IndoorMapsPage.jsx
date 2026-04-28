@@ -99,6 +99,7 @@ export default function IndoorMapsPage() {
             variant="default"
             button={false}
             className={'!pt-0'}
+            length={pageData?.useCases?.cards?.length}
           />
         )}
 

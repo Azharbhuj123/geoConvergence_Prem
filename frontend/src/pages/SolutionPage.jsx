@@ -22,6 +22,9 @@ export default function SolutionsPage() {
     // Use fetched data or fallback
     const pageData = data || solutionsPageData;
 
+    console.log(pageData);
+
+
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
@@ -44,13 +47,13 @@ export default function SolutionsPage() {
 
                     {/* Solution Blocks */}
 
-                    {pageData.solutions.map((solution, index) => (
+                    {pageData?.solutions?.map((solution, index) => (
                         <SolutionBlock
                             key={index}
-                            title={solution.title}
-                            description={solution.description}
-                            button={{ text: solution.buttonText, link: "#" }}
-                            image={solution.image}
+                            title={solution?.title}
+                            description={solution?.description}
+                            button={{ text: solution?.button?.text, link: solution?.button?.link }}
+                            image={solution?.image}
                             imagePosition={index % 2 === 0 ? "left" : "right"}
                             className={index === 0 ? "bg-[#002052]" : ""}
                             isInverted={index === 0}

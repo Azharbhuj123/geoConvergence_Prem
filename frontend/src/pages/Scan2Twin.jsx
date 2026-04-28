@@ -10,6 +10,7 @@ import Services from "../components/Services";
 import Events from "../components/Events";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import Transforming from "../components/Transforming";
 
 export default function Scan2Twin() {
   const { theme, toggleTheme } = useThemeStore();
@@ -21,6 +22,8 @@ export default function Scan2Twin() {
 
   const pageData = data || scan2TwinPageData;
   const isDark = theme === "dark";
+
+  console.log(pageData)
 
   return (
     <div
@@ -54,7 +57,11 @@ export default function Scan2Twin() {
         {/* Events (Inverted Background/Theme logic from user snippet) */}
         {pageData.events && (
           <section className={`bg-[var(--bg)] pt-10`}>
-            <Events darkMode={theme === "dark"} eventsData={pageData.events} />
+            <Transforming
+              title={pageData?.events?.title || "From Reality Capture to Operational Intelligence"}
+              description={pageData?.events?.description}
+              cards={pageData?.events?.cards}
+            />
           </section>
         )}
 
@@ -67,6 +74,7 @@ export default function Scan2Twin() {
               sectionTitle: pageData.howItWorks.title,
               sectionSubtitle: pageData.howItWorks.subtitle,
             }}
+            length={pageData.howItWorks.cards ? pageData?.howItWorks?.cards?.length : 3}
             variant="blue"
           />
         )}
@@ -100,6 +108,7 @@ export default function Scan2Twin() {
             services={pageData.useCases}
             variant="default"
             button={false}
+            length={pageData?.useCases?.cards?.length}
           />
         )}
 

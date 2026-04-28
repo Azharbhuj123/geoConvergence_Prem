@@ -48,8 +48,7 @@ function LogoItem({ item, darkMode }) {
       <img
         src={item.logo}
         alt={item.title}
-        className={`w-16 h-16 object-contain ${darkMode ? 'brightness-0 invert opacity-80' : ''
-          }`}
+        className={"w-16 h-16 object-contain"}
       />
 
       <div className="leading-tight">
@@ -92,7 +91,7 @@ export default function Clients({
 
   return (
     <section
-      className={`pb-8 overflow-hidden border-y ${darkMode
+      className={`py-4 overflow-hidden border-y ${darkMode
         ? 'bg-slate-900 border-slate-800'
         : 'bg-white border-gray-100'
         }`}
