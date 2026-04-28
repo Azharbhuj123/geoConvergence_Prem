@@ -69,7 +69,21 @@ export const ProductPageData = {
 
     events: {
         title: "Specialty Tools",
-        description: "Powerful tools designed to handle specific tasks with precision and efficiency. Enhance your workflow with advanced features built to deliver accurate and reliable results."
+        description: "Powerful tools designed to handle specific tasks with precision and efficiency. Enhance your workflow with advanced features built to deliver accurate and reliable results.",
+        cards: [
+            {
+                image: {
+                    _type: "image",
+                    asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+                },
+            },
+            {
+                image: {
+                    _type: "image",
+                    asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+                },
+            }
+        ]
     },
 
     finalCta: {

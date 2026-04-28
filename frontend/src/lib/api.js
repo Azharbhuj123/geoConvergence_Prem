@@ -24,6 +24,7 @@ export const fetchLandingPage = async () => {
 export const fetchSolutionsPage = async () => {
   const query = `*[_type == "solutionsPage"][0]{
     hero,
+    servicesIntro,
     solutions[]{
       title,
       description,
@@ -37,6 +38,7 @@ export const fetchSolutionsPage = async () => {
 export const fetchProductPage = async () => {
   const query = `*[_type == "productPage"][0]{
     hero,
+    servicesIntro,
     solutions[]{
       title,
       description,

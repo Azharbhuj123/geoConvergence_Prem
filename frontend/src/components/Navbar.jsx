@@ -29,11 +29,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
       {/* Main navbar */}
       <nav
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.25)]"
-            : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
-        } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
+          ? "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.25)]"
+          : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
+          } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
         <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-5 flex justify-between items-center">
           {/* Logo */}
@@ -47,9 +46,8 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${
-                  darkMode ? "text-slate-300" : "text-neutral-600"
-                }`}
+                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${darkMode ? "text-slate-300" : "text-neutral-600"
+                  }`}
               >
                 {link.name}
               </Link>
@@ -68,15 +66,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className={`w-14 h-6 rounded-full transition-all duration-300 relative flex items-center px-1  ${
-                darkMode ? "bg-white" : "bg-blue-700/40"
-              }`}
+              className={`w-14 h-6 rounded-full transition-all duration-300 relative flex items-center px-1  ${darkMode ? "bg-white" : "bg-blue-700/40"
+                }`}
               aria-label="Toggle dark mode"
             >
               <span
-                className={`w-5 h-5 rounded-full   shadow-sm transition-transform duration-300 flex items-center bg-blue-700 justify-center text-xs ${
-                  darkMode ? "translate-x-7" : "translate-x-0"
-                }`}
+                className={`w-5 h-5 rounded-full   shadow-sm transition-transform duration-300 flex items-center bg-blue-700 justify-center text-xs ${darkMode ? "translate-x-7" : "translate-x-0"
+                  }`}
               >
                 {darkMode ? "" : ""}
               </span>
@@ -87,14 +83,12 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <div className="flex xl:hidden items-center gap-3">
             <button
               onClick={toggleDarkMode}
-              className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${
-                darkMode ? "bg-blue-700" : "bg-blue-200"
-              }`}
+              className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${darkMode ? "bg-blue-700" : "bg-blue-200"
+                }`}
             >
               <span
-                className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
-                  darkMode ? "translate-x-6" : "translate-x-0"
-                }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${darkMode ? "translate-x-6" : "translate-x-0"
+                  }`}
               />
             </button>
             <button
@@ -122,19 +116,17 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         {/* Mobile menu */}
         {menuOpen && (
           <div
-            className={`xl:hidden border-t px-6 py-4 flex flex-col gap-4 ${
-              darkMode
-                ? "bg-slate-900 border-slate-800"
-                : "bg-white border-slate-100"
-            }`}
+            className={`xl:hidden border-t px-6 py-4 flex flex-col gap-4 ${darkMode
+              ? "bg-slate-900 border-slate-800"
+              : "bg-white border-slate-100"
+              }`}
           >
             {links.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-base font-Inter py-1 ${
-                  darkMode ? "text-slate-300" : "text-neutral-600"
-                }`}
+                className={`text-base font-Inter py-1 ${darkMode ? "text-slate-300" : "text-neutral-600"
+                  }`}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.name}
