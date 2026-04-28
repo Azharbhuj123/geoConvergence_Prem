@@ -4,21 +4,21 @@ import logo from '../assets/footer_logo.png'
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
 
- const services = [
-  { name: 'Scan2Twin', path: '/scan2twin' },
-  { name: 'Indoor Mapping', path: '/indoormaps' },
-  { name: 'LiDAR Scanning', path: '/lidar-scanning' },
-  { name: '3D Modeling', path: '/3d-modeling' },
-  { name: 'ArcGIS Indoors Implementation', path: '/arcgis-indoors' },
-]
+  const services = [
+    { name: 'Scan2Twin', path: '/scan2twin' },
+    { name: 'Indoor Mapping', path: '/indoormaps' },
+    { name: 'LiDAR Scanning', path: '/lidar-scanning' },
+    { name: '3D Modeling', path: '/3d-modeling' },
+    { name: 'ArcGIS Indoors Implementation', path: '/arcgis-indoors' },
+  ]
 
-const company = [
-  { name: 'Why geoConvergence', path: '/why-geoconvergence' },
-  { name: 'Products', path: '/products' },
-  { name: 'Careers', path: '/careers' },
-  { name: 'Resources', path: '/resources' },
-  { name: 'Contact Us', path: '/contact' },
-]
+  const company = [
+    { name: 'Why geoConvergence', path: '/why' },
+    { name: 'Products', path: '/products' },
+    { name: 'Careers', path: '/careers' },
+    { name: 'Resources', path: '/resources' },
+    { name: 'Contact Us', path: '/contact' },
+  ]
   return (
     <footer className="dark bg-[var(--bg)] px-6 sm:px-8 lg:px-14 text-white">
       <div className="max-w-[1440px] mx-auto pt-14 pb-8 flex flex-col gap-7">
