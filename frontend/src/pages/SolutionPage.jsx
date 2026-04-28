@@ -22,8 +22,6 @@ export default function SolutionsPage() {
     // Use fetched data or fallback
     const pageData = data || solutionsPageData;
 
-    console.log(pageData);
-
 
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
@@ -39,7 +37,7 @@ export default function SolutionsPage() {
                 />
 
                 {/* Services Intro */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
                     <Services_Description
                         theme={theme}
                         pageData={pageData.servicesIntro}

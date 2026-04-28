@@ -40,18 +40,18 @@ export default function WhyPage() {
                 />
 
                 {/* Solution Block */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-[6.25rem]`}>
-                <SolutionBlock
-                    title={pageData.solutionBlock.title}
-                    description={pageData.solutionBlock.description}
-                    highlightText={pageData.solutionBlock.highlightText}
-                    listItems={pageData.solutionBlock.listItems}
-                    button={null}
-                    image={pageData.solutionBlock.image}
-                    imagePosition="left"
-                    darkMode={isDark}
-                    variant='section'
-                />
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+                    <SolutionBlock
+                        title={pageData.solutionBlock.title}
+                        description={pageData.solutionBlock.description}
+                        highlightText={pageData.solutionBlock.highlightText}
+                        listItems={pageData.solutionBlock.listItems}
+                        button={null}
+                        image={pageData.solutionBlock.image}
+                        imagePosition="left"
+                        darkMode={isDark}
+                        variant='section'
+                    />
                 </section>
 
                 {/* Certifications */}
@@ -61,8 +61,8 @@ export default function WhyPage() {
                 />
 
                 {/* Clients Section */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-[6.25rem]`}>
-                <Clients darkMode={isDark} />
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+                    <Clients darkMode={isDark} />
                 </section>
 
                 {/* Contract Vehicles */}
@@ -84,11 +84,11 @@ export default function WhyPage() {
                 />
 
                 {/* Final CTA */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]   py-[5rem]`}>
-                <CTA
-                    darkMode={isDark}
-                    CtaData={pageData.finalCta}
-                />
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]   pt-[2rem]`}>
+                    <CTA
+                        darkMode={isDark}
+                        CtaData={pageData.finalCta}
+                    />
                 </section>
             </main>
 

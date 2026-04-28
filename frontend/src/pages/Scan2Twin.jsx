@@ -37,12 +37,12 @@ export default function Scan2Twin() {
           darkMode={isDark}
           hero={pageData.hero}
           title={pageData.hero?.title || "Scan2Twin"}
-          minHeight="min-h-[550px]"
+          minHeight="min-h-[650px]"
         />
 
         {/* What is Scan2Twin */}
         {pageData.whatIs && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-10`}>
             <SolutionBlock
               title={pageData.whatIs.title}
               description={pageData.whatIs.description}
@@ -56,9 +56,9 @@ export default function Scan2Twin() {
 
         {/* Events (Inverted Background/Theme logic from user snippet) */}
         {pageData.events && (
-          <section className={`bg-[var(--bg)] pt-10`}>
+          <section className={`bg-[var(--bg)]`}>
             <Transforming
-              title={pageData?.events?.title || "From Reality Capture to Operational Intelligence"}
+              title={pageData?.events?.title}
               description={pageData?.events?.description}
               cards={pageData?.events?.cards}
             />
@@ -82,7 +82,7 @@ export default function Scan2Twin() {
 
         {/* Why Scan2Twin */}
         {pageData.why && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-10`}>
             <SolutionBlock
               title={pageData.why.title}
               description={pageData.why.description}
@@ -109,6 +109,7 @@ export default function Scan2Twin() {
             variant="default"
             button={false}
             length={pageData?.useCases?.cards?.length}
+            className="!py-0 !pb-20"
           />
         )}
 

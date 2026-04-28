@@ -24,7 +24,7 @@ export default function TeamLeadership({ data, darkMode }) {
   }, []);
 
   return (
-    <section className={`py-20 px-6 sm:px-10 xl:px-14 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
+    <section className={`pt-20 px-6 sm:px-10 xl:px-14 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
       <div className="max-w-[1440px] mx-auto">
         <div className="mb-16 flex flex-col items-center">
           <h2 className={`heading-primary mb-6`}>
@@ -76,7 +76,7 @@ export default function TeamLeadership({ data, darkMode }) {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-4">
+          {/* <div className="flex justify-center gap-2 mt-4">
             {members?.map((_, i) => {
               const totalDots = members.length;
               const activeIndex = Math.round((scrollProgress / 100) * (totalDots - 1)) || 0;
@@ -102,7 +102,7 @@ export default function TeamLeadership({ data, darkMode }) {
                 />
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
 

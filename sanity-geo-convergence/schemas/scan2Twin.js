@@ -162,6 +162,7 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
                 defineField({
                   name: 'image',
                   type: 'image',

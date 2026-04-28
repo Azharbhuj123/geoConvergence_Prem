@@ -31,7 +31,7 @@
 
 @layer components {
   .heading-primary {
-    @apply text-2xl md:text-4xl xl:text-[2.25rem] font-bold font-['Titillium_Web'] text-[var(--heading)];
+    @apply text-3xl md:text-4xl xl:text-[2.25rem] font-bold font-['Titillium_Web'] text-[var(--heading)];
   }
 
   .text-subtitle {

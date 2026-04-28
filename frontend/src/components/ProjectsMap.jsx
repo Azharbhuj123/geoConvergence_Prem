@@ -4,7 +4,7 @@ import ProjectMap from "../assets/projectMap.png"
 export default function ProjectsMap({ darkMode, title, description, button }) {
   return (
     <section
-      className={`pb-20 lg:pb-24 px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : ''}`}
+      className={`px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : ''}`}
     >
       <div className="max-w-[1440px] mx-auto flex flex-col gap-12">
         {/* Header */}
@@ -23,7 +23,7 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
           </div>
           {button && (
             <a href={button?.link}>
-              <Button className="px-8 py-4 w-45 h-14 relative   inline-flex flex-col justify-center items-center" >
+              <Button>
                 {button?.text}
               </Button>
             </a>

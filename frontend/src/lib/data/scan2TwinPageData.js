@@ -81,9 +81,9 @@ export const scan2TwinPageData = {
     title: "Why Scan2Twin?",
     description: [
       "Traditional drawings and static models are often unable to represent real-world complexity with full accuracy. Scan2Twin bridges this gap by providing a direct digital representation of physical spaces.",
-      
+
     ],
-    listItems:[
+    listItems: [
       "High-precision real-world accuracy in digital form",
       "Faster and more informed decision-making through visual clarity",
       "Reduced on-site errors, rework, and project risks",
@@ -104,6 +104,7 @@ export const scan2TwinPageData = {
     cards: [
       {
         title: "Shopping Mall",
+        description: "",
         image: {
           _type: "image",
           asset: {
@@ -113,6 +114,7 @@ export const scan2TwinPageData = {
       },
       {
         title: "Hospital",
+        description: "",
         image: {
           _type: "image",
           asset: {
@@ -122,6 +124,7 @@ export const scan2TwinPageData = {
       },
       {
         title: "Airport",
+        description: "",
         image: {
           _type: "image",
           asset: {

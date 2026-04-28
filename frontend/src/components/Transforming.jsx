@@ -56,15 +56,15 @@ export default function Transforming({ title, description, cards = [] }) {
     return (
         <section
             className={`${theme === "dark" ? "dark" : ""
-                } py-20 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}
+                } py-10 sm:py-20 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}
         >
             <div className="max-w-[1440px] mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12 max-w-4xl mx-auto">
-                    <h2 className="font-bold font-['Titillium_Web'] text-[var(--text)] text-[clamp(2.2rem,4.5vw,3.5rem)] leading-tight">
+                <div className="mb-12">
+                    <h2 className="heading-primary text-center">
                         {title || "Transforming The Physical Into Digital"}
                     </h2>
-                    <p className="mt-5 text-lg sm:text-xl font-Inter text-[var(--text)] max-w-[780px] mx-auto leading-relaxed">
+                    <p className="text-subtitle max-w-2xl mx-auto text-center mt-3">
                         {description}
                     </p>
                 </div>

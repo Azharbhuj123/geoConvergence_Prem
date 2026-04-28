@@ -9,7 +9,7 @@ export default function ContractVehicles({ data, darkMode }) {
 
   return (
     <section
-      className={`w-full py-24 px-6 sm:px-10 xl:px-14 ${darkMode ? "bg-slate-900" : "bg-[#fff]"}`}
+      className={`w-full py-10 px-6 sm:px-10 xl:px-14 ${darkMode ? "bg-slate-900" : "bg-[#fff]"}`}
     >
       {/* Header */}
       <div className="max-w-[1440px] mx-auto mb-4 md:mb-12">

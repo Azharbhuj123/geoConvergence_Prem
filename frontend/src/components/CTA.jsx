@@ -39,9 +39,8 @@ export default function CTA({ darkMode, CtaData }) {
 
   return (
     <section
-      className={`pb-12 lg:pb-12 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${
-        theme === "dark" ? "dark" : ""
-      }`}
+      className={`pb-12 lg:pb-12 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${theme === "dark" ? "dark" : ""
+        }`}
     >
       <div className="max-w-[1440px] mx-auto">
         <div
@@ -73,11 +72,11 @@ export default function CTA({ darkMode, CtaData }) {
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-            <h2 className="lg:w-[685.069px] text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] drop-shadow-xl">
+            <h2 className="lg:w-[685.069px] text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] drop-shadow-xl text-left sm:text-center">
               {title}
             </h2>
 
-            <p className="text-white text-lg sm:text-[20px] leading-8 max-w-[756px] drop-shadow-xl">
+            <p className="text-white text-lg sm:text-[20px] leading-8 max-w-[756px] drop-shadow-xl text-left sm:text-center">
               {subtitle}
             </p>
           </div>
@@ -87,8 +86,8 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn1.link}
               variant="primary"
-              size="sss"
-              className="px-16 py-4 text-sm lg:text-lg"
+              size="lg"
+              className=""
             >
               {btn1.text}
             </Button>
@@ -96,8 +95,8 @@ export default function CTA({ darkMode, CtaData }) {
             <Button
               href={btn2.link}
               variant="secondary"
-              className="px-16 py-4 text-sm lg:text-lg"
-              size="d"
+              className=""
+              size="lg"
             >
               {btn2.text}
             </Button>
