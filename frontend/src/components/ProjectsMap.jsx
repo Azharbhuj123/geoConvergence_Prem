@@ -30,9 +30,10 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
 
         {/* Map placeholder */}
         <div
-          className={`w-full rounded-[20px] overflow-hidden flex items-center justify-center relative ${darkMode ? 'bg-slate-800' : 'bg-slate-800'
+          className={`w-full rounded-[20px] overflow-hidden flex items-center justify-center relative 
+            h-[280px] sm:h-[40vw] xl:h-[734px]
+            ${darkMode ? 'bg-slate-800' : 'bg-slate-800'
             }`}
-          style={{ height: 'clamp(280px, 40vw, 734px)' }}
         >
           {/* US Map SVG silhouette placeholder */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20">

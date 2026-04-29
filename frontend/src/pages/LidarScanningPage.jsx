@@ -90,7 +90,8 @@ export default function LidarScanningPage() {
             <Stats
               darkMode={isDark}
               statsData={parsedStatsData}
-              className={"!px-0 !pt-15 "}
+              className={"!px-0 !pt-15"}
+              extraClass="!text-lg sm:!text-xl"
             />
           </section>
         )}

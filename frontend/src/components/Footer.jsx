@@ -11,7 +11,7 @@ export default function Footer({ darkMode }) {
     { name: 'Indoor Mapping', path: '/indoormaps' },
     { name: 'LiDAR Scanning', path: '/lidar-scanning' },
     { name: '3D Modeling', path: '/3d-modeling' },
-    { name: 'ArcGIS Indoors', path: '/arcgis-indoors' },
+    { name: 'ArcGIS Indoors Implementation ', path: '/arcgis-indoors' },
   ]
 
   const company = [
@@ -27,13 +27,13 @@ export default function Footer({ darkMode }) {
         {/* Newsletter + divider */}
         <div className="py-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
-            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[40px] font-Web uppercase max-w-lg leading-[1.1]"
+            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[34px] font-Web uppercase max-w-[437px] leading-[1.1]"
           >
             Stay Ahead with Digital Twin Insights
           </h3>
 
           {/* Email input */}
-          <div className="flex items-center gap-0 bg-white/20 rounded-full border border-blue-700 pl-7 pr-3 py-3 w-full max-w-sm lg:max-w-md">
+          <div className="flex items-center gap-0 bg-white/20 rounded-full border border-blue-700 pl-7 pr-3 py-3 w-full max-w-sm lg:max-w-[417px]">
             <input
               type="email"
               placeholder="Enter Your Email"
@@ -41,7 +41,7 @@ export default function Footer({ darkMode }) {
               onChange={(e) => setEmail(e.target.value)}
               className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base  font-light font-Inter uppercase outline-none leading-6 min-w-0"
             />
-            <button className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors">
+            <button className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -56,7 +56,7 @@ export default function Footer({ darkMode }) {
             <div className="flex items-center gap-2">
               <img src={logo} alt="" />
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-sm">
+            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-md">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>

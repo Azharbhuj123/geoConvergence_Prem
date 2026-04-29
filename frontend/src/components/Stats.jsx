@@ -34,7 +34,7 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate, ex
       >
         {value}{suffix}
       </div>
-      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'
+      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest min-h-[60px] ${darkMode ? 'text-slate-400' : 'text-slate-500'
         }`}>
         {label}
       </div>

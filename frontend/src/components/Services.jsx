@@ -78,7 +78,7 @@ export default function Services({
               href="#"
               variant="primary"
               size="md"
-              
+
             >
               {"View More"}
             </Button>
@@ -103,7 +103,9 @@ export default function Services({
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 transition-all duration-700 group-hover:to-black/85 group-hover:via-black/50" />
 
               {/* Content Container - Slides UP on hover */}
-              <div className="backdrop-blur-sm absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5 transition-all duration-700 group-hover:-translate-y-6">
+              {/* <div className="backdrop-blur-sm absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5 transition-all duration-700 group-hover:-translate-y-6"> */}
+              <div className="backdrop-blur-sm absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5 
+                  max-h-[90%] group-hover:max-h-[90%] overflow-hidden transition-all duration-700">
                 <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
                   {step.title}
                 </h3>
