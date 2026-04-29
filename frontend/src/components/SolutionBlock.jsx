@@ -71,7 +71,7 @@ export default function SolutionBlock({
             )}
 
             {highlightText && (
-              <p className="font-semibold text-[var(--text)] font-Inter">
+              <p className="font-semibold text-lg sm:text-[20px] xl:text-[30px] text-[var(--text)] font-Inter">
                 {highlightText}
               </p>
             )}

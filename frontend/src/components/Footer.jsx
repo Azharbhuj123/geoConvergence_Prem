@@ -25,9 +25,9 @@ export default function Footer({ darkMode }) {
     <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--footer-bg)] px-6 sm:px-8 lg:px-14 text-white`} >
       <div className="max-w-[1440px] mx-auto pt-5 pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
-        <div className="pb-7 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
+        <div className="pb-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
-            className="text-white text-lg sm:text-[30px] font-bold xl:text-[40px] font-Web uppercase max-w-lg"
+            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[40px] font-Web uppercase max-w-lg leading-[1.1]"
           >
             Stay Ahead with Digital Twin Insights
           </h3>
@@ -50,32 +50,32 @@ export default function Footer({ darkMode }) {
         </div>
 
         {/* Main footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="pt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <img src={logo} alt="" />
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-lg">
+            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-sm">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>
 
           {/* Services */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web leading-7">Services</h4>
             {services.map((s) => (
-              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
+              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {s.name}
               </Link>
             ))}
           </div>
 
           {/* Company */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web">Company</h4>
             {company.map((c) => (
-              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
+              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {c.name}
               </Link>
             ))}
