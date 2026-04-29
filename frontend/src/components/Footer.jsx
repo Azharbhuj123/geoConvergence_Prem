@@ -23,9 +23,9 @@ export default function Footer({ darkMode }) {
   ]
   return (
     <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--footer-bg)] px-6 sm:px-8 lg:px-14 text-white`} >
-      <div className="max-w-[1440px] mx-auto pt-5 pb-8 flex flex-col gap-7">
+      <div className="max-w-[1440px] mx-auto pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
-        <div className="pb-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
+        <div className="py-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
             className="text-white text-lg sm:text-[30px] font-semibold xl:text-[40px] font-Web uppercase max-w-lg leading-[1.1]"
           >
