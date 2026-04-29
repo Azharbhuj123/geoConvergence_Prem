@@ -11,13 +11,11 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6">
           <div className="flex flex-col gap-2">
             <h2
-              className={`font-bold font-['Titillium_Web'] leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'
-                }`}
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+              className={`heading-primary font-Web`}
             >
               {title || "Projects Across the United States"}
             </h2>
-            <p className={`text-lg font-Inter leading-7 ${darkMode ? 'text-slate-300' : 'text-slate-500'}`}>
+            <p className={`text-subtitle`}>
               {description || "Scale and precision delivered coast to coast."}
             </p>
           </div>

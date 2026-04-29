@@ -187,8 +187,7 @@ export default function Testimonials({ darkMode, pageData }) {
         {/* Header - unchanged */}
         <div className="flex flex-col items-center gap-7 mb-14">
           <h2
-            className={`text-center font-bold font-['Titillium_Web'] capitalize leading-tight ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}
-            style={{ fontSize: 'clamp(2.5rem, 3.5vw, 3rem)' }}
+            className={`text-center heading-primary font-Web capitalize leading-tight`}
           >
             {pageData?.title || "What Our Customers Say"}
           </h2>

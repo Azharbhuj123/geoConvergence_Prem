@@ -53,7 +53,9 @@ export default function SolutionsPage() {
                             image={solution?.image}
                             imagePosition={index % 2 === 0 ? "left" : "right"}
                             className={index === 0 ? "bg-[#002052]" : ""}
-                            isInverted={index === 0}
+                            isInverted={index === 0
+                                
+                            }
                         />
                     ))}
                 </section>

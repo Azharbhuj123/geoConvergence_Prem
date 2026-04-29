@@ -40,7 +40,7 @@ export default function WhyPage() {
                 />
 
                 {/* Solution Block */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 xl:pt-20`}>
                     <SolutionBlock
                         title={pageData.solutionBlock.title}
                         description={pageData.solutionBlock.description}

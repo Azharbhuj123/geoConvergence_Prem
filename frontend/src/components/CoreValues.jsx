@@ -10,7 +10,7 @@ export default function CoreValues({ title, subTitle, cards, className }) {
       className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"}`}
     >
       <div className="max-w-[1440px] mx-auto">
-        <h2 className="heading-primary   text-white mb-6">
+        <h2 className="heading-primary font-Web text-white mb-6">
           {title || "Our Core Values"}
         </h2>
         {subTitle && (

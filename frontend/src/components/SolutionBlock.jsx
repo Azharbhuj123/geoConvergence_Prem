@@ -54,7 +54,7 @@ export default function SolutionBlock({
 
         {/* Content Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <h2 className={`heading-primary mb-8 ${textColor}`}>
+          <h2 className={`heading-primary font-Web mb-8 ${textColor}`}>
             {title}
           </h2>
 
@@ -88,7 +88,7 @@ export default function SolutionBlock({
           {description2 && (
             <p
               dangerouslySetInnerHTML={{ __html: description2 }}
-              className="text-[var(--text)] font-Inter mt-[10px]"
+              className="text-subtitle text-[var(--text)] mt-[10px] xl:text-[18px]"
             ></p>
           )}
 
@@ -107,7 +107,7 @@ export default function SolutionBlock({
               <Button
                 href={button.link || "#"}
                 variant="primary"
-                className="px-10 py-4 text-lg font-bold"
+                size="md"
               >
                 {button.text || "View More"}
               </Button>

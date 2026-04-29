@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/footer_logo.png'
+import { useThemeStore } from '../store/useThemeStore'
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
+  const { theme } = useThemeStore();
 
   const services = [
     { name: 'Scan2Twin', path: '/scan2twin' },
@@ -20,13 +22,12 @@ export default function Footer({ darkMode }) {
     { name: 'Contact Us', path: '/contact' },
   ]
   return (
-    <footer className="dark bg-[var(--bg)] px-6 sm:px-8 lg:px-14 text-white">
+    <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--footer-bg)] px-6 sm:px-8 lg:px-14 text-white`} >
       <div className="max-w-[1440px] mx-auto pt-14 pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
         <div className="pb-7 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
-            className="text-slate-100 font-bold font-['Titillium_Web'] uppercase leading-tight max-w-md"
-            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2.25rem)' }}
+            className="text-slate-100 font-bold font-['Titillium_Web'] text-[20px] sm:text-[34px] lg:text-[40px] uppercase leading-tight max-w-lg"
           >
             Stay Ahead with Digital Twin Insights
           </h3>
@@ -49,20 +50,20 @@ export default function Footer({ darkMode }) {
         </div>
 
         {/* Main footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-4">
+          <div className="sm:col-span-2 lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <img src={logo} alt="" />
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-xs">
+            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-lg">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>
 
           {/* Services */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Services</h4>
+            <h4 className="text-white text-lg sm:text-xl font-bold font-Web leading-7">Services</h4>
             {services.map((s) => (
               <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
                 {s.name}
@@ -72,7 +73,7 @@ export default function Footer({ darkMode }) {
 
           {/* Company */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-white text-lg sm:text-xl font-bold font-['Titillium_Web'] leading-7">Company</h4>
+            <h4 className="text-white text-lg sm:text-xl font-bold font-Web">Company</h4>
             {company.map((c) => (
               <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors">
                 {c.name}
@@ -81,7 +82,7 @@ export default function Footer({ darkMode }) {
           </div>
 
           {/* Social */}
-          <div className="flex flex-col justify-between gap-6">
+          <div className="flex flex-col justify-between items-end gap-6">
             <div />
             <div className="flex gap-3">
               {[

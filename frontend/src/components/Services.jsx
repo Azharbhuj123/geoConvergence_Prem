@@ -56,7 +56,7 @@ export default function Services({
           <div className="flex flex-col gap-5 max-w-[600px] xl:max-w-[993px]">
             <h2
               className={clsx(
-                "heading-primary",
+                "heading-primary font-Web",
                 theme.title,
               )}
             >
@@ -65,7 +65,7 @@ export default function Services({
             </h2>
             <p
               className={clsx(
-                "text-lg sm:text-xl font-Inter leading-8",
+                "text-subtitle",
                 theme.subtitle,
               )}
             >
@@ -77,7 +77,8 @@ export default function Services({
             <Button
               href="#"
               variant="primary"
-              className="px-8 py-4 w-auto h-14 relative bg-gradient-to-b from-blue-800 to-blue-700 rounded-2xl inline-flex flex-col justify-center items-center"
+              size="md"
+              
             >
               {"View More"}
             </Button>

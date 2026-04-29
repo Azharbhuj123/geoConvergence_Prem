@@ -1,6 +1,6 @@
 import Button from "./UI/Button";
-import { urlFor } from "../lib/sanity";
 import { useThemeStore } from "../store/useThemeStore";
+import video from "../assets/CTA.mp4";
 
 const finalCta = {
   title: "Ready to define your digital dimension?",
@@ -14,13 +14,6 @@ const finalCta = {
     text: "View Case Studies",
     link: "#",
   },
-  backgroundImage: {
-    _type: "image",
-    asset: {
-      _ref: "image-9aedb38aefaf4d3ee8418015a0fbaccc866c1ed5-1320x532-png",
-      _type: "reference",
-    },
-  },
 };
 
 export default function CTA({ darkMode, CtaData }) {
@@ -33,76 +26,55 @@ export default function CTA({ darkMode, CtaData }) {
   const btn1 = data.button1 || finalCta.button1;
   const btn2 = data.button2 || finalCta.button2;
 
-  const bgImage = data.backgroundImage ? urlFor(data.backgroundImage) : null;
-
-  const hasCustomBackground = !!data.backgroundImage;
-
   return (
     <section
       className={`pb-12 lg:pb-12 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${theme === "dark" ? "dark" : ""
         }`}
     >
       <div className="max-w-[1440px] mx-auto">
-        <div
-          className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-24 flex flex-col items-center gap-9 bg-cover bg-center"
-          style={{
-            backgroundImage: bgImage ? `url(${bgImage})` : "none",
-          }}
-        >
-          {/* Dark Overlay + Effects - ONLY when NO custom background */}
-          {!hasCustomBackground && (
-            <>
-              <div className="absolute inset-0 bg-slate-900/80" />
-              <div className="absolute inset-0 mix-blend-hue bg-slate-900" />
+        <div className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-24 flex flex-col items-center gap-9 min-h-[420px]">
 
-              {/* Grid Pattern */}
-              <div
-                className="absolute inset-0 opacity-5"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(#60a5fa 1px, transparent 1px), linear-gradient(90deg, #60a5fa 1px, transparent 1px)",
-                  backgroundSize: "40px 40px",
-                }}
-              />
+            {/* Video */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src={video} type="video/mp4" />
+            </video>
 
-              {/* Glow Effect */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-700/20 rounded-full blur-3xl" />
-            </>
-          )}
+            {/* Dark + brand overlay (this is what you actually want) */}
+            <div className="absolute inset-0 bg-[#001536]/70" />
 
-          {/* Content */}
-          <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-            <h2 className="lg:w-[685.069px] text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] drop-shadow-xl text-left sm:text-center">
-              {title}
-            </h2>
+            {/* Optional soft gradient like your screenshot */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#001536]/80 via-[#001536]/40 to-[#001536]/80" />
 
-            <p className="text-white text-lg sm:text-[20px] leading-8 max-w-[756px] drop-shadow-xl text-left sm:text-center">
-              {subtitle}
-            </p>
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center gap-6 text-center">
+              <h2 className="text-white font-bold leading-tight text-[clamp(2rem,5vw,4.063rem)] lg:w-[685.069px]">
+                {title}
+              </h2>
+
+              <p className="text-white text-lg sm:text-[20px] leading-8 max-w-[756px]">
+                {subtitle}
+              </p>
+            </div>
+
+            {/* Buttons */}
+            <div className="relative z-10 flex flex-col sm:flex-row gap-5 sm:gap-7 pt-4">
+              <Button href={btn1.link} variant="primary" size="lg">
+                {btn1.text}
+              </Button>
+
+              <Button href={btn2.link} variant="secondary" size="lg">
+                {btn2.text}
+              </Button>
+            </div>
           </div>
 
-          {/* Buttons */}
-          <div className="relative z-10 flex flex-col sm:flex-row gap-5 sm:gap-7 pt-4">
-            <Button
-              href={btn1.link}
-              variant="primary"
-              size="lg"
-              className=""
-            >
-              {btn1.text}
-            </Button>
-
-            <Button
-              href={btn2.link}
-              variant="secondary"
-              className=""
-              size="lg"
-            >
-              {btn2.text}
-            </Button>
-          </div>
         </div>
-      </div>
     </section>
   );
 }

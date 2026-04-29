@@ -2,7 +2,7 @@ import Button from "./UI/Button";
 import { useThemeStore } from "../store/useThemeStore";
 import { urlFor } from "../lib/sanity";
 
-export default function Events({ className, eventsData }) {
+export default function Events({ className, eventsData, extraClass }) {
   const { theme } = useThemeStore();
 
   const defaultEvents = [
@@ -41,7 +41,7 @@ export default function Events({ className, eventsData }) {
 
   return (
     <section
-      className={`${theme === "dark" ? "dark" : ""} py-20 pb-10 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}
+      className={`${theme === "dark" ? "dark" : ""} py-20 pb-10 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${extraClass}`}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
@@ -77,11 +77,11 @@ export default function Events({ className, eventsData }) {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/90 transition-all duration-700 group-hover:from-black/30 group-hover:via-black/60 group-hover:to-black/95" />
 
                 {/* Content Container - Slides UP on hover */}
-                <div className="relative z-10 h-full p-7 sm:p-8 flex flex-col justify-end transition-all duration-700 group-hover:-translate-y-6">
+                <div className="relative z-10 h-full p-7 sm:p-8 flex flex-col justify-end transition-all duration-700 group-hover:-translate-y-6 max-w-[80%]">
                   {/* Tag */}
                   {event.tag && (
                     <div className="inline-flex self-start mb-4">
-                      <span className="px-4 py-2 bg-white/30 backdrop-blur-sm text-slate-100 text-base font-Inter rounded-xl">
+                      <span className="px-4 py-2 bg-white/30 backdrop-blur-sm text-slate-100 text-base xl:text-lg font-Inter rounded-xl">
                         {event.tag}
                       </span>
                     </div>
@@ -107,7 +107,7 @@ export default function Events({ className, eventsData }) {
                           <rect x="3" y="4" width="18" height="18" rx="2" />
                           <path d="M16 2v4M8 2v4M3 10h18" />
                         </svg>
-                        <span className="text-slate-100 text-base font-Inter leading-8">
+                        <span className="text-slate-100 text-base text-lg font-Inter leading-8">
                           {event.date}
                         </span>
                       </div>
@@ -125,7 +125,7 @@ export default function Events({ className, eventsData }) {
                           <path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z" />
                           <circle cx="12" cy="9" r="2.5" />
                         </svg>
-                        <span className="text-slate-100 text-base font-Inter leading-8">
+                        <span className="text-slate-100 text-base text-lg font-Inter leading-8">
                           {event.location}
                         </span>
                       </div>

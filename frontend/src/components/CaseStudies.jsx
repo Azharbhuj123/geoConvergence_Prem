@@ -13,16 +13,16 @@ export default function CaseStudies({ data, darkMode }) {
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-3xl">
-            <h2 className="text-white heading-primary mb-6">
+            <h2 className="text-white heading-primary font-Web mb-6">
               {title || "Case Studies"}
             </h2>
-            <p className="text-gray-300 text-subtitle leading-relaxed">
+            <p className="text-gray-300 text-subtitle leading-relaxed font-Inter">
               {subtitle ||
                 "At geoConvergence, we don't just visualize spaces — we transform complex physical environments into intelligent, actionable digital assets."}
             </p>
           </div>
 
-          <Button variant="primary" size="sm" className="whitespace-nowrap shrink-0">
+          <Button variant="primary" size="md" className="whitespace-nowrap shrink-0">
             View All
           </Button>
         </div>
@@ -54,7 +54,7 @@ export default function CaseStudies({ data, darkMode }) {
 
               {/* CONTENT */}
               <div className="px-4 pb-4">
-                <h3 className={`text-2xl font-bold font-['Titillium_Web'] mb-4 ${darkMode ? 'text-white' : 'text-[#0B1B3D]'}`}>
+                <h3 className={`text-2xl font-bold font-Web mb-4 ${darkMode ? 'text-white' : 'text-[#0B1B3D]'}`}>
                   {study.title}
                 </h3>
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import dark_logo from "../assets/footer_logo.png";
+import Button from "./UI/Button";
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,12 +57,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
           {/* Right side */}
           <div className="hidden xl:flex items-center gap-4">
-            <a
+            {/* <a
               href="#"
               className="px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
             >
-              Request Demo
-            </a>
+              
+            </a> */}
+            <Button size="sm">Request Demo</Button>
 
             {/* Dark mode toggle */}
             <button

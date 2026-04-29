@@ -22,6 +22,8 @@ export default function ProductPage() {
     // Use fetched data or fallback
     const pageData = data || ProductPageData;
 
+    console.log('Product Page Data:', pageData);
+
 
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
@@ -64,6 +66,7 @@ export default function ProductPage() {
                     <Events
                         darkMode={theme === 'dark'}
                         eventsData={pageData.events}
+                        extraClass={"!py-0 !pb-20"}
                     />
                 </section>
 

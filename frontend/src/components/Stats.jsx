@@ -30,7 +30,7 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
       `}
     >
       <div
-        className={`heading-primary`}
+        className={`heading-primary font-Web`}
       // style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
       >
         {value}{suffix}
@@ -41,8 +41,8 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
       </div>
       <div className="w-full flex items-center justify-end">
         {iconImage ?
-          <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 flex items-center justify-center flex-shrink-0">
-            <img src={urlFor(iconImage)} className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24" />
+          <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-[76px] xl:h-[76px] flex items-center justify-center flex-shrink-0">
+            <img src={urlFor(iconImage)} className="w-full h-full" />
           </div>
           :
           <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">

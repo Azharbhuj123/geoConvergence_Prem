@@ -14,7 +14,7 @@ export default function ContractVehicles({ data, darkMode }) {
       {/* Header */}
       <div className="max-w-[1440px] mx-auto mb-4 md:mb-12">
         <h2
-          className={`heading-primary mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}
+          className={`heading-primary font-Web mb-6 ${darkMode ? "text-white" : "text-slate-900"}`}
         >
           {title || "Contract Vehicles"}
         </h2>
@@ -35,7 +35,7 @@ export default function ContractVehicles({ data, darkMode }) {
             {/* Top */}
             <div>
               {/* Logo */}
-              <div className="mb-8 h-16 flex items-center">
+              <div className="mb-8 h-20 flex items-center">
                 {item.image && (
                   <img
                     src={urlFor(item.image)}
@@ -46,7 +46,7 @@ export default function ContractVehicles({ data, darkMode }) {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold font-['Titillium_Web'] mb-4">
+              <h3 className="text-2xl font-bold font-Web mb-4">
                 {item.name}
               </h3>
 

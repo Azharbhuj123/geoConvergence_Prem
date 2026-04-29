@@ -42,6 +42,7 @@ export const fetchProductPage = async () => {
     solutions[]{
       title,
       description,
+      description2,
       button,
       image
     },

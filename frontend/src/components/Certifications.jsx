@@ -12,7 +12,7 @@ export default function Certifications({ data, darkMode }) {
 
         {/* Heading */}
         <div className="mb-14">
-          <h2 className="heading-primary text-white mb-6">
+          <h2 className="heading-primary font-Web text-white mb-6">
             {title || "Our Certification"}
           </h2>
           <p className="text-subtitle">
@@ -29,7 +29,7 @@ export default function Certifications({ data, darkMode }) {
             >
               <div>
                 {/* Top Image */}
-                <div className="mb-8 h-20 flex items-center">
+                <div className="mb-8 h-30 flex items-center">
                   {cert.image && (
                     <img
                       src={urlFor(cert.image)}
@@ -40,7 +40,7 @@ export default function Certifications({ data, darkMode }) {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold font-['Titillium_Web'] mb-4">
+                <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold font-Web mb-4">
                   {cert.name}
                 </h3>
 

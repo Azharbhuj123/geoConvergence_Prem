@@ -55,8 +55,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
         <div className="max-w-[653px]">
           <div className="flex flex-col gap-7 mb-12">
             <h1
-              className="text-white font-bold font-['Titillium_Web'] leading-tight text-sm lg:text-lg"
-              style={{ fontSize: 'clamp(2rem, 5vw, 70px)', lineHeight: '1.1' }}
+              className="text-white font-bold font-Web leading-tight text-[20px] sm:text-[34px] xl:text-[70px]"
             >
               {title}
             </h1>

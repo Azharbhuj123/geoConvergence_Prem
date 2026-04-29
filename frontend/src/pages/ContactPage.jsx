@@ -58,7 +58,7 @@ export default function ContactPage() {
 
                 {/* Left Side (Form) */}
                 <div className="w-full lg:w-[60%] flex flex-col justify-center">
-                  <h2 className="heading-primary text-white mb-3 tracking-wide">
+                  <h2 className="heading-primary font-Web text-white mb-3 tracking-wide">
                     Send us a message
                   </h2>
                   <p className="text-slate-300 text-lg mb-8 max-w-lg">
