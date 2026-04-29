@@ -24,7 +24,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
   return (
     <>
       {/* Top announcement bar */}
-      <div className="w-full bg-blue-700 text-white text-sm text-center py-2 px-4 leading-6 z-50 relative">
+      <div className="w-full bg-[#326FB7] text-white text-md text-center py-2 px-4 leading-6 z-50 relative">
         {"Experience Scan2Twin in action book your live demo today."}
       </div>
 
@@ -35,7 +35,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-5 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-7 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 flex-shrink-0">
             <img src={darkMode ? dark_logo : logo} alt="" />
