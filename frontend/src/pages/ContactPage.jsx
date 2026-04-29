@@ -48,16 +48,16 @@ export default function ContactPage() {
           minHeight="min-h-[451px]" />
 
         {/* Main Contact Section */}
-        <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? 'bg-slate-950' : 'bg-[var(--bg)]'}`}>
+        <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14`}>
           <div className="max-w-[1440px] mx-auto">
 
             {/* The Big Blue Card Container */}
-            <div className={`rounded-[20px] shadow-2xl p-6 lg:p-12 overflow-hidden bg-[#002052]`}>
+            <div className={`rounded-[20px] shadow-2xl p-6 lg:p-12 overflow-hidden bg-[#09155F]`}>
 
               <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
 
                 {/* Left Side (Form) */}
-                <div className="w-full lg:w-[60%] flex flex-col justify-center">
+                <div className="w-full lg:w-[53%] flex flex-col justify-center">
                   <h2 className="heading-primary font-Web !text-white mb-3 tracking-wide">
                     Send us a message
                   </h2>
@@ -143,45 +143,45 @@ export default function ContactPage() {
                   <div className={`p-8 lg:p-10 rounded-2xl h-full flex flex-col justify-between shadow-lg border ${isDark ? 'bg-[#0f172a] border-slate-700' : 'bg-[#E5E5E5]'
                     }`}>
                     <div>
-                      <h3 className="text-2xl xl:text-[32px] font-Inter text-center font-bold mb-8">
+                      <h3 className={`text-2xl xl:text-[26px] font-Inter text-center font-bold mb-8 ${isDark ? "text-white" : "text-[#09155F]"}`}>
                         Hi! We are always here to help you.
                       </h3>
 
                       <div className="flex flex-col gap-6">
-                        <div className="flex items-center gap-4 bg-white p-4 rounded-xl">
+                        <div className="flex items-center gap-6 bg-white p-4 sm:p-6 rounded-xl">
                           <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                            <PhoneCallIcon width={150} height={150} color="#1E3B5E" />
+                            <PhoneCallIcon width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-semibold uppercase tracking-wider text-[#002052]`}>Phone</p>
+                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Phone</p>
                             <p className={`text-md font-Inter text-[#64748b]`}>+1 (812) 650-2544</p>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4 bg-white p-4 rounded-xl">
+                        <div className="flex items-center gap-6 bg-white p-4 sm:p-6 rounded-xl">
                           <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                            <MailPlus width={150} height={150} color="#1E3B5E" />
+                            <MailPlus width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-semibold uppercase tracking-wider text-[#002052]`}>Email</p>
+                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Email</p>
                             <p className={`text-md font-Inter text-[#64748b]`}>info@ geoconvergence.com</p>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4 bg-white p-4 rounded-xl">
+                        <div className="flex items-center gap-6 bg-white p-4 sm:p-6 rounded-xl">
                           <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                            <LocationEdit width={150} height={150} color="#1E3B5E" />
+                            <LocationEdit width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-semibold uppercase tracking-wider text-[#002052]`}>Location</p>
+                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Location</p>
                             <p className={`text-md font-Inter text-[#64748b]`}>1675 West 4th Street, Cleveland, OH 44113</p>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-12 pt-8">
-                      <p className={`text-md font-semibold uppercase mb-4 ${isDark ? "text-white" : "text-[#002052]"}`}>Connect With Us</p>
+                    <div className="mt-4 pt-8">
+                      <p className={`text-md font-bold mb-4 ${isDark ? "text-white" : "text-[#09155F]"}`}>Connect With Us</p>
 
                       <hr className="border-white/50 mb-6" />
 

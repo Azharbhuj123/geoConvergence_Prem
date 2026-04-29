@@ -35,12 +35,14 @@ export default function LandingPage() {
         };
     });
     return (
-        <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
+        <div className={theme === 'dark' ? "dark" : ""}
+        style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
             <main>
                 <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-screen items-center" />
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
-                <ProjectsMap darkMode={theme === 'dark'}
+                <ProjectsMap 
+                darkMode={theme === 'dark'}
                     title={data?.projectsMap?.title}
                     description={data?.projectsMap?.description}
                     button={data?.projectsMap?.button ? { text: data?.projectsMap?.button.text, link: data?.projectsMap?.button.link } : null}
@@ -55,9 +57,12 @@ export default function LandingPage() {
                 />
                 <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
                 <Events darkMode={theme === 'dark'} eventsData={data?.events} />
+
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] pt-10`}>
                 <Testimonials darkMode={theme === 'dark'}
                     pageData={data?.testimonials}
                 />
+                </section>
                 <CTA darkMode={theme === 'dark'} CtaData={data?.finalCta} />
             </main>
             <Footer darkMode={theme === 'dark'} />

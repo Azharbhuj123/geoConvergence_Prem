@@ -88,7 +88,7 @@ export default function Events({ className, eventsData, extraClass }) {
                   )}
 
                   {/* Title */}
-                  <h3 className="text-slate-100 font-bold font-['Titillium_Web'] capitalize leading-tight text-[clamp(1.5rem,3vw,3rem)] mb-4">
+                  <h3 className="heading-primary font-Web capitalize mb-4">
                     {event.title}
                   </h3>
 

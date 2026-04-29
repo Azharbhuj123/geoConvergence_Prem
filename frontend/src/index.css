@@ -31,13 +31,15 @@
   --footer-bg: #002052;
 }
 
-.heading-primary {
-  font-family: "Titillium Web", sans-serif;
-  @apply text-3xl md:text-4xl xl:text-[50px] font-bold font-['Titillium_Web'] text-[var(--heading)];
-}
+@layer components {
+  .heading-primary {
+    font-family: "Titillium Web", sans-serif;
+    @apply text-3xl md:text-4xl xl:text-[50px] font-bold font-['Titillium_Web'] text-[var(--heading)];
+  }
 
-.text-subtitle {
-  @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--muted)];
+  .text-subtitle {
+    @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--muted)];
+  }
 }
 
 /* ─── Base ─── */

@@ -4,14 +4,14 @@ import ProjectMap from "../assets/projectMap.png"
 export default function ProjectsMap({ darkMode, title, description, button }) {
   return (
     <section
-      className={`px-6 sm:px-8 lg:px-14 ${darkMode ? 'bg-slate-950' : ''}`}
+      className={`px-6 sm:px-8 lg:px-14 ${darkMode ? '#0f172a' : ''}`}
     >
       <div className="max-w-[1440px] mx-auto flex flex-col gap-12">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6">
           <div className="flex flex-col gap-2">
             <h2
-              className={`heading-primary font-Web`}
+              className={`heading-primary font-Web ${darkMode ? 'text-white' : ''}`}
             >
               {title || "Projects Across the United States"}
             </h2>
@@ -71,12 +71,12 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
           ))}
 
           {/* Overlay label */}
-          <div className="absolute bottom-6 left-6 flex items-center gap-3">
+          {/* <div className="absolute bottom-6 left-6 flex items-center gap-3">
             <div className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white" />
             <span className={`text-sm font-Inter font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Active project locations
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

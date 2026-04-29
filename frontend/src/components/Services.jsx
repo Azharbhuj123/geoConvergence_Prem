@@ -10,7 +10,7 @@ const variants = {
       subtitle: "text-slate-600",
     },
     dark: {
-      bg: "bg-slate-950",
+      bg: "#0f172a",
       title: "text-slate-100",
       subtitle: "text-slate-300",
     },
@@ -56,7 +56,7 @@ export default function Services({
           <div className="flex flex-col gap-5 max-w-[600px] xl:max-w-[993px]">
             <h2
               className={clsx(
-                "heading-primary font-Web",
+                "heading-primary font-Web ",
                 theme.title,
               )}
             >
@@ -90,8 +90,7 @@ export default function Services({
           {services?.cards?.map((step, index) => (
             <div
               key={step.title || index}
-              className="relative rounded-[20px] overflow-hidden group cursor-pointer"
-              style={{ height: "clamp(400px, 30vw, 545px)" }}
+              className="relative rounded-[20px] overflow-hidden group cursor-pointer h-[400px] sm:h-[450px] xl:h-[545px]"
             >
               {/* Background Image */}
               <img
@@ -105,7 +104,7 @@ export default function Services({
 
               {/* Content Container - Slides UP on hover */}
               <div className="backdrop-blur-sm absolute bottom-0 left-0 right-0 p-6 sm:p-7 flex flex-col gap-2.5 transition-all duration-700 group-hover:-translate-y-6">
-                <h3 className="text-white text-2xl sm:text-3xl font-bold font-['Titillium_Web'] leading-8">
+                <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
                   {step.title}
                 </h3>
                 <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 transition-all duration-700 group-hover:line-clamp-none line-clamp-3">

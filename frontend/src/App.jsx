@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import PageLoader from "./components/UI/PageLoader";
+import ScrollToTop from "./components/UI/ScrollToTop";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -31,6 +32,7 @@ const HubZonePage = lazy(() => import("./pages/HubZonePage"));
 function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
+      <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />

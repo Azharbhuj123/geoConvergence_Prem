@@ -20,7 +20,7 @@ function useCountUp(target, duration = 2000, start = false) {
   return count;
 }
 
-function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) {
+function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate, extraClass }) {
   const count = useCountUp(value, 2200, animate);
 
   return (
@@ -30,8 +30,7 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
       `}
     >
       <div
-        className={`heading-primary font-Web`}
-      // style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
+        className={`heading-primary font-Web ${extraClass}`}
       >
         {value}{suffix}
       </div>
@@ -54,7 +53,7 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate }) 
   );
 }
 
-export default function Stats({ darkMode, statsData, className }) {
+export default function Stats({ darkMode, statsData, className, extraClass }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -118,7 +117,7 @@ export default function Stats({ darkMode, statsData, className }) {
   return (
     <section
       ref={ref}
-      className={`pb-16 pt-15 lg:pb-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"} ${className}`}
+      className={`pb-16 pt-15 lg:pb-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "#0f172a" : "bg-white"} ${className}`}
     >
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-wrap gap-5 sm:gap-7">
@@ -128,6 +127,7 @@ export default function Stats({ darkMode, statsData, className }) {
               {...stat}
               darkMode={darkMode}
               animate={visible}
+              extraClass={extraClass}
             />
           ))}
         </div>

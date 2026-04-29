@@ -77,7 +77,7 @@ export default function IndoorMapsPage() {
 
         {/* Key Features (using Stats for numbers) */}
         {pageData.keyFeatures && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-20`}>
+          <section className={`px-6 sm:px-10 xl:px-14 pt-20`}>
             <Services_Description
               pageData={pageData.keyFeatures}
               theme={theme}
@@ -87,6 +87,7 @@ export default function IndoorMapsPage() {
               darkMode={isDark}
               statsData={parsedStatsData}
               className="!px-0  py-[3.75rem]"
+              extraClass="!text-lg sm:!text-xl"
             />
           </section>
         )}

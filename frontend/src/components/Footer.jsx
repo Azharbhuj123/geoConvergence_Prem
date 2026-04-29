@@ -11,7 +11,7 @@ export default function Footer({ darkMode }) {
     { name: 'Indoor Mapping', path: '/indoormaps' },
     { name: 'LiDAR Scanning', path: '/lidar-scanning' },
     { name: '3D Modeling', path: '/3d-modeling' },
-    { name: 'ArcGIS Indoors Implementation', path: '/arcgis-indoors' },
+    { name: 'ArcGIS Indoors', path: '/arcgis-indoors' },
   ]
 
   const company = [
@@ -27,7 +27,7 @@ export default function Footer({ darkMode }) {
         {/* Newsletter + divider */}
         <div className="pb-7 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
-            className="text-slate-100 font-bold font-['Titillium_Web'] text-[20px] sm:text-[34px] lg:text-[40px] uppercase leading-tight max-w-lg"
+            className="text-white heading-primary font-Web uppercase max-w-3xl"
           >
             Stay Ahead with Digital Twin Insights
           </h3>
