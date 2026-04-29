@@ -5,12 +5,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Transforming({ title, description, cards = [] }) {
     const { theme } = useThemeStore();
-    const [sliderPosition, setSliderPosition] = useState(50); // percentage
+    const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
 
     const containerRef = useRef(null);
 
-    // Get images from cards prop (matches your Sanity structure)
     const beforeImage = cards?.[0]?.image;
     const afterImage = cards?.[1]?.image;
 
@@ -19,34 +18,22 @@ export default function Transforming({ title, description, cards = [] }) {
 
     const handleMove = (clientX) => {
         if (!containerRef.current) return;
-
         const rect = containerRef.current.getBoundingClientRect();
         let position = ((clientX - rect.left) / rect.width) * 100;
-
-        // Clamp between 5% and 95%
-        position = Math.max(5, Math.min(95, position));
+        // Clamp between 0% and 100% so the before image can fully vanish
+        position = Math.max(0, Math.min(100, position));
         setSliderPosition(position);
     };
 
-    const handleMouseMove = (e) => {
-        if (!isDragging) return;
-        handleMove(e.clientX);
-    };
-
-    const handleTouchMove = (e) => {
-        if (!isDragging) return;
-        handleMove(e.touches[0].clientX);
-    };
-
+    const handleMouseMove = (e) => { if (isDragging) handleMove(e.clientX); };
+    const handleTouchMove = (e) => { if (isDragging) handleMove(e.touches[0].clientX); };
     const handleMouseDown = () => setIsDragging(true);
     const handleMouseUp = () => setIsDragging(false);
 
-    // Global mouse up handler
     useEffect(() => {
         const handleGlobalUp = () => setIsDragging(false);
         document.addEventListener("mouseup", handleGlobalUp);
         document.addEventListener("touchend", handleGlobalUp);
-
         return () => {
             document.removeEventListener("mouseup", handleGlobalUp);
             document.removeEventListener("touchend", handleGlobalUp);
@@ -55,11 +42,9 @@ export default function Transforming({ title, description, cards = [] }) {
 
     return (
         <section
-            className={`${theme === "dark" ? "dark" : ""
-                } py-10 sm:py-20 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}
+            className={`${theme === "dark" ? "dark" : ""} py-10 sm:py-20 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]`}
         >
             <div className="max-w-[1440px] mx-auto">
-                {/* Header */}
                 <div className="mb-12">
                     <h2 className="heading-primary text-center">
                         {title || "Transforming The Physical Into Digital"}
@@ -69,7 +54,6 @@ export default function Transforming({ title, description, cards = [] }) {
                     </p>
                 </div>
 
-                {/* Before / After Slider */}
                 <div
                     ref={containerRef}
                     className="relative rounded-3xl overflow-hidden shadow-2xl bg-black aspect-[16/9] md:aspect-[2.1/1] max-h-[620px] cursor-ew-resize select-none"
@@ -77,24 +61,52 @@ export default function Transforming({ title, description, cards = [] }) {
                     onTouchMove={handleTouchMove}
                     onMouseLeave={handleMouseUp}
                 >
-                    {/* After Image (Right / Base Layer) */}
+                    {/* After Image — base layer, always full width */}
                     <img
                         src={afterUrl}
                         alt="After - Digital Twin"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
 
-                    {/* Before Image (Left / Overlay) */}
-                    <div
-                        className="absolute inset-0 overflow-hidden"
-                        style={{ width: `${sliderPosition}%` }}
-                    >
-                        <img
-                            src={beforeUrl}
-                            alt="Before - Reality Capture"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                    </div>
+                    {/*
+                     * FIX: Before image overlay now uses clipPath instead of width.
+                     *
+                     * Root cause of the original bug:
+                     *   The old approach set `width: sliderPosition%` on a wrapper div,
+                     *   then placed the <img> absolutely inside it with `w-full`.
+                     *   Because the img was `position:absolute`, it sized itself relative
+                     *   to the nearest positioned ancestor — the outer container, NOT the
+                     *   clipping wrapper. So the image was always rendered at full container
+                     *   width, and only its visible window was restricted by the wrapper's
+                     *   width. At 90–100%, the right edge of the wrapper fell short of the
+                     *   actual image edge, leaving a sliver of the before image still showing.
+                     *
+                     * The fix:
+                     *   We keep the before image as a full-size absolute layer (same as the
+                     *   after image) and apply `clipPath: inset(0 X% 0 0)` directly to it,
+                     *   where X = 100 - sliderPosition. clipPath operates on the element's
+                     *   own rendered box, so there is zero gap — when sliderPosition hits
+                     *   100%, inset(0 0% 0 0) = no clip at all... wait, we want the opposite.
+                     *   inset(0 rightClip 0 0) clips FROM the right, so:
+                     *     rightClip = (100 - sliderPosition)%
+                     *   At sliderPosition=100 → rightClip=0%  → entire image visible (full left)
+                     *   At sliderPosition=0  → rightClip=100% → image fully hidden
+                     *   At sliderPosition=50 → rightClip=50%  → left half visible ✓
+                     *
+                     *   `will-change: clip-path` and the CSS transition ensure smooth GPU-
+                     *   accelerated animation without layout thrash.
+                     */}
+                    <img
+                        src={beforeUrl}
+                        alt="Before - Reality Capture"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        style={{
+                            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                            // Smooth transition only when NOT dragging, so dragging stays 1:1
+                            transition: isDragging ? "none" : "clip-path 0.15s ease-out",
+                            willChange: "clip-path",
+                        }}
+                    />
 
                     {/* Divider Line */}
                     <div
@@ -115,7 +127,6 @@ export default function Transforming({ title, description, cards = [] }) {
                             <ChevronRight className="w-6 h-6 text-slate-900" />
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
