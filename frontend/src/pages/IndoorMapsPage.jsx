@@ -53,7 +53,7 @@ export default function IndoorMapsPage() {
 
         {/* What is Indoor Mapping? */}
         {pageData.whatIs && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-8 xl:py-10`}>
             <SolutionBlock
               title={pageData.whatIs.title}
               description={pageData.whatIs.description}

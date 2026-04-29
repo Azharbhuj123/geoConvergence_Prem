@@ -64,7 +64,7 @@ export default function Transforming({ title, description, cards = [] }) {
                     <h2 className="heading-primary text-center">
                         {title || "Transforming The Physical Into Digital"}
                     </h2>
-                    <p className="text-subtitle max-w-2xl mx-auto text-center mt-3">
+                    <p className="text-subtitle max-w-5xl mx-auto text-center mt-3">
                         {description}
                     </p>
                 </div>
