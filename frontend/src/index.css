@@ -16,7 +16,7 @@
   --card-hover: #f1f5f9;
   --footer-bg: #000942;
 }
-   
+
 .dark {
   --bg: #0f172a;
   --slate-bg: #002052;
@@ -31,14 +31,14 @@
   --footer-bg: #002052;
 }
 
-  .heading-primary {
-    font-family: "Titillium Web", sans-serif;
-    @apply text-3xl md:text-4xl xl:text-[50px] font-bold font-titillium text-[var(--heading)];
-  }
+.heading-primary {
+  font-family: "Titillium Web", sans-serif;
+  @apply text-3xl md:text-4xl xl:text-[50px] font-bold font-['Titillium_Web'] text-[var(--heading)];
+}
 
-  .text-subtitle {
-    @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--muted)];
-  }
+.text-subtitle {
+  @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--muted)];
+}
 
 /* ─── Base ─── */
 *,
@@ -75,6 +75,7 @@ li {
 .font-Web {
   font-family: "Titillium Web", sans-serif;
 }
+
 /* ─── Typography helpers ─── */
 .heading {
   color: var(--heading);

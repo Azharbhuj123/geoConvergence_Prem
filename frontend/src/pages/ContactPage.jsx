@@ -58,7 +58,7 @@ export default function ContactPage() {
 
                 {/* Left Side (Form) */}
                 <div className="w-full lg:w-[60%] flex flex-col justify-center">
-                  <h2 className="heading-primary font-Web text-white mb-3 tracking-wide">
+                  <h2 className="heading-primary font-Web !text-white mb-3 tracking-wide">
                     Send us a message
                   </h2>
                   <p className="text-slate-300 text-lg mb-8 max-w-lg">
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   <div className={`p-8 lg:p-10 rounded-2xl h-full flex flex-col justify-between shadow-lg border ${isDark ? 'bg-[#0f172a] border-slate-700' : 'bg-[#E5E5E5]'
                     }`}>
                     <div>
-                      <h3 className="heading-primary font-Inter text-center mb-8">
+                      <h3 className="text-2xl xl:text-[32px] font-Inter text-center font-bold mb-8">
                         Hi! We are always here to help you.
                       </h3>
 
