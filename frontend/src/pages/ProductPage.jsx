@@ -22,8 +22,6 @@ export default function ProductPage() {
     // Use fetched data or fallback
     const pageData = data || ProductPageData;
 
-    console.log("pageData", pageData);
-
 
     return (
         <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
