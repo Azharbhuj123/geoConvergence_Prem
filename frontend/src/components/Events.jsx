@@ -88,7 +88,7 @@ export default function Events({ className, eventsData, extraClass }) {
                   )}
 
                   {/* Title */}
-                  <h3 className="heading-primary font-Web capitalize mb-4">
+                  <h3 className="heading-primary text-white font-Web capitalize mb-4">
                     {event.title}
                   </h3>
 

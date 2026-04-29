@@ -28,7 +28,7 @@ export default function CTA({ darkMode, CtaData }) {
 
   return (
     <section
-      className={`pb-12 lg:pb-12 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${theme === "dark" ? "dark" : ""
+      className={`pb-12 lg:pb-[6rem] px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${theme === "dark" ? "dark" : ""
         }`}
     >
       <div className="max-w-[1440px] mx-auto">
