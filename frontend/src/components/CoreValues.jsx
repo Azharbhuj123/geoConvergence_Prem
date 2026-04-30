@@ -32,7 +32,7 @@ export default function CoreValues({ title, subTitle, cards, className }) {
             >
               <div>
                 <h3
-                  className={`text-2xl font-bold font-['Titillium_Web'] uppercase tracking-wide mb-3 ${isDark ? "text-white" : "text-slate-900"
+                  className={`text-2xl font-bold font-Web uppercase tracking-wide mb-3 text-[var(--text)]
                     }`}
                 >
                   {card.title}

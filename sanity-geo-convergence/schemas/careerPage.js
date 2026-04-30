@@ -14,7 +14,6 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string', title: 'Main Title' }),
-        defineField({ name: 'subtitle', type: 'text', title: 'Subtitle' }),
         defineField({
           name: 'backgroundImage',
           type: 'image',
@@ -26,44 +25,20 @@ export default defineType({
 
     // ==================== EASY STEPS ====================
     defineField({
-      name: 'easySteps',
-      title: 'Easy Steps Section',
-      type: 'object',
-      fields: [
-        defineField({ name: 'sectionTitle', type: 'string' }),
-        defineField({ name: 'sectionSubtitle', type: 'text' }),
-        defineField({
-          name: 'cards',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({ name: 'title', type: 'string' }),
-                defineField({ name: 'description', type: 'text' }),
-                defineField({ name: 'icon', type: 'string' })
-              ]
-            }
-          ]
-        })
-      ]
-    }),
-
-    // ==================== MEET THE TEAM ====================
-    defineField({
-      name: 'meetTheTeam',
-      title: 'Meet the Team',
+      name: 'keyFeatures',
+      title: 'Key Features / Stats',
       type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'description', type: 'text' }),
         defineField({
-          name: 'image',
-          type: 'image',
-          options: { hotspot: true }
+          name: 'cards', type: 'array', of: [
+            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
+          ]
         })
       ]
     }),
+
 
     // ==================== CORE VALUES ====================
     defineField({
@@ -81,7 +56,11 @@ export default defineType({
               fields: [
                 defineField({ name: 'title', type: 'string' }),
                 defineField({ name: 'description', type: 'text' }),
-                defineField({ name: 'iconColor', type: 'string' })
+                defineField({
+                  name: 'iconImage',
+                  type: 'image',
+                  options: { hotspot: true }
+                })
               ]
             }
           ]

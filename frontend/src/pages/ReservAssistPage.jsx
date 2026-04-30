@@ -14,7 +14,7 @@ import Footer from '../components/Footer';
 
 export default function ReservAssistPage() {
   const { theme, toggleTheme } = useThemeStore();
-  
+
   const { data } = useQuery({
     queryKey: ['reservAssistPage'],
     queryFn: fetchReservAssistPage,
@@ -28,7 +28,7 @@ export default function ReservAssistPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
@@ -37,7 +37,7 @@ export default function ReservAssistPage() {
               description={pageData.firstSolution.description}
               button={pageData.firstSolution.buttonText ? { text: pageData.firstSolution.buttonText, link: "#" } : null}
               image={pageData.firstSolution.image}
-              imagePosition="right"
+              imagePosition="left"
               darkMode={isDark}
               variant='section'
             />
@@ -45,16 +45,17 @@ export default function ReservAssistPage() {
         )}
 
         {pageData.coreValues && (
-          <CoreValues 
-            title={pageData.coreValues.sectionTitle} 
-            cards={pageData.coreValues.cards} 
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            cards={pageData.coreValues.cards}
           />
         )}
 
         {pageData.howItWorks && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.howItWorks} 
+          <Services
+            darkMode={isDark}
+            services={pageData.howItWorks}
+            button={false}
             variant="default"
             className={'!py-18'}
           />
@@ -62,7 +63,7 @@ export default function ReservAssistPage() {
 
         {pageData.secondSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-18`}>
-             <SolutionBlock
+            <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
               button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
@@ -75,10 +76,10 @@ export default function ReservAssistPage() {
         )}
 
         {pageData.useCases && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.useCases} 
-            variant="blue" 
+          <Services
+            darkMode={isDark}
+            services={pageData.useCases}
+            variant="blue"
             button={false}
             className={'mb-18'}
           />

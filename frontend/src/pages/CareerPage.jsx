@@ -11,6 +11,8 @@ import OpenPositions from "../components/OpenPositions";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { Services_Description } from "../components/Services_Description";
+import Stats from "../components/Stats";
 
 export default function CareerPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -22,6 +24,19 @@ export default function CareerPage() {
 
   const pageData = data || careerPageData;
   const isDark = theme === "dark";
+
+  // Parse Key Features into Stats component format
+  const parsedStatsData = pageData.keyFeatures?.cards?.map(card => {
+    const valueStr = card?.number?.replace(/[^0-9]/g, '');
+    const value = parseInt(valueStr) || null;
+    const suffix = card?.number?.replace(/[0-9]/g, '');
+    return {
+      value,
+      suffix,
+      label: card?.label,
+      iconImage: card?.iconImage,
+    };
+  });
 
   return (
     <div
@@ -55,48 +70,19 @@ export default function CareerPage() {
         )}
 
         {/* Easy Steps Section */}
-        {pageData.easySteps && (
-          <section className="pb-20 lg:pb-24 py-11 px-6 sm:px-8 lg:px-14 bg-[var(--bg)]">
-            <div className="max-w-[1440px] mx-auto text-center">
-              <h2 className="text-4xl lg:text-5xl font-bold font-['Titillium_Web'] text-[var(--text)] mb-6">
-                {pageData.easySteps.sectionTitle}
-              </h2>
-              <p className="text-xl text-[var(--text)] mx-auto max-w-3xl opacity-80 mb-16">
-                {pageData.easySteps.sectionSubtitle}
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-2 gap-8">
-                {pageData.easySteps.cards?.map((card, idx) => (
-                  <div
-                    key={idx}
-                    className={`p-8 rounded-2xl flex flex-col items-center text-center transition-transform hover:-translate-y-2 shadow-sm border ${
-                      isDark
-                        ? "bg-slate-800 border-slate-700"
-                        : "bg-white border-slate-100"
-                    }`}
-                  >
-                    {/* Placeholder for icon if image is not provided strictly */}
-                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl text-blue-600 dark:text-blue-300 flex items-center justify-center mb-6">
-                      <span className="text-2xl font-bold">{idx + 1}</span>
-                    </div>
-                    <h3
-                      className={`text-2xl font-bold font-['Titillium_Web'] mb-4 ${
-                        isDark ? "text-white" : "text-slate-900"
-                      }`}
-                    >
-                      {card.title}
-                    </h3>
-                    <p
-                      className={`text-base leading-relaxed ${
-                        isDark ? "text-slate-300" : "text-slate-600"
-                      }`}
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+        {pageData.keyFeatures && (
+          <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
+            <Services_Description
+              pageData={pageData.keyFeatures}
+              theme={theme}
+              className="!py-0 !px-0"
+            />
+            <Stats
+              darkMode={isDark}
+              statsData={parsedStatsData}
+              className="!px-0  py-[3.75rem]"
+              extraClass="!text-lg sm:!text-xl"
+            />
           </section>
         )}
 
