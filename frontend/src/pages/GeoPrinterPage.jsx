@@ -14,7 +14,7 @@ import Footer from '../components/Footer';
 
 export default function GeoPrinterPage() {
   const { theme, toggleTheme } = useThemeStore();
-  
+
   const { data } = useQuery({
     queryKey: ['geoPrinterPage'],
     queryFn: fetchGeoPrinterPage,
@@ -28,13 +28,14 @@ export default function GeoPrinterPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
+              description2={pageData.firstSolution.description2}
               button={pageData.firstSolution.buttonText ? { text: pageData.firstSolution.buttonText, link: "#" } : null}
               image={pageData.firstSolution.image}
               imagePosition="right"
@@ -45,23 +46,23 @@ export default function GeoPrinterPage() {
         )}
 
         {pageData.coreValues && (
-          <CoreValues 
-            title={pageData.coreValues.sectionTitle} 
-            cards={pageData.coreValues.cards} 
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            cards={pageData.coreValues.cards}
           />
         )}
 
         {pageData.howItWorks && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.howItWorks} 
-            variant="default" 
+          <Services
+            darkMode={isDark}
+            services={pageData.howItWorks}
+            variant="default"
           />
         )}
 
         {pageData.secondSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
-             <SolutionBlock
+            <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
               button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
@@ -74,10 +75,10 @@ export default function GeoPrinterPage() {
         )}
 
         {pageData.useCases && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.useCases} 
-            variant="default" 
+          <Services
+            darkMode={isDark}
+            services={pageData.useCases}
+            variant="default"
           />
         )}
 

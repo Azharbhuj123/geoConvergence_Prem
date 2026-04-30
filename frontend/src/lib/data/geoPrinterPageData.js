@@ -8,6 +8,7 @@ export const geoPrinterPageData = {
   firstSolution: {
     title: "Discover Geo Printer",
     description: "Transform your workflows and unlock unprecedented operational efficiency with Geo Printer. We bridge the gap between physical reality and digital excellence.",
+    description2: "Transform your workflows and unlock unprecedented operational efficiency with Geo Printer. We bridge the gap between physical reality and digital excellence.",
     image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
   },
   coreValues: {

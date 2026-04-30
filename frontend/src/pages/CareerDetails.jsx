@@ -81,59 +81,13 @@ function CvIcon() {
   );
 }
 
-function FacebookIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      className="fill-black dark:fill-gray-800"
-    >
-      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      className="text-black dark:text-gray-800"
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" />
-      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-    </svg>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      className="fill-black dark:fill-gray-800"
-    >
-      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
 function HowToApply({ items }) {
   if (!items) return null;
   return (
     <div className="bg-[var(--bg-secondary)] rounded-[20px] p-7 flex flex-col gap-5">
-      <div className="bg-[#000941] rounded-[14px] py-2.5 px-5 text-white  text-[22px] font-bold text-center leading-snug w-full">
+      <div className="bg-[#000941] rounded-[14px] py-2.5 px-5 text-white text-lg sm:text-xl  xl:text-[30px] font-bold text-center leading-snug w-full">
         How To Apply?
       </div>
       <ul className="flex flex-col gap-2">
@@ -183,11 +137,10 @@ function JobStats({ stats }) {
       {stats.map(({ label, value }, i) => (
         <div
           key={label}
-          className={`py-4 px-2 text-center flex flex-col gap-0.5 ${
-            i < stats.length - 1
-              ? "border-r border-[#BABABA] dark:border-slate-600"
-              : ""
-          }`}
+          className={`py-4 px-2 text-center flex flex-col gap-0.5 ${i < stats.length - 1
+            ? "border-r border-[#BABABA] dark:border-slate-600"
+            : ""
+            }`}
         >
           <span className=" text-[17px] font-bold text-[var(--heading)] leading-tight">
             {label}
@@ -210,11 +163,10 @@ function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
-            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all cursor-pointer  ${
-              activeTab === t.key
-                ? "bg-[#000941] text-white"
-                : "bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]"
-            }`}
+            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all cursor-pointer  ${activeTab === t.key
+              ? "bg-[#000941] text-white"
+              : "bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]"
+              }`}
           >
             {t.label}
           </button>
@@ -279,8 +231,8 @@ export default function CareerPage() {
             </div>
           </div>
         </section>
-    <section className="py-15">
-        <Testimonials darkMode={theme === "dark"} />
+        <section className="py-15">
+          <Testimonials darkMode={theme === "dark"} />
         </section>
         <CTA darkMode={theme === "dark"} />
         <Footer darkMode={theme === "dark"} />
