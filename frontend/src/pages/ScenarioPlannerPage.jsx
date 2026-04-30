@@ -11,10 +11,12 @@ import CoreValues from '../components/CoreValues';
 import Services from '../components/Services';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import { Services_Description } from '../components/Services_Description';
+import Stats from '../components/Stats';
 
 export default function ScenarioPlannerPage() {
   const { theme, toggleTheme } = useThemeStore();
-  
+
   const { data } = useQuery({
     queryKey: ['scenarioPlannerPage'],
     queryFn: fetchScenarioPlannerPage,
@@ -23,12 +25,25 @@ export default function ScenarioPlannerPage() {
   const pageData = data || scenarioPlannerPageData;
   const isDark = theme === 'dark';
 
+  // Parse Key Features into Stats component format
+  const parsedStatsData = pageData.keyFeatures?.cards?.map(card => {
+    const valueStr = card?.number?.replace(/[^0-9]/g, '');
+    const value = parseInt(valueStr) || null;
+    const suffix = card?.number?.replace(/[0-9]/g, '');
+    return {
+      value,
+      suffix,
+      label: card?.label,
+      iconImage: card?.iconImage,
+    };
+  });
+
   return (
     <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scenario Planner"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scenario Planner"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
           <section className="bg-[var(--bg)]">
@@ -42,28 +57,14 @@ export default function ScenarioPlannerPage() {
             />
           </section>
         )}
-
-        {pageData.coreValues && (
-          <CoreValues 
-            title={pageData.coreValues.sectionTitle} 
-            cards={pageData.coreValues.cards} 
-          />
-        )}
-
-        {pageData.howItWorks && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.howItWorks} 
-            variant="blue" 
-          />
-        )}
-
         {pageData.secondSolution && (
           <section className="bg-[var(--slate-bg)]">
-             <SolutionBlock
+            <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
-              button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
+              description2={pageData.secondSolution.description2}
+              highlightText={pageData.secondSolution.highlightText}
+              listItems={pageData.secondSolution.listItems}
               image={pageData.secondSolution.image}
               imagePosition="left"
               darkMode={isDark}
@@ -71,12 +72,44 @@ export default function ScenarioPlannerPage() {
           </section>
         )}
 
-        {pageData.useCases && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.useCases} 
-            variant="default" 
+        {pageData.coreValues && (
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            cards={pageData.coreValues.cards}
           />
+        )}
+
+        {pageData.howItWorks && (
+          <Services
+            darkMode={isDark}
+            services={pageData.howItWorks}
+            variant="default"
+          />
+        )}
+
+        {pageData.useCases && (
+          <Services
+            darkMode={isDark}
+            services={pageData.useCases}
+            variant="default"
+          />
+        )}
+
+        {/* Easy Steps Section */}
+        {pageData.keyFeatures && (
+          <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
+            <Services_Description
+              pageData={pageData.keyFeatures}
+              theme={theme}
+              className="!py-0 !px-0"
+            />
+            <Stats
+              darkMode={isDark}
+              statsData={parsedStatsData}
+              className="!px-0  py-[3.75rem]"
+              extraClass="!text-lg sm:!text-xl"
+            />
+          </section>
         )}
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />

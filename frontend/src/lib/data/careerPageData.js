@@ -6,7 +6,17 @@ export const careerPageData = {
       asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
     }
   },
-
+  meetTheTeam: {
+    title: "Meet the Team",
+    description: "Join our passionate team of innovators and collaborators who are shaping the future of geospatial technology.",
+    listItems: [
+      "Competitive compensation and benefits",
+      "Opportunities for professional growth and development",
+      "Dynamic and inclusive work environment",
+      "Chance to work on cutting-edge projects"
+    ],
+    image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+  },
   keyFeatures: {
     title: "Just 3 Easy Steps to new Capabilities ",
     description: "Follow a simple, streamlined process designed to unlock new capabilities quickly and efficiently.From start to finish, each step is crafted to help you grow, adapt, and achieve better results effortlessly.",

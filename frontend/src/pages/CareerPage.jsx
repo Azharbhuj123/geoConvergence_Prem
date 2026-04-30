@@ -61,8 +61,9 @@ export default function CareerPage() {
             <SolutionBlock
               title={pageData.meetTheTeam.title}
               description={pageData.meetTheTeam.description}
+              listItems={pageData.meetTheTeam.listItems}
               image={pageData.meetTheTeam.image}
-              imagePosition="right"
+              imagePosition="left"
               darkMode={isDark}
               variant="section"
             />

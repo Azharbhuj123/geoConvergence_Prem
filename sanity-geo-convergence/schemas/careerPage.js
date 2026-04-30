@@ -22,7 +22,16 @@ export default defineType({
         })
       ]
     }),
-
+    // ==================== meetTheTeam ====================
+    defineField({
+      name: 'meetTheTeam', title: 'Meet The Team Block', type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'description', type: 'text' }),
+        defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }] }),
+        defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+      ]
+    }),
     // ==================== EASY STEPS ====================
     defineField({
       name: 'keyFeatures',
