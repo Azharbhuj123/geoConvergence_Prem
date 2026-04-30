@@ -26,14 +26,17 @@ export const geoPrinterPageData = {
     cards: [
       {
         title: "Step 1: Onboard",
+        description: "Integrate your existing data and systems with our platform to create a unified digital foundation.",
         image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
       },
       {
         title: "Step 2: Integrate",
+        description: "Integrate your existing data and systems with our platform to create a unified digital foundation.",
         image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
       },
       {
         title: "Step 3: Elevate",
+        description: "Integrate your existing data and systems with our platform to create a unified digital foundation.",
         image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
       }
     ]

@@ -42,7 +42,11 @@ export default defineType({
         defineField({ name: 'sectionSubtitle', type: 'text' }),
         defineField({
           name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'description', type: 'text' }), defineField({ name: 'image', type: 'image', options: { hotspot: true } })] }
+            {
+              type: 'object', fields: [defineField({ name: 'title', type: 'string' }),
+              defineField({ name: 'description', type: 'text' }),
+              defineField({ name: 'image', type: 'image', options: { hotspot: true } })]
+            }
           ]
         })
       ]
