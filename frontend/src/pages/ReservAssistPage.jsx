@@ -35,6 +35,7 @@ export default function ReservAssistPage() {
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
+              listItems={pageData.firstSolution.listItems}
               button={pageData.firstSolution.buttonText ? { text: pageData.firstSolution.buttonText, link: "#" } : null}
               image={pageData.firstSolution.image}
               imagePosition="left"
@@ -66,6 +67,7 @@ export default function ReservAssistPage() {
             <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
+              listItems={pageData.secondSolution.listItems}
               button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
               image={pageData.secondSolution.image}
               imagePosition="left"

@@ -21,7 +21,8 @@ export default defineType({
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'description', type: 'text' }),
-        defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+        defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }] }),
+        defineField({ name: 'image', type: 'image', options: { hotspot: true } }),
       ]
     }),
     defineField({
@@ -53,6 +54,7 @@ export default defineType({
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'description', type: 'text' }),
+        defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }] }),
         defineField({ name: 'image', type: 'image', options: { hotspot: true } })
       ]
     }),

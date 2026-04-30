@@ -23,6 +23,19 @@ export default function DigitalTwinsPage() {
   const pageData = data || digitalTwinsPageData;
   const isDark = theme === 'dark';
 
+  // Parse Key Features into Stats component format
+  const parsedStatsData = pageData.keyFeatures?.cards?.map(card => {
+    const valueStr = card?.number?.replace(/[^0-9]/g, '');
+    const value = parseInt(valueStr) || null;
+    const suffix = card?.number?.replace(/[0-9]/g, '');
+    return {
+      value,
+      suffix,
+      label: card?.label,
+      iconImage: card?.iconImage,
+    };
+  });
+
   return (
     <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
@@ -56,6 +69,7 @@ export default function DigitalTwinsPage() {
             darkMode={isDark}
             services={pageData.howItWorks}
             variant="default"
+            length={pageData.howItWorks.cards.length}
           />
         )}
 
@@ -78,7 +92,25 @@ export default function DigitalTwinsPage() {
             darkMode={isDark}
             services={pageData.useCases}
             variant="blue"
+            length={pageData.useCases.cards.length}
           />
+        )}
+
+        {/* Easy Steps Section */}
+        {pageData.keyFeatures && (
+          <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
+            <Services_Description
+              pageData={pageData.keyFeatures}
+              theme={theme}
+              className="!py-0 !px-0"
+            />
+            <Stats
+              darkMode={isDark}
+              statsData={parsedStatsData}
+              className="!px-0  py-[3.75rem]"
+              extraClass="!text-lg sm:!text-xl"
+            />
+          </section>
         )}
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />

@@ -142,7 +142,7 @@ export const fetchScenarioPlannerPage = async () => {
 
 export const fetchRoomReservPage = async () => {
   const query = `*[_type == "roomReservPage"][0]{
-    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+    hero, firstSolution, coreValues, howItWorks, keyFeatures, useCases, finalCta
   }`;
   return client.fetch(query);
 };
