@@ -11,7 +11,7 @@ export const eightStarPageData = {
     bottomText: "True North Joint Venture, LLC",
     image: {
       _type: "image",
-      asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+      asset: { _ref: "image-9b975c89a53cda9d5693f6463dea113f5161815c-198x83-png" }
     }
   },
   mainDescription: [

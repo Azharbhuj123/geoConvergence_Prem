@@ -3,14 +3,14 @@ import { useThemeStore } from "../store/useThemeStore";
 import Navbar from "../components/Navbar";
 import ShortHero from "../components/ShortHero";
 import MidSection from "../components/MidSection";
-import { NAVSEASeaportPageData } from "../lib/data/NAVSEASeaportPageData";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { Sba8aPageData } from "../lib/data/Sba8aPageData";
 
 export default function HubZonePage() {
   const { theme, toggleTheme } = useThemeStore();
   const isDark = theme === "dark";
-  const data = NAVSEASeaportPageData;
+  const data = Sba8aPageData;
 
   const contactInfo = [
     {

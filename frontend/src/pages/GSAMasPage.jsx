@@ -3,14 +3,14 @@ import { useThemeStore } from "../store/useThemeStore";
 import Navbar from "../components/Navbar";
 import ShortHero from "../components/ShortHero";
 import MidSection from "../components/MidSection";
-import { NAVSEASeaportPageData } from "../lib/data/NAVSEASeaportPageData";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { gSAMASPageData } from "../lib/data/gSAMAS";
 
 export default function GSAMasPage() {
   const { theme, toggleTheme } = useThemeStore();
   const isDark = theme === "dark";
-  const data = NAVSEASeaportPageData;
+  const data = gSAMASPageData;
 
   const categories = [
     {

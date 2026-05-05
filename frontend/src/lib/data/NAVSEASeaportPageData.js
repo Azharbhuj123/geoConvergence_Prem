@@ -7,7 +7,7 @@ export const NAVSEASeaportPageData = {
   contractInfo: {
     image: {
       _type: "image",
-      asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+      asset: { _ref: "image-aa6986c712447dcd8cf1175f5a1c579fd46749ff-139x90-png" }
     },
     title: "NAVSEA Seaport-NxG",
     subtitle: "Contract Information:",

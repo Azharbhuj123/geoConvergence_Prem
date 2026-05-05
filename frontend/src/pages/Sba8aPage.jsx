@@ -3,14 +3,14 @@ import { useThemeStore } from "../store/useThemeStore";
 import Navbar from "../components/Navbar";
 import ShortHero from "../components/ShortHero";
 import MidSection from "../components/MidSection";
-import { NAVSEASeaportPageData } from "../lib/data/NAVSEASeaportPageData";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { Sba8aPageData } from "../lib/data/Sba8aPageData";
 
 export default function Sba8aPage() {
   const { theme, toggleTheme } = useThemeStore();
   const isDark = theme === "dark";
-  const data = NAVSEASeaportPageData;
+  const data = Sba8aPageData;
 
   const contactInfo = [
     {
@@ -43,7 +43,7 @@ export default function Sba8aPage() {
     >
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
-      <ShortHero title={"GSA MAS"} />
+      <ShortHero title={data.hero.title} />
       <section className="px-6 lg:px-14 py-10 mt-10">
         <div className="max-w-[1440px] mx-auto">
           <MidSection data={data} />
