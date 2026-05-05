@@ -54,7 +54,7 @@ export default function RoomReservPage() {
         />
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)]">
+          <section className="bg-[var(--bg)] py-10 sm:py-15">
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -66,6 +66,7 @@ export default function RoomReservPage() {
               image={pageData.firstSolution.image}
               imagePosition="right"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
@@ -73,6 +74,7 @@ export default function RoomReservPage() {
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
           />
         )}
@@ -83,6 +85,7 @@ export default function RoomReservPage() {
             services={pageData.howItWorks}
             variant="default"
             button={false}
+            length={pageData.howItWorks.cards.length}
           />
         )}
 
@@ -93,12 +96,13 @@ export default function RoomReservPage() {
             variant="blue"
             button={false}
             className={"pb-18"}
+            length={pageData.useCases.cards.length}
           />
         )}
 
         {/* Easy Steps Section */}
         {pageData.keyFeatures && (
-          <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
+          <section className={`px-6 sm:px-10 xl:px-14 pt-10 md:pt-20 xl:pt-24`}>
             <Services_Description
               pageData={pageData.keyFeatures}
               theme={theme}

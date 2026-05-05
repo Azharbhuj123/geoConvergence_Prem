@@ -100,7 +100,7 @@ export const fetchLidarScanningPage = async () => {
 
 export const fetchThreeDModelingPage = async () => {
   const query = `*[_type == "threeDModelingPage"][0]{
-    hero, whatIs, coreValues, solutions, finalCta
+    hero, meetTheTeam, coreValues, solutions, finalCta
   }`;
   return client.fetch(query);
 };
@@ -135,7 +135,7 @@ export const fetchGeoPrinterPage = async () => {
 
 export const fetchScenarioPlannerPage = async () => {
   const query = `*[_type == "scenarioPlannerPage"][0]{
-    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, keyFeatures, finalCta
   }`;
   return client.fetch(query);
 };

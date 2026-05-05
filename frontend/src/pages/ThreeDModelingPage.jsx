@@ -50,12 +50,12 @@ export default function ThreeDModelingPage() {
           title={pageData.hero?.title || "3D Modeling & Point-to-BIM"}
           minHeight="min-h-[550px]"
         />
-        {pageData.whatIs && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+        {pageData.meetTheTeam && (
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
-              title={pageData.whatIs.title}
-              description={pageData.whatIs.description}
-              image={pageData.whatIs.image}
+              title={pageData.meetTheTeam.title}
+              description={pageData.meetTheTeam.description}
+              image={pageData.meetTheTeam.image}
               imagePosition="left"
               darkMode={isDark}
               variant="section"
@@ -70,17 +70,14 @@ export default function ThreeDModelingPage() {
         )}
 
         <section
-          className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}
+          className={`bg-[var(--bg)] px-6 py-10 sm:px-10 xl:px-14`}
         >
-          <Services_Description
-            pageData={pageData.servicesDescription}
-            theme={theme}
-          />
           {pageData.solutions?.map((solution, index) => (
             <div
               key={index}
               className={index === 1 ? "bg-[var(--slate-bg)]" : ""}
             >
+
               <SolutionBlock
                 title={solution.title}
                 description={solution.description}
@@ -95,18 +92,7 @@ export default function ThreeDModelingPage() {
           ))}
         </section>
 
-        {pageData.stats && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
-            <Services_Description pageData={pageData.stats} theme={theme} />
-            <Stats
-              darkMode={isDark}
-              statsData={parsedStatsData}
-              className={"!px-0 !pt-15"}
-            />
-          </section>
-        )}
-        <section className={`py-15`}>
-
+        <section className={`py-5`}>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
 

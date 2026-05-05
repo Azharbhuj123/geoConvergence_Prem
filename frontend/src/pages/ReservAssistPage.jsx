@@ -31,7 +31,7 @@ export default function ReservAssistPage() {
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -48,6 +48,7 @@ export default function ReservAssistPage() {
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
           />
         )}
@@ -59,6 +60,7 @@ export default function ReservAssistPage() {
             button={false}
             variant="default"
             className={'!py-18'}
+            length={pageData.howItWorks.cards.length}
           />
         )}
 
@@ -84,6 +86,7 @@ export default function ReservAssistPage() {
             variant="blue"
             button={false}
             className={'mb-18'}
+            length={pageData.useCases.cards.length}
           />
         )}
         <section className='py-10'>

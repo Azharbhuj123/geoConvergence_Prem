@@ -17,7 +17,7 @@ export default function Footer({ darkMode }) {
   const company = [
     { name: 'Why geoConvergence', path: '/why' },
     { name: 'Products', path: '/products' },
-    { name: 'Careers', path: '/careers' },
+    { name: 'Careers', path: '/career' },
     { name: 'Resources', path: '/resources' },
     { name: 'Contact Us', path: '/contact' },
   ]

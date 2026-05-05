@@ -31,7 +31,7 @@ export default function GeoPrinterPage() {
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Geo Printer"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -57,32 +57,12 @@ export default function GeoPrinterPage() {
             darkMode={isDark}
             services={pageData.howItWorks}
             variant="default"
+            length={pageData.howItWorks.cards.length}
           />
         )}
-
-        {pageData.secondSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
-            <SolutionBlock
-              title={pageData.secondSolution.title}
-              description={pageData.secondSolution.description}
-              button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
-              image={pageData.secondSolution.image}
-              imagePosition="left"
-              darkMode={isDark}
-              variant='section'
-            />
-          </section>
-        )}
-
-        {pageData.useCases && (
-          <Services
-            darkMode={isDark}
-            services={pageData.useCases}
-            variant="default"
-          />
-        )}
-
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        <section className='pt-5'>
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
       </main>
 
       <Footer darkMode={isDark} />

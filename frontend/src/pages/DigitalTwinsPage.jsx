@@ -23,28 +23,15 @@ export default function DigitalTwinsPage() {
   const pageData = data || digitalTwinsPageData;
   const isDark = theme === 'dark';
 
-  // Parse Key Features into Stats component format
-  const parsedStatsData = pageData.keyFeatures?.cards?.map(card => {
-    const valueStr = card?.number?.replace(/[^0-9]/g, '');
-    const value = parseInt(valueStr) || null;
-    const suffix = card?.number?.replace(/[0-9]/g, '');
-    return {
-      value,
-      suffix,
-      label: card?.label,
-      iconImage: card?.iconImage,
-    };
-  });
-
   return (
     <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} minHeight="min-h-[451px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} minHeight="min-h-[500px]" />
 
         {pageData.firstSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -60,6 +47,7 @@ export default function DigitalTwinsPage() {
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
           />
         )}
@@ -68,16 +56,18 @@ export default function DigitalTwinsPage() {
           <Services
             darkMode={isDark}
             services={pageData.howItWorks}
+            button={null}
             variant="default"
             length={pageData.howItWorks.cards.length}
           />
         )}
 
         {pageData.secondSolution && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-10`}>
             <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
+              description2={pageData.secondSolution.description2}
               button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
               image={pageData.secondSolution.image}
               imagePosition="left"
@@ -96,24 +86,10 @@ export default function DigitalTwinsPage() {
           />
         )}
 
-        {/* Easy Steps Section */}
-        {pageData.keyFeatures && (
-          <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
-            <Services_Description
-              pageData={pageData.keyFeatures}
-              theme={theme}
-              className="!py-0 !px-0"
-            />
-            <Stats
-              darkMode={isDark}
-              statsData={parsedStatsData}
-              className="!px-0  py-[3.75rem]"
-              extraClass="!text-lg sm:!text-xl"
-            />
-          </section>
-        )}
 
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        <section className={`pt-10 sm:pt-20`}>
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
       </main>
 
       <Footer darkMode={isDark} />

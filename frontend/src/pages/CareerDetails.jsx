@@ -9,21 +9,7 @@ import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import ShortHero from "../components/ShortHero";
 import Testimonials from "../components/Testimonials";
-
-const TESTIMONIALS = [
-  { name: "Theodore James", featured: false },
-  { name: "Liam Oliver", featured: true },
-  { name: "Charlotte Amelia", featured: false },
-];
-
-const SERVICES = [
-  "Scan2Twin",
-  "Indoor Mapping",
-  "LiDAR Scanning",
-  "3D Modeling",
-  "ArcGIS Indoors",
-];
-const COMPANY_LINKS = ["About us", "Careers", "Contact us", "Lift Media"];
+import Button from "../components/UI/Button";
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
@@ -38,14 +24,14 @@ function CheckIcon() {
 function CvIcon() {
   return (
     <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
-      <rect x="10" y="8" width="36" height="48" rx="4" fill="#1a1a2e" />
+      <rect x="10" y="8" width="36" height="48" rx="4" fill="#FFF" />
       <rect
         x="16"
         y="18"
         width="24"
         height="3"
         rx="1.5"
-        fill="white"
+        fill="black"
         opacity=".7"
       />
       <rect
@@ -54,7 +40,7 @@ function CvIcon() {
         width="24"
         height="3"
         rx="1.5"
-        fill="white"
+        fill="black"
         opacity=".7"
       />
       <rect
@@ -63,7 +49,7 @@ function CvIcon() {
         width="16"
         height="3"
         rx="1.5"
-        fill="white"
+        fill="black"
         opacity=".7"
       />
       <circle cx="46" cy="44" r="12" fill="#326FB7" />
@@ -72,7 +58,7 @@ function CvIcon() {
         y="49"
         textAnchor="middle"
         fontSize="13"
-        fill="white"
+        fill="black"
         fontWeight="700"
       >
         CV
@@ -87,14 +73,14 @@ function HowToApply({ items }) {
   if (!items) return null;
   return (
     <div className="bg-[var(--bg-secondary)] rounded-[20px] p-7 flex flex-col gap-5">
-      <div className="bg-[#000941] rounded-[14px] py-2.5 px-5 text-white text-lg sm:text-xl  xl:text-[30px] font-bold text-center leading-snug w-full">
+      <div className="bg-[#000941] rounded-[14px] py-2.5 px-5 text-white text-lg sm:text-xl xl:text-[30px] font-bold font-Web text-center leading-snug w-full">
         How To Apply?
       </div>
       <ul className="flex flex-col gap-2">
         {items.map((item, i) => (
           <li
             key={i}
-            className="flex items-center gap-2 text-[var(--muted)] text-[15px] leading-relaxed"
+            className="flex items-center gap-2 text-[var(--muted)] text-lg sm:text-xl leading-relaxed"
           >
             <CheckIcon />
             {item}
@@ -108,22 +94,22 @@ function HowToApply({ items }) {
 function SendCVCard() {
   return (
     <div className="bg-[var(--bg-secondary)] rounded-[20px] p-7 flex flex-col items-center gap-5 text-center">
-      <div className="w-[90px] h-[90px] rounded-full bg-[#e2e8f0] dark:bg-slate-700 flex items-center justify-center">
+      <div className="w-[90px] h-[90px] rounded-full bg-[#e2e8f0] dark:bg-black flex items-center justify-center">
         <CvIcon />
       </div>
-      <h3 className=" text-[22px] font-bold text-[var(--text)]">
+      <h3 className="text-lg sm:text-xl xl:text-[30px] font-bold text-[var(--text)] font-Web">
         Send us your C.V.
       </h3>
-      <p className="text-[var(--muted)] text-[15px] leading-relaxed max-w-[240px]">
+      <p className="text-[var(--muted)] text-lg sm:text-xl leading-relaxed max-w-[240px]">
         Send us your C.V.
         <br />
         Do you want to work with us? Please, send your CV to{" "}
         <strong className="font-bold">Info123@gmail.com</strong>
       </p>
       <p className="text-[var(--muted)] font-bold text-base">OR</p>
-      <button className="px-8 py-3 bg-gradient-to-br from-[#0043AC] to-[#0C59DB] rounded-[14px] text-[#F2F4FA] font-bold text-[15px] tracking-wide shadow-[0_8px_20px_-6px_rgba(12,89,219,0.4)] hover:opacity-90 transition-opacity">
+      <Button size="sm">
         CONTACT US
-      </button>
+      </Button>
     </div>
   );
 }
@@ -142,10 +128,10 @@ function JobStats({ stats }) {
             : ""
             }`}
         >
-          <span className=" text-[17px] font-bold text-[var(--heading)] leading-tight">
+          <span className=" text-lg sm:text-xl xl:text-[30px] font-bold text-[var(--heading)] leading-tight font-Web">
             {label}
           </span>
-          <span className=" text-[17px] font-bold text-[var(--heading)] leading-tight">
+          <span className=" text-lg sm:text-xl xl:text-[30px] font-bold text-[var(--heading)] leading-tight">
             {value}
           </span>
         </div>
@@ -163,18 +149,18 @@ function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
           <button
             key={t.key}
             onClick={() => setActiveTab(t.key)}
-            className={`px-10 py-2 rounded-[14px] text-[13px] font-bold transition-all cursor-pointer  ${activeTab === t.key
+            className={`px-4 py-2 rounded-[14px] text-lg font-Inter font-bold transition-all cursor-pointer  ${activeTab === t.key
               ? "bg-[#000941] text-white"
-              : "bg-[var(--card)] text-[var(--muted)] outline outline-1 outline-[var(--border)]"
+              : "bg-[var(--card)] text-[var(--muted)] text-lg font-Inter outline outline-1 outline-[var(--border)]"
               }`}
           >
             {t.label}
           </button>
         ))}
       </div>
-      <div className="h-[2px] bg-[var(--border)] my-4" />
-      <div className="border border-[var(--border)] rounded-[14px] p-6 text-[15px] leading-[1.75] text-[var(--text)] bg-[var(--card)] transition-colors duration-200">
-        {tabData[activeTab]}
+      <div className="h-[2px] bg-[var(--border)] my-5" />
+      <div className="border border-[var(--border)] rounded-[14px] p-6 text-lg  leading-[1.75] text-[var(--text)] bg-[var(--card)] transition-colors duration-200">
+        <p>{tabData[activeTab]}</p>
       </div>
     </>
   );
@@ -231,7 +217,7 @@ export default function CareerPage() {
             </div>
           </div>
         </section>
-        <section className="py-15">
+        <section className="pt-15">
           <Testimonials darkMode={theme === "dark"} />
         </section>
         <CTA darkMode={theme === "dark"} />

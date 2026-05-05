@@ -46,7 +46,7 @@ export default function ScenarioPlannerPage() {
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scenario Planner"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)]">
+          <section className="bg-[var(--bg)] pt-10 sm:pt-15">
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -58,7 +58,7 @@ export default function ScenarioPlannerPage() {
           </section>
         )}
         {pageData.secondSolution && (
-          <section className="bg-[var(--slate-bg)]">
+          <section className="bg-[var(--slate-bg)] pb-10 sm:pb-15">
             <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
@@ -75,6 +75,7 @@ export default function ScenarioPlannerPage() {
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
           />
         )}
@@ -92,6 +93,7 @@ export default function ScenarioPlannerPage() {
             darkMode={isDark}
             services={pageData.useCases}
             variant="default"
+            length={pageData.useCases.cards.length}
           />
         )}
 
@@ -111,8 +113,9 @@ export default function ScenarioPlannerPage() {
             />
           </section>
         )}
-
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        <section className='pt-5'>
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
       </main>
 
       <Footer darkMode={isDark} />

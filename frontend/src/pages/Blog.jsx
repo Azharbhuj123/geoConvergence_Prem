@@ -35,9 +35,9 @@ function CategoryBadge({ label }) {
 
 function BlogCard({ post }) {
   return (
-    <article className="flex flex-col sm:flex-row bg-[var(--card)] rounded-[16px] overflow-hidden border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_28px_rgba(50,111,183,0.14)] transition-all duration-300 group">
+    <article className="flex flex-col bg-[var(--card)] rounded-[16px] overflow-hidden border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_28px_rgba(50,111,183,0.14)] transition-all duration-300 group">
       {/* ── Left: Image ── */}
-      <div className="relative flex-shrink-0 w-full sm:w-[44%] h-[200px] sm:h-auto overflow-hidden">
+      <div className="relative flex-shrink-0 w-full h-[200px] sm:h-[280px] xl:h-[420px] overflow-hidden">
         <img
           src={post.image}
           alt={post.title}
@@ -46,14 +46,14 @@ function BlogCard({ post }) {
         {/* Gradient overlay at bottom */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         {/* Category badge bottom-left of image */}
-        <div className="absolute bottom-4 left-4">
+        {/* <div className="absolute bottom-4 left-4">
           <CategoryBadge label={post.category} />
-        </div>
+        </div> */}
       </div>
 
       {/* ── Right: Content ── */}
       <div className="flex flex-col justify-center gap-3 px-6 py-6 flex-1">
-        <p className="text-[12px] text-[var(--muted)] font-medium">{post.date}</p>
+        <button className="text-lg text-[var(--text)] bg-[#0C59DB73] text-center px-2 py-2 max-w-[150px] font-Inter border rounded-lg border-[var(--border)]">{post.date}</button>
         <h3 className="text-[16px] sm:text-[17px] font-bold text-[var(--heading)] leading-[1.4] group-hover:text-[#326FB7] transition-colors duration-200 line-clamp-3">
           {post.title}
         </h3>
@@ -179,8 +179,7 @@ export default function BlogPage() {
         <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-14 mt-4">
           <div className="mb-10">
             <h2
-              className="font-bold text-[var(--heading)] font-['Titillium_Web']"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
+              className="heading-primary font-Web"
             >
               Our Latest News &amp; Blogs
             </h2>

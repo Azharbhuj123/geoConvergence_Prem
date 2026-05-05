@@ -6,7 +6,7 @@ export const threeDModelingPageData = {
     button2: { text: "Learn More", link: "#" },
     backgroundImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
   },
-  whatIs: {
+  meetTheTeam: {
     title: "What is Scan2Twin?",
     description: [
       "Scan2Twin is a process in which physical environments are scanned and transformed into highly accurate 3D digital replicas. These are not just visual models, but intelligent spatial datasets that accurately reflect real-world structures.",
