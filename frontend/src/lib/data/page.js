@@ -74,7 +74,9 @@ export const pageData = {
       },
     ],
     inlineImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=80',
-    intro: 'geoConvergence has spent the last two years working inside some of the largest and most complex entertainment venues in the United States. The challenge: translate a living, breathing arena into a precision digital twin that supports both daily operations and emergency response — at the individual seat level.',
+    intro: ["The City of Bakersfield’s Technology Services Division set out to modernize how it manages and navigates its facilities portfolio — spanning 93 city buildings and one of its most complex venues, the 260,000 sq. ft. Dignity Health Arena. The goal: a unified indoor mapping platform capable of supporting operations, wayfinding, and future smart-facility initiatives. ",
+      "Working with geoConvergence, the project team implemented the ArcGIS Indoors Information Model across the City’s facilities and deployed ArcGIS Indoors within a production ArcGIS Enterprise environment. For most sites, existing GIS-based floor plan datasets were migrated through CAD into the Indoors information model. The Dignity Health Arena, however, required a different approach. Unlike standard buildings with flat floors and predictable hallways, the arena is a massive, continuous volume and accurately representing that physical reality inside the City’s GIS demanded a true digital twin."
+    ],
     sections: [
       {
         heading: 'From City Blocks to the Arena Floor',

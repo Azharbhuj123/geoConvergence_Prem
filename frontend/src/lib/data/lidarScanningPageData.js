@@ -1,6 +1,6 @@
 export const lidarScanningPageData = {
   hero: {
-    title: "LiDAR Scanning",
+    title: "LiDAR Scanning & Reality Capture",
     subtitle: "Advanced solutions in LiDAR Scanning to redefine physical and digital transformations.",
     button1: { text: "Explore Services", link: "#" },
     button2: { text: "Learn More", link: "#" },

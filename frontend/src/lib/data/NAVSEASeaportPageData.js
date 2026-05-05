@@ -5,7 +5,10 @@ export const NAVSEASeaportPageData = {
       "A $50 billion, Best-in-Class contract vehicle providing government access to advanced technologies.",
   },
   contractInfo: {
-    logo: "image-9aedb38aefaf4d3ee8418015a0fbaccc866c1ed5-1320x532-png",
+    image: {
+      _type: "image",
+      asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+    },
     title: "NAVSEA Seaport-NxG",
     subtitle: "Contract Information:",
     description: "True North Joint Venture, LLC",

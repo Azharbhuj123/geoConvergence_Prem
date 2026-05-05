@@ -86,102 +86,105 @@ export default function GSAMasPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <ShortHero title={"GSA MAS"} />
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
-        <MidSection data={data} />
+      <section className="px-6 lg:px-14 py-10 mt-10">
+        <div className="max-w-[1440px] mx-auto ">
+          <MidSection data={data} />
 
-        <div className="font-['Titillium_Web',sans-serif]">
-          <h1
-            className="text-[30px] lg:text-[40px] font-bold mb-4"
-            style={{ color: "var(--heading)" }}
-          >
-            Information Technology – IT Services
-          </h1>
 
-          <div className="space-y-6">
-            {categories.map((cat) => (
-              <div key={cat.code}>
-                {cat.showTab ? (
-                  /* ── 518210C: tabbed card ── */
-                  <div className="overflow-hidden  rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]">
-                    {/* Tab header row */}
-                    <div
-                      className="flex"
-                      style={{ borderBottom: "1px solid var(--border)" }}
-                    >
+          <div className="font-['Titillium_Web',sans-serif]">
+            <h1
+              className="text-[30px] lg:text-[40px] font-bold mb-4"
+              style={{ color: "var(--heading)" }}
+            >
+              Information Technology – IT Services
+            </h1>
+
+            <div className="space-y-6">
+              {categories.map((cat) => (
+                <div key={cat.code}>
+                  {cat.showTab ? (
+                    /* ── 518210C: tabbed card ── */
+                    <div className="overflow-hidden  rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]">
+                      {/* Tab header row */}
+                      <div
+                        className="flex"
+                        style={{ borderBottom: "1px solid var(--border)" }}
+                      >
+                        <div
+                          className="px-4 py-2 text-sm"
+                          style={{
+                            color: "var(--text)",
+                            borderRight: "1px solid var(--border)",
+                            background: "var(--f6f6f6)",
+                          }}
+                        >
+                          Category
+                        </div>
+                        <div
+                          className="px-4 py-2 text-sm font-medium"
+                          style={{
+                            color: "var(--text)",
+                            background: "var(--f6f6f6)",
+                          }}
+                        >
+                          {cat.code}
+                        </div>
+                      </div>
+
+                      {/* Description label */}
                       <div
                         className="px-4 py-2 text-sm"
                         style={{
                           color: "var(--text)",
-                          borderRight: "1px solid var(--border)",
-                          background: "var(--f6f6f6)",
+                          background: "var(--bg-secondary)",
+                          borderBottom: "1px solid var(--border)",
                         }}
                       >
-                        Category
+                        Description
                       </div>
+
+                      {/* Content */}
                       <div
-                        className="px-4 py-2 text-sm font-medium"
+                        className="px-[55px] py-[38px] text-sm leading-relaxed"
                         style={{
                           color: "var(--text)",
-                          background: "var(--f6f6f6)",
+                          background: "var(--card)",
                         }}
                       >
-                        {cat.code}
+                        {cat.description}
                       </div>
                     </div>
+                  ) : (
+                    /* ── 541370GEO / 54151S: badge above content box ── */
+                    <div>
+                      {/* Badge — inline width, sits above the box */}
+                      <div className="  inline-block">
+                        <span
+                          className="inline-block text-sm p-[16px] rounded"
+                          style={{
+                            color: "var(--text)",
+                            background: "var(--f6f6f6)",
+                          }}
+                        >
+                          {cat.code}
+                        </span>
+                      </div>
 
-                    {/* Description label */}
-                    <div
-                      className="px-4 py-2 text-sm"
-                      style={{
-                        color: "var(--text)",
-                        background: "var(--bg-secondary)",
-                        borderBottom: "1px solid var(--border)",
-                      }}
-                    >
-                      Description
-                    </div>
-
-                    {/* Content */}
-                    <div
-                      className="px-[55px] py-[38px] text-sm leading-relaxed"
-                      style={{
-                        color: "var(--text)",
-                        background: "var(--card)",
-                      }}
-                    >
-                      {cat.description}
-                    </div>
-                  </div>
-                ) : (
-                  /* ── 541370GEO / 54151S: badge above content box ── */
-                  <div>
-                    {/* Badge — inline width, sits above the box */}
-                    <div className="  inline-block">
-                      <span
-                        className="inline-block text-sm p-[16px] rounded"
+                      {/* Separate content box */}
+                      <div
+                        className="  px-[55px] py-[38px] text-sm leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
                         style={{
                           color: "var(--text)",
-                          background: "var(--f6f6f6)",
+                          background: "var(--card)",
                         }}
                       >
-                        {cat.code}
-                      </span>
+                        {cat.description}
+                      </div>
                     </div>
-
-                    {/* Separate content box */}
-                    <div
-                      className="  px-[55px] py-[38px] text-sm leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
-                      style={{
-                        color: "var(--text)",
-                        background: "var(--card)",
-                      }}
-                    >
-                      {cat.description}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

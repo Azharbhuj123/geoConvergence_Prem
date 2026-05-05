@@ -1,5 +1,6 @@
 import { useThemeStore } from '../store/useThemeStore';
 import Button from './UI/Button'; // Assuming UI/Button exists, as it's used elsewhere for buttons
+import { ArrowUpRight } from 'lucide-react';
 
 export default function OpenPositions({ title, subtitle, jobs }) {
   const { theme } = useThemeStore();
@@ -28,12 +29,12 @@ export default function OpenPositions({ title, subtitle, jobs }) {
             >
               <div className="flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <div className="flex flex-col items-start gap-3 mb-3">
                     <h3 className={`text-2xl font-bold font-['Titillium_Web'] uppercase ${isDark ? 'text-white' : 'text-slate-900'
                       }`}>
                       {job.title}
                     </h3>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full uppercase tracking-wide">
+                    <span className="text-blue-800 text-sm font-semibold uppercase tracking-wide">
                       {job.type}
                     </span>
                   </div>
@@ -54,11 +55,14 @@ export default function OpenPositions({ title, subtitle, jobs }) {
                 </div>
               </div>
 
-              <div className="md:w-auto flex items-end md:items-center justify-start md:justify-end shrink-0">
-                <Button href="#" className="bg-gradient-to-r from-blue-600 to-indigo-600 !text-white px-8 py-3 w-full md:w-auto shadow-md hover:shadow-lg transition-transform hover:-translate-y-1">
-                  Apply Today
-                </Button>
-              </div>
+              <button className="w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer
+      bg-gradient-to-r from-blue-600 to-indigo-600 
+      text-white shadow-md hover:shadow-lg 
+      transition-transform hover:-translate-y-1">
+
+                <ArrowUpRight size={22} strokeWidth={2.5} />
+
+              </button>
             </div>
           ))}
         </div>

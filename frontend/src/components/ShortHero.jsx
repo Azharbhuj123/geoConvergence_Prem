@@ -4,7 +4,7 @@ import Hero2 from "../assets/hero2.png";
 export default function ShortHero({ title }) {
   return (
     <section
-      className="relative h-[250px] sm:h-[451px]  w-full flex items-center overflow-hidden bg-cover bg-center"
+      className="relative h-[250px] sm:h-[451px]  w-full flex items-center overflow-hidden bg-cover bg-center px-6 lg:px-14 py-5"
       style={{
         backgroundImage: `url(${Hero2})`,
       }}
@@ -17,7 +17,7 @@ export default function ShortHero({ title }) {
       {/* Container: Using your site's specific max-width and padding.
           'w-full' ensures the container occupies the space so 'mx-auto' can center it.
       */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-14 py-5">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
           {title}
         </h1>

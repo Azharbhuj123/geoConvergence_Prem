@@ -144,40 +144,42 @@ export default function GSS2Page() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <ShortHero title={"GS&S 2.0"} />
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-10 mt-10">
-        <MidSection data={data} />
+      <section className="px-6 lg:px-14 py-10 mt-10">
+        <div className="max-w-[1440px] mx-auto ">
+          <MidSection data={data} />
 
-        <div className="w-full   bg-[var(--bg)] py-13 font-[Titillium Web, sans-serif]">
-          {/* Header Section */}
-          <div className="mb-10  pb-8 max-w-4xl">
-            <h2 className=" font-[Titillium Web, sans-serif] text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
-              Advanced Geospatial Support & Mapping Solutions
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">
-              GS&S 2.0 provides high-precision geospatial intelligence,
-              real-time mapping, and mission-ready support to enhance
-              operational planning and decision-making for USAF missions.
-            </p>
-          </div>
+          <div className="w-full   bg-[var(--bg)] py-13 font-[Titillium Web, sans-serif]">
+            {/* Header Section */}
+            <div className="mb-10  pb-8 max-w-4xl">
+              <h2 className=" font-[Titillium Web, sans-serif] text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
+                Advanced Geospatial Support & Mapping Solutions
+              </h2>
+              <p className="text-sm md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">
+                GS&S 2.0 provides high-precision geospatial intelligence,
+                real-time mapping, and mission-ready support to enhance
+                operational planning and decision-making for USAF missions.
+              </p>
+            </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className="bg-[#001a41] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
-              >
-                <div className="text-white opacity-90">{card.icon}</div>
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {cards.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-[#001a41] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
+                >
+                  <div className="text-white opacity-90">{card.icon}</div>
 
-                <h3 className="text-xl font-bold leading-tight mt-2">
-                  {card.title}
-                </h3>
+                  <h3 className="text-xl font-bold leading-tight mt-2">
+                    {card.title}
+                  </h3>
 
-                <p className="text-sm text-blue-100 opacity-80 leading-snug">
-                  {card.description}
-                </p>
-              </div>
-            ))}
+                  <p className="text-sm text-blue-100 opacity-80 leading-snug">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

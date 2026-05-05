@@ -9,14 +9,20 @@ import Footer from '../components/Footer';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBlogPage } from '../lib/api';
 import { pageData } from '../lib/data/page';
+import Button from '../components/UI/Button';
 
 function SidebarWidget({ title, children }) {
+  const { theme } = useThemeStore();
+  const isDark = theme === 'dark';
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center gap-3">
-        {/* The blue accent bar from your reference image */}
-        <div className="w-[3px] h-6 bg-[#326FB7]" />
-        <h4 className="text-[20px] font-bold text-[#001D3D]">{title}</h4>
+        <div className={`w-[3px] h-6 ${isDark ? 'bg-white' : 'bg-[#000942]'}`} />
+
+        <h4 className={`text-md sm:text-lg xl:text-[30px] font-bold ${isDark ? 'text-white' : 'text-[#000942]'}`}>
+          {title}
+        </h4>
       </div>
       <div>{children}</div>
     </div>
@@ -43,26 +49,20 @@ function BlogCard({ post }) {
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {/* Gradient overlay at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        {/* Category badge bottom-left of image */}
-        {/* <div className="absolute bottom-4 left-4">
-          <CategoryBadge label={post.category} />
-        </div> */}
       </div>
 
       {/* ── Right: Content ── */}
       <div className="flex flex-col justify-center gap-3 px-6 py-6 flex-1">
-        <button className="text-lg text-[var(--text)] bg-[#0C59DB73] text-center px-2 py-2 max-w-[150px] font-Inter border rounded-lg border-[var(--border)]">{post.date}</button>
-        <h3 className="text-[16px] sm:text-[17px] font-bold text-[var(--heading)] leading-[1.4] group-hover:text-[#326FB7] transition-colors duration-200 line-clamp-3">
+        <button className="text-lg text-[var(--text)] bg-[#0C59DB73] text-center px-2 py-2 max-w-[200px] font-Inter border rounded-lg border-[var(--border)]">{post.date}</button>
+        <h3 className="text-lg sm:text-xl xl:text-[26px] font-Web font-bold text-[var(--heading)] leading-[1.4] line-clamp-2">
           {post.title}
         </h3>
-        <p className="text-[13px] sm:text-[14px] text-[var(--muted)] leading-[1.7] line-clamp-3">
+        <p className="text-sm sm:text-lg text-[var(--muted)] leading-[1.7] line-clamp-3">
           {post.excerpt}
         </p>
         <Link
           to={`/blog/${post.id}`}
-          className="self-start mt-1 text-[#326FB7] dark:text-[#60a5fa] text-[13px] font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
+          className="self-start mt-1 text-[var(--text)] text-lg xl:text-[20px] font-Web font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
         >
           View More
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform duration-200">
@@ -99,18 +99,16 @@ function SearchBox({ darkMode }) {
 function PopularTags({ darkMode, popularTags }) {
   const [active, setActive] = useState(null);
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Popular Tags</h4>
+    <div className=" rounded-[20px] flex flex-col gap-6">
       <div className="flex flex-wrap gap-2">
         {popularTags.map((tag) => (
           <button
             key={tag}
             onClick={() => setActive(active === tag ? null : tag)}
-            className={`px-3 py-1.5 rounded-[8px] text-[12px] font-semibold border transition-all duration-200 ${
-              active === tag
-                ? 'bg-[#326FB7] text-white border-[#326FB7]'
-                : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
-            }`}
+            className={`px-3 py-1.5 rounded-[8px] text-md sm:text-lg font-Inter border transition-all duration-200 ${active === tag
+              ? 'bg-[#326FB7] text-white border-[#326FB7]'
+              : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
+              }`}
           >
             {tag}
           </button>
@@ -122,21 +120,20 @@ function PopularTags({ darkMode, popularTags }) {
 
 function RecentPosts({ darkMode, recentPosts }) {
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Recent Post</h4>
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         {recentPosts.map((post) => (
           <div key={post.id} className="flex items-start gap-3 group cursor-pointer">
             <img
               src={post.image}
               alt={post.title}
-              className="w-[64px] h-[52px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
+              className="w-18 h-18 sm:w-[112px] sm:h-[114px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
             />
             <div className="flex flex-col gap-1 min-w-0">
-              <p className="text-[13px] font-semibold text-[var(--heading)] leading-snug group-hover:text-[#326FB7] transition-colors line-clamp-2">
+              <p className="text-md sm:text-lg xl:text-2xl font-Web font-semibold text-[var(--heading)] leading-snug  line-clamp-2">
                 {post.title}
               </p>
-              <p className="text-[11px] text-[var(--muted)]">{post.date}</p>
+              <p className="text-sm sm:text-md xl:text-xl text-[var(--muted)]">{post.date}</p>
             </div>
           </div>
         ))}
@@ -151,7 +148,7 @@ export default function BlogPage() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
   const [visibleCount, setVisibleCount] = useState(3);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const { data } = useQuery({
     queryKey: ['blogPage'],
     queryFn: fetchBlogPage,
@@ -176,76 +173,77 @@ export default function BlogPage() {
         <ShortHero title="Blogs" />
 
         {/* ── Blog Section ── */}
-        <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-14 mt-4">
-          <div className="mb-10">
-            <h2
-              className="heading-primary font-Web"
-            >
-              Our Latest News &amp; Blogs
-            </h2>
-          </div>
-
-          {/* Grid: posts left + sidebar right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_340px] gap-10 items-start">
-
-            {/* ── Left: Blog Cards ── */}
-            <div className="flex flex-col gap-7">
-              {visiblePosts.map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-
-              {/* Load More */}
-              {hasMore && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    onClick={() => setVisibleCount((c) => c + 3)}
-                    className="px-9 py-3 rounded-[14px] bg-gradient-to-br from-[#0043AC] to-[#0C59DB] text-white font-bold text-[15px] shadow-[0_8px_20px_-6px_rgba(12,89,219,0.4)] hover:opacity-90 transition-opacity"
-                  >
-                    View More
-                  </button>
-                </div>
-              )}
+        <section className="px-6 lg:px-14 py-8 sm:py-14 mt-4">
+          <div className="max-w-[1440px] mx-auto ">
+            <div className="mb-10">
+              <h2
+                className="heading-primary font-Web"
+              >
+                Our Latest News &amp; Blogs
+              </h2>
             </div>
 
-            {/* ── Right: Sidebar ── */}
-              {/* Right Column: Sidebar */}
-          <aside className="flex flex-col gap-12 lg:sticky lg:top-8">
-            
-            {/* Search Widget */}
-            <SidebarWidget title="Search">
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search" 
-                  // value={searchTerm}
-                  // onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-[#f9fafb] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-                  </svg>
+            {/* Grid: posts left + sidebar right */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
+
+              {/* ── Left: Blog Cards ── */}
+              <div className="flex flex-col gap-7">
+                {visiblePosts.map((post) => (
+                  <BlogCard key={post.id} post={post} />
+                ))}
+
+                {/* Load More */}
+                {/* {hasMore && ( */}
+                <div className="flex justify-center mt-4">
+                  <Button
+                    size='sm'
+                    onClick={() => setVisibleCount((c) => c + 3)}>
+                    View More
+                  </Button>
                 </div>
+                {/* )} */}
               </div>
-            </SidebarWidget>
 
-            {/* Popular Tags Widget */}
-            <SidebarWidget title="Popular Tags">
-              <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
-            </SidebarWidget>
+              {/* ── Right: Sidebar ── */}
+              {/* Right Column: Sidebar */}
+              <aside className="flex flex-col gap-12 lg:sticky lg:top-8">
 
-            {/* Recent Posts Widget */}
-            <SidebarWidget title="Recent Post">
-              <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
-            </SidebarWidget>
+                {/* Search Widget */}
+                <SidebarWidget title="Search">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full bg-[#f9fafb] font-Inter text-[#000942] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
+                    />
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                      </svg>
+                    </div>
+                  </div>
+                </SidebarWidget>
 
-          </aside>
+                {/* Popular Tags Widget */}
+                <SidebarWidget title="Popular Tags">
+                  <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
+                </SidebarWidget>
+
+                {/* Recent Posts Widget */}
+                <SidebarWidget title="Recent Post">
+                  <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
+                </SidebarWidget>
+
+              </aside>
+            </div>
           </div>
         </section>
 
         {/* Testimonials */}
         <section className="py-15">
-        <Testimonials darkMode={darkMode} /></section>
+          <Testimonials darkMode={darkMode} /></section>
 
         {/* CTA */}
         <CTA darkMode={darkMode} />

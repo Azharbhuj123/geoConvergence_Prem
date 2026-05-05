@@ -1,6 +1,6 @@
 export const arcgisIndoorsPageData = {
   hero: {
-    title: "ArcGIS Indoors",
+    title: "ArcGIS Indoors Implementation",
     subtitle: "Advanced solutions in ArcGIS Indoors to redefine physical and digital transformations.",
     button1: { text: "Explore Services", link: "#" },
     button2: { text: "Learn More", link: "#" },
