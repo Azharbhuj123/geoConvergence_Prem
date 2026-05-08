@@ -77,6 +77,7 @@ export default function LidarScanningPage() {
             title={pageData.coreValues.sectionTitle}
             subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
+            length={pageData.coreValues.cards.length}
           />
         )}
 
