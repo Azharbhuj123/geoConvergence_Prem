@@ -85,6 +85,7 @@ export default function ScenarioPlannerPage() {
             darkMode={isDark}
             services={pageData.howItWorks}
             variant="default"
+            button={null}
           />
         )}
 
@@ -92,13 +93,13 @@ export default function ScenarioPlannerPage() {
           <Services
             darkMode={isDark}
             services={pageData.useCases}
-            variant="default"
+            variant="blue"
             length={pageData.useCases.cards.length}
           />
         )}
 
         {/* Easy Steps Section */}
-        {pageData.keyFeatures && (
+        {/* {pageData.keyFeatures && (
           <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
             <Services_Description
               pageData={pageData.keyFeatures}
@@ -112,8 +113,8 @@ export default function ScenarioPlannerPage() {
               extraClass="!text-lg sm:!text-xl"
             />
           </section>
-        )}
-        <section className='pt-5'>
+        )} */}
+        <section className='pt-20'>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
       </main>

@@ -16,6 +16,7 @@ export default function SolutionBlock({
   className = "",
   isInverted = false,
   services = [],
+  showImage = true,
 }) {
   const imgUrl = image ? urlFor(image) : null;
   const { theme } = useThemeStore();
@@ -38,22 +39,24 @@ export default function SolutionBlock({
           }`}
       >
         {/* Image Side */}
-        <div className="w-full lg:w-1/2">
-          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/13] bg-zinc-200">
-            {imgUrl ? (
-              <img
-                src={imgUrl}
-                alt={title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400" />
-            )}
+        {showImage &&
+          <div className="w-full lg:w-1/2">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/13] bg-zinc-200">
+              {imgUrl ? (
+                <img
+                  src={imgUrl}
+                  alt={title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-slate-300 to-slate-400" />
+              )}
+            </div>
           </div>
-        </div>
+        }
 
         {/* Content Side */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center">
+        <div className={`w-full ${!showImage ? "lg:w-full" : "lg:w-1/2"} flex flex-col justify-center`}>
           <h2 className={`heading-primary font-Web mb-8 ${textColor}`}>
             {title}
           </h2>
