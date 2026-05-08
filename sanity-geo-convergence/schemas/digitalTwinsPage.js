@@ -36,18 +36,18 @@ export default defineType({
         })
       ]
     }),
-    defineField({
-      name: 'howItWorks', title: 'How It Works (Services)', type: 'object',
-      fields: [
-        defineField({ name: 'sectionTitle', type: 'string' }),
-        defineField({ name: 'sectionSubtitle', type: 'text' }),
-        defineField({
-          name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'image', type: 'image', options: { hotspot: true } })] }
-          ]
-        })
-      ]
-    }),
+    // defineField({
+    //   name: 'howItWorks', title: 'How It Works (Services)', type: 'object',
+    //   fields: [
+    //     defineField({ name: 'sectionTitle', type: 'string' }),
+    //     defineField({ name: 'sectionSubtitle', type: 'text' }),
+    //     defineField({
+    //       name: 'cards', type: 'array', of: [
+    //         { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'image', type: 'image', options: { hotspot: true } })] }
+    //       ]
+    //     })
+    //   ]
+    // }),
     defineField({
       name: 'secondSolution', title: 'Second Solution Block', type: 'object',
       fields: [

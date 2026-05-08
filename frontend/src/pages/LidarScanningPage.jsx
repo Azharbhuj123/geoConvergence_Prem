@@ -12,6 +12,7 @@ import Stats from '../components/Stats';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import { Services_Description } from '../components/Services_Description';
+import Services from '../components/Services';
 
 export default function LidarScanningPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -36,7 +37,6 @@ export default function LidarScanningPage() {
     };
   });
 
-  console.log('meethetem', pageData.meetTheTeam);
   return (
     <div className={isDark ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
@@ -56,6 +56,21 @@ export default function LidarScanningPage() {
             />
           </section>
         )}
+        <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 xl:px-14`}>
+          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
+          {/* How It Works */}
+          {pageData?.services?.map((item, index) => (
+            <div key={index}>
+              <Services
+                darkMode={isDark}
+                services={item}
+                variant="default"
+                button={false}
+              />
+            </div>
+          ))}
+        </section>
+
 
         {pageData.coreValues && (
           <CoreValues
@@ -66,7 +81,7 @@ export default function LidarScanningPage() {
         )}
 
 
-        <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:pt-20 xl:px-14 xl:pt-24`}>
+        {/* <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:pt-20 xl:px-14 xl:pt-24`}>
           <Services_Description pageData={pageData.servicesDescription} theme={theme} />
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
@@ -82,9 +97,9 @@ export default function LidarScanningPage() {
               />
             </div>
           ))}
-        </section>
+        </section> */}
 
-        {pageData.stats && (
+        {/* {pageData.stats && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <Services_Description pageData={pageData.stats} theme={theme} />
             <Stats
@@ -94,7 +109,7 @@ export default function LidarScanningPage() {
               extraClass="!text-lg sm:!text-xl"
             />
           </section>
-        )}
+        )} */}
         <section className="pt-5">
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>

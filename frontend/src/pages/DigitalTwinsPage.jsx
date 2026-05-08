@@ -52,7 +52,7 @@ export default function DigitalTwinsPage() {
           />
         )}
 
-        {pageData.howItWorks && (
+        {/* {pageData.howItWorks && (
           <Services
             darkMode={isDark}
             services={pageData.howItWorks}
@@ -60,7 +60,7 @@ export default function DigitalTwinsPage() {
             variant="default"
             length={pageData.howItWorks.cards.length}
           />
-        )}
+        )} */}
 
         {pageData.secondSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-10`}>

@@ -42,6 +42,7 @@ export const fetchProductPage = async () => {
     solutions[]{
       title,
       description,
+      highlightText,
       description2,
       button,
       image
@@ -93,7 +94,7 @@ export const fetchCareerPage = async () => {
 
 export const fetchLidarScanningPage = async () => {
   const query = `*[_type == "lidarScanningPage"][0]{
-    hero, meetTheTeam, coreValues, servicesDescription, solutions, stats, finalCta
+    hero, meetTheTeam, coreValues, servicesDescription, services, solutions, stats, finalCta
   }`;
   return client.fetch(query);
 };

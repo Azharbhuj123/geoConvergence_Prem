@@ -27,6 +27,23 @@ export const lidarScanningPageData = {
     title: "Core Services",
     description: ""
   },
+  services: [
+    {
+      sectionTitle: "How it Works",
+      sectionSubtitle: "The indoor mapping process is based on 3 steps:",
+      cards: [
+        {
+          image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+        },
+        {
+          image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+        },
+        {
+          image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+        }
+      ]
+    }
+  ],
   solutions: [
     {
       title: "Phase 1: Discovery & Capture",

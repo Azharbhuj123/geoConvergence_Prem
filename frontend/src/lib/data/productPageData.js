@@ -21,7 +21,7 @@ export const ProductPageData = {
     solutions: [
         {
             title: "1. IndoorMa.ps",
-            description: "Cloud-Based interface for rapid web-map deployment",
+            highlightText: "SaaS/PaaS Portal for Indoor Facility Mapping and Location Intelligence",
             description2: "Guide users effortlessly inside large spaces with smart, real-time navigation. Indoor Maps make it easy for visitors to find what they’re looking for without confusion or delays. With precise positioning and smooth guidance, users can move through any environment with confidence. Deliver a better, faster, and more intuitive experience every time.",
             buttonText: "View More",
             image: {

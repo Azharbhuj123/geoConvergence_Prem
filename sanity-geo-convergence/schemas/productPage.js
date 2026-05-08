@@ -27,6 +27,7 @@ export default defineType({
                     type: 'object', fields: [
                         defineField({ name: 'title', type: 'string' }),
                         defineField({ name: 'description', type: 'text' }),
+                        defineField({ name: 'highlightText', type: 'text' }),
                         defineField({ name: 'description2', type: 'text' }),
                         defineField({
                             name: 'button',

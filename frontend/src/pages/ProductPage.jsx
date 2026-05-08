@@ -40,17 +40,18 @@ export default function ProductPage() {
 
                 {/* Services Intro */}
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
-                    <Services_Description
-                        pageData={pageData.servicesIntro}
-                        theme={theme}
-                    />
-
-                    {/* Solution Blocks */}
+                    <div className=" sm:sticky top-24 z-10 bg-[var(--bg)] p-8 rounded-md shadow-lg">
+                        <Services_Description
+                            pageData={pageData.servicesIntro}
+                            theme={theme}
+                        />
+                    </div>
                     {pageData.solutions.map((solution, index) => (
                         <SolutionBlock
                             key={index}
                             title={solution.title}
                             description={solution.description}
+                            highlightText={solution?.highlightText}
                             description2={solution.description2}
                             button={{ text: solution?.button?.text, link: solution?.button?.link }}
                             image={solution.image}

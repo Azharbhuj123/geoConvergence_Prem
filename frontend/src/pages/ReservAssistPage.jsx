@@ -28,7 +28,7 @@ export default function ReservAssistPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[451px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[500px]" />
 
         {pageData.firstSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
@@ -79,7 +79,7 @@ export default function ReservAssistPage() {
           </section>
         )}
 
-        {pageData.useCases && (
+        {/* {pageData.useCases && (
           <Services
             darkMode={isDark}
             services={pageData.useCases}
@@ -88,7 +88,7 @@ export default function ReservAssistPage() {
             className={'mb-18'}
             length={pageData.useCases.cards.length}
           />
-        )}
+        )} */}
         <section className='py-10'>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>

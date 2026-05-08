@@ -47,7 +47,7 @@ function App() {
           <Route path="/indoormaps" element={<IndoorMapsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/lidar-scanning" element={<LidarScanningPage />} />
-          <Route path="/3d-modeling" element={<ThreeDModelingPage />} />
+          {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
           <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />
           <Route path="/digital-twins" element={<DigitalTwinsPage />} />
           <Route path="/reserv-assist" element={<ReservAssistPage />} />
