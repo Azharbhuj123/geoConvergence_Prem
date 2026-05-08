@@ -150,6 +150,7 @@ export default function ProductPage() {
     const sectionRef = useRef(null);
     const leftPanelRef = useRef(null);
 
+
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start start", "end end"]
@@ -183,27 +184,21 @@ export default function ProductPage() {
                 <section
                     ref={sectionRef}
                     className={`${theme === 'dark' ? 'dark' : ''} 
-                               bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 relative overflow-hidden`}
+               bg-[var(--bg)] px-6 py-20 sm:px-10 relative`}
                 >
                     <div className="max-w-[1440px] mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
-                            {/* Left Panel - Sticky + Animated (Apple style) */}
-                            <div className="lg:col-span-5 self-start mt-16">
+                            {/* LEFT PANEL - STICKY */}
+                            <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
                                 <motion.div
-                                    ref={leftPanelRef}
-                                    style={{
-                                        y: leftY,
-                                        opacity
-                                    }}
-                                    className="sticky top-24 lg:top-32 
-                                               bg-[var(--bg)] 
-                                               rounded-3xl p-8 lg:p-12 
-                                               shadow-xl border border-[var(--border)]
-                                               transition-all duration-700"
-                                    initial={{ opacity: 0, y: 40 }}
+                                    initial={{ opacity: 0, y: 50 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: false, margin: "-100px" }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                                    className="bg-[var(--bg)] rounded-3xl p-8 lg:p-12 
+                               shadow-xl border border-[var(--border)] 
+                               mt-16"
                                 >
                                     <Services_Description
                                         pageData={pageData.servicesIntro}
@@ -212,29 +207,18 @@ export default function ProductPage() {
                                 </motion.div>
                             </div>
 
-                            {/* Right Side - Solution Blocks with Scroll Animations */}
-                            <div className="lg:col-span-7 ">
+                            {/* RIGHT SIDE - SCROLLABLE CONTENT */}
+                            <div className="lg:col-span-7 space-y-28 lg:space-y-36">
                                 {pageData.solutions.map((solution, index) => {
                                     const isEven = index % 2 === 0;
 
                                     return (
                                         <motion.div
                                             key={index}
-                                            initial={{ opacity: 0, y: 80, scale: 0.95 }}
-                                            whileInView={{
-                                                opacity: 1,
-                                                y: 0,
-                                                scale: 1
-                                            }}
-                                            viewport={{
-                                                once: false,
-                                                margin: "-150px"
-                                            }}
-                                            transition={{
-                                                duration: 0.8,
-                                                ease: [0.23, 1, 0.32, 1] // Apple-like easing
-                                            }}
-                                            className="relative"
+                                            initial={{ opacity: 0, y: 80 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: false, margin: "-120px" }}
+                                            transition={{ duration: 0.7 }}
                                         >
                                             <SolutionBlock
                                                 title={solution.title}
@@ -251,14 +235,14 @@ export default function ProductPage() {
                                                 showImage={false}
                                             />
 
-                                            {/* Subtle connecting line / progress indicator */}
                                             {index < pageData.solutions.length - 1 && (
-                                                <div className="hidden lg:block absolute -bottom-20 left-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border)] to-transparent" />
+                                                <div className="hidden lg:block h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent my-20" />
                                             )}
                                         </motion.div>
                                     );
                                 })}
                             </div>
+
                         </div>
                     </div>
                 </section>

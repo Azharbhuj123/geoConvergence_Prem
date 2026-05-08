@@ -1,7 +1,7 @@
 import { urlFor } from "../lib/sanity";
 import { useThemeStore } from "../store/useThemeStore";
 
-export default function CoreValues({ title, subTitle, cards, className }) {
+export default function CoreValues({ title, subTitle, cards, className, length = 3 }) {
   const { theme } = useThemeStore();
   const isDark = theme === "dark";
 
@@ -21,7 +21,7 @@ export default function CoreValues({ title, subTitle, cards, className }) {
           </p>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${length} gap-6 `}>
           {cards?.map((card, idx) => (
             <div
               key={idx}

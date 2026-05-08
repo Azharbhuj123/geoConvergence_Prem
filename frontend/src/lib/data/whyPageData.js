@@ -23,6 +23,9 @@ export const whyPageData = {
       "BIM integration and digital twin systems",
       "Enterprise geospatial solution architecture",
     ],
+     description2: [
+      "With a proven track record of delivering complex projects for government and commercial clients, we combine cutting-edge technology with domain expertise to solve real-world challenges.",
+    ],
     button: {
       text: "Learn More",
       link: "/solutions",

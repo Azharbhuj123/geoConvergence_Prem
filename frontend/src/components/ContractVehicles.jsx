@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./UI/Button";
 import { urlFor } from "../lib/sanity";
 
-export default function ContractVehicles({ data, darkMode }) {
+export default function ContractVehicles({ data, darkMode, showButton = true }) {
   if (!data) return null;
 
   const { title, subtitle, vehicles } = data;
@@ -57,11 +57,13 @@ export default function ContractVehicles({ data, darkMode }) {
             </div>
 
             {/* Button */}
+            {showButton &&
             <div className="mt-auto">
               <Button variant="primary" size="sm" className="w-full">
                 Know More
               </Button>
             </div>
+            }
           </div>
         ))}
       </div>

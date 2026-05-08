@@ -36,6 +36,7 @@ export default function Events({ className, eventsData, extraClass }) {
         description: item.description,
         image: urlFor(item.image),
         btn: item.btn || null,
+        listItems: item.listItems || null,
       }))
       : defaultEvents;
 
@@ -142,7 +143,15 @@ export default function Events({ className, eventsData, extraClass }) {
                       {event.description}
                     </p>
                   )}
-
+                  {event.listItems && (   
+                    <ul className="list-disc list-inside text-slate-200 text-base sm:text-lg font-Inter transition-all duration-700 overflow-hidden
+                        group-hover:line-clamp-none line-clamp-3 group-hover:max-h-[180px] max-h-[4.2em]
+                      ">
+                      {event.listItems.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
                   {/* CTA Button */}
                   {event.btn && (
                     <div className="pt-6 transition-all duration-700 group-hover:pt-8">

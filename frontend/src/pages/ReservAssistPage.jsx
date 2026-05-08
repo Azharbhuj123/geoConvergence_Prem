@@ -50,6 +50,7 @@ export default function ReservAssistPage() {
             title={pageData.coreValues.sectionTitle}
             subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
+            length={pageData.coreValues.cards.length}
           />
         )}
 
@@ -89,7 +90,7 @@ export default function ReservAssistPage() {
             length={pageData.useCases.cards.length}
           />
         )} */}
-        <section className='py-10'>
+        <section className=''>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
       </main>

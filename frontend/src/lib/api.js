@@ -203,3 +203,13 @@ export const fetchWhyPage = async () => {
   }`;
   return client.fetch(query);
 };
+export const fetchGovernmentPage = async () => {
+  const query = `*[_type == "governmentPage"][0]{
+    hero,
+    certifications,
+    contractVehicles,
+    events,  
+    finalCta
+  }`;
+  return client.fetch(query);
+};

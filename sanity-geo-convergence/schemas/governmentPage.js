@@ -1,8 +1,8 @@
 import { defineType, defineField } from 'sanity'
 
 export default defineType({
-  name: 'whyPage',
-  title: 'Why Page',
+  name: 'governmentPage',
+  title: 'Government Page',
   type: 'document',
   __experimental_actions: ['update', 'publish'], // Only one document allowed
 
@@ -20,49 +20,6 @@ export default defineType({
           title: 'Background Image',
           options: { hotspot: true }
         }),
-        defineField({
-          name: 'button1',
-          type: 'object',
-          title: 'Primary Button',
-          fields: [
-            { name: 'text', type: 'string' },
-            { name: 'link', type: 'string' }
-          ]
-        })
-      ]
-    }),
-
-    defineField({
-      name: 'solutionBlock',
-      title: 'Our Expertise Section',
-      type: 'object',
-      fields: [
-        defineField({ name: 'title', type: 'string' }),
-        defineField({ name: 'description', type: 'text' }),
-        defineField({
-          name: 'highlightText',
-          type: 'string'
-        }),
-        defineField({
-          name: 'listItems',
-          type: 'array',
-          of: [{ type: 'string' }]
-        }),
-        defineField({ name: 'description2', type: 'text' }),
-        defineField({
-          name: 'button',
-          type: 'object',
-          fields: [
-            { name: 'text', type: 'string' },
-            { name: 'link', type: 'string' }
-          ]
-        }),
-        defineField({
-          name: 'image',
-          type: 'image',
-          options: { hotspot: true }
-        }),
-
       ]
     }),
 
@@ -86,14 +43,6 @@ export default defineType({
             }
           ]
         }),
-        defineField({
-          name: 'button',
-          type: 'object',
-          fields: [
-            { name: 'text', type: 'string' },
-            { name: 'link', type: 'string' }
-          ]
-        })
       ]
     }),
 
@@ -120,55 +69,28 @@ export default defineType({
         })
       ]
     }),
-
-    defineField({
-      name: 'caseStudies',
-      title: 'Case Studies',
-      type: 'object',
-      fields: [
-        defineField({ name: 'title', type: 'string' }),
-        defineField({ name: 'subtitle', type: 'text' }),
+    // ==================== Events ====================
         defineField({
-          name: 'studies',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({ name: 'title', type: 'string' }),
-                defineField({ name: 'description', type: 'text' }),
-                defineField({ name: 'image', type: 'image' }),
-                defineField({ name: 'link', type: 'string' })
-              ]
-            }
-          ]
-        })
-      ]
-    }),
-
-    defineField({
-      name: 'teamLeadership',
-      title: 'Team And Leadership',
-      type: 'object',
-      fields: [
-        defineField({ name: 'title', type: 'string' }),
-        defineField({ name: 'subtitle', type: 'text' }),
-        defineField({
-          name: 'members',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({ name: 'name', type: 'string' }),
-                defineField({ name: 'position', type: 'string' }),
-                defineField({ name: 'image', type: 'image' })
-              ]
-            }
-          ]
-        })
-      ]
-    }),
+            name: 'events',
+            title: 'Events',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'cards',
+                    type: 'array',
+                    of: [
+                        {
+                            type: 'object',
+                            fields: [
+                                defineField({ name: 'title', type: 'string' }),
+                                defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }], title: 'List Items' }),
+                                defineField({ name: 'image', type: 'image' })
+                            ]
+                        }
+                    ]
+                }),
+            ]
+        }),
 
     // ==================== FINAL CTA ====================
     defineField({

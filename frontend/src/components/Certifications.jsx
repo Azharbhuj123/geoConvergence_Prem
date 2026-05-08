@@ -1,7 +1,7 @@
 import { urlFor } from "../lib/sanity";
 import Button from "./UI/Button";
 
-export default function Certifications({ data, darkMode }) {
+export default function Certifications({ data, darkMode, showButton = true }) {
   if (!data) return null;
 
   const { title, subtitle, items } = data;
@@ -52,11 +52,13 @@ export default function Certifications({ data, darkMode }) {
               </div>
 
               {/* Button */}
+              {showButton && 
               <div>
                 <Button variant="primary" size="sm" >
                   Know more
                 </Button>
-              </div>
+                </div>
+                }
             </div>
           ))}
         </div>

@@ -21,6 +21,7 @@ import blogDetails from '../schemas/blogDetails'
 import careerDetails from '../schemas/careerDetails'
 import solutionPage from '../schemas/solutionPage'
 import productPage from '../schemas/productPage'
+import governmentPage from '../schemas/governmentPage'
 
 export const schemaTypes = [
   hero,
@@ -43,4 +44,5 @@ export const schemaTypes = [
   scenarioPlannerPage,
   roomReservPage,
   whyPage,
+  governmentPage,
 ]

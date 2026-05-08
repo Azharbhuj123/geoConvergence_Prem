@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import PageLoader from "./components/UI/PageLoader";
 import ScrollToTop from "./components/UI/ScrollToTop";
+import GovernmentPage from "./pages/GovernmentPage";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -46,6 +47,7 @@ function App() {
           <Route path="/scan2twin" element={<Scan2TwinPage />} />
           <Route path="/indoormaps" element={<IndoorMapsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/government" element={<GovernmentPage />} />
           <Route path="/lidar-scanning" element={<LidarScanningPage />} />
           {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
           <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />

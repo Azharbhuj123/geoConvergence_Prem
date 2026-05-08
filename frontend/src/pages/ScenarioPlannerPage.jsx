@@ -114,7 +114,7 @@ export default function ScenarioPlannerPage() {
             />
           </section>
         )} */}
-        <section className='pt-20'>
+        <section className=' pt-10 sm:pt-15 xl:pt-24'>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
       </main>
