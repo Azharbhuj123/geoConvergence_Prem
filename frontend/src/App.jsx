@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import PageLoader from "./components/UI/PageLoader";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import GovernmentPage from "./pages/GovernmentPage";
+import ArcGisDevelopmentPage from "./pages/ArcGisDevelopmentPage";
+import ArcGisEnterprisePage from "./pages/ArcGisEnterprisePage";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -51,6 +53,8 @@ function App() {
           <Route path="/lidar-scanning" element={<LidarScanningPage />} />
           {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
           <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />
+          <Route path="/arcgis-development" element={<ArcGisDevelopmentPage />} />
+          <Route path="/arcgis-enterprise" element={<ArcGisEnterprisePage />} />
           <Route path="/digital-twins" element={<DigitalTwinsPage />} />
           <Route path="/reserv-assist" element={<ReservAssistPage />} />
           <Route path="/geo-printer" element={<GeoPrinterPage />} />

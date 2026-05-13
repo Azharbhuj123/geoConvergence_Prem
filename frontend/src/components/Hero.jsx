@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
-export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
+export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', className = '' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -52,7 +52,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen' }) {
 
       {/* Hero content */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto">
-        <div className="max-w-[653px]">
+        <div className={`max-w-[653px] ${className}`}>
           <div className="flex flex-col gap-7 mb-12">
             <h1
               className="text-white font-bold font-Web leading-tight text-[20px] sm:text-[34px] xl:text-[70px]"
