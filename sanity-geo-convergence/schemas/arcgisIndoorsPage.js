@@ -30,6 +30,131 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'coreValues',
+      title: 'Core Values',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'sectionTitle',
+          title: 'Section Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'cards',
+          title: 'Cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'title',
+                  title: 'Title',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                }),
+                defineField({
+                  name: 'iconImage',
+                  title: 'Icon Image',
+                  type: 'image',
+                  options: { hotspot: true }
+                })
+              ],
+            },
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'howItWorks',
+      title: 'How It Works',
+      type: 'object',
+      fields: [
+        defineField({ name: 'sectionTitle', type: 'string' }),
+        defineField({ name: 'sectionSubtitle', type: 'text' }),
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
+                defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+              ]
+            }
+          ]
+        })
+      ]
+    }),
+    defineField({
+      name: 'keyServices',
+      title: 'Key Services',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
+                defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+              ]
+            }
+          ]
+        })
+      ]
+    }),
+    defineField({
+      name: 'capabilitiesSection',
+      title: 'Capabilities Section',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'image1', type: 'image', options: { hotspot: true } }),
+        defineField({ name: 'image2', type: 'image', options: { hotspot: true } }),
+        defineField({
+          name: 'capabilities',
+          type: 'array',
+          of: [{ type: 'string' }]
+        })
+      ]
+    }),
+    defineField({
+      name: 'facilityFeaturesSection',
+      title: 'Facility Features Section',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
+                defineField({
+                  name: 'icon',
+                  type: 'string',
+                  description: 'Lucide icon name (e.g. Building2, LayoutGrid, Compass, ShieldCheck, Database, Settings)'
+                })
+              ]
+            }
+          ]
+        })
+      ]
+    }),
+    defineField({
       name: 'finalCta', title: 'Final CTA', type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),

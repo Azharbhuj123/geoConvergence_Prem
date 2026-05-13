@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion as Motion } from 'framer-motion';
+import { Building2, Compass, Database, LayoutGrid, Settings, ShieldCheck } from 'lucide-react';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArcGisIndoorsPage } from '../lib/api';
@@ -12,11 +14,61 @@ import SolutionBlock from '../components/SolutionBlock';
 import Stats from '../components/Stats';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import Services from '../components/Services';
+import { urlFor } from '../lib/sanity';
+
+const iconMap = {
+  Building2,
+  LayoutGrid,
+  Compass,
+  ShieldCheck,
+  Database,
+  Settings
+};
+
+function CapabilityItem({ title }) {
+  return (
+    <li className="flex items-start gap-4 border-b border-slate-200 py-4 last:border-b-0">
+      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#0f172a]/20 bg-white shadow-sm">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#020b4d]" />
+      </span>
+      <span className="font-Inter text-subtitle text-[var(--text)]">
+        {title}
+      </span>
+    </li>
+  );
+}
+
+export function FeatureCard({ title, description, icon, className = "" }) {
+  return (
+    <Motion.article
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
+    >
+      <div className="pr-28">
+        <h3 className="font-Web text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
+          {title}
+        </h3>
+
+        <p className="mt-4 font-Inter text-md xl:text-xl leading-6 text-white/82">
+          {description}
+        </p>
+      </div>
+
+      <div className="absolute bottom-6 right-6">
+        <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20">
+          {React.createElement(icon, { size: 58, strokeWidth: 2 })}
+        </span>
+      </div>
+    </Motion.article>
+  );
+}
 
 export default function ArcGisIndoorsPage() {
   const { theme, toggleTheme } = useThemeStore();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['arcgisIndoorsPage'],
     queryFn: fetchArcGisIndoorsPage,
   });
@@ -45,17 +97,9 @@ export default function ArcGisIndoorsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
 
-        {pageData.coreValues && (
-          <CoreValues
-            title={pageData.coreValues.sectionTitle}
-            cards={pageData.coreValues.cards}
-          />
-        )}
-
-        <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
-          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
+        <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
               <SolutionBlock
@@ -69,17 +113,164 @@ export default function ArcGisIndoorsPage() {
             </div>
           ))}
         </section>
+        {pageData.coreValues && (
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            cards={pageData.coreValues.cards}
+          />
+        )}
 
-        {pageData.stats && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
-            <Services_Description pageData={pageData.stats} theme={theme} />
-            <Stats
-              darkMode={isDark}
-              statsData={parsedStatsData}
-              className={"!px-0"}
-            />
+        {pageData.howItWorks && (
+          <Services
+            darkMode={isDark}
+            services={pageData.howItWorks}
+            variant="default"
+            button={false}
+            className={"!pb-0"}
+          />
+        )}
+        {pageData.keyServices && (
+          <section className='bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10'>
+            <div className="max-w-[1440px] mx-auto">
+              {/* Cards grid */}
+              <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-7`}>
+                {pageData.keyServices?.cards?.map((step, index) => (
+                  <div
+                    key={index}
+                    className="relative rounded-[20px] overflow-hidden group cursor-pointer h-[400px] sm:h-[450px] xl:h-[545px]"
+                  >
+                    {/* Background Image */}
+                    <img
+                      src={step.image ? urlFor(step.image) : ""}
+                      alt={step.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75"
+                    />
+
+                    {/* Gradient Overlay - Darker on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 transition-all duration-700 group-hover:to-black/85 group-hover:via-black/50" />
+
+                    {/* Content Container - Slides UP on hover */}
+                    <div className="absolute bottom-0 left-0 right-0">
+
+                      {/* DEFAULT CONTENT (always visible) */}
+                      <div className="backdrop-blur-sm group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
+                        <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
+                          {step.title}
+                        </h3>
+
+                        <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 line-clamp-3">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {/* HOVER OVERLAY (slides from bottom) */}
+                      <div className="
+                  backdrop-blur-sm absolute inset-0 p-6 sm:p-7 flex flex-col justify-end gap-2.5
+                  transform translate-y-full
+                  opacity-0
+                  transition-all duration-700 ease-in-out
+                  group-hover:translate-y-0 group-hover:opacity-100
+                ">
+                        <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
+                          {step.title}
+                        </h3>
+
+                        <p className="text-white/90 text-base sm:text-lg font-Inter leading-6">
+                          {step.description}
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
           </section>
         )}
+
+        <section className="bg-[var(--bg)] px-6 py-14 sm:px-10 lg:py-20 xl:px-14">
+          <div className="mx-auto max-w-[1440px]">
+            <Motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5 }}
+              className="font-Web heading-primary text-center"
+            >
+              {pageData.capabilitiesSection?.title}
+            </Motion.h2>
+
+            <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.58fr_1.12fr] xl:gap-14">
+              <Motion.div
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-5"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-slate-200 shadow-2xl">
+                  <img
+                    src={pageData.capabilitiesSection?.image1 ? urlFor(pageData.capabilitiesSection.image1) : ""}
+                    alt="ArcGIS Indoors 3D building visualization"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#020b4d]/25 via-transparent to-black/55 backdrop-blur-[1px]" />
+                </div>
+
+                <div className="relative aspect-[16/6] overflow-hidden rounded-[18px] bg-slate-200 shadow-xl">
+                  <img
+                    src={pageData.capabilitiesSection?.image2 ? urlFor(pageData.capabilitiesSection.image2) : ""}
+                    alt="Indoor floor plan network visualization"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-[#020b4d]/20 to-transparent backdrop-blur-[1px]" />
+                </div>
+              </Motion.div>
+
+              <Motion.div
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.6, delay: 0.08 }}
+                className="grid gap-x-10 md:grid-cols-2"
+              >
+                {[0, 1].map((colIndex) => (
+                  <ul key={colIndex} className={colIndex === 1 ? "md:border-l md:border-slate-100 md:pl-8" : ""}>
+                    {pageData.capabilitiesSection?.capabilities?.slice(colIndex * 7, (colIndex + 1) * 7).map((capability) => (
+                      <CapabilityItem key={capability} title={capability} />
+                    ))}
+                  </ul>
+                ))}
+              </Motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[var(--bg)] px-6 pb-16 sm:px-10 lg:pb-24 xl:px-14">
+          <div className="mx-auto max-w-[1440px]">
+            <Motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5 }}
+              className="font-Web heading-primary"
+            >
+              {pageData.facilityFeaturesSection?.title}
+            </Motion.h2>
+
+            <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+              {pageData.facilityFeaturesSection?.cards?.map((card) => (
+                <FeatureCard
+                  key={card.title}
+                  title={card.title}
+                  description={card.description}
+                  icon={iconMap[card.icon] || Settings}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />
       </main>
