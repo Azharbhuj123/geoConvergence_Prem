@@ -56,7 +56,7 @@ export default function Services({
           <div className="flex flex-col gap-5 max-w-[600px] xl:max-w-[993px]">
             <h2
               className={clsx(
-                "heading-primary font-Web ",
+                "heading-primary font-Web",
                 theme.title,
               )}
             >
@@ -105,35 +105,35 @@ export default function Services({
               {/* Content Container - Slides UP on hover */}
               <div className="absolute bottom-0 left-0 right-0">
 
-  {/* DEFAULT CONTENT (always visible) */}
-  <div className="backdrop-blur-sm group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
-    <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
-      {step.title}
-    </h3>
+                {/* DEFAULT CONTENT (always visible) */}
+                <div className="backdrop-blur-sm group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
+                  <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
+                    {step.title}
+                  </h3>
 
-    <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 line-clamp-3">
-      {step.description}
-    </p>
-  </div>
+                  <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 line-clamp-3">
+                    {step.description}
+                  </p>
+                </div>
 
-  {/* HOVER OVERLAY (slides from bottom) */}
-  <div className="
+                {/* HOVER OVERLAY (slides from bottom) */}
+                <div className="
     backdrop-blur-sm absolute inset-0 p-6 sm:p-7 flex flex-col justify-end gap-2.5
     transform translate-y-full
     opacity-0
     transition-all duration-700 ease-in-out
     group-hover:translate-y-0 group-hover:opacity-100
   ">
-    <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
-      {step.title}
-    </h3>
+                  <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
+                    {step.title}
+                  </h3>
 
-    <p className="text-white/90 text-base sm:text-lg font-Inter leading-6">
-      {step.description}
-    </p>
-  </div>
+                  <p className="text-white/90 text-base sm:text-lg font-Inter leading-6">
+                    {step.description}
+                  </p>
+                </div>
 
-</div>
+              </div>
             </div>
           ))}
         </div>

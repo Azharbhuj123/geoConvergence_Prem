@@ -99,7 +99,7 @@ export default function ArcGisIndoorsPage() {
       <main>
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
 
-        <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+        <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10`}>
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
               <SolutionBlock
@@ -109,6 +109,7 @@ export default function ArcGisIndoorsPage() {
                 image={solution.image}
                 imagePosition={index % 2 === 0 ? "right" : "left"}
                 darkMode={isDark}
+                variant='section'
               />
             </div>
           ))}
