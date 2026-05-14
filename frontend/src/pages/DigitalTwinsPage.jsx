@@ -49,6 +49,7 @@ export default function DigitalTwinsPage() {
             title={pageData.coreValues.sectionTitle}
             subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
+            lastRowHeight="140px"
           />
         )}
 

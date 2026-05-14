@@ -17,10 +17,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },
     { name: "Why geoConvergence", path: "/why" },
+    { name: "Government", path: "/government" },
     { name: "Resources", path: "/blog" },
     { name: "Career", path: "/career" },
     { name: "Contact", path: "/contact" },
-    { name: "Government", path: "/government" },
   ];
   return (
     <>

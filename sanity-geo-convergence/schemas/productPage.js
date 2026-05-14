@@ -10,6 +10,7 @@ export default defineType({
             name: 'hero', title: 'Hero', type: 'object',
             fields: [
                 defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
                 defineField({ name: 'backgroundImage', type: 'image', options: { hotspot: true } })
             ]
         }),
@@ -21,26 +22,53 @@ export default defineType({
             ]
         }),
         defineField({
-            name: 'solutions', title: 'Solution Blocks', type: 'array',
-            of: [
-                {
-                    type: 'object', fields: [
-                        defineField({ name: 'title', type: 'string' }),
-                        defineField({ name: 'description', type: 'text' }),
-                        defineField({ name: 'highlightText', type: 'text' }),
-                        defineField({ name: 'description2', type: 'text' }),
-                        defineField({
-                            name: 'button',
+            name: 'howItWorks',
+            title: 'How It Works / Showcase Section',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'cards',
+                    type: 'array',
+                    of: [
+                        {
                             type: 'object',
-                            title: 'Primary Button',
                             fields: [
-                                { name: 'text', type: 'string' },
-                                { name: 'link', type: 'string' }
+                                defineField({
+                                    name: 'title',
+                                    type: 'string'
+                                }),
+                                defineField({
+                                    name: 'subTitle',
+                                    type: 'string'
+                                }),
+                                defineField({
+                                    name: 'description',
+                                    type: 'text'
+                                }),
+                                defineField({
+                                    name: 'image',
+                                    type: 'image',
+                                    options: { hotspot: true }
+                                }),
+                                defineField({
+                                    name: 'button',
+                                    title: 'Primary Button',
+                                    type: 'object',
+                                    fields: [
+                                        {
+                                            name: 'text',
+                                            type: 'string'
+                                        },
+                                        {
+                                            name: 'link',
+                                            type: 'string'
+                                        }
+                                    ]
+                                })
                             ]
-                        }),
-                        defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+                        }
                     ]
-                }
+                })
             ]
         }),
         // ==================== Events ====================

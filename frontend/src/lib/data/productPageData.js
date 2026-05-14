@@ -17,55 +17,28 @@ export const ProductPageData = {
         title: "Feature Products",
         description: "Powered by our Scan2Twin pipeline, these applications transform captured data into actionable, real-world solutions for operations, planning, and decision-making."
     },
-
-    solutions: [
-        {
-            title: "1. IndoorMa.ps",
-            highlightText: "SaaS/PaaS Portal for Indoor Facility Mapping and Location Intelligence",
-            description2: "Guide users effortlessly inside large spaces with smart, real-time navigation. Indoor Maps make it easy for visitors to find what they’re looking for without confusion or delays. With precise positioning and smooth guidance, users can move through any environment with confidence. Deliver a better, faster, and more intuitive experience every time.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
+    howItWorks: {
+        cards: [
+            {
+                title: "Onboard",
+                subTitle: "Connect your space.",
+                description: "Onboard",
+                image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+            },
+            {
+                title: "Integrate",
+                subTitle: "Enrich your data.",
+                description: "Integrate",
+                image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+            },
+            {
+                title: "Elevate",
+                subTitle: "Empower your operations.",
+                description: "Elevate",
+                image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
             }
-        },
-        {
-            title: "Indoor Mapping & Digital Twins",
-            description: "geoConvergence creates comprehensive digital twins—intelligent virtual replicas of your physical facilities that enable better decision-making across your organization. From initial data capture through ongoing facility management, we deliver end-to-end digital twin solutions.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "LiDAR Scanning & Reality Capture",
-            description: "Unlock unparalleled precision and efficiency in your projects with our state-of-the-art 3D laser scanning services. Whether you’re an architect, engineer, or contractor, our solutions provide the detailed insights necessary to design, build, and maintain with confidence.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "3D Modeling & Point-to-BIM",
-            description: "Convert real-world physical environments into precise and data-rich digital models using advanced 3D modeling and Point-to-BIM workflows. This process takes raw spatial data from scans and measurements and transforms it into intelligent BIM-ready structures.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "ArcGIS Indoors Implementation",
-            description: "Custom ArcGIS applications that address your spatial data needs. We extend standard GIS capabilities with tools for data collection, custom internal dashboards, and public-facing maps that present spatial data effectively.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        }
-    ],
+        ]
+    },
 
     events: {
         title: "Specialty Tools",

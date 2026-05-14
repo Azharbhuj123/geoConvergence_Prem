@@ -65,6 +65,7 @@ export default function WorkProcessSection({
   steps = [],
   className = "",
   iconSize = 64,
+  length = 5,
 }) {
   return (
     <section className={`px-6 py-16 sm:px-10 lg:py-24 xl:px-14 ${className}`}>
@@ -79,7 +80,7 @@ export default function WorkProcessSection({
           {title}
         </Motion.h2>
 
-        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-9">
+        <div className={`mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-${length} xl:gap-x-9`}>
           {steps.map((step, index) => (
             <WorkProcessStep
               key={step.id || step.title || index}

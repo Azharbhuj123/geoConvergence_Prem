@@ -39,14 +39,7 @@ export const fetchProductPage = async () => {
   const query = `*[_type == "productPage"][0]{
     hero,
     servicesIntro,
-    solutions[]{
-      title,
-      description,
-      highlightText,
-      description2,
-      button,
-      image
-    },
+    howItWorks,
     events,
     finalCta
   }`;
