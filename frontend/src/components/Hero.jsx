@@ -59,7 +59,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
             >
               {title}
             </h1>
-            <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px]">
+            <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] ">
               {subtitle}
             </p>
           </div>

@@ -38,7 +38,7 @@ export function WorkProcessStep({
       className="relative flex min-h-[280px] flex-col items-center text-center"
     >
       <div className="relative flex h-35 w-35 items-center justify-center rounded-full bg-blue-700">
-        <div className="flex h-31 w-31 items-center justify-center rounded-full bg-blue-950">
+        <div className="flex h-31 w-31 items-center justify-center rounded-full bg-[#09155F]">
           <StepIcon icon={icon} iconSize={iconSize} />
         </div>
       </div>

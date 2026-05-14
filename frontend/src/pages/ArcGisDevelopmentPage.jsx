@@ -3,8 +3,8 @@ import { motion as Motion } from 'framer-motion';
 import { Building2, Compass, Database, LayoutGrid, Settings, ShieldCheck } from 'lucide-react';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
-import { fetchArcGisIndoorsPage } from '../lib/api';
-import { arcgisIndoorsPageData } from '../lib/data/arcgisIndoorsPageData';
+import { fetchArcGisDevelopmentPage } from '../lib/api';
+import { arcgisDevelopmentPageData } from '../lib/data/arcgisDevelopmentPageData';
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -44,7 +44,7 @@ export function FeatureCard({ title, description, icon, className = "" }) {
     <Motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
+      className={`relative h-[330px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
     >
       <div className="pr-28">
         <h3 className="font-Web text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
@@ -69,11 +69,11 @@ export default function ArcGisDevelopmentPage() {
   const { theme, toggleTheme } = useThemeStore();
 
   const { data, isLoading } = useQuery({
-    queryKey: ['arcgisIndoorsPage'],
-    queryFn: fetchArcGisIndoorsPage,
+    queryKey: ['arcgisDevelopmentPage'],
+    queryFn: fetchArcGisDevelopmentPage,
   });
 
-  const pageData = data || arcgisIndoorsPageData;
+  const pageData = data || arcgisDevelopmentPageData;
   const isDark = theme === 'dark';
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
@@ -99,7 +99,7 @@ export default function ArcGisDevelopmentPage() {
       <main>
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
 
-        <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+        <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-12 sm:py-16`}>
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
               <SolutionBlock
@@ -107,8 +107,9 @@ export default function ArcGisDevelopmentPage() {
                 description={solution.description}
                 button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
-                imagePosition={index % 2 === 0 ? "right" : "left"}
+                imagePosition="left"
                 darkMode={isDark}
+                variant="section"
               />
             </div>
           ))}
@@ -132,7 +133,7 @@ export default function ArcGisDevelopmentPage() {
               {pageData.facilityFeaturesSection?.title}
             </Motion.h2>
 
-            <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+            {/* <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
               {pageData.facilityFeaturesSection?.cards?.map((card) => (
                 <FeatureCard
                   key={card.title}
@@ -141,7 +142,60 @@ export default function ArcGisDevelopmentPage() {
                   icon={iconMap[card.icon] || Settings}
                 />
               ))}
-            </div>
+            </div> */}
+
+
+            {(() => {
+              const cards = pageData.facilityFeaturesSection?.cards || [];
+
+              const getRows = () => {
+                if (cards.length <= 3) return [cards];
+
+                return [cards.slice(0, 3), cards.slice(3)];
+              };
+
+              const rows = getRows();
+
+              return (
+                <div className="mt-10 space-y-[30px]">
+                  {rows.map((row, rowIndex) => {
+                    const isLastRow =
+                      rowIndex === rows.length - 1 && rows.length > 1;
+
+                    let gridClass = "";
+
+                    if (row.length === 1) {
+                      gridClass = "grid-cols-1";
+                    } else if (row.length === 2) {
+                      gridClass = "grid-cols-1 md:grid-cols-2";
+                    } else {
+                      gridClass = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+                    }
+
+                    return (
+                      <div
+                        key={rowIndex}
+                        className={`grid gap-[30px] ${gridClass}`}
+                      >
+                        {row.map((card) => (
+                          <FeatureCard
+                            key={card.title}
+                            title={card.title}
+                            description={card.description}
+                            icon={iconMap[card.icon] || Settings}
+                            className={
+                              isLastRow
+                                ? "!h-[205px]"
+                                : ""
+                            }
+                          />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })()}
           </div>
         </section>
 

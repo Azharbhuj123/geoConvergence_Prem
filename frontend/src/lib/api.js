@@ -113,6 +113,20 @@ export const fetchArcGisIndoorsPage = async () => {
   return client.fetch(query);
 };
 
+export const fetchArcGisEnterprisePage = async () => {
+  const query = `*[_type == "arcgisEnterprisePage"][0]{
+    hero, coreValues, howItWorks, keyServices, stats, capabilitiesSection, facilityFeaturesSection,  finalCta
+  }`;
+  return client.fetch(query);
+};
+
+export const fetchArcGisDevelopmentPage = async () => {
+  const query = `*[_type == "arcgisDevelopmentPage"][0]{
+    hero, solutions, coreValues, facilityFeaturesSection, finalCta
+  }`;
+  return client.fetch(query);
+};
+
 export const fetchDigitalTwinsPage = async () => {
   const query = `*[_type == "digitalTwinsPage"][0]{
     hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta

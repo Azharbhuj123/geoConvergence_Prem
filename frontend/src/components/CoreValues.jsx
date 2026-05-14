@@ -1,79 +1,129 @@
 // import { urlFor } from "../lib/sanity";
 // import { useThemeStore } from "../store/useThemeStore";
 
-// export default function CoreValues({ title, subTitle, cards, className, length = 3 }) {
+// export default function CoreValues({
+//   title,
+//   subTitle,
+//   cards = [],
+//   className = "",
+//   lastRowHeight = null
+// }) {
 //   const { theme } = useThemeStore();
 //   const isDark = theme === "dark";
 
+//   const getRows = () => {
+//     const total = cards.length;
+
+//     if (total <= 3) return [cards];
+
+//     const firstRow = cards.slice(0, 3);
+//     const remaining = cards.slice(3);
+
+//     return [firstRow, remaining];
+//   };
+
+//   const rows = getRows();
+
 //   return (
 //     <section
-//       className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"}`}
+//       className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"
+//         } ${className}`}
 //     >
 //       <div className="max-w-[1440px] mx-auto">
 //         <h2 className="heading-primary font-Web text-white mb-6">
 //           {title}
 //         </h2>
+
 //         {subTitle && (
-//           <p
-//             className={`text-subtitle mb-12`}
-//           >
-//             {subTitle || 'The core values that drive our success'}
+//           <p className="text-subtitle text-slate-300 mb-12">
+//             {subTitle}
 //           </p>
 //         )}
 
-//         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${length} gap-6 `}>
-//           {cards?.map((card, idx) => (
-//             <div
-//               key={idx}
-//               className={`flex-1 min-w-[300px] max-w-[500px] 
-//   p-8 rounded-2xl flex flex-col justify-between 
-//   relative overflow-hidden transition-colors ${isDark ? "bg-slate-800" : "bg-white"
-//                 }`}
-//             >
-//               <div>
-//                 <h3
-//                   className={`text-2xl font-bold font-Web uppercase tracking-wide mb-3 text-[var(--text)]
-//                     }`}
-//                 >
-//                   {card.title}
-//                 </h3>
-//                 <p
-//                   className={`text-lg font-Inter ${isDark ? "text-slate-300" : "text-slate-600"
-//                     }`}
-//                 >
-//                   {card.description}
-//                 </p>
-//               </div>
+//         <div className="space-y-6">
+//           {rows.map((row, rowIndex) => {
+//             const isLastRow = rowIndex === rows.length - 1 && rows.length > 1;
 
-//               {/* Icon Circle */}
-//               <div className="w-full flex items-center justify-end">
-//                 {card.iconImage ?
-//                   <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 flex items-center justify-center flex-shrink-0">
-//                     <img src={urlFor(card.iconImage)} className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24" />
-//                   </div>
-//                   :
-//                   <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-24 xl:h-24 bg-blue-700  rounded-xl flex items-center justify-center flex-shrink-0">
-//                     <svg
-//                       width="32"
-//                       height="32"
-//                       viewBox="0 0 24 24"
-//                       fill="none"
-//                       stroke="white"
-//                       strokeWidth="2"
-//                     >
-//                       <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-//                     </svg>
-//                   </div>
-//                 }
+//             let gridClass = "";
+
+//             if (row.length === 1) {
+//               gridClass = "grid-cols-1";
+//             } else if (row.length === 2) {
+//               gridClass = "grid-cols-1 sm:grid-cols-2";
+//             } else {
+//               gridClass = "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3";
+//             }
+
+//             return (
+//               <div key={rowIndex} className={`grid gap-6 ${gridClass}`}>
+//                 {row.map((card, idx) => (
+//                   <article
+//                     key={idx}
+//                     style={{
+//                       height: isLastRow && lastRowHeight ? lastRowHeight : undefined,
+//                       width: "100%",
+//                     }}
+//                     className={`
+//                       relative min-h-[240px] rounded-[20px]
+//                       p-6 md:p-8 overflow-hidden
+//                       transition-all duration-300
+//                       ${isDark
+//                         ? "bg-slate-800"
+//                         : "bg-white"
+//                       }
+//                     `}
+//                   >
+//                     {/* Text Content */}
+//                     <div className="pr-24 sm:pr-28">
+//                       <h3 className="font-Web text-xl xl:text-2xl font-bold uppercase leading-tight text-[var(--text)]">
+//                         {card.title}
+//                       </h3>
+
+//                       <p
+//                         className={`mt-4 font-Inter text-base xl:text-lg leading-6 ${isDark
+//                           ? "text-slate-300"
+//                           : "text-slate-600"
+//                           }`}
+//                       >
+//                         {card.description}
+//                       </p>
+//                     </div>
+
+//                     {/* Absolute Icon Bottom Right */}
+//                     <div className="absolute bottom-6 right-6">
+//                       {card.iconImage ? (
+//                         <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
+//                           <img
+//                             src={urlFor(card.iconImage)}
+//                             alt={card.title}
+//                             className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
+//                           />
+//                         </span>
+//                       ) : (
+//                         <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
+//                           <svg
+//                             width="40"
+//                             height="40"
+//                             viewBox="0 0 24 24"
+//                             fill="none"
+//                             stroke="white"
+//                             strokeWidth="2"
+//                           >
+//                             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+//                           </svg>
+//                         </span>
+//                       )}
+//                     </div>
+//                   </article>
+//                 ))}
 //               </div>
-//             </div>
-//           ))}
+//             );
+//           })}
 //         </div>
 //       </div>
 //     </section>
 //   );
 // }
-
 
 
 
@@ -85,98 +135,132 @@ export default function CoreValues({
   subTitle,
   cards = [],
   className = "",
-  length = 3,
+  lastRowHeight = null,
 }) {
   const { theme } = useThemeStore();
   const isDark = theme === "dark";
 
-  const getGridCols = () => {
-    if (length === 1) return "xl:grid-cols-1";
-    if (length === 2) return "xl:grid-cols-2";
-    return "xl:grid-cols-3";
+  const getRows = () => {
+    const total = cards.length;
+
+    if (total <= 3) return [cards];
+
+    const firstRow = cards.slice(0, 3);
+    const remaining = cards.slice(3);
+
+    return [firstRow, remaining];
   };
+
+  const rows = getRows();
 
   return (
     <section
-      className={`py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-14 ${
-        isDark ? "bg-slate-950" : "bg-[#09155F]"
-      } ${className}`}
+      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"
+        } ${className}`}
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Heading */}
-        <h2 className="heading-primary font-Web text-white mb-4 sm:mb-6">
+        <h2 className="heading-primary font-Web text-white mb-6">
           {title}
         </h2>
 
+        {/* Subtitle */}
         {subTitle && (
-          <p className="text-sm sm:text-base md:text-lg text-white/80 mb-8 sm:mb-10 lg:mb-12 max-w-3xl">
+          <p className="text-subtitle text-slate-300 mb-12">
             {subTitle}
           </p>
         )}
 
-        {/* Responsive Grid */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 ${getGridCols()} gap-4 sm:gap-6 lg:gap-8`}
-        >
-          {cards.map((card, idx) => (
-            <div
-              key={idx}
-              className={`w-full min-h-[220px] sm:min-h-[250px] lg:min-h-[280px]
-              p-5 sm:p-6 lg:p-8
-              rounded-xl sm:rounded-2xl
-              flex flex-col justify-between
-              relative overflow-hidden
-              transition-all duration-300
-              hover:-translate-y-2 hover:shadow-2xl
-              ${isDark ? "bg-slate-800" : "bg-white"}`}
-            >
-              {/* Content */}
-              <div className="pr-20 sm:pr-24 lg:pr-28">
-                <h3
-                  className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl
-                  font-bold font-Web uppercase tracking-wide
-                  mb-3 sm:mb-4
-                  ${isDark ? "text-white" : "text-[var(--text)]"}`}
-                >
-                  {card.title}
-                </h3>
+        {/* Cards */}
+        <div className="space-y-6">
+          {rows.map((row, rowIndex) => {
+            const isLastRow =
+              rowIndex === rows.length - 1 && rows.length > 1;
 
-                <p
-                  className={`text-sm sm:text-base lg:text-lg
-                  leading-6 sm:leading-7 lg:leading-8
-                  font-Inter
-                  ${isDark ? "text-slate-300" : "text-slate-600"}`}
-                >
-                  {card.description}
-                </p>
-              </div>
+            let gridClass = "";
 
-              {/* Icon */}
-              <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8">
-                {card.iconImage ? (
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24">
-                    <img
-                      src={urlFor(card.iconImage)}
-                      alt={card.title}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 bg-blue-700 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
-                    <svg
-                      className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2"
-                    >
-                      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                )}
+            if (row.length === 1) {
+              gridClass = "grid-cols-1";
+            } else if (row.length === 2) {
+              gridClass = "grid-cols-1 sm:grid-cols-2";
+            } else {
+              gridClass =
+                "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3";
+            }
+
+            return (
+              <div
+                key={rowIndex}
+                className={`grid gap-6 ${gridClass}`}
+              >
+                {row.map((card, idx) => (
+                  <article
+                    key={idx}
+                    style={{
+                      minHeight:
+                        isLastRow && lastRowHeight
+                          ? lastRowHeight
+                          : undefined,
+                      width: "100%",
+                    }}
+                    className={`
+                      relative min-h-[240px]
+                      rounded-[20px]
+                      p-6 md:p-8
+                      overflow-hidden
+                      transition-all duration-300
+                      ${isDark
+                        ? "bg-slate-800"
+                        : "bg-white"
+                      }
+                    `}
+                  >
+                    {/* Text */}
+                    <div className="pr-24 sm:pr-28">
+                      <h3 className="font-Web text-xl xl:text-2xl font-bold uppercase leading-tight text-[var(--text)]">
+                        {card.title}
+                      </h3>
+
+                      <p
+                        className={`mt-4 font-Inter text-base xl:text-lg leading-6 ${isDark
+                          ? "text-slate-300"
+                          : "text-slate-600"
+                          }`}
+                      >
+                        {card.description}
+                      </p>
+                    </div>
+
+                    {/* Icon */}
+                    <div className="absolute bottom-6 right-6">
+                      {card.iconImage ? (
+                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
+                          <img
+                            src={urlFor(card.iconImage)}
+                            alt={card.title}
+                            className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
+                          />
+                        </span>
+                      ) : (
+                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
+                          <svg
+                            width="40"
+                            height="40"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="2"
+                          >
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
+                  </article>
+                ))}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

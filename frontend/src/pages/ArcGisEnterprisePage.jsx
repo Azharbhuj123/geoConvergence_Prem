@@ -3,8 +3,8 @@ import { motion as Motion } from 'framer-motion';
 import { Building2, Cog, Compass, Database, LayoutGrid, Search, Settings, ShieldCheck, Users } from 'lucide-react';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
-import { fetchArcGisIndoorsPage } from '../lib/api';
-import { arcgisIndoorsPageData } from '../lib/data/arcgisIndoorsPageData';
+import { fetchArcGisEnterprisePage } from '../lib/api';
+import { arcgisEnterprisePageData } from '../lib/data/arcgisEnterprisePageData';
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -80,11 +80,11 @@ export default function ArcGisEnterprisePage() {
     const { theme, toggleTheme } = useThemeStore();
 
     const { data } = useQuery({
-        queryKey: ['arcgisIndoorsPage'],
-        queryFn: fetchArcGisIndoorsPage,
+        queryKey: ['arcgisEnterprisePage'],
+        queryFn: fetchArcGisEnterprisePage,
     });
 
-    const pageData = data || arcgisIndoorsPageData;
+    const pageData = data || arcgisEnterprisePageData;
     const isDark = theme === 'dark';
 
     return (
@@ -92,7 +92,7 @@ export default function ArcGisEnterprisePage() {
             <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
             <main>
-                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
+                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[700px]" className="!max-w-[1280px]" />
 
                 <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-20`}>
                     <div className='max-w-[1440px] mx-auto'>
@@ -105,6 +105,7 @@ export default function ArcGisEnterprisePage() {
                     <CoreValues
                         title={pageData.coreValues.sectionTitle}
                         cards={pageData.coreValues.cards}
+                        lastRowHeight="120px"
                     />
                 )}
 
@@ -133,7 +134,7 @@ export default function ArcGisEnterprisePage() {
                     </div>
                 </section>
 
-                <section className="bg-blue-950 px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 mb-10 xl:mb-20">
+                <section className="bg-[#09155F] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 mb-10 xl:mb-20">
                     <WorkProcessSection
                         title="How We Work"
                         steps={workProcessSteps}

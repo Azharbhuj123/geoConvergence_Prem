@@ -8,6 +8,8 @@ import careerPage from '../schemas/careerPage'
 import lidarScanningPage from '../schemas/lidarScanningPage'
 import threeDModelingPage from '../schemas/threeDModelingPage'
 import arcgisIndoorsPage from '../schemas/arcgisIndoorsPage'
+import arcgisEnterprisePage from '../schemas/arcgisEnterprisePage'
+import arcgisDevelopmentPage from '../schemas/arcgisDevelopmentPage'
 
 import digitalTwinsPage from '../schemas/digitalTwinsPage'
 import reservAssistPage from '../schemas/reservAssistPage'
@@ -35,6 +37,8 @@ export const schemaTypes = [
   lidarScanningPage,
   threeDModelingPage,
   arcgisIndoorsPage,
+  arcgisEnterprisePage,
+  arcgisDevelopmentPage,
   blog,
   blogDetails,
   careerDetails,
