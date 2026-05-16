@@ -132,17 +132,15 @@ export default function ArcGisDevelopmentPage() {
             >
               {pageData.facilityFeaturesSection?.title}
             </Motion.h2>
-
-            {/* <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
-              {pageData.facilityFeaturesSection?.cards?.map((card) => (
-                <FeatureCard
-                  key={card.title}
-                  title={card.title}
-                  description={card.description}
-                  icon={iconMap[card.icon] || Settings}
-                />
-              ))}
-            </div> */}
+            <Motion.p
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5 }}
+              className="font-Intro text-subtitle text-left pt-4 sm:max-w-[700px]"
+            >
+              {pageData.facilityFeaturesSection?.subtitle}
+            </Motion.p>
 
 
             {(() => {

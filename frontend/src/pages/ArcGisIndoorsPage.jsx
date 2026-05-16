@@ -197,11 +197,11 @@ export default function ArcGisIndoorsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.5 }}
-              className="font-Web heading-primary text-center"
+              className="font-Web heading-primary text-left"
             >
               {pageData.capabilitiesSection?.title}
             </Motion.h2>
-
+            
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.58fr_1.12fr] xl:gap-14">
               <Motion.div
                 initial={{ opacity: 0, x: -24 }}
@@ -259,6 +259,15 @@ export default function ArcGisIndoorsPage() {
             >
               {pageData.facilityFeaturesSection?.title}
             </Motion.h2>
+            <Motion.p
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5 }}
+              className="font-Intro text-subtitle text-left pt-4 sm:max-w-[700px]"
+            >
+              {pageData.facilityFeaturesSection?.subtitle}
+            </Motion.p>
 
             <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
               {pageData.facilityFeaturesSection?.cards?.map((card) => (

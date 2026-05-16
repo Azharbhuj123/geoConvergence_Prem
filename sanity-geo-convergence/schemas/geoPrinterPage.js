@@ -12,6 +12,7 @@ export default defineType({
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'subtitle', type: 'text' }),
         defineField({ name: 'button1', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
+        defineField({ name: 'button2', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({ name: 'backgroundImage', type: 'image', options: { hotspot: true } })
       ]
     }),

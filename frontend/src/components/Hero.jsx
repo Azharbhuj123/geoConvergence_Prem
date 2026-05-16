@@ -17,6 +17,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
   // Fallback content if Sanity not configured
   const title = hero?.title
   const subtitle = hero?.subtitle
+  const description = hero?.description
   const btn1 = hero?.button1
   const btn2 = hero?.button2
   const bgImage = hero?.backgroundImage ? urlFor(hero.backgroundImage) : null
@@ -62,6 +63,12 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
             <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] ">
               {subtitle}
             </p>
+            {description && (
+              <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] pt-2">
+                {description}
+              </p>
+            )}
+          </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -77,7 +84,6 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
             )}
           </div>
         </div>
-      </div>
     </section>
   )
 }

@@ -12,6 +12,7 @@ import CoreValues from '../components/CoreValues';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import WorkProcessSection from '../components/WorkProcessSection';
+import { urlFor } from '../lib/sanity';
 
 const iconMap = {
     Building2,
@@ -50,7 +51,7 @@ const workProcessSteps = [
     },
 ];
 
-export function FeatureCard({ title, description, icon, className = "" }) {
+export function FeatureCard({ title, description, iconImage, className = "" }) {
     return (
         <Motion.article
             whileHover={{ y: -6 }}
@@ -68,9 +69,30 @@ export function FeatureCard({ title, description, icon, className = "" }) {
             </div>
 
             <div className="absolute bottom-6 right-6">
-                <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20">
-                    {React.createElement(icon, { size: 58, strokeWidth: 2 })}
-                </span>
+                <div className="absolute bottom-6 right-6">
+                    {iconImage ? (
+                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
+                            <img
+                                src={urlFor(iconImage)}
+                                alt={title}
+                                className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
+                            />
+                        </span>
+                    ) : (
+                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
+                            <svg
+                                width="40"
+                                height="40"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="2"
+                            >
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            </svg>
+                        </span>
+                    )}
+                </div>
             </div>
         </Motion.article>
     );
@@ -94,20 +116,13 @@ export default function ArcGisEnterprisePage() {
             <main>
                 <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[700px]" className="!max-w-[1280px]" />
 
-                <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-20`}>
-                    <div className='max-w-[1440px] mx-auto'>
-                        <p className="font-Web heading-primary text-center">
-                            GeoConvergence helps organizations establish, improve, migrate, and maintain ArcGIS Enterprise environments that are practical, scalable, and ready for use.
-                        </p>
-                    </div>
-                </section>
-                {pageData.coreValues && (
+                {/* {pageData.coreValues && (
                     <CoreValues
                         title={pageData.coreValues.sectionTitle}
                         cards={pageData.coreValues.cards}
                         lastRowHeight="120px"
                     />
-                )}
+                )} */}
 
                 <section className="bg-[var(--bg)] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 pt-10 xl:pt-20">
                     <div className="mx-auto max-w-[1440px]">
@@ -127,7 +142,7 @@ export default function ArcGisEnterprisePage() {
                                     key={card.title}
                                     title={card.title}
                                     description={card.description}
-                                    icon={iconMap[card.icon] || Settings}
+                                    iconImage={card.iconImage}
                                 />
                             ))}
                         </div>

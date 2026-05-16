@@ -134,6 +134,7 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'subtitle', type: 'text' }),
         defineField({
           name: 'cards',
           type: 'array',

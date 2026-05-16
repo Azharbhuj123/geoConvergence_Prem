@@ -11,6 +11,7 @@ export default defineType({
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'subtitle', type: 'text' }),
+        defineField({ name: 'description', type: 'text' }),
         defineField({ name: 'button1', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({ name: 'button2', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({ name: 'backgroundImage', type: 'image', options: { hotspot: true } })
@@ -72,9 +73,10 @@ export default defineType({
                 defineField({ name: 'title', type: 'string' }),
                 defineField({ name: 'description', type: 'text' }),
                 defineField({
-                  name: 'icon',
-                  type: 'string',
-                  description: 'Lucide icon name (e.g. Building2, LayoutGrid, Compass, ShieldCheck, Database, Settings)'
+                  name: 'iconImage',
+                  title: 'Icon Image',
+                  type: 'image',
+                  options: { hotspot: true }
                 })
               ]
             }

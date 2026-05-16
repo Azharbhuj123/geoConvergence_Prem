@@ -58,6 +58,7 @@ export default function RoomReservPage() {
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
+              description2={pageData.firstSolution.description2}
               button={
                 pageData.firstSolution.buttonText
                   ? { text: pageData.firstSolution.buttonText, link: "#" }
@@ -89,7 +90,7 @@ export default function RoomReservPage() {
           />
         )}
 
-        {pageData.useCases && (
+        {/* {pageData.useCases && (
           <Services
             darkMode={isDark}
             services={pageData.useCases}
@@ -98,7 +99,7 @@ export default function RoomReservPage() {
             className={"pb-18"}
             length={pageData.useCases.cards.length}
           />
-        )}
+        )} */}
 
         {/* Easy Steps Section */}
         {pageData.keyFeatures && (

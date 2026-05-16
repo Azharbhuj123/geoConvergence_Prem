@@ -115,6 +115,7 @@ export const arcgisIndoorsPageData = {
   },
   facilityFeaturesSection: {
     title: "Support the way complex facilities actually operate",
+    subtitle: "GeoConvergence  follows a practical implementation approach that helps organizations move from existing facility source data to configured ArcGIS Indoors applications and sustainable indoor GIS workflows.",
     cards: [
       {
         title: "FACILITY OPERATIONS",
