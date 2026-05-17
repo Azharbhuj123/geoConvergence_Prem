@@ -13,6 +13,35 @@ import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import { Services_Description } from "../components/Services_Description";
 import Stats from "../components/Stats";
+import { GeoPrinterCard1, GeoPrinterCard2, GeoPrinterCard3, RoomReservCard2, RoomReservCard4 } from "../components/UI/Svgs";
+import { urlFor } from "../lib/sanity";
+
+
+const cards = [
+  {
+    title: "Real-Time Room Status",
+    description: "Show current occupancy, upcoming reservations, and availability as room schedules change.",
+    icon: <GeoPrinterCard1 />,
+  },
+  {
+    title: "Map-Based Room Search",
+    description:
+      "Find and book meeting spaces through the ArcGIS Indoors floor map interface.",
+    icon: <RoomReservCard2 />,
+  },
+  {
+    title: "Tablet Room Displays ",
+    description:
+      "Use wall-mounted tablets as room displays and booking stations outside meeting rooms.",
+    icon: <GeoPrinterCard3 />,
+  },
+  {
+    title: "Calendar Views ",
+    description:
+      "Review room availability in daily, weekly, or monthly formats.",
+    icon: <RoomReservCard4 />,
+  },
+];
 
 export default function RoomReservPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -80,6 +109,41 @@ export default function RoomReservPage() {
           />
         )}
 
+        <section className="bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-10 sm:pt-20">
+          <div className="mx-auto max-w-[1440px]">
+            {/* Header Section */}
+            <div className="pb-10 max-w-4xl">
+              <h2 className="font-Web heading-primary mb-4">
+                Core Capabilities
+              </h2>
+              <p className="font-Inter text-subtitle">
+                Manage room scheduling with map-based search, real-time status, and practical booking tools.
+              </p>
+            </div>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {cards.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-[#09155F] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
+                >
+                  <div className="text-white opacity-90">{card.icon}</div>
+
+                  <h3 className="font-Web text-xl xl:text-[33px] font-bold leading-tight mt-2">
+                    {card.title}
+                  </h3>
+
+                  <p className="font-Inter text-[15px] xl:text-[26px] text-blue-100 ">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
         {pageData.howItWorks && (
           <Services
             darkMode={isDark}
@@ -102,7 +166,7 @@ export default function RoomReservPage() {
         )} */}
 
         {/* Easy Steps Section */}
-        {pageData.keyFeatures && (
+        {/* {pageData.keyFeatures && (
           <section className={`px-6 sm:px-10 xl:px-14 pt-10 md:pt-20 xl:pt-24`}>
             <Services_Description
               pageData={pageData.keyFeatures}
@@ -116,7 +180,47 @@ export default function RoomReservPage() {
               extraClass="!text-lg sm:!text-xl"
             />
           </section>
-        )}
+        )} */}
+         <section className="bg-[var(--darkblue-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20">
+          <div className="mx-auto max-w-[1440px]">
+            {/* Header Section */}
+            <div className="pb-10 max-w-4xl">
+              <h2 className="font-Web heading-primary mb-4 !text-[var(--bg-secondary)]">
+                {pageData.keyFeatures.title}
+              </h2>
+              <p className="font-Inter text-subtitle">
+                {pageData.keyFeatures.description}
+              </p>
+            </div>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pageData?.keyFeatures?.cards.map((card, index) => (
+                <div
+                  key={index}
+                className="bg-[var(--carddark-bg)] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
+                >
+                  <div className="text-white opacity-90 w-[74px] h-[74px] bg-white rounded p-2">
+                    <img 
+                    src={card.iconImage ? urlFor(card.iconImage) : ""}
+                     alt={card.title} 
+                     className="w-full h-full object-cover"
+                     />
+                  </div>
+
+                  <h3 className="font-Web text-xl xl:text-[33px] font-bold leading-tight mt-2 !text-[var(--darkblue-bg)]">
+                    {card.number}
+                  </h3>
+
+                  <p className="font-Inter text-[15px] xl:text-[26px] text-blue-100 !text-[var(--muted)]">
+                    {card.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
 
 
         <section className="py-15">

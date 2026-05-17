@@ -15,6 +15,8 @@
   --card: #ffffff;
   --card-hover: #f1f5f9;
   --footer-bg: #000942;
+  --darkblue-bg: #09155F;
+  --carddark-bg: #f6f6f6;
 }
 
 .dark {
@@ -29,6 +31,8 @@
   --card: #1e293b;
   --card-hover: #334155;
   --footer-bg: #002052;
+  --darkblue-bg: #e2e8f0;
+  --carddark-bg: #09155F;
 }
 
 @layer components {
