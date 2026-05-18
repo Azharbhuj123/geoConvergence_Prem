@@ -44,7 +44,7 @@ export function FeatureCard({ title, description, icon, className = "", iconImag
     <Motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`group relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
+      className={`group relative min-h-[270px] sm:min-h-[290px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
     >
       <div className="pr-28">
         <h3 className="font-Inter text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
@@ -157,7 +157,7 @@ export default function ArcGisIndoorsPage() {
           />
         )}
         {pageData.keyServices && (
-          <section className='bg-[var(--keyServices-bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10'>
+          <section className='bg-[var(--keyServices-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-15 xl:py-20'>
             <div className="max-w-[1440px] mx-auto">
               {/* Cards grid */}
               <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-7`}>
@@ -340,7 +340,7 @@ export default function ArcGisIndoorsPage() {
                             icon={iconMap[card.icon] || Settings}
                             className={
                               isLastRow
-                                ? "!h-[205px]"
+                                ? "!min-h-[166px]"
                                 : ""
                             }
                           />

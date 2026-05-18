@@ -158,8 +158,8 @@ export default function ArcGisDevelopmentPage() {
                             icon={iconMap[card.icon] || Settings}
                             className={
                               isLastRow
-                                ? "!h-[205px]"
-                                : "!h-[290px]"
+                                ? "!min-h-[166px]"
+                                : "!min-h-[290px]"
                             }
                           />
                         ))}

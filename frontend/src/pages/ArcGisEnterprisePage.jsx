@@ -136,7 +136,7 @@ export default function ArcGisEnterprisePage() {
                                                         iconImage={card.iconImage}
                                                         className={
                                                             isLastRow
-                                                                ? "!h-[205px]"
+                                                                ? "!min-h-[166px]"
                                                                 : ""
                                                         }
                                                     />

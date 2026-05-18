@@ -83,7 +83,7 @@ export default function RoomReservPage() {
         />
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)] py-10 sm:py-15">
+          <section className="bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-15">
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -106,6 +106,7 @@ export default function RoomReservPage() {
             title={pageData.coreValues.sectionTitle}
             subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
+            lastRowHeight="166px"
           />
         )}
 
