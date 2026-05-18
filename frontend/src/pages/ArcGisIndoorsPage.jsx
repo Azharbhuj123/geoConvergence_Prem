@@ -39,15 +39,15 @@ function CapabilityItem({ title }) {
   );
 }
 
-export function FeatureCard({ title, description, icon, className = "" }) {
+export function FeatureCard({ title, description, icon, className = "", iconImage, }) {
   return (
     <Motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
+      className={`group relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
     >
       <div className="pr-28">
-        <h3 className="font-Web text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
+        <h3 className="font-Inter text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
           {title}
         </h3>
 
@@ -57,9 +57,19 @@ export function FeatureCard({ title, description, icon, className = "" }) {
       </div>
 
       <div className="absolute bottom-6 right-6">
-        <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20">
-          {React.createElement(icon, { size: 58, strokeWidth: 2 })}
-        </span>
+        {iconImage ? (
+          <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
+            <img
+              src={urlFor(iconImage)}
+              alt={title}
+              className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360"
+            />
+          </span>
+        ) : (
+          <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20 transition-transform duration-500 ease-in-out group-hover:rotate-360">
+            {icon && React.createElement(icon, { size: 58, strokeWidth: 2 })}
+          </span>
+        )}
       </div>
     </Motion.article>
   );
@@ -97,7 +107,7 @@ export default function ArcGisIndoorsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" maxWidth="!max-w-[653px]" />
 
         <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10`}>
           {pageData.solutions?.map((solution, index) => (
@@ -107,7 +117,7 @@ export default function ArcGisIndoorsPage() {
                 description={solution.description}
                 button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
-                imagePosition={index % 2 === 0 ? "right" : "left"}
+                imagePosition="left"
                 darkMode={isDark}
                 variant='section'
               />
@@ -115,23 +125,39 @@ export default function ArcGisIndoorsPage() {
           ))}
         </section>
         {pageData.coreValues && (
-          <CoreValues
-            title={pageData.coreValues.sectionTitle}
-            cards={pageData.coreValues.cards}
-          />
+          // <CoreValues
+          //   title={pageData.coreValues.sectionTitle}
+          //   cards={pageData.coreValues.cards}
+          // />
+
+          <section className="bg-[var(--bg)] px-6 pb-16 sm:px-10 lg:pb-24 xl:px-14">
+            <div className="mx-auto max-w-[1440px]">
+              <div className="grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+                {pageData.coreValues?.cards?.map((card) => (
+                  <FeatureCard
+                    key={card.title}
+                    title={card.title}
+                    description={card.description}
+                    iconImage={card.iconImage}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
         {pageData.howItWorks && (
           <Services
             darkMode={isDark}
             services={pageData.howItWorks}
-            variant="default"
+            variant="blue"
             button={false}
             className={"!pb-0"}
+            maxWidth={"!max-w-[1280px]"}
           />
         )}
         {pageData.keyServices && (
-          <section className='bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10'>
+          <section className='bg-[var(--keyServices-bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10'>
             <div className="max-w-[1440px] mx-auto">
               {/* Cards grid */}
               <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-7`}>
@@ -218,15 +244,6 @@ export default function ArcGisIndoorsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-[#020b4d]/25 via-transparent to-black/55 backdrop-blur-[1px]" />
                 </div>
-
-                {/* <div className="relative aspect-[16/6] overflow-hidden rounded-[18px] bg-slate-200 shadow-xl">
-                  <img
-                    src={pageData.capabilitiesSection?.image2 ? urlFor(pageData.capabilitiesSection.image2) : ""}
-                    alt="Indoor floor plan network visualization"
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-[#020b4d]/20 to-transparent backdrop-blur-[1px]" />
-                </div> */}
               </Motion.div>
 
               <Motion.div
@@ -264,12 +281,12 @@ export default function ArcGisIndoorsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.5 }}
-              className="font-Intro text-subtitle text-left pt-4 sm:max-w-[700px]"
+              className="font-Intro text-subtitle text-left pt-4 !max-w-[948px]"
             >
               {pageData.facilityFeaturesSection?.subtitle}
             </Motion.p>
 
-            <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+            {/* <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
               {pageData.facilityFeaturesSection?.cards?.map((card) => (
                 <FeatureCard
                   key={card.title}
@@ -278,7 +295,62 @@ export default function ArcGisIndoorsPage() {
                   icon={iconMap[card.icon] || Settings}
                 />
               ))}
-            </div>
+            </div> */}
+
+            {(() => {
+              const cards = pageData.facilityFeaturesSection?.cards || [];
+
+              const getRows = () => {
+                const rows = [];
+
+                for (let i = 0; i < cards.length; i += 3) {
+                  rows.push(cards.slice(i, i + 3));
+                }
+
+                return rows;
+              };
+
+              const rows = getRows();
+
+              return (
+                <div className="mt-10 space-y-[30px]">
+                  {rows.map((row, rowIndex) => {
+                    const isLastRow =
+                      rowIndex === rows.length - 1 && rows.length > 1;
+                    let gridClass = "";
+
+                    if (row.length === 1) {
+                      gridClass = "grid-cols-1";
+                    } else if (row.length === 2) {
+                      gridClass = "grid-cols-1 md:grid-cols-2"; // 50/50
+                    } else {
+                      gridClass = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+                    }
+
+                    return (
+                      <div
+                        key={rowIndex}
+                        className={`grid gap-[30px] ${gridClass}`}
+                      >
+                        {row.map((card) => (
+                          <FeatureCard
+                            key={card.title}
+                            title={card.title}
+                            description={card.description}
+                            icon={iconMap[card.icon] || Settings}
+                            className={
+                              isLastRow
+                                ? "!h-[205px]"
+                                : ""
+                            }
+                          />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })()}
           </div>
         </section>
 

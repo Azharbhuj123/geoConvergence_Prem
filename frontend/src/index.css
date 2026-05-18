@@ -17,6 +17,7 @@
   --footer-bg: #000942;
   --darkblue-bg: #09155F;
   --carddark-bg: #f6f6f6;
+  --keyServices-bg: #09155F;
 }
 
 .dark {
@@ -33,6 +34,7 @@
   --footer-bg: #002052;
   --darkblue-bg: #e2e8f0;
   --carddark-bg: #09155F;
+  --keyServices-bg: #162556;
 }
 
 @layer components {

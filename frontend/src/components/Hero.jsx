@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
-export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', className = '' }) {
+export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', className = '', maxWidth = '' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -60,11 +60,11 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
             >
               {title}
             </h1>
-            <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px]">
+            <p className={`text-white/80 text-[16px] sm:text-[18px] font-Inter leading-8 max-w-[592px] ${maxWidth} `}>
               {subtitle}
             </p>
             {description && (
-              <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] pt-2">
+              <p className={`text-white/80 text-[16px] sm:text-[18px] font-Inter leading-8 max-w-[592px] ${maxWidth} pt-2`}>
                 {description}
               </p>
             )}

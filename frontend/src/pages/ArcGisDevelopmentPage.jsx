@@ -16,6 +16,7 @@ import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import Services from '../components/Services';
 import { urlFor } from '../lib/sanity';
+import { FeatureCard } from './ArcGisIndoorsPage';
 
 const iconMap = {
   Building2,
@@ -36,32 +37,6 @@ function CapabilityItem({ title }) {
         {title}
       </span>
     </li>
-  );
-}
-
-export function FeatureCard({ title, description, icon, className = "" }) {
-  return (
-    <Motion.article
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`relative h-[330px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
-    >
-      <div className="pr-28">
-        <h3 className="font-Web text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
-          {title}
-        </h3>
-
-        <p className="mt-4 font-Inter text-md xl:text-xl leading-6 text-white/82">
-          {description}
-        </p>
-      </div>
-
-      <div className="absolute bottom-6 right-6">
-        <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20">
-          {React.createElement(icon, { size: 58, strokeWidth: 2 })}
-        </span>
-      </div>
-    </Motion.article>
   );
 }
 
@@ -184,7 +159,7 @@ export default function ArcGisDevelopmentPage() {
                             className={
                               isLastRow
                                 ? "!h-[205px]"
-                                : ""
+                                : "!h-[290px]"
                             }
                           />
                         ))}

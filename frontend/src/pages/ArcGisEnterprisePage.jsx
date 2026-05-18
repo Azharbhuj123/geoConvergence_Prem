@@ -13,6 +13,7 @@ import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import WorkProcessSection from '../components/WorkProcessSection';
 import { urlFor } from '../lib/sanity';
+import { FeatureCard } from './ArcGisIndoorsPage';
 
 const iconMap = {
     Building2,
@@ -25,78 +26,31 @@ const iconMap = {
 
 const workProcessSteps = [
     {
-        title: "1. Discover",
+        title: "Discover",
         description: "Understand users, data, workflows, systems, constraints, and priorities.",
         icon: Search,
     },
     {
-        title: "2. Plan",
+        title: "Plan",
         description: "Understand users, data, workflows, systems, constraints, and priorities.",
         icon: LayoutGrid,
     },
     {
-        title: "3. Implement",
+        title: "Implement",
         description: "Define the architecture, migration path, deployment approach, and data requirements.",
         icon: Cog,
     },
     {
-        title: "4. Optimize",
+        title: "Optimize",
         description: "Tune performance, improve configuration, and resolve workflow or reliability gaps.",
         icon: Settings,
     },
     {
-        title: "5. Manage",
+        title: "Manage",
         description: "Support the environment through administration, monitoring, maintenance, and issue resolution.",
         icon: Users,
     },
 ];
-
-export function FeatureCard({ title, description, iconImage, className = "" }) {
-    return (
-        <Motion.article
-            whileHover={{ y: -6 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className={`relative h-[270px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
-        >
-            <div className="pr-28">
-                <h3 className="font-Web text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
-                    {title}
-                </h3>
-
-                <p className="mt-4 font-Inter text-md xl:text-xl leading-6 text-white/82">
-                    {description}
-                </p>
-            </div>
-
-            <div className="absolute bottom-6 right-6">
-                <div className="absolute bottom-6 right-6">
-                    {iconImage ? (
-                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
-                            <img
-                                src={urlFor(iconImage)}
-                                alt={title}
-                                className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
-                            />
-                        </span>
-                    ) : (
-                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
-                            <svg
-                                width="40"
-                                height="40"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="white"
-                                strokeWidth="2"
-                            >
-                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                            </svg>
-                        </span>
-                    )}
-                </div>
-            </div>
-        </Motion.article>
-    );
-}
 
 export default function ArcGisEnterprisePage() {
     const { theme, toggleTheme } = useThemeStore();
@@ -114,7 +68,7 @@ export default function ArcGisEnterprisePage() {
             <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
             <main>
-                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[800px]" className="!max-w-[1280px]" />
+                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[700px]" className="!max-w-[1280px]" maxWidth="!max-w-[964px]" />
 
                 <section className="bg-[var(--bg)] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 pt-10 xl:pt-20">
                     <div className="mx-auto max-w-[1440px]">
@@ -202,7 +156,7 @@ export default function ArcGisEnterprisePage() {
                         subTitle={pageData.facilityFeaturesSection?.subTitle}
                         cards={pageData.facilityFeaturesSection.cards}
                         lastRowHeight="120px"
-
+                        maxWidth="!max-w-[1072px]"
                     />
                 )}
 

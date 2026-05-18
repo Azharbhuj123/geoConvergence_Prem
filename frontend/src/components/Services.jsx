@@ -36,6 +36,7 @@ export default function Services({
   className,
   button = true,
   length,
+  maxWidth
 }) {
   const theme = variants[variant][darkMode ? "dark" : "light"];
 
@@ -67,6 +68,7 @@ export default function Services({
               className={clsx(
                 "text-subtitle",
                 theme.subtitle,
+                maxWidth
               )}
             >
               {services?.sectionSubtitle ||
