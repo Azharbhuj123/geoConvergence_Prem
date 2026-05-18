@@ -116,14 +116,6 @@ export default function ArcGisEnterprisePage() {
             <main>
                 <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[800px]" className="!max-w-[1280px]" />
 
-                {/* {pageData.coreValues && (
-                    <CoreValues
-                        title={pageData.coreValues.sectionTitle}
-                        cards={pageData.coreValues.cards}
-                        lastRowHeight="120px"
-                    />
-                )} */}
-
                 <section className="bg-[var(--bg)] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 pt-10 xl:pt-20">
                     <div className="mx-auto max-w-[1440px]">
                         <Motion.h2
@@ -133,7 +125,7 @@ export default function ArcGisEnterprisePage() {
                             transition={{ duration: 0.5 }}
                             className="font-Web heading-primary"
                         >
-                            {pageData.facilityFeaturesSection?.title}
+                            {pageData.coreValues?.sectionTitle}
                         </Motion.h2>
 
                         {/* <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
@@ -148,7 +140,7 @@ export default function ArcGisEnterprisePage() {
                         </div> */}
 
                         {(() => {
-                            const cards = pageData.facilityFeaturesSection?.cards || [];
+                            const cards = pageData.coreValues?.cards || [];
 
                             const getRows = () => {
                                 const rows = [];
@@ -204,10 +196,21 @@ export default function ArcGisEnterprisePage() {
                     </div>
                 </section>
 
-                <section className="bg-[#09155F] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 mb-10 xl:mb-20">
+                {pageData.coreValues && (
+                    <CoreValues
+                        title={pageData.facilityFeaturesSection?.title}
+                        subTitle={pageData.facilityFeaturesSection?.subTitle}
+                        cards={pageData.facilityFeaturesSection.cards}
+                        lastRowHeight="120px"
+
+                    />
+                )}
+
+                <section className="bg-[var(--bg)] px-6 sm:px-10 xl:px-14">
                     <WorkProcessSection
                         title="How We Work"
                         steps={workProcessSteps}
+                        variant="light"
                     />
                 </section>
                 <CTA darkMode={isDark} CtaData={pageData.finalCta} />

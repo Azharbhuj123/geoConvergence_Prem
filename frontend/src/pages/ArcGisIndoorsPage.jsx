@@ -201,7 +201,7 @@ export default function ArcGisIndoorsPage() {
             >
               {pageData.capabilitiesSection?.title}
             </Motion.h2>
-            
+
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.58fr_1.12fr] xl:gap-14">
               <Motion.div
                 initial={{ opacity: 0, x: -24 }}
@@ -210,7 +210,7 @@ export default function ArcGisIndoorsPage() {
                 transition={{ duration: 0.6 }}
                 className="space-y-5"
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-slate-200 shadow-2xl">
+                <div className="relative aspect-[9/12] overflow-hidden rounded-[24px] bg-slate-200 shadow-2xl">
                   <img
                     src={pageData.capabilitiesSection?.image1 ? urlFor(pageData.capabilitiesSection.image1) : ""}
                     alt="ArcGIS Indoors 3D building visualization"
@@ -219,14 +219,14 @@ export default function ArcGisIndoorsPage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#020b4d]/25 via-transparent to-black/55 backdrop-blur-[1px]" />
                 </div>
 
-                <div className="relative aspect-[16/6] overflow-hidden rounded-[18px] bg-slate-200 shadow-xl">
+                {/* <div className="relative aspect-[16/6] overflow-hidden rounded-[18px] bg-slate-200 shadow-xl">
                   <img
                     src={pageData.capabilitiesSection?.image2 ? urlFor(pageData.capabilitiesSection.image2) : ""}
                     alt="Indoor floor plan network visualization"
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-[#020b4d]/20 to-transparent backdrop-blur-[1px]" />
-                </div>
+                </div> */}
               </Motion.div>
 
               <Motion.div

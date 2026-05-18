@@ -63,6 +63,7 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'subTitle', type: 'string' }),
         defineField({
           name: 'cards',
           type: 'array',
