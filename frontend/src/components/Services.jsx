@@ -106,7 +106,7 @@ export default function Services({
               <div className="absolute bottom-0 left-0 right-0">
 
                 {/* DEFAULT CONTENT (always visible) */}
-                <div className="backdrop-blur-sm group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
+                <div className="backdrop-blur-md [mask-image:linear-gradient(to_top,black_75%,transparent)] bg-white/5 group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
                   <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
                     {step.title}
                   </h3>

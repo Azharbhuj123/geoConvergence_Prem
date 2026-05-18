@@ -114,7 +114,7 @@ export default function ArcGisEnterprisePage() {
             <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
             <main>
-                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[700px]" className="!max-w-[1280px]" />
+                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[800px]" className="!max-w-[1280px]" />
 
                 {/* {pageData.coreValues && (
                     <CoreValues
@@ -136,7 +136,7 @@ export default function ArcGisEnterprisePage() {
                             {pageData.facilityFeaturesSection?.title}
                         </Motion.h2>
 
-                        <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+                        {/* <div className="mt-10 grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
                             {pageData.facilityFeaturesSection?.cards?.map((card) => (
                                 <FeatureCard
                                     key={card.title}
@@ -145,7 +145,62 @@ export default function ArcGisEnterprisePage() {
                                     iconImage={card.iconImage}
                                 />
                             ))}
-                        </div>
+                        </div> */}
+
+                        {(() => {
+                            const cards = pageData.facilityFeaturesSection?.cards || [];
+
+                            const getRows = () => {
+                                const rows = [];
+
+                                for (let i = 0; i < cards.length; i += 3) {
+                                    rows.push(cards.slice(i, i + 3));
+                                }
+
+                                return rows;
+                            };
+
+                            const rows = getRows();
+
+                            return (
+                                <div className="mt-10 space-y-[30px]">
+                                    {rows.map((row, rowIndex) => {
+                                        const isLastRow =
+                                            rowIndex === rows.length - 1 && rows.length > 1;
+                                        let gridClass = "";
+
+                                        if (row.length === 1) {
+                                            gridClass = "grid-cols-1";
+                                        } else if (row.length === 2) {
+                                            gridClass = "grid-cols-1 md:grid-cols-2"; // 50/50
+                                        } else {
+                                            gridClass = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+                                        }
+
+                                        return (
+                                            <div
+                                                key={rowIndex}
+                                                className={`grid gap-[30px] ${gridClass}`}
+                                            >
+                                                {row.map((card) => (
+                                                    <FeatureCard
+                                                        key={card.title}
+                                                        title={card.title}
+                                                        description={card.description}
+                                                        iconImage={card.iconImage}
+                                                        className={
+                                                            isLastRow
+                                                                ? "!h-[205px]"
+                                                                : ""
+                                                        }
+                                                    />
+                                                ))}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            );
+                        })()}
                     </div>
                 </section>
 

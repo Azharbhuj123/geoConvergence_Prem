@@ -60,7 +60,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
             >
               {title}
             </h1>
-            <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] ">
+            <p className="text-white/80 text-[16px] sm:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px]">
               {subtitle}
             </p>
             {description && (
@@ -69,21 +69,21 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
               </p>
             )}
           </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            {btn1 && (
-              <Button href={btn1.link} size='sm' variant="primary"  >
-                {btn1.text}
-              </Button>
-            )}
-            {btn2 && (
-              <Button href={btn2.link} size='sm' variant="secondary" >
-                {btn2.text}
-              </Button>
-            )}
-          </div>
         </div>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          {btn1 && (
+            <Button href={btn1.link} size='sm' variant="primary"  >
+              {btn1.text}
+            </Button>
+          )}
+          {btn2 && (
+            <Button href={btn2.link} size='sm' variant="secondary" >
+              {btn2.text}
+            </Button>
+          )}
+        </div>
+      </div>
     </section>
   )
 }

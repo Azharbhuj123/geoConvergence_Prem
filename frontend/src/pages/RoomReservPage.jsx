@@ -122,7 +122,7 @@ export default function RoomReservPage() {
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {cards.map((card, index) => (
                 <div
                   key={index}
@@ -181,7 +181,7 @@ export default function RoomReservPage() {
             />
           </section>
         )} */}
-         <section className="bg-[var(--darkblue-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20">
+        <section className="bg-[var(--darkblue-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20">
           <div className="mx-auto max-w-[1440px]">
             {/* Header Section */}
             <div className="pb-10 max-w-4xl">
@@ -194,18 +194,18 @@ export default function RoomReservPage() {
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {pageData?.keyFeatures?.cards.map((card, index) => (
                 <div
                   key={index}
-                className="bg-[var(--carddark-bg)] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
+                  className="bg-[var(--carddark-bg)] text-white p-8 rounded-2xl flex flex-col gap-4 min-h-[320px] transition-transform hover:scale-[1.02]"
                 >
                   <div className="text-white opacity-90 w-[74px] h-[74px] bg-white rounded p-2">
-                    <img 
-                    src={card.iconImage ? urlFor(card.iconImage) : ""}
-                     alt={card.title} 
-                     className="w-full h-full object-cover"
-                     />
+                    <img
+                      src={card.iconImage ? urlFor(card.iconImage) : ""}
+                      alt={card.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
                   <h3 className="font-Web text-xl xl:text-[33px] font-bold leading-tight mt-2 !text-[var(--darkblue-bg)]">
