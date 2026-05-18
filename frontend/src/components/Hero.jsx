@@ -24,7 +24,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
 
   return (
     <section
-      className={`relative ${minHeight} flex items-end pb-20 overflow-hidden px-6 sm:px-8 lg:px-14 
+      className={`relative ${minHeight} flex items-end pb-20 sm:pb-24 overflow-hidden px-6 sm:px-8 lg:px-14 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >

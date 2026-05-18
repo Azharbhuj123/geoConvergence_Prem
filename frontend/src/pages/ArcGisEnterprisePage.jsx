@@ -68,7 +68,7 @@ export default function ArcGisEnterprisePage() {
             <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
             <main>
-                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[700px]" className="!max-w-[1280px]" maxWidth="!max-w-[964px]" />
+                <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[640px]" className="!max-w-[1280px]" maxWidth="!max-w-[964px]" />
 
                 <section className="bg-[var(--bg)] px-6 sm:px-10 pb-15 lg:pb-24 xl:px-14 pt-10 xl:pt-20">
                     <div className="mx-auto max-w-[1440px]">

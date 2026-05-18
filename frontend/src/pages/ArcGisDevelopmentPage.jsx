@@ -72,7 +72,7 @@ export default function ArcGisDevelopmentPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[500px]" className="!max-w-[1440px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[451px]" className="!max-w-[1440px]" />
 
         <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-12 sm:py-16`}>
           {pageData.solutions?.map((solution, index) => (
