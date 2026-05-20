@@ -25,12 +25,6 @@ const ReservAssistPage = lazy(() => import("./pages/ReservAssistPage"));
 const GeoPrinterPage = lazy(() => import("./pages/GeoPrinterPage"));
 const ScenarioPlannerPage = lazy(() => import("./pages/ScenarioPlannerPage"));
 const RoomReservPage = lazy(() => import("./pages/RoomReservPage"));
-const EightStarPage = lazy(() => import("./pages/EightStarPage"));
-const NAVSEASeaportPage = lazy(() => import("./pages/NAVSEASeaportPage"));
-const GSAMasPage = lazy(() => import("./pages/GSAMasPage"));
-const GSS2Page = lazy(() => import("./pages/GSS2Page"));
-const Sba8aPage = lazy(() => import("./pages/Sba8aPage"));
-const HubZonePage = lazy(() => import("./pages/HubZonePage"));
 
 function App() {
   return (
@@ -60,12 +54,6 @@ function App() {
           <Route path="/geo-printer" element={<GeoPrinterPage />} />
           <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
           <Route path="/room-reserv" element={<RoomReservPage />} />
-          <Route path="/8star" element={<EightStarPage />} />
-          <Route path="/navsea-seaport" element={<NAVSEASeaportPage />} />
-          <Route path="/gsa-mas" element={<GSAMasPage />} />
-          <Route path="/gss-2.0" element={<GSS2Page />} />
-          <Route path="/sba-8a" element={<Sba8aPage />} />
-          <Route path="/hubzone" element={<HubZonePage />} />
         </Routes>
       </Suspense>
     </div>

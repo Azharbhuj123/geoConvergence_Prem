@@ -81,7 +81,16 @@ export default defineType({
               fields: [
                 defineField({ name: 'name', type: 'string' }),
                 defineField({ name: 'description', type: 'text' }),
-                defineField({ name: 'image', type: 'image' })
+                defineField({ name: 'image', type: 'image' }),
+                defineField({
+                  name: 'button',
+                  title: 'Button',
+                  type: 'object',
+                  fields: [
+                    defineField({ name: 'text', type: 'string', title: 'Button Text' }),
+                    defineField({ name: 'popupSlug', type: 'string', title: 'Popup Slug' })
+                  ]
+                })
               ]
             }
           ]

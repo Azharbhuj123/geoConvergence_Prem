@@ -19,18 +19,18 @@ export default function NAVSEASeaportPage() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       <main>
-        <ShortHero title={data.hero.title} />
+        {/* <ShortHero title={data.hero.title} /> */}
 
         {/* Main Content Section */}
-        <section className="px-6 lg:px-14 py-10 mt-10">
+        <section className="px-6 lg:px-14">
           <div className="max-w-[1440px] mx-auto ">
             {/* Top Row: Card and Description */}
             <MidSection data={data} />
 
-            <SolutionBlock
+            {/* <SolutionBlock
               title={data.firstSolution.title}
               description={data.firstSolution.description}
               button={null}
@@ -50,14 +50,14 @@ export default function NAVSEASeaportPage() {
               listItems={data.secondSolution.services}
               darkMode={isDark}
               variant="section"
-            />
+            /> */}
           </div>
         </section>
-        <CTA darkMode={isDark} />
+        {/* <CTA darkMode={isDark} /> */}
 
       </main>
 
-      <Footer darkMode={isDark} />
+      {/* <Footer darkMode={isDark} /> */}
     </div>
   );
 }

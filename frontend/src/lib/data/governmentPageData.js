@@ -86,6 +86,7 @@ export const governmentPageData = {
             _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
           },
         },
+        button: { text: "Know More", popupSlug: "gsa-mas" },
       },
       {
         name: "8(a) STARS III",
@@ -97,6 +98,7 @@ export const governmentPageData = {
             _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
           },
         },
+        button: { text: "Know More", popupSlug: "8star" },
       },
       {
         name: "Seaport-NxG",
@@ -108,6 +110,7 @@ export const governmentPageData = {
             _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
           },
         },
+        button: { text: "Know More", popupSlug: "navsea-seaport" },
       },
       {
         name: "GS&S 2.0",
@@ -119,6 +122,7 @@ export const governmentPageData = {
             _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png",
           },
         },
+        button: { text: "Know More", popupSlug: "gss-2.0" },
       },
     ],
   },

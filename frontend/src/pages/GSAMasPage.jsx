@@ -83,10 +83,10 @@ export default function GSAMasPage() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
-      <ShortHero title={"GSA MAS"} />
-      <section className="px-6 lg:px-14 py-10 mt-10">
+      {/* <ShortHero title={"GSA MAS"} /> */}
+      <section className="px-6 lg:px-14 pb-10">
         <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
@@ -145,7 +145,7 @@ export default function GSAMasPage() {
 
                       {/* Content */}
                       <div
-                        className="px-[55px] py-[38px] text-sm leading-relaxed"
+                        className="px-[55px] py-[38px] text-md leading-relaxed"
                         style={{
                           color: "var(--text)",
                           background: "var(--card)",
@@ -172,7 +172,7 @@ export default function GSAMasPage() {
 
                       {/* Separate content box */}
                       <div
-                        className="  px-[55px] py-[38px] text-sm leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
+                        className="px-[55px] py-[38px] text-md leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
                         style={{
                           color: "var(--text)",
                           background: "var(--card)",
@@ -188,8 +188,8 @@ export default function GSAMasPage() {
           </div>
         </div>
       </section>
-      <CTA darkMode={theme === "dark"} />
-      <Footer darkMode={theme === "dark"} />
+      {/* <CTA darkMode={theme === "dark"} /> */}
+      {/* <Footer darkMode={theme === "dark"} /> */}
     </div>
   );
 }

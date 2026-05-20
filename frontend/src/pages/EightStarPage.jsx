@@ -24,7 +24,7 @@ export default function EightStarPage() {
         {/* <ShortHero title={data.hero.title} /> */}
 
         {/* Main Content Section */}
-        <section className="px-6 lg:px-14">
+        <section className="px-6 lg:px-14 py-10">
           <div className="max-w-[1440px] mx-auto ">
             {/* Top Row: Card and Description */}
             <MidSection data={data} />

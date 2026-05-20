@@ -141,10 +141,10 @@ export default function GSS2Page() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
-      <ShortHero title={"GS&S 2.0"} />
-      <section className="px-6 lg:px-14 py-10 mt-10">
+      {/* <ShortHero title={"GS&S 2.0"} /> */}
+      <section className="px-6 lg:px-14">
         <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
@@ -183,8 +183,8 @@ export default function GSS2Page() {
           </div>
         </div>
       </section>
-      <CTA darkMode={theme === "dark"} />
-      <Footer darkMode={theme === "dark"} />
+      {/* <CTA darkMode={theme === "dark"} /> */}
+      {/* <Footer darkMode={theme === "dark"} /> */}
     </div>
   );
 }
