@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion as Motion } from 'framer-motion';
 import { urlFor } from "../lib/sanity";
 
 function useCountUp(target, duration = 2000, start = false) {
@@ -122,13 +123,20 @@ export default function Stats({ darkMode, statsData, className, extraClass }) {
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-wrap gap-5 sm:gap-7">
           {stats.map((stat) => (
-            <StatCard
+            <Motion.article
               key={stat.label}
-              {...stat}
-              darkMode={darkMode}
-              animate={visible}
-              extraClass={extraClass}
-            />
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+              className="flex-1 min-w-[240px] rounded-2xl flex flex-col gap-3 transition-all duration-300
+        bg-[var(--slate-bg)]">
+              <StatCard
+                key={stat.label}
+                {...stat}
+                darkMode={darkMode}
+                animate={visible}
+                extraClass={extraClass}
+              />
+            </Motion.article>
           ))}
         </div>
       </div>

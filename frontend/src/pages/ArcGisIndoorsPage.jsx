@@ -148,76 +148,17 @@ export default function ArcGisIndoorsPage() {
 
         {pageData.howItWorks && (
           <section id="how-it-works">
-          <Services
-            darkMode={isDark}
-            services={pageData.howItWorks}
-            variant="blue"
-            button={false}
-            className={"!pb-0"}
-            maxWidth={"!max-w-[1280px]"}
-          />
+            <Services
+              darkMode={isDark}
+              services={pageData.howItWorks}
+              variant="blue"
+              button={false}
+              // className={"!pb-0"}
+              maxWidth={"!max-w-[1280px]"}
+            />
           </section>
         )}
-        {pageData.keyServices && (
-          <section className='bg-[var(--keyServices-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-15 xl:py-20'>
-            <div className="max-w-[1440px] mx-auto">
-              {/* Cards grid */}
-              <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-7`}>
-                {pageData.keyServices?.cards?.map((step, index) => (
-                  <div
-                    key={index}
-                    className="relative rounded-[20px] overflow-hidden group cursor-pointer h-[400px] sm:h-[450px] xl:h-[545px]"
-                  >
-                    {/* Background Image */}
-                    <img
-                      src={step.image ? urlFor(step.image) : ""}
-                      alt={step.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75"
-                    />
-
-                    {/* Gradient Overlay - Darker on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 transition-all duration-700 group-hover:to-black/85 group-hover:via-black/50" />
-
-                    {/* Content Container - Slides UP on hover */}
-                    <div className="absolute bottom-0 left-0 right-0">
-
-                      {/* DEFAULT CONTENT (always visible) */}
-                      <div className="backdrop-blur-md [mask-image:linear-gradient(to_top,black_75%,transparent)] bg-white/5 group-hover:opacity-0 p-6 sm:p-7 flex flex-col gap-2.5">
-                        <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
-                          {step.title}
-                        </h3>
-
-                        <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 line-clamp-3">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      {/* HOVER OVERLAY (slides from bottom) */}
-                      <div className="
-                  backdrop-blur-sm absolute inset-0 p-6 sm:p-7 flex flex-col justify-end gap-2.5
-                  transform translate-y-full
-                  opacity-0
-                  transition-all duration-700 ease-in-out
-                  group-hover:translate-y-0 group-hover:opacity-100
-                ">
-                        <h3 className="text-white text-2xl sm:text-3xl font-bold font-Web leading-8">
-                          {step.title}
-                        </h3>
-
-                        <p className="text-white/90 text-base sm:text-lg font-Inter leading-6">
-                          {step.description}
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-            </div>
-          </section>
-        )}
-
+      
         <section className="bg-[var(--bg)] px-6 py-14 sm:px-10 lg:py-20 xl:px-14">
           <div className="mx-auto max-w-[1440px]">
             <Motion.h2
@@ -238,7 +179,7 @@ export default function ArcGisIndoorsPage() {
                 transition={{ duration: 0.6 }}
                 className="space-y-5"
               >
-                <div className="relative aspect-[9/12] overflow-hidden rounded-[24px] bg-slate-200 shadow-2xl">
+                <div className="relative aspect-[9/12] sm:max-h-[400px] w-full xl:aspect-[9/12] lg:max-h-[600px] overflow-hidden rounded-[24px] bg-slate-200 shadow-2xl">
                   <img
                     src={pageData.capabilitiesSection?.image1 ? urlFor(pageData.capabilitiesSection.image1) : ""}
                     alt="ArcGIS Indoors 3D building visualization"
@@ -315,39 +256,31 @@ export default function ArcGisIndoorsPage() {
               const rows = getRows();
 
               return (
-                <div className="mt-10 space-y-[30px]">
-                  {rows.map((row, rowIndex) => {
-                    const isLastRow =
-                      rowIndex === rows.length - 1 && rows.length > 1;
-                    let gridClass = "";
+                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-[30px]">
+                  {cards.map((card, index) => {
+                    const total = cards.length;
 
-                    if (row.length === 1) {
-                      gridClass = "grid-cols-1";
-                    } else if (row.length === 2) {
-                      gridClass = "grid-cols-1 md:grid-cols-2"; // 50/50
-                    } else {
-                      gridClass = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+                    let xlSpan = "xl:col-span-2";
+
+                    // Last 2 cards become 50/50 on xl
+                    if (total === 5 && index >= 3) {
+                      xlSpan = "xl:col-span-3";
                     }
 
                     return (
-                      <div
-                        key={rowIndex}
-                        className={`grid gap-[30px] ${gridClass}`}
-                      >
-                        {row.map((card) => (
-                          <FeatureCard
-                            key={card.title}
-                            title={card.title}
-                            description={card.description}
-                            icon={iconMap[card.icon] || Settings}
-                            className={
-                              isLastRow
-                                ? "!min-h-[166px]"
-                                : ""
-                            }
-                          />
-                        ))}
-                      </div>
+                      <FeatureCard
+                        key={card.title}
+                        title={card.title}
+                        description={card.description}
+                        icon={iconMap[card.icon] || Settings}
+                        className={`
+                         ${xlSpan}
+                         ${index >= 3 && total === 5
+                            ? "!min-h-[166px]"
+                            : "!min-h-[290px]"
+                          }
+                       `}
+                      />
                     );
                   })}
                 </div>

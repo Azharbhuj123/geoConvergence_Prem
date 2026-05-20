@@ -41,7 +41,7 @@ function ServicesCardPreview({ card, index }) {
             {/* Content Container */}
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
                 {/* DEFAULT CONTENT */}
-                <div className="backdrop-blur-md bg-black/10 rounded-2xl p-6 lg:p-8 transition-all duration-700 group-hover:opacity-0 group-hover:translate-y-10">
+                <div className="backdrop-blur-md bg-black/10 rounded-2xl p-6 lg:p-8 transition-opacity duration-.15 group-hover:opacity-0 group-hover:translate-y-10">
                     <h3 className="text-white text-3xl lg:text-5xl font-bold font-Web leading-tight mb-4">
                         {card.title}
                     </h3>
@@ -54,7 +54,7 @@ function ServicesCardPreview({ card, index }) {
                 </div>
 
                 {/* HOVER OVERLAY (Revealed on hover) */}
-                <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end opacity-0 translate-y-20 transition-all duration-700 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end opacity-0 translate-y-20 transition-all duration-300 delay-.15 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                     <span className="inline-block w-fit px-4 py-1 rounded-full bg-white text-blue-900 text-sm font-bold mb-4 uppercase tracking-wider">
                         <a href={card.button?.link}>
                             {card.button?.text}
@@ -117,8 +117,8 @@ export default function ProductPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                                    className="bg-[var(--bg)] rounded-3xl p-8 lg:p-12 
-                               shadow-xl border border-[var(--border)] 
+                                    className="rounded-3xl p-8 lg:p-12 
+                               shadow-xl border-2 border-white 
                                mt-16"
                                 >
                                     <Services_Description
@@ -147,7 +147,7 @@ export default function ProductPage() {
                 </section>
 
                 {/* EVENTS */}
-                <section className="bg-[var(--slate-bg)] py-24">
+                {/* <section className="bg-[var(--slate-bg)] py-24">
                     <div className="max-w-[1440px] mx-auto">
                         <Events
                             darkMode={theme === 'dark'}
@@ -155,7 +155,7 @@ export default function ProductPage() {
                             extraClass="!py-0"
                         />
                     </div>
-                </section>
+                </section> */}
 
                 {/* CTA */}
                 <CTA

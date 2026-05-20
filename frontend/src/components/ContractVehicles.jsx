@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./UI/Button";
 import { urlFor } from "../lib/sanity";
+import { motion as Motion } from 'framer-motion';
 
 export default function ContractVehicles({ data, darkMode, showButton = true }) {
   if (!data) return null;
@@ -28,43 +29,48 @@ export default function ContractVehicles({ data, darkMode, showButton = true }) 
       {/* Cards */}
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
         {vehicles?.map((item, index) => (
-          <div
-            key={index}
-            className={`rounded-3xl p-8 flex flex-col justify-between min-h-[380px] shadow-xl transition-all duration-300 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}
-          >
-            {/* Top */}
-            <div>
-              {/* Logo */}
-              <div className="mb-8 h-20 flex items-center">
-                {item.image && (
-                  <img
-                    src={urlFor(item.image)}
-                    alt={item.name}
-                    className="h-full object-contain"
-                  />
-                )}
+          <Motion.article
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className={`flex flex-col justify-between min-h-[400px] shadow-xl transition-all duration-200 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}>
+            <div
+              key={index}
+              className={`rounded-3xl p-8 flex flex-col justify-between min-h-[380px] shadow-xl transition-all duration-300 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}
+            >
+              {/* Top */}
+              <div>
+                {/* Logo */}
+                <div className="mb-8 h-20 flex items-center">
+                  {item.image && (
+                    <img
+                      src={urlFor(item.image)}
+                      alt={item.name}
+                      className="h-full object-contain"
+                    />
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold font-Web mb-4">
+                  {item.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                  {item.description}
+                </p>
               </div>
 
-              {/* Title */}
-              <h3 className="text-2xl font-bold font-Web mb-4">
-                {item.name}
-              </h3>
-
-              {/* Description */}
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
-                {item.description}
-              </p>
+              {/* Button */}
+              {showButton &&
+                <div className="mt-auto">
+                  <Button variant="primary" size="sm" className="w-full cursor-pointer">
+                    Know More
+                  </Button>
+                </div>
+              }
             </div>
-
-            {/* Button */}
-            {showButton &&
-            <div className="mt-auto">
-              <Button variant="primary" size="sm" className="w-full">
-                Know More
-              </Button>
-            </div>
-            }
-          </div>
+          </Motion.article>
         ))}
       </div>
     </section>

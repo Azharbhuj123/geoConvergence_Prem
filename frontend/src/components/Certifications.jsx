@@ -15,7 +15,7 @@ export default function Certifications({ data, darkMode, showButton = true }) {
           <h2 className="heading-primary font-Web text-white mb-6">
             {title || "Our Certification"}
           </h2>
-          <p className="text-subtitle">
+          <p className="text-subtitle text-white/80">
             {subtitle || "As an SBA 8(a) Joint Venture, True North Joint Venture, LLC..."}
           </p>
         </div>

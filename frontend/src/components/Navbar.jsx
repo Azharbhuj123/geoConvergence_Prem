@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
-import dark_logo from "../assets/footer_logo.png";
+import logo from "../assets/geoC_Logo_Dark.png";
+import dark_logo from "../assets/logo_Light.png";
 import Button from "./UI/Button";
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +38,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
       >
         <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-7 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+          <Link to="/" className="flex items-center gap-2 flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none">
             <img src={darkMode ? dark_logo : logo} alt="" />
           </Link>
 
@@ -96,7 +96,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`p-2 rounded-lg ${darkMode ? "text-white" : "text-slate-900"}`}
+              className={`p-1 sm:p-2 rounded-lg ${darkMode ? "text-white" : "text-slate-900"}`}
             >
               <svg
                 width="24"

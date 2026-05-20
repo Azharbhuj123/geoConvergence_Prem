@@ -56,7 +56,6 @@ export default function GovernmentPage() {
                 <ContractVehicles
                     data={pageData.contractVehicles}
                     darkMode={isDark}
-                    showButton={false}
                 />
                 {/* Events Section */}
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>

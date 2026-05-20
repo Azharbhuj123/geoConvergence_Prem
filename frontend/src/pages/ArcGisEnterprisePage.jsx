@@ -109,39 +109,31 @@ export default function ArcGisEnterprisePage() {
                             const rows = getRows();
 
                             return (
-                                <div className="mt-10 space-y-[30px]">
-                                    {rows.map((row, rowIndex) => {
-                                        const isLastRow =
-                                            rowIndex === rows.length - 1 && rows.length > 1;
-                                        let gridClass = "";
+                                <div className="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-[30px]">
+                                    {cards.map((card, index) => {
+                                        const total = cards.length;
 
-                                        if (row.length === 1) {
-                                            gridClass = "grid-cols-1";
-                                        } else if (row.length === 2) {
-                                            gridClass = "grid-cols-1 md:grid-cols-2"; // 50/50
-                                        } else {
-                                            gridClass = "grid-cols-1 md:grid-cols-2 xl:grid-cols-3";
+                                        let xlSpan = "xl:col-span-2";
+
+                                        // Last 2 cards become 50/50 on xl
+                                        if (total === 5 && index >= 3) {
+                                            xlSpan = "xl:col-span-3";
                                         }
 
                                         return (
-                                            <div
-                                                key={rowIndex}
-                                                className={`grid gap-[30px] ${gridClass}`}
-                                            >
-                                                {row.map((card) => (
-                                                    <FeatureCard
-                                                        key={card.title}
-                                                        title={card.title}
-                                                        description={card.description}
-                                                        iconImage={card.iconImage}
-                                                        className={
-                                                            isLastRow
-                                                                ? "!min-h-[166px]"
-                                                                : ""
-                                                        }
-                                                    />
-                                                ))}
-                                            </div>
+                                            <FeatureCard
+                                                key={card.title}
+                                                title={card.title}
+                                                description={card.description}
+                                                icon={iconMap[card.icon] || Settings}
+                                                className={`
+                                          ${xlSpan}
+                                          ${index >= 3 && total === 5
+                                                        ? "!min-h-[166px]"
+                                                        : "!min-h-[290px]"
+                                                    }
+                                        `}
+                                            />
                                         );
                                     })}
                                 </div>
@@ -152,13 +144,13 @@ export default function ArcGisEnterprisePage() {
 
                 {pageData.coreValues && (
                     <section id="operational-capabilities">
-                    <CoreValues
-                        title={pageData.facilityFeaturesSection?.title}
-                        subTitle={pageData.facilityFeaturesSection?.subTitle}
-                        cards={pageData.facilityFeaturesSection.cards}
-                        lastRowHeight="120px"
-                        maxWidth="!max-w-[1072px]"
-                    />
+                        <CoreValues
+                            title={pageData.facilityFeaturesSection?.title}
+                            subTitle={pageData.facilityFeaturesSection?.subTitle}
+                            cards={pageData.facilityFeaturesSection.cards}
+                            lastRowHeight="120px"
+                            maxWidth="!max-w-[1072px]"
+                        />
                     </section>
                 )}
 
