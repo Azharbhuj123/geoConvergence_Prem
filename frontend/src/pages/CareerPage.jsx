@@ -98,7 +98,7 @@ export default function CareerPage() {
         {/* Open Positions */}
         {pageData.openPositions && (
           <OpenPositions
-            title={pageData.openPositions.sectionTitle}
+            title={"Currently Open Positions"}
             subtitle={pageData.openPositions.sectionSubtitle}
             jobs={pageData.openPositions.jobs}
           />

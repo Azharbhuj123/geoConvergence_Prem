@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, fileUrl, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
-export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', className = '', maxWidth = '' }) {
+export default function Hero({ darkMode, hero, minHeight = '', className = '', maxWidth = '' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -24,7 +24,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
 
   return (
     <section
-      className={`relative ${minHeight} flex items-end pb-20 sm:pb-24 overflow-hidden px-6 sm:px-8 lg:px-14 
+      className={`relative min-h-[420px] ${minHeight} flex items-end pb-20 sm:pb-24 overflow-hidden px-6 sm:px-8 lg:px-14 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
@@ -56,7 +56,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
         <div className={`max-w-[653px] ${className}`}>
           <div className="flex flex-col gap-7 mb-12">
             <h1
-              className="text-white font-bold font-Web leading-tight text-[20px] sm:text-[34px] xl:text-[70px]"
+              className="text-white font-bold font-Web leading-tight text-[34px] xl:text-[70px]"
             >
               {title}
             </h1>

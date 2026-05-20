@@ -222,14 +222,14 @@ export default function ContractVehicles({ data, darkMode, showButton = true }) 
             key={`${item.name}-${index}`}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className={`flex flex-col justify-between min-h-[400px] shadow-xl transition-all duration-200 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}>
+            className={`flex flex-col justify-between min-h-[400px] rounded-3xl shadow-xl transition-all duration-200 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}>
             <div
               className={`rounded-3xl p-8 flex flex-col justify-between min-h-[380px] shadow-xl transition-all duration-300 ${darkMode ? "bg-[#0B1B3D] text-white" : "bg-[#09155F] text-white"}`}
             >
               {/* Top */}
               <div>
                 {/* Logo */}
-                <div className="mb-8 h-20 flex items-center">
+                <div className="mb-8 h-20 flex items-center justify-center">
                   {item.image && (
                     <img
                       src={urlFor(item.image)}
@@ -240,12 +240,12 @@ export default function ContractVehicles({ data, darkMode, showButton = true }) 
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold font-Web mb-4">
+                <h3 className="text-2xl font-bold font-Web mb-4 text-center">
                   {item.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-lg text-gray-300 leading-relaxed mb-8">
+                <p className="text-lg text-gray-300 leading-relaxed mb-8 text-center">
                   {item.description}
                 </p>
               </div>

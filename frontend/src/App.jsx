@@ -33,17 +33,17 @@ function App() {
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/career" element={<CareerPage />} />
-          <Route path="/why" element={<WhyPage />} />
-          <Route path="/career/:id" element={<CareerDetails />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/products" element={<ProductPage />} />
+          <Route path="/why" element={<WhyPage />} />
+          <Route path="/government" element={<GovernmentPage />} />
+          <Route path="/career" element={<CareerPage />} />
+          <Route path="/career/:id" element={<CareerDetails />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/scan2twin" element={<Scan2TwinPage />} />
           <Route path="/indoormaps" element={<IndoorMapsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/government" element={<GovernmentPage />} />
           <Route path="/lidar-scanning" element={<LidarScanningPage />} />
           {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
           <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />

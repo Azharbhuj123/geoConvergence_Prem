@@ -24,18 +24,18 @@ export default function SolutionBlock({
   // Logic for conditional styling
   const isCard = variant === "card";
   const textColor = isInverted ? "text-white" : "text-[var(--text)]";
-
   const containerClasses = `
     w-full max-w-[1440px] mx-auto 
-    ${isCard ? "px-6 lg:px-14 my-14 rounded-[2rem] shadow-2xl sm:rounded-[3rem]" : "px-0"} 
+    ${isCard ? `px-6 lg:px-14 my-14 rounded-[2rem] ${theme === 'dark' ? "shadow-[0_0_10px_rgba(255,255,255,0.03)]" : "shadow-[0_0_40px_rgba(15,23,42,0.12)]"} sm:rounded-[3rem]` : "px-0"} 
     ${theme === 'dark' ? 'dark' : ''} 
     ${className}
   `.trim();
 
+
   return (
     <div className={containerClasses}>
       <div
-        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-15   xl:py-[45px] ${imagePosition === "left" ? "lg:flex-row-reverse" : ""
+        className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-15 xl:py-[45px] ${imagePosition === "left" ? "lg:flex-row-reverse" : ""
           }`}
       >
         {/* Image Side */}

@@ -96,7 +96,7 @@ export default function ProductPage() {
                     darkMode={theme === 'dark'}
                     hero={pageData.hero}
                     title="Our Products"
-                    minHeight="min-h-[500px]"
+                    minHeight="sm:min-h-[500px]"
                 />
 
                 {/* =========================

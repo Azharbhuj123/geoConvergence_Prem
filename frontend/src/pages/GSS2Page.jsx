@@ -148,10 +148,10 @@ export default function GSS2Page() {
         <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
-          <div className="w-full   bg-[var(--bg)] py-13 font-[Titillium Web, sans-serif]">
+          <div className="w-full   bg-[var(--bg)] py-13 font-Web">
             {/* Header Section */}
             <div className="mb-10  pb-8 max-w-4xl">
-              <h2 className=" font-[Titillium Web, sans-serif] text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
+              <h2 className=" font-Web text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
                 Advanced Geospatial Support & Mapping Solutions
               </h2>
               <p className="text-sm md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">

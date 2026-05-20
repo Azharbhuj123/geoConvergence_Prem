@@ -45,7 +45,7 @@ export default function ContactPage() {
 
       <main>
         <Hero darkMode={isDark} hero={heroData}
-          minHeight="min-h-[451px]" />
+          minHeight="sm:min-h-[451px]" />
 
         {/* Main Contact Section */}
         <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14`}>

@@ -356,7 +356,7 @@ export default function Services({
     flex flex-col justify-end gap-2.5
     translate-y-full
     opacity-0
-    transition-all duration-500 delay-.15 ease-out
+    transition-all duration-500 delay-.05 ease-out
     group-hover:translate-y-0
     group-hover:opacity-100
   "

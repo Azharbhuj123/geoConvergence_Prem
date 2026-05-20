@@ -10,7 +10,7 @@ export default function OpenPositions({ title, subtitle, jobs }) {
     <section className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-10 xl:px-14 bg-[var(--bg)]`}>
       <div className="max-w-[1440px] mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className={`text-4xl lg:text-5xl font-bold font-['Titillium_Web'] mb-6 text-[var(--text)]`}>
+          <h2 className={`text-4xl lg:text-5xl font-bold font-Web mb-6 text-[var(--text)]`}>
             {title || "Currently Open Positions"}
           </h2>
           {subtitle && (
@@ -30,7 +30,7 @@ export default function OpenPositions({ title, subtitle, jobs }) {
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex flex-col items-start gap-3 mb-3">
-                    <h3 className={`text-2xl font-bold font-['Titillium_Web'] uppercase ${isDark ? 'text-white' : 'text-slate-900'
+                    <h3 className={`text-2xl font-bold font-Web uppercase ${isDark ? 'text-white' : 'text-slate-900'
                       }`}>
                       {job.title}
                     </h3>
