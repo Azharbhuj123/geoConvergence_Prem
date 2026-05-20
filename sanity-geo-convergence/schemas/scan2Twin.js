@@ -20,8 +20,18 @@ export default defineType({
           type: 'object',
           title: 'Primary Button',
           fields: [
-            { name: 'text', type: 'string' },
-            { name: 'link', type: 'string' }
+            {
+              name: 'text',
+              type: 'string'
+            },
+            {
+              name: 'pdfFile',
+              title: 'PDF File',
+              type: 'file',
+              options: {
+                accept: '.pdf'
+              }
+            }
           ]
         }),
         defineField({

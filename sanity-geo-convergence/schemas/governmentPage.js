@@ -15,6 +15,25 @@ export default defineType({
         defineField({ name: 'title', type: 'string', title: 'Main Title' }),
         defineField({ name: 'subtitle', type: 'text', title: 'Subtitle' }),
         defineField({
+          name: 'button1',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            {
+              name: 'text',
+              type: 'string'
+            },
+            {
+              name: 'pdfFile',
+              title: 'PDF File',
+              type: 'file',
+              options: {
+                accept: '.pdf'
+              }
+            }
+          ]
+        }),
+        defineField({
           name: 'backgroundImage',
           type: 'image',
           title: 'Background Image',
@@ -70,27 +89,27 @@ export default defineType({
       ]
     }),
     // ==================== Events ====================
+    defineField({
+      name: 'events',
+      title: 'Events',
+      type: 'object',
+      fields: [
         defineField({
-            name: 'events',
-            title: 'Events',
-            type: 'object',
-            fields: [
-                defineField({
-                    name: 'cards',
-                    type: 'array',
-                    of: [
-                        {
-                            type: 'object',
-                            fields: [
-                                defineField({ name: 'title', type: 'string' }),
-                                defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }], title: 'List Items' }),
-                                defineField({ name: 'image', type: 'image' })
-                            ]
-                        }
-                    ]
-                }),
-            ]
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }], title: 'List Items' }),
+                defineField({ name: 'image', type: 'image' })
+              ]
+            }
+          ]
         }),
+      ]
+    }),
 
     // ==================== FINAL CTA ====================
     defineField({

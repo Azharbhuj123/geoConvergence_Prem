@@ -151,6 +151,7 @@ export default function ArcGisEnterprisePage() {
                 </section>
 
                 {pageData.coreValues && (
+                    <section id="operational-capabilities">
                     <CoreValues
                         title={pageData.facilityFeaturesSection?.title}
                         subTitle={pageData.facilityFeaturesSection?.subTitle}
@@ -158,6 +159,7 @@ export default function ArcGisEnterprisePage() {
                         lastRowHeight="120px"
                         maxWidth="!max-w-[1072px]"
                     />
+                    </section>
                 )}
 
                 <section className="bg-[var(--bg)] px-6 sm:px-10 xl:px-14">

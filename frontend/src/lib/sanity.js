@@ -18,3 +18,13 @@ export function urlFor(source) {
     .quality(85)
     .url()
 }
+
+export function fileUrl(source) {
+  if (!source?.asset?._ref) return ""
+
+  const ref = source.asset._ref
+    .replace('file-', '')
+    .replace('-pdf', '.pdf')
+
+  return `https://cdn.sanity.io/files/gino2rbl/production/${ref}`
+}

@@ -129,6 +129,7 @@
 
 import { urlFor } from "../lib/sanity";
 import { useThemeStore } from "../store/useThemeStore";
+import { motion as Motion } from 'framer-motion';
 
 export default function CoreValues({
   title,
@@ -194,9 +195,14 @@ export default function CoreValues({
                 key={rowIndex}
                 className={`grid gap-6 ${gridClass}`}
               >
+
                 {row.map((card, idx) => (
-                  <article
+
+                  <Motion.article
                     key={idx}
+                    
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.1, ease: "easeOut" }}
                     style={{
                       minHeight:
                         isLastRow && lastRowHeight
@@ -205,16 +211,13 @@ export default function CoreValues({
                       width: "100%",
                     }}
                     className={`
-                      group relative min-h-[240px]
-                      rounded-[20px]
-                      p-6 md:p-8
-                      overflow-hidden
-                      transition-all duration-300
-                      ${isDark
-                        ? "bg-slate-800"
-                        : "bg-white"
-                      }
-                    `}
+    relative min-h-[240px]
+    rounded-[20px]
+    p-6 md:p-8
+    overflow-hidden
+    transition-all duration-300 hover:shadow-xl
+    ${isDark ? "bg-slate-800" : "bg-white"}
+  `}
                   >
                     {/* Text */}
                     <div className="pr-24 sm:pr-28">
@@ -239,11 +242,11 @@ export default function CoreValues({
                           <img
                             src={urlFor(card.iconImage)}
                             alt={card.title}
-                            className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360"
+                            className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
                           />
                         </span>
                       ) : (
-                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20 transition-transform duration-500 ease-in-out group-hover:rotate-360">
+                        <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
                           <svg
                             width="40"
                             height="40"
@@ -257,8 +260,9 @@ export default function CoreValues({
                         </span>
                       )}
                     </div>
-                  </article>
+                  </Motion.article>
                 ))}
+
               </div>
             );
           })}

@@ -9,12 +9,6 @@ const variants = {
     "bg-neutral-200 text-blue-700 text-base font-Inter font-semibold rounded-2xl transition-all duration-300 ease-in-out border border-transparent hover:bg-gradient-to-b hover:from-blue-800 hover:to-blue-700 hover:text-white",
 };
 
-// const sizes = {
-//   sm: "px-6 py-3 text-sm",
-//   md: "px-6 py-3 text-sm xl:px-8 xl:py-4 xl:text-base",
-//   lg: "px-6 py-3 text-sm xl:px-10 xl:py-5 xl:text-lg",
-// };
-
 const sizes = {
   sm: "font-Inter px-6 py-3 text-[14px] sm:text-[16px] xl:text-[18px]",
   md: "font-Inter px-6 py-3 text-[16px] sm:text-[18px] xl:px-8 xl:py-4 xl:text-[20px]",

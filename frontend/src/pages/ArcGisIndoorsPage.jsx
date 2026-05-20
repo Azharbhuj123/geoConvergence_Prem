@@ -44,7 +44,7 @@ export function FeatureCard({ title, description, icon, className = "", iconImag
     <Motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`group relative min-h-[270px] sm:min-h-[290px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
+      className={`relative min-h-[270px] sm:min-h-[290px] rounded-[20px] bg-[#020b4d] p-[30px] text-white shadow-lg transition-shadow duration-300 hover:shadow-xl ${className}`}
     >
       <div className="pr-28">
         <h3 className="font-Inter text-xl xl:text-3xl font-bold uppercase leading-tight text-white">
@@ -62,11 +62,11 @@ export function FeatureCard({ title, description, icon, className = "", iconImag
             <img
               src={urlFor(iconImage)}
               alt={title}
-              className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360"
+              className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
             />
           </span>
         ) : (
-          <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20 transition-transform duration-500 ease-in-out group-hover:rotate-360">
+          <span className="flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-lg bg-[#2f80d1] text-white shadow-lg shadow-black/20">
             {icon && React.createElement(icon, { size: 58, strokeWidth: 2 })}
           </span>
         )}
@@ -147,6 +147,7 @@ export default function ArcGisIndoorsPage() {
         )}
 
         {pageData.howItWorks && (
+          <section id="how-it-works">
           <Services
             darkMode={isDark}
             services={pageData.howItWorks}
@@ -155,6 +156,7 @@ export default function ArcGisIndoorsPage() {
             className={"!pb-0"}
             maxWidth={"!max-w-[1280px]"}
           />
+          </section>
         )}
         {pageData.keyServices && (
           <section className='bg-[var(--keyServices-bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-15 xl:py-20'>

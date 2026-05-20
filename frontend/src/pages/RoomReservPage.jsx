@@ -146,6 +146,7 @@ export default function RoomReservPage() {
         </section>
 
         {pageData.howItWorks && (
+          <section id="works-with">
           <Services
             darkMode={isDark}
             services={pageData.howItWorks}
@@ -153,6 +154,7 @@ export default function RoomReservPage() {
             button={false}
             length={pageData.howItWorks.cards.length}
           />
+          </section>
         )}
 
         {/* {pageData.useCases && (

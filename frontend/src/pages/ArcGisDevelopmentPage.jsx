@@ -96,7 +96,7 @@ export default function ArcGisDevelopmentPage() {
           />
         )}
 
-        <section className="bg-[var(--bg)] px-6 sm:px-10 lg:pb-24 xl:px-14 pt-10 xl:pt-20">
+        <section className="bg-[var(--bg)] px-6 sm:px-10 lg:pb-24 xl:px-14 pt-10 xl:pt-20" id="solutions-support">
           <div className="mx-auto max-w-[1440px]">
             <Motion.h2
               initial={{ opacity: 0, y: 18 }}

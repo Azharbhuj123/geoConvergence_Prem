@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { client, urlFor } from '../lib/sanity'
+import { client, fileUrl, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 
 export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', className = '', maxWidth = '' }) {
@@ -72,8 +72,13 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-screen', class
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          {btn1 && (
+          {btn1 && !btn1.pdfFile &&(
             <Button href={btn1.link} size='sm' variant="primary"  >
+              {btn1.text}
+            </Button>
+          )}
+          {btn1 && btn1.pdfFile && (
+            <Button href={fileUrl(btn1.pdfFile)} target="_blank" size='sm' variant="primary" download >
               {btn1.text}
             </Button>
           )}
