@@ -41,10 +41,10 @@ export default function HubZonePage() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
-      <ShortHero title={"U.S. HUBZone Certified"} />
-      <section className="px-6 lg:px-14 py-10 mt-10">
+      {/* <ShortHero title={"U.S. HUBZone Certified"} /> */}
+      <section className="px-6 lg:px-14 pb-10">
         <div className="max-w-[1440px] mx-auto">
           <MidSection data={data} />
 
@@ -215,11 +215,11 @@ export default function HubZonePage() {
           </div>
         </div>
       </section>
-      <section className="py-15">
+      {/* <section className="py-15">
         <CTA darkMode={theme === "dark"} />
-      </section>
+      </section> */}
 
-      <Footer darkMode={theme === "dark"} />
+      {/* <Footer darkMode={theme === "dark"} /> */}
     </div>
   );
 }

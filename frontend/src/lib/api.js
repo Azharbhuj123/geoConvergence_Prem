@@ -9,6 +9,7 @@ export const fetchLandingPage = async () => {
   const query = `*[_type == "landingPage"][0]{
     "hero": hero,
     "services": services,
+    "logoSlider": logoSlider,
     "projectsMap": projectsMap,
     "stats": stats,
     "clients": clients,
@@ -214,6 +215,7 @@ export const fetchGovernmentPage = async () => {
   const query = `*[_type == "governmentPage"][0]{
     hero,
     certifications,
+    "logoSlider": logoSlider,
     contractVehicles,
     events,  
     finalCta

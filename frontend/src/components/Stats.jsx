@@ -33,20 +33,16 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate, ex
       <div
         className={`heading-primary font-Web ${extraClass}`}
       >
-        {value}{suffix}
+        {count}{suffix}
       </div>
       <div className={`text-sm sm:text-lg font-semibold font-Inter uppercase tracking-widest min-h-[60px] ${darkMode ? 'text-slate-400' : 'text-slate-500'
         }`}>
         {label}
       </div>
       <div className="w-full flex items-center justify-end">
-        {iconImage ?
+        {iconImage &&
           <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-[76px] xl:h-[76px] flex items-center justify-center flex-shrink-0">
             <img src={urlFor(iconImage)} className="w-full h-full" />
-          </div>
-          :
-          <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-            {icon}
           </div>
         }
       </div>

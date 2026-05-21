@@ -14,6 +14,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGovernmentPage } from '../lib/api';
 import { governmentPageData } from '../lib/data/governmentPageData';
 import Events from '../components/Events';
+import LogoSlider from '../components/LogoSlider';
 
 export default function GovernmentPage() {
     const { theme, toggleTheme } = useThemeStore();
@@ -44,10 +45,11 @@ export default function GovernmentPage() {
                 <Certifications
                     data={pageData.certifications}
                     darkMode={isDark}
-                    showButton={false}
+                    showButton={true}
                 />
 
                 {/* Clients Section */}
+                    <LogoSlider darkMode={theme === 'dark'} sliders={pageData?.logoSlider?.cards} />
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
                     <Clients darkMode={isDark} />
                 </section>

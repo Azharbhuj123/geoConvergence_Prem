@@ -48,7 +48,7 @@ export default function IndoorMapsPage() {
           darkMode={isDark}
           hero={pageData.hero}
           title={pageData.hero?.title || "IndoorMaps"}
-          minHeight="min-h-[451px]"
+          minHeight="min-h-[500px]"
         />
 
         {/* What is Indoor Mapping? */}

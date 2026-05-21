@@ -17,6 +17,7 @@ export const governmentPageData = {
     items: [
       {
         name: "U.S. SBA 8(a) Certified",
+        button: { text: "Know More", popupSlug: "sba-8a" },
         image: {
           _type: "image",
           asset: {
@@ -26,6 +27,7 @@ export const governmentPageData = {
       },
       {
         name: "U.S. SBA HUBZone Certified",
+        button: { text: "Know More", popupSlug: "hubzone" },
         image: {
           _type: "image",
           asset: {

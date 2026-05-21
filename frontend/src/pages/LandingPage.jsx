@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
 import Stats from '../components/Stats'
+import LogoSlider from '../components/LogoSlider'
 import ProjectsMap from '../components/ProjectsMap'
 import FeaturedProducts from '../components/FeaturedProducts'
 import Clients from '../components/Clients'
@@ -50,12 +51,16 @@ export default function LandingPage() {
                 <Stats darkMode={theme === 'dark'}
                     statsData={parsedStatsData}
                 />
+                <LogoSlider darkMode={theme === 'dark'} sliders={data?.logoSlider?.cards} />
+                <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
+
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] pt-10 sm:pt-20`}>
                 <Clients darkMode={theme === 'dark'}
                     title={data?.clients?.title}
                     subTitle={data?.clients?.subTitle}
                     logos={data?.clients?.cards}
                 />
-                <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
+                </section>
                 <Events darkMode={theme === 'dark'} eventsData={data?.events} />
 
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] pt-10`}>

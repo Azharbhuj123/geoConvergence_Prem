@@ -53,7 +53,7 @@ function LogoItem({ item, darkMode }) {
 
       <div className="leading-tight">
         <h4
-          className="text-md sm:text-lg font-bold"
+          className="text-sm sm:text-lg font-bold"
           style={{ color: darkMode ? '#60A5FA' : item.color }}
         >
           {item.title}
@@ -91,10 +91,7 @@ export default function Clients({
 
   return (
     <section
-      className={`py-4 overflow-hidden border-y ${darkMode
-        ? 'bg-slate-900 border-slate-800'
-        : 'bg-white border-gray-100'
-        }`}
+      className={`py-4 overflow-hidden`}
     >
       <div className="relative w-full overflow-hidden max-w-[1440px] mx-auto">
         {/* gradient fade */}

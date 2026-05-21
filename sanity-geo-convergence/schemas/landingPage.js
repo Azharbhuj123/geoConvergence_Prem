@@ -81,6 +81,43 @@ export default defineType({
       ]
     }),
 
+    // ==================== LOGO SLIDER ====================
+    defineField({
+      name: 'logoSlider',
+      title: 'Logo Slider',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'cards',
+          title: 'Slider Logos',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string', title: 'Title' }),
+                defineField({ name: 'subtitle', type: 'string', title: 'Subtitle' }),
+                defineField({
+                  name: 'logo',
+                  type: 'image',
+                  title: 'Logo',
+                  options: { hotspot: true }
+                })
+              ],
+              preview: {
+                select: {
+                  title: 'title',
+                  subtitle: 'subtitle',
+                  media: 'logo'
+                }
+              }
+            }
+          ],
+          validation: Rule => Rule.min(2)
+        })
+      ]
+    }),
+
     // ==================== Projects / ProjectMAp ====================
     defineField({
       name: 'projectsMap',

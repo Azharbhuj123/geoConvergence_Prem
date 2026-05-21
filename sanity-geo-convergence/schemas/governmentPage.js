@@ -57,11 +57,57 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'name', type: 'string' }),
-                defineField({ name: 'image', type: 'image' })
+                defineField({ name: 'description', type: 'text' }),
+                defineField({ name: 'image', type: 'image' }),
+                defineField({
+                  name: 'button',
+                  title: 'Button',
+                  type: 'object',
+                  fields: [
+                    defineField({ name: 'text', type: 'string', title: 'Button Text' }),
+                    defineField({ name: 'popupSlug', type: 'string', title: 'Popup Slug' })
+                  ]
+                })
               ]
             }
           ]
         }),
+      ]
+    }),
+    // ==================== LOGO SLIDER ====================
+    defineField({
+      name: 'logoSlider',
+      title: 'Logo Slider',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'cards',
+          title: 'Slider Logos',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'title', type: 'string', title: 'Title' }),
+                defineField({ name: 'subtitle', type: 'string', title: 'Subtitle' }),
+                defineField({
+                  name: 'logo',
+                  type: 'image',
+                  title: 'Logo',
+                  options: { hotspot: true }
+                })
+              ],
+              preview: {
+                select: {
+                  title: 'title',
+                  subtitle: 'subtitle',
+                  media: 'logo'
+                }
+              }
+            }
+          ],
+          validation: Rule => Rule.min(2)
+        })
       ]
     }),
 
