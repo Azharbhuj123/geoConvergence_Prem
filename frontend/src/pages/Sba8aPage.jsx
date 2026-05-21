@@ -49,7 +49,7 @@ export default function Sba8aPage() {
           <MidSection data={data} />
 
 
-          <div className="w-full min-h-screen bg-[var(--bg)] font-['Titillium_Web']   space-y-8">
+          <div className="w-full min-h-screen bg-[var(--bg)] font-Web space-y-8">
             {/* Top Header Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {contactInfo.map((card, idx) => (
@@ -77,7 +77,7 @@ export default function Sba8aPage() {
 
             {/* Main Content Area */}
             <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 !mt-15 border border-[var(--border)]">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[620px]">
+              <h2 className="text-2xl md:text-3xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[620px]">
                 How to award a streamlined 8(a) Sole Source Contract:
               </h2>
 
@@ -199,17 +199,11 @@ export default function Sba8aPage() {
 
               {/* Section 1: Contract Types */}
               <div className="mt-10">
-                <h3 className="text-2xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
-                  1. Contract Types
+                <h3 className="text-2xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
+                  Contract Types
                 </h3>
                 <p className="text-gray-700 dark:text-[var(--muted)] leading-relaxed    pl-4">
-                  There are no additional limitations in terms of contract type to
-                  be awarded under the 8(a) program. Cost-reimbursable, fixed
-                  price, time, and materials (and their variations) can be issued.
-                  We generally recommend a broadly scoped master contract from
-                  which task orders may be issued. This method provides the
-                  customer with maximum flexibility and control without a
-                  requisite commitment to utilize the full value of the contract.
+                  There are no additional limitations in terms of contract type to be awarded under the 8(a) program. Cost-reimbursable, fixed price, time, and materials (and their variations) can be issued. We generally recommend a broadly scoped master contract from which task orders may be issued. This method provides the customer with maximum flexibility and control without a requisite commitment to utilize the full value of the contract.
                 </p>
               </div>
             </div>
