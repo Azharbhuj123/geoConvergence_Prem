@@ -154,7 +154,7 @@ export default function LogoSlider({ darkMode, sliders }) {
 
         .logo-slider-title {
           font-size: 20px !important;
-          font-weight: 800;
+          font-weight: 400;
           color: #8A8A8A;
         }
         .logo-slider-title:hover {

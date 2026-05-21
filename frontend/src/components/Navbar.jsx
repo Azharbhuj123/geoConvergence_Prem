@@ -26,7 +26,9 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     <>
       {/* Top announcement bar */}
       <div className="w-full bg-[#326FB7] text-white text-md text-center py-2 px-4 leading-6 z-50 relative">
-        {"Experience Scan2Twin in action book your live demo today."}
+        <a href="/scan2twin">
+          {"Experience Scan2Twin in action book your live demo today."}
+        </a>
       </div>
 
       {/* Main navbar */}
