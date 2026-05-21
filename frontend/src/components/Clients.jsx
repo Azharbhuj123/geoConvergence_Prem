@@ -53,13 +53,13 @@ function LogoItem({ item, darkMode }) {
 
       <div className="leading-tight">
         <h4
-          className="text-sm font-bold"
+          className="text-md sm:text-lg font-bold"
           style={{ color: darkMode ? '#60A5FA' : item.color }}
         >
           {item.title}
         </h4>
         <p
-          className={`text-xs mt-0.5 ${darkMode ? 'text-gray-400' : 'text-slate-500'
+          className={`text-base sm:text-md mt-0.5 ${darkMode ? 'text-gray-400' : 'text-slate-500'
             }`}
         >
           {item.subtitle}

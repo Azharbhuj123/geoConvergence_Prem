@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBlogDetails, fetchBlogPage } from '../lib/api';
 import { pageData } from '../lib/data/page';
+import { RecentPosts } from './Blog';
 
 // ─── Sidebar Widget ───────────────────────────────────────────────────────────
 
@@ -200,24 +201,9 @@ export default function BlogDetails() {
 
                 {/* Recent Posts */}
                 <SidebarWidget title="Recent Post">
-
-                  <div className="flex flex-col gap-5 mt-1">
-                    {RECENT_POSTS.map((post) => (
-                      <div key={post.id} className="flex items-start gap-3 group cursor-pointer">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-18 h-18 sm:w-[112px] sm:h-[114px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
-                        />
-                        <div className="flex flex-col gap-1 min-w-0">
-                          <p className="text-md sm:text-lg xl:text-2xl font-Web font-semibold text-[var(--heading)] leading-snug  line-clamp-2">
-                            {post.title}
-                          </p>
-                          <p className="text-sm sm:text-md xl:text-xl text-[var(--muted)]">{post.date}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <RecentPosts
+                  recentPosts={RECENT_POSTS}
+                  />
                 </SidebarWidget>
 
               </aside>
@@ -226,7 +212,7 @@ export default function BlogDetails() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-15">
+        <section className="">
           <Testimonials darkMode={darkMode} />
         </section>
         {/* CTA */}

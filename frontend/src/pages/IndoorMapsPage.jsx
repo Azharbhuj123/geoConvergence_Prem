@@ -107,7 +107,7 @@ export default function IndoorMapsPage() {
 
         {/* Capabilities */}
         {pageData.capabilities && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-10`}>
             <SolutionBlock
               title={pageData.capabilities.title}
               description={pageData.capabilities.description}

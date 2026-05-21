@@ -191,7 +191,7 @@ export default function RoomReservPage() {
               <h2 className="font-Web heading-primary mb-4 !text-[var(--bg-secondary)]">
                 {pageData.keyFeatures.title}
               </h2>
-              <p className="font-Inter text-subtitle">
+              <p className="font-Inter text-subtitle text-[var(--bg-secondary)]">
                 {pageData.keyFeatures.description}
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function RoomReservPage() {
         </section>
 
 
-        <section className="py-15">
+        <section className="pt-10 sm:pt-20">
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
       </main>

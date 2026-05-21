@@ -57,10 +57,10 @@ export default function TeamLeadership({ data, darkMode }) {
 
         {/* Header */}
         <div className="mb-16 flex flex-col">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+          <h2 className={`font-Web heading-primary mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
             {title}
           </h2>
-          <p className={`text-lg leading-relaxed max-w-3xl ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+          <p className={`text-lg sm:text-xl leading-relaxed max-w-3xl ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
             {subtitle}
           </p>
         </div>

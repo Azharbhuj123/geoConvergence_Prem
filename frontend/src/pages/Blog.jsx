@@ -54,7 +54,7 @@ function BlogCard({ post }) {
       {/* ── Right: Content ── */}
       <div className="flex flex-col justify-center gap-3 px-6 py-6 flex-1">
         <button className="text-lg text-[var(--text)] bg-[#0C59DB73] text-center px-2 py-2 max-w-[200px] font-Inter border rounded-lg border-[var(--border)]">{post.date}</button>
-        <h3 className="text-lg sm:text-xl xl:text-[26px] font-Web font-bold text-[var(--heading)] leading-[1.4] line-clamp-2">
+        <h3 className="text-lg sm:text-xl font-Web font-bold text-[var(--heading)] leading-[1.4] line-clamp-2">
           {post.title}
         </h3>
         <p className="text-sm sm:text-lg text-[var(--muted)] leading-[1.7] line-clamp-3">
@@ -118,7 +118,7 @@ function PopularTags({ darkMode, popularTags }) {
   );
 }
 
-function RecentPosts({ darkMode, recentPosts }) {
+export function RecentPosts({ darkMode, recentPosts }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
@@ -130,10 +130,10 @@ function RecentPosts({ darkMode, recentPosts }) {
               className="w-18 h-18 sm:w-[112px] sm:h-[114px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
             />
             <div className="flex flex-col gap-1 min-w-0">
-              <p className="text-md sm:text-lg xl:text-2xl font-Web font-semibold text-[var(--heading)] leading-snug  line-clamp-2">
+              <p className="text-md sm:text-xl font-Web font-semibold text-[var(--heading)] leading-snug  line-clamp-2">
                 {post.title}
               </p>
-              <p className="text-sm sm:text-md xl:text-xl text-[var(--muted)]">{post.date}</p>
+              <p className="text-sm sm:text-lg text-[var(--muted)]">{post.date}</p>
             </div>
           </div>
         ))}
@@ -242,7 +242,7 @@ export default function BlogPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-15">
+        <section className="pt-15">
           <Testimonials darkMode={darkMode} /></section>
 
         {/* CTA */}

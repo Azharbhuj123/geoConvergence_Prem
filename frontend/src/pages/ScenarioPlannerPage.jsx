@@ -46,7 +46,7 @@ export default function ScenarioPlannerPage() {
         <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Scenario Planner"} minHeight="min-h-[451px]" />
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)] pt-10 sm:pt-15">
+          <section className="bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pt-10 sm:pt-15">
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
@@ -58,7 +58,7 @@ export default function ScenarioPlannerPage() {
           </section>
         )}
         {pageData.secondSolution && (
-          <section className="bg-[var(--slate-bg)] pb-10 sm:pb-15">
+          <section className="bg-[var(--slate-bg)] px-6 sm:px-10 xl:px-14 pb-10 sm:pb-15">
             <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}

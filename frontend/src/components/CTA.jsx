@@ -8,11 +8,11 @@ const finalCta = {
     "Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.",
   button1: {
     text: "Schedule a Consultation",
-    link: "#",
+    link: "/contact",
   },
   button2: {
     text: "View Case Studies",
-    link: "#",
+    link: "/blog",
   },
 };
 
@@ -23,8 +23,8 @@ export default function CTA({ darkMode, CtaData }) {
   const title = data.title || finalCta.title;
   const subtitle = data.subtitle || finalCta.subtitle;
 
-  const btn1 = data.button1 || finalCta.button1;
-  const btn2 = data.button2 || finalCta.button2;
+  const btn1 = data.button1 ?? finalCta.button1;
+  const btn2 = data.button2 ?? finalCta.button2;
 
   return (
     <section
@@ -64,11 +64,11 @@ export default function CTA({ darkMode, CtaData }) {
 
             {/* Buttons */}
             <div className="relative z-10 flex flex-col sm:flex-row gap-5 sm:gap-7 pt-4">
-              <Button href={btn1.link} variant="primary" size="lg">
+              <Button href={"/contact"} variant="primary" size="lg">
                 {btn1.text}
               </Button>
 
-              <Button href={btn2.link} variant="secondary" size="lg">
+              <Button href={"/blog"} variant="secondary" size="lg">
                 {btn2.text}
               </Button>
             </div>

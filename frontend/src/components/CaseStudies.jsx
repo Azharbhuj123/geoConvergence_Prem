@@ -22,7 +22,7 @@ export default function CaseStudies({ data, darkMode }) {
             </p>
           </div>
 
-          <Button variant="primary" size="md" className="whitespace-nowrap shrink-0">
+          <Button href={data?.button?.link || "/blog"} variant="primary" size="md" className="whitespace-nowrap shrink-0">
             View All
           </Button>
         </div>
@@ -58,7 +58,7 @@ export default function CaseStudies({ data, darkMode }) {
                   {study.title}
                 </h3>
 
-                <p className={`text-lg leading-relaxed mb-8 line-clamp-2 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
+                <p className={`text-lg sm:text-xl leading-relaxed mb-8 line-clamp-2 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
                   {study.description}
                 </p>
 

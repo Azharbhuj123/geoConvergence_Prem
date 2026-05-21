@@ -59,7 +59,7 @@ export function WorkProcessStep({
       <h3 className={`mt-8 font-Web text-2xl font-bold leading-8 ${textColorClass} sm:text-3xl`}>
         {title}
       </h3>
-      <p className={`mt-3 max-w-[245px] font-Inter text-base leading-7 ${textMutedClass} sm:text-lg`}>
+      <p className={`mt-3 max-w-[245px] font-Inter text-md sm:text-xl leading-7 ${textMutedClass}`}>
         {description}
       </p>
     </Motion.article>

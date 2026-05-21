@@ -61,7 +61,7 @@ export default function SolutionBlock({
             {title}
           </h2>
 
-          <div className="space-y-6 text-neutral-600 text-[18px] leading-[1.75rem] text-[var(--text)]">
+          <div className="space-y-6 text-neutral-600 text-[18px] sm:text-[20px] leading-[1.75rem] sm:leading-[2rem] text-[var(--text)]">
             {Array.isArray(description) ? (
               description.map((para, i) => (
                 <p key={i} className={`${textColor} font-Inter`}>{para}</p>
@@ -91,7 +91,7 @@ export default function SolutionBlock({
           {description2 && (
             <p
               dangerouslySetInnerHTML={{ __html: description2 }}
-              className="text-subtitle text-[var(--text)] mt-[10px] xl:text-[18px]"
+              className="text-subtitle text-[var(--text)] mt-[10px]"
             ></p>
           )}
 

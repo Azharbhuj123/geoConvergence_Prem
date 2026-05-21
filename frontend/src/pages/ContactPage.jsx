@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import { PhoneCallIcon, MailPlus, LocationEdit } from 'lucide-react';
+import Button from '../components/UI/Button';
 
 export default function ContactPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -61,7 +62,7 @@ export default function ContactPage() {
                   <h2 className="heading-primary font-Web !text-white mb-3 tracking-wide">
                     Send us a message
                   </h2>
-                  <p className="text-slate-300 text-lg mb-8 max-w-lg">
+                  <p className="text-white/80 text-subtitle mb-8 max-w-lg">
                     Do you have questions? A complaint? Or need any help from our team? Write to us here.
                   </p>
 
@@ -128,12 +129,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mt-4">
-                      <button
-                        type="submit"
-                        className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 block tracking-wide"
-                      >
-                        Submit Request
-                      </button>
+                      <Button size='sm'>Submit Request</Button>
                     </div>
                   </form>
                 </div>
@@ -153,8 +149,8 @@ export default function ContactPage() {
                             <PhoneCallIcon width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Phone</p>
-                            <p className={`text-md font-Inter text-[#64748b]`}>+1 (812) 650-2544</p>
+                            <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Phone</p>
+                            <p className={`text-lg font-Inter text-[#64748b]`}>+1 (812) 650-2544</p>
                           </div>
                         </div>
 
@@ -163,8 +159,8 @@ export default function ContactPage() {
                             <MailPlus width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Email</p>
-                            <p className={`text-md font-Inter text-[#64748b]`}>info@ geoconvergence.com</p>
+                            <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Email</p>
+                            <p className={`text-lg font-Inter text-[#64748b]`}>info@ geoconvergence.com</p>
                           </div>
                         </div>
 
@@ -173,15 +169,15 @@ export default function ContactPage() {
                             <LocationEdit width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-sm font-bold uppercase tracking-wider text-[#09155F] pb-2`}>Location</p>
-                            <p className={`text-md font-Inter text-[#64748b]`}>1675 West 4th Street, Cleveland, OH 44113</p>
+                            <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Location</p>
+                            <p className={`text-lg font-Inter text-[#64748b]`}>1675 West 4th Street, Cleveland, OH 44113</p>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     <div className="mt-4 pt-8">
-                      <p className={`text-md font-bold mb-4 ${isDark ? "text-white" : "text-[#09155F]"}`}>Connect With Us</p>
+                      <p className={`text-lg font-bold mb-4 ${isDark ? "text-white" : "text-[#09155F]"}`}>Connect With Us</p>
 
                       <hr className="border-white/50 mb-6" />
 

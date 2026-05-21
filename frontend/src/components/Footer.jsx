@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/footer_logo.png'
+import logo from '../assets/logo_Light.png'
 import { useThemeStore } from '../store/useThemeStore'
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
@@ -10,7 +10,7 @@ export default function Footer({ darkMode }) {
     { name: 'Scan2Twin', path: '/scan2twin' },
     { name: 'Indoor Mapping', path: '/indoormaps' },
     { name: 'LiDAR Scanning', path: '/lidar-scanning' },
-    { name: '3D Modeling', path: '/3d-modeling' },
+    // { name: '3D Modeling', path: '/3d-modeling' },
     { name: 'ArcGIS Indoors Implementation ', path: '/arcgis-indoors' },
   ]
 
@@ -27,7 +27,7 @@ export default function Footer({ darkMode }) {
         {/* Newsletter + divider */}
         <div className="py-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <h3
-            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[34px] font-Web uppercase max-w-[437px] leading-[1.1]"
+            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[30px] font-Web uppercase max-w-[437px] leading-[1.1]"
           >
             Stay Ahead with Digital Twin Insights
           </h3>
@@ -56,7 +56,7 @@ export default function Footer({ darkMode }) {
             <div className="flex items-center gap-2">
               <img src={logo} alt="" />
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-Inter leading-6 max-w-md">
+            <p className="text-white/80 text-subtitle font-Inter leading-8 max-w-md">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web leading-7">Services</h4>
             {services.map((s) => (
-              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-lg font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {s.name}
               </Link>
             ))}
@@ -75,7 +75,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web">Company</h4>
             {company.map((c) => (
-              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-base font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-lg font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {c.name}
               </Link>
             ))}

@@ -44,7 +44,7 @@
   }
 
   .text-subtitle {
-    @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--muted)];
+    @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--text)];
   }
 }
 

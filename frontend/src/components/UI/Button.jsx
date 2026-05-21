@@ -24,7 +24,7 @@ export default function Button({
   ...props
 }) {
   const baseStyles =
-    "inline-block font-bold font-Inter rounded-2xl transition-all text-center leading-7";
+    "inline-block font-bold font-Inter rounded-2xl transition-all text-center leading-7 cursor-pointer";
 
   const Component = href ? "a" : "button";
 

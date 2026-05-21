@@ -46,7 +46,7 @@ export default function Transforming({ title, description, cards = [] }) {
         >
             <div className="max-w-[1440px] mx-auto">
                 <div className="mb-12">
-                    <h2 className="heading-primary text-center">
+                    <h2 className="heading-primary font-Web text-center">
                         {title || "Transforming The Physical Into Digital"}
                     </h2>
                     <p className="text-subtitle max-w-5xl mx-auto text-center mt-3">

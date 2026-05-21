@@ -193,13 +193,17 @@ const variants = {
   default: {
     light: {
       bg: "bg-white",
-      title: "text-slate-900",
-      subtitle: "text-slate-600",
+      // title: "text-slate-900",
+      // subtitle: "text-slate-600",
+      title: "#0f172a",
+      subtitle: "#111111",
     },
     dark: {
       bg: "#0f172a",
-      title: "text-slate-100",
-      subtitle: "text-slate-300",
+      // title: "text-slate-100",
+      // subtitle: "text-slate-300",
+      title: "#f1f5f9",
+      subtitle: "#94a3b8",
     },
   },
   blue: {
@@ -232,7 +236,7 @@ export default function Services({
   return (
     <section
       className={clsx(
-        "py-20 pb-20 px-6 sm:px-8 lg:px-14",
+        "py-10 md:py-20 pb-20 px-6 sm:px-8 lg:px-14",
         !isHex && theme.bg,
         className
       )}
@@ -263,19 +267,20 @@ export default function Services({
             </p>
           </div>
           {button && (
+            <div>
             <Button
-              href="#"
+              href={services?.button?.link || "#"}
               variant="primary"
               size="md"
 
             >
               {"View More"}
             </Button>
+            </div>
           )}
         </div>
 
         {/* Cards grid */}
-        {/* <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-${length || 3} gap-7`}> */}
         <div
           className={clsx(
             "grid grid-cols-1 md:grid-cols-2 gap-7",
@@ -296,7 +301,6 @@ export default function Services({
             return (
               <div
                 key={step.title || index}
-                // className="relative rounded-[20px] overflow-hidden group cursor-pointer h-[400px] sm:h-[450px] xl:h-[545px]"
                 className={`
   relative rounded-[20px]
   overflow-hidden
@@ -335,7 +339,7 @@ export default function Services({
                       {step.title}
                     </h3>
 
-                    <p className="text-white/90 text-base sm:text-lg font-Inter leading-6 line-clamp-3">
+                    <p className="text-white/90 text-lg sm:text-xl font-Inter leading-6 line-clamp-3">
                       {step.description}
                     </p>
                   </div>

@@ -111,7 +111,7 @@ export default function LidarScanningPage() {
             />
           </section>
         )} */}
-        <section className="pt-5">
+        <section className="pt-10 sm:pt-20">
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>
 

@@ -55,7 +55,7 @@ function ServicesCardPreview({ card, index }) {
 
                 {/* HOVER OVERLAY (Revealed on hover) */}
                 <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end opacity-0 translate-y-20 transition-all duration-300 delay-.15 ease-out group-hover:opacity-100 group-hover:translate-y-0">
-                    <span className="inline-block w-fit px-4 py-1 rounded-full bg-white text-blue-900 text-sm font-bold mb-4 uppercase tracking-wider">
+                    <span className="inline-block w-fit px-4 py-1 rounded-full bg-white text-blue-900 text-sm font-bold mb-4 uppercase tracking-wider hover:bg-[#09155F] hover:text-white transition-colors duration-300">
                         <a href={card.button?.link}>
                             {card.button?.text}
                         </a>

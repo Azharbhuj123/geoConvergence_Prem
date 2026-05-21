@@ -56,7 +56,7 @@ export default function Testimonials({ darkMode, pageData }) {
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header - unchanged */}
-        <div className="flex flex-col items-center gap-7 mb-14">
+        <div className="flex flex-col items-center gap-7 mb-0">
           <h2
             className={`text-center heading-primary font-Web capitalize leading-tight`}
           >
@@ -154,7 +154,7 @@ export default function Testimonials({ darkMode, pageData }) {
         </div>
 
         {/* Dots - unchanged */}
-        <div className="flex justify-center gap-2 mt-10">
+        <div className="flex justify-center gap-2">
           {testimonials.map((_, i) => (
             <button
               key={i}

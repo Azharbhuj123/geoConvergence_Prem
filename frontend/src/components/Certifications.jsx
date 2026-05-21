@@ -45,7 +45,7 @@ export default function Certifications({ data, darkMode, showButton = true }) {
                 </h3>
 
                 {/* Description */}
-                <p className={`text-lg leading-relaxed mb-10 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
+                <p className={`font-Inter text-subtitle leading-relaxed mb-10 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
                   {cert.description ||
                     "geoConvergence has access to the STARS III vehicle through our Joint Venture, True North Joint Venture, LLC."}
                 </p>
