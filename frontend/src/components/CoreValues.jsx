@@ -87,13 +87,13 @@ export default function CoreValues({
         `}
               >
                 {/* Text */}
-                <div className="pr-24 sm:pr-28">
+                <div className="">
                   <h3 className="font-Web text-xl xl:text-2xl font-bold uppercase leading-tight text-[var(--text)]">
                     {card.title}
                   </h3>
 
                   <p
-                    className={`mt-4 font-Inter text-base xl:text-xl leading-6 ${isDark ? "text-slate-300" : "text-slate-600"
+                    className={`mt-4 pr-22 font-Inter text-base xl:text-xl leading-6 ${isDark ? "text-slate-300" : "text-slate-600"
                       }`}
                   >
                     {card.description}

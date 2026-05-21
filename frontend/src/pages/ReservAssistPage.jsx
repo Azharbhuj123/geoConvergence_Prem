@@ -28,7 +28,7 @@ export default function ReservAssistPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[500px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ReservAssist"} minHeight="min-h-[600px] sm:min-h-[550px]" />
 
         {pageData.firstSolution && (
           <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>

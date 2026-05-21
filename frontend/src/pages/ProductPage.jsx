@@ -11,12 +11,14 @@ import { Services_Description } from '../components/Services_Description';
 import { ProductPageData } from '../lib/data/productPageData';
 import { urlFor } from '../lib/sanity';
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
 
 /* =========================
    CARD COMPONENT
 ========================= */
 function ServicesCardPreview({ card, index }) {
     return (
+        <Link to={card.button?.link || "#"}>
         <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,6 +72,7 @@ function ServicesCardPreview({ card, index }) {
                 </div>
             </div>
         </motion.div>
+        </Link>
     );
 }
 
