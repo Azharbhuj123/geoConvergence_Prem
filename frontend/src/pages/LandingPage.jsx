@@ -40,7 +40,7 @@ export default function LandingPage() {
         style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
             <main>
-                <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-[620px] xl:min-h-[820px] items-center" />
+                <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-[620px] xl:min-h-[720px] items-center" />
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
                 <ProjectsMap 
                 darkMode={theme === 'dark'}

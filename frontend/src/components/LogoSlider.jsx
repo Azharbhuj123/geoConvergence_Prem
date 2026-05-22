@@ -74,11 +74,11 @@ export default function LogoSlider({ darkMode, sliders }) {
         <style>{`
         .logo-slider {
           width: 100%;
-          min-height: 300px;
+          min-height: 200px;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 50px;
+          gap: 30px;
           overflow: hidden;
         }
 
@@ -122,15 +122,16 @@ export default function LogoSlider({ darkMode, sliders }) {
           gap: 8px;
           padding-right: 24px;
           color: #8A8A8A;
-          filter: grayscale(1);
-          opacity: 0.86;
+          opacity: 0.55;
+          transition: opacity 0.2s ease; 
         }
           .logo-slider-item:hover {
-            filter: grayscale(0);
             opacity: 1;
-            transition: filter 0.3s ease, opacity 0.3s ease;
             cursor: pointer;
-          }
+        }
+        .logo-slider-row:hover .logo-slider-track {
+        animation-play-state: paused;
+        }
         .logo-slider-image {
           width: 66px;
           height: 66px;
@@ -157,10 +158,9 @@ export default function LogoSlider({ darkMode, sliders }) {
           font-weight: 400;
           color: #8A8A8A;
         }
-        .logo-slider-title:hover {
-          color: #000000;
-          transition: color 0.3s ease;
-        }
+        .logo-slider-item:hover .logo-slider-title {
+  color: #000000;
+}
         .logo-slider-subtitle {
           margin-top: 1px;
           font-size: 9px;

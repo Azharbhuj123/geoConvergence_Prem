@@ -5,12 +5,12 @@ import ShortHero from "../components/ShortHero";
 import MidSection from "../components/MidSection";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
-import { Sba8aPageData } from "../lib/data/Sba8aPageData";
+import { HubZonePageData } from "../lib/data/HubZonePageData";
 
 export default function HubZonePage() {
   const { theme, toggleTheme } = useThemeStore();
   const isDark = theme === "dark";
-  const data = Sba8aPageData;
+  const data = HubZonePageData;
 
   const contactInfo = [
     {
@@ -44,7 +44,7 @@ export default function HubZonePage() {
       {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       {/* <ShortHero title={"U.S. HUBZone Certified"} /> */}
-      <section className="px-6 lg:px-14 pb-10">
+      <section className="px-0 lg:px-14 lg:pb-10">
         <div className="max-w-[1440px] mx-auto">
           <MidSection data={data} />
 
@@ -76,7 +76,7 @@ export default function HubZonePage() {
 
             {/* Main Content Area */}
             <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 !mt-15 border border-[var(--border)]">
-              <h2 className="text-2xl md:text-3xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[676px]">
+              <h2 className="text-xl md:text-3xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-8 sm:w-[676px]">
                 How to award a streamlined HUBZone Sole Source Contract:
               </h2>
 
@@ -85,7 +85,7 @@ export default function HubZonePage() {
                 <div className="space-y-6">
                   <div>
                     <p>
-                      <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
+                      <span className="font-bold font-Inter text-[#001a41] dark:text-[var(--heading)] mr-2">
                         1.
                       </span>{" "}
                       Discuss project with geoConvergence and establish technical
@@ -94,7 +94,7 @@ export default function HubZonePage() {
                   </div>
                   <div>
                     <p>
-                      <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
+                      <span className="font-bold font-Inter text-[#001a41] dark:text-[var(--heading)] mr-2">
                         2.
                       </span>{" "}
                       Contact your Contracting Officer (KO), Agency Small Business
@@ -109,7 +109,7 @@ export default function HubZonePage() {
                   </div>
                   <div>
                     <p>
-                      <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
+                      <span className="font-bold font-Inter text-[#001a41] dark:text-[var(--heading)] mr-2">
                         3.
                       </span>{" "}
                       The KO will send an Offering Letter to the SBA requesting
@@ -134,19 +134,19 @@ export default function HubZonePage() {
                 <div className="space-y-6">
                   <div>
                     <p>
-                      <span className="font-bold text-[#001a41] dark:text-[var(--heading)] mr-2">
+                      <span className="font-bold font-Inter text-[#001a41] dark:text-[var(--heading)] mr-2">
                         5.
                       </span>{" "}
                       The KO negotiates with geoConvergence.
                     </p>
-                    <ul className="mt-2 ml-6 space-y-2 list-disc opacity-80">
-                      <li>
+                    <ul className="mt-2 ml-6 font-Inter space-y-2 list-disc opacity-80">
+                      <li className="font-Inter">
                         Simplified Acquisition efforts do not require a technical
                         proposal; the KO sends RFQ to geoConvergence requesting
                         cost proposal; upon receipt, KO negotiates cost and terms
                         with geoConvergence.
                       </li>
-                      <li>
+                      <li className="font-Inter">
                         If the estimate exceeds the Simplified Acquisition
                         Threshold (currently $250K), the KO sends RFP to
                         geoConvergence requesting technical and cost proposals;

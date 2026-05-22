@@ -169,3 +169,189 @@ export default function Events({ className, eventsData, extraClass }) {
     </section>
   );
 }
+
+
+export function EventsFullCard({
+  className,
+  eventsData,
+  extraClass,
+}) {
+  const { theme } = useThemeStore();
+
+  const defaultEvents = [
+    {
+      tag: "Upcoming Events",
+      title: "Esri FedGIS Conference 2026",
+      date: "February 10–11, 2026",
+      location: "Washington, DC",
+      description:
+        "Join GIS professionals and government leaders to explore the latest geospatial technologies and innovations.",
+      image:
+        "https://placehold.co/1400x700/0c1424/ffffff?text=FedGIS+2026",
+      btn: {
+        text: "Learn More",
+        link: "#",
+      },
+      listItems: [
+        "Government GIS Solutions",
+        "Industry Networking",
+        "Technical Workshops",
+      ],
+    },
+  ];
+
+  const events =
+    eventsData?.cards && eventsData.cards.length
+      ? eventsData.cards.map((item) => ({
+          tag: item.tag,
+          title: item.title,
+          date: item.date,
+          location: item.location,
+          description: item.description,
+          image: urlFor(item.image),
+          btn: item.btn || null,
+          listItems: item.listItems || null,
+        }))
+      : defaultEvents;
+
+  return (
+    <section
+      className={`${
+        theme === "dark" ? "dark" : ""
+      } py-20 pb-10 px-6 sm:px-8 lg:px-14 bg-[var(--bg)] ${extraClass}`}
+    >
+      <div className="max-w-[1440px] mx-auto">
+        {/* Header */}
+        {eventsData?.title && (
+          <div
+            className={`mb-12 flex flex-col justify-center items-center gap-3 ${className}`}
+          >
+            <h2 className="font-bold font-['Titillium_Web'] text-[var(--text)] text-[clamp(1.5rem,3.5vw,3rem)]">
+              {eventsData?.title}
+            </h2>
+
+            <p className="text-lg sm:text-xl font-Inter lg:w-[763px] text-center text-[var(--text)]">
+              {eventsData?.description}
+            </p>
+          </div>
+        )}
+
+        {/* Full Width Card */}
+        {events.slice(0, 1).map((event, index) => {
+          const imgUrl = event.image;
+
+          return (
+            <div
+              key={index}
+              className="relative rounded-[24px] overflow-hidden min-h-[450px]"
+            >
+              {/* Background Image */}
+              <img
+                src={imgUrl}
+                alt={event.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90" />
+
+              {/* Content */}
+              <div className="relative z-10 h-full p-8 sm:p-12 lg:p-16 flex flex-col justify-end max-w-[900px]">
+                {/* Tag */}
+                {event.tag && (
+                  <div className="inline-flex self-start mb-5">
+                    <span className="px-4 py-2 bg-white/20 backdrop-blur-sm text-slate-100 text-base xl:text-lg font-Inter rounded-xl">
+                      {event.tag}
+                    </span>
+                  </div>
+                )}
+
+                {/* Title */}
+                <h2 className="text-white font-Web capitalize mb-6 text-[clamp(2rem,5vw,4.5rem)] leading-tight">
+                  {event.title}
+                </h2>
+
+                {/* Date + Location */}
+                <div className="flex flex-wrap gap-5 sm:gap-8 mb-6">
+                  {event.date && (
+                    <div className="flex items-center gap-2">
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#3b82f6"
+                        strokeWidth="2"
+                      >
+                        <rect
+                          x="3"
+                          y="4"
+                          width="18"
+                          height="18"
+                          rx="2"
+                        />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                      </svg>
+
+                      <span className="text-slate-100 text-lg font-Inter leading-8">
+                        {event.date}
+                      </span>
+                    </div>
+                  )}
+
+                  {event.location && (
+                    <div className="flex items-center gap-2">
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#3b82f6"
+                        strokeWidth="2"
+                      >
+                        <path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7z" />
+                        <circle cx="12" cy="9" r="2.5" />
+                      </svg>
+
+                      <span className="text-slate-100 text-lg font-Inter leading-8">
+                        {event.location}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Description */}
+                {event.description && (
+                  <p className="text-slate-200 text-lg sm:text-xl font-Inter leading-relaxed mb-6">
+                    {event.description}
+                  </p>
+                )}
+
+                {/* List Items */}
+                {event.listItems && (
+                  <ul className="list-disc list-inside text-slate-200 text-lg sm:text-xl font-Inter leading-relaxed mb-8 space-y-2">
+                    {event.listItems.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Button */}
+                {event.btn && (
+                  <div className="pt-2">
+                    <Button
+                      href={event.btn.link}
+                      variant="primary"
+                    >
+                      {event.btn.text}
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

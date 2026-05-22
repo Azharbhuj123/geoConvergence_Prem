@@ -66,7 +66,9 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             >
               
             </a> */}
-            <Button size="sm" className={"!font-thin"}>Request Demo</Button>
+            <Button size="sm" className={""} href="/contact">
+              Request Demo
+            </Button>
 
             {/* Dark mode toggle */}
             <button

@@ -44,7 +44,7 @@ export default function Sba8aPage() {
       {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       {/* <ShortHero title={data.hero.title} /> */}
-      <section className="px-6 lg:px-14 pb-10">
+      <section className="px-0 lg:px-14 lg:pb-10">
         <div className="max-w-[1440px] mx-auto">
           <MidSection data={data} />
 
@@ -76,8 +76,8 @@ export default function Sba8aPage() {
             </div>
 
             {/* Main Content Area */}
-            <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 !mt-15 border border-[var(--border)]">
-              <h2 className="text-2xl md:text-3xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-8 w-[620px]">
+            <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-xl p-8 md:p-12 sm:mt-15 border border-[var(--border)]">
+              <h2 className="text-xl md:text-3xl font-Web font-bold text-[#001a41] dark:text-[var(--heading)] mb-8 sm:w-[620px]">
                 How to award a streamlined 8(a) Sole Source Contract:
               </h2>
 

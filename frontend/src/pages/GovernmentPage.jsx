@@ -13,7 +13,7 @@ import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGovernmentPage } from '../lib/api';
 import { governmentPageData } from '../lib/data/governmentPageData';
-import Events from '../components/Events';
+import Events, { EventsFullCard } from '../components/Events';
 import LogoSlider from '../components/LogoSlider';
 
 export default function GovernmentPage() {
@@ -61,7 +61,7 @@ export default function GovernmentPage() {
                 />
                 {/* Events Section */}
                 <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    <Events
+                    <EventsFullCard
                         darkMode={theme === 'dark'}
                         eventsData={pageData.events}
                         extraClass={"!py-0 !pb-20"}

@@ -86,14 +86,14 @@ export default function GSAMasPage() {
       {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       {/* <ShortHero title={"GSA MAS"} /> */}
-      <section className="px-6 lg:px-14 pb-10">
+      <section className="px-0 lg:px-14 lg:pb-10">
         <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
 
           <div className="font-['Titillium_Web',sans-serif]">
             <h1
-              className="text-[30px] lg:text-[40px] font-bold mb-4"
+              className="text-[20px] sm:text-[30px] lg:text-[40px] font-bold mb-4"
               style={{ color: "var(--heading)" }}
             >
               Information Technology – IT Services
@@ -145,7 +145,7 @@ export default function GSAMasPage() {
 
                       {/* Content */}
                       <div
-                        className="px-[55px] py-[38px] text-md leading-relaxed"
+                        className="px-4 sm:px-[55px] py-[38px] text-md font-Inter leading-relaxed"
                         style={{
                           color: "var(--text)",
                           background: "var(--card)",
@@ -172,7 +172,7 @@ export default function GSAMasPage() {
 
                       {/* Separate content box */}
                       <div
-                        className="px-[55px] py-[38px] text-md leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
+                        className="px-4 sm:px-[55px] py-[38px] text-md font-Inter leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
                         style={{
                           color: "var(--text)",
                           background: "var(--card)",

@@ -98,7 +98,7 @@ export default function TeamLeadership({ data, darkMode }) {
                   )}
 
                   {/* Social Icons */}
-                  <div className="absolute right-0 bottom-0 flex flex-col gap-3 p-3 bg-blue-500/90 rounded-l-xl translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+                  {/* <div className="absolute right-0 bottom-0 flex flex-col gap-3 p-3 bg-blue-500/90 rounded-l-xl translate-x-full group-hover:translate-x-0 transition-transform duration-300">
 
                     {icons.map((Icon, idx) => (
                       <div
@@ -109,7 +109,7 @@ export default function TeamLeadership({ data, darkMode }) {
                       </div>
                     ))}
 
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Text */}

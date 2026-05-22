@@ -144,17 +144,17 @@ export default function GSS2Page() {
       {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       {/* <ShortHero title={"GS&S 2.0"} /> */}
-      <section className="px-6 lg:px-14">
+      <section className="px-0 lg:px-14 lg:pb-10">
         <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
-          <div className="w-full   bg-[var(--bg)] py-13 font-Web">
+          <div className="w-full bg-[var(--bg)] lg:py-13 font-Web">
             {/* Header Section */}
-            <div className="mb-10  pb-8 max-w-4xl">
-              <h2 className=" font-Web text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
+            <div className="lg:mb-10 sm:pb-8 max-w-4xl">
+              <h2 className="font-Web text-3xl md:text-4xl font-bold text-[#001a41] dark:text-[var(--heading)] mb-4">
                 Advanced Geospatial Support & Mapping Solutions
               </h2>
-              <p className="text-sm md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">
+              <p className="text-md md:text-base text-gray-600 dark:text-[var(--muted)] leading-relaxed">
                 GS&S 2.0 provides high-precision geospatial intelligence,
                 real-time mapping, and mission-ready support to enhance
                 operational planning and decision-making for USAF missions.
@@ -162,7 +162,7 @@ export default function GSS2Page() {
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
               {cards.map((card, index) => (
                 <div
                   key={index}
@@ -174,7 +174,7 @@ export default function GSS2Page() {
                     {card.title}
                   </h3>
 
-                  <p className="text-sm text-blue-100 opacity-80 leading-snug">
+                  <p className="text-md text-blue-100 opacity-80 leading-snug">
                     {card.description}
                   </p>
                 </div>

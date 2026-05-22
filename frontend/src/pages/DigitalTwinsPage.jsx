@@ -84,6 +84,7 @@ export default function DigitalTwinsPage() {
             services={pageData.useCases}
             variant="blue"
             length={pageData.useCases.cards.length}
+            button={false}
           />
         )}
 
