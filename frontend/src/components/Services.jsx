@@ -59,7 +59,7 @@ export default function Services({
     >
       <div className="max-w-[1440px] mx-auto">
         {/* Header row */}
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mb-12">
           <div className="flex flex-col gap-5 max-w-[600px] xl:max-w-[993px]">
             <h2
               className={clsx(
