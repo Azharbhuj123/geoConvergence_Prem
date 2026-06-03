@@ -199,7 +199,7 @@ export default function BlogPage() {
                 ))}
 
                 {/* Load More */}
-                {/* {hasMore && ( */}
+                {hasMore && (
                 <div className="flex justify-center mt-4">
                   <Button
                     size='sm'
@@ -207,7 +207,7 @@ export default function BlogPage() {
                     View More
                   </Button>
                 </div>
-                {/* )} */}
+                )}
               </div>
 
               {/* ── Right: Sidebar ── */}

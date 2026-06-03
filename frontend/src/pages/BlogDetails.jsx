@@ -118,11 +118,11 @@ export default function BlogDetails() {
               </div>
 
               <div className="flex flex-col gap-4 align-center justify-center py-7">
-                <h2 className="text-center text-[var(--heading)] text-lg md:text-xl xl:text-[36px] font-Web font-bold max-w-[1040px] m-auto">
+                <h2 className="text-center text-[var(--heading)] text-lg md:text-xl xl:text-3xl font-Web font-bold max-w-[1040px] m-auto">
                   {details.title}
                 </h2>
                 {details.summary && (
-                  <p className="font-Inter text-center text-[var(--muted)] text-sm lg:text-lg">
+                  <p className="font-Inter text-center text-[var(--muted)] text-sm lg:text-xl">
                     {details.summary}
                   </p>
                 )}
@@ -132,13 +132,13 @@ export default function BlogDetails() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
               <article className="flex flex-col gap-7 min-w-0">
                 {details.articleTitle && (
-                  <h1 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]">
+                  <h1 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl">
                     {details.articleTitle}
                   </h1>
                 )}
 
                 {intro.map((para, i) => (
-                  <p key={`intro-${i}`} className="text-sm sm:text-lg leading-[1.85] text-[var(--muted)]">
+                  <p key={`intro-${i}`} className="text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)]">
                     {para}
                   </p>
                 ))}
@@ -147,13 +147,13 @@ export default function BlogDetails() {
 
                 {sections.map((section, idx) => (
                   <div key={`${section.heading || 'section'}-${idx}`} className="flex flex-col gap-3">
-                    <h2 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]">
+                    <h2 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl">
                       {section.heading}
                     </h2>
                     {(section.paras || []).map((para, j) => (
                       <p
                         key={`section-${idx}-para-${j}`}
-                        className="text-sm sm:text-lg leading-[1.45] text-[var(--muted)] whitespace-pre-line"
+                        className="text-sm sm:text-lg lg:text-xl leading-[1.45] text-[var(--muted)] whitespace-pre-line"
                       >
                         {para.replace(/•/g, "\n• ")}
                       </p>
@@ -170,7 +170,7 @@ export default function BlogDetails() {
                   </div>
                 ))}
                 {details.endTitle && (
-                  <h6 className="text-sm sm:text-lg leading-[1.45] text-[var(--muted)]">
+                  <h6 className="text-sm sm:text-lg lg:text-xl leading-[1.45] text-[var(--muted)]">
                     {renderEndTitle(details.endTitle)}
                   </h6>
                 )}
@@ -178,7 +178,7 @@ export default function BlogDetails() {
                 <div className="pt-6 border-t border-[var(--border)]">
                   <Link
                     to="/blog"
-                    className="inline-flex items-center gap-2 text-[#326FB7] text-[13px] font-semibold hover:gap-4 transition-all duration-200 group"
+                    className="inline-flex items-center gap-2 text-[#326FB7] text-sm font-semibold hover:gap-4 transition-all duration-200 group"
                   >
                     <svg
                       width="15"
