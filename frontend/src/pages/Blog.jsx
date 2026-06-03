@@ -40,6 +40,8 @@ function CategoryBadge({ label }) {
 }
 
 function BlogCard({ post }) {
+  const postPath = `/blog/${post.slug || post.id}`;
+
   return (
     <article className="flex flex-col bg-[var(--card)] rounded-[16px] overflow-hidden border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_28px_rgba(50,111,183,0.14)] transition-all duration-300 group">
       {/* ── Left: Image ── */}
@@ -61,7 +63,7 @@ function BlogCard({ post }) {
           {post.excerpt}
         </p>
         <Link
-          to={`/blog/${post.id}`}
+          to={postPath}
           className="self-start mt-1 text-[var(--text)] text-lg xl:text-[20px] font-Web font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
         >
           View More
@@ -123,7 +125,11 @@ export function RecentPosts({ darkMode, recentPosts }) {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         {recentPosts.map((post) => (
-          <div key={post.id} className="flex items-start gap-3 group cursor-pointer">
+          <Link
+            key={post.slug || post.id}
+            to={`/blog/${post.slug || post.id}`}
+            className="flex items-start gap-3 group cursor-pointer"
+          >
             <img
               src={post.image}
               alt={post.title}
@@ -135,7 +141,7 @@ export function RecentPosts({ darkMode, recentPosts }) {
               </p>
               <p className="text-sm sm:text-lg text-[var(--muted)]">{post.date}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -154,7 +160,7 @@ export default function BlogPage() {
     queryFn: fetchBlogPage,
   });
 
-  const blogContent = data?.blog || pageData.blogPage;
+  const blogContent = data || pageData.blogPage;
   const BLOG_POSTS = blogContent.posts;
   const POPULAR_TAGS = blogContent.popularTags;
   const RECENT_POSTS = blogContent.recentPosts;

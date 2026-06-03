@@ -69,6 +69,7 @@ export const fetchIndoorMapsPage = async () => {
     keyFeatures,
     useCases,
     capabilities,
+    imageGallery,
     finalCta
   }`;
   return client.fetch(query);
@@ -130,14 +131,14 @@ export const fetchDigitalTwinsPage = async () => {
 
 export const fetchReservAssistPage = async () => {
   const query = `*[_type == "reservAssistPage"][0]{
-    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, imageGallery, finalCta
   }`;
   return client.fetch(query);
 };
 
 export const fetchGeoPrinterPage = async () => {
   const query = `*[_type == "geoPrinterPage"][0]{
-    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, imageGallery, finalCta
   }`;
   return client.fetch(query);
 };
@@ -157,29 +158,45 @@ export const fetchRoomReservPage = async () => {
 };
 
 export const fetchBlogPage = async () => {
-  const query = `*[_type == "blog"][0]{
-    title,
-    blog {
-      posts[] {
-        id, category, title, excerpt, date, "image": image.asset->url, tag
-      },
-      popularTags,
-      recentPosts[] {
-        id, title, date, "image": image.asset->url
-      }
+  const query = `*[_type == "blogPage"][0]{
+    posts[] {
+      id,
+      category,
+      title,
+      excerpt,
+      date,
+      "image": image.asset->url,
+      tag,
+      "slug": slug.current
+    },
+    popularTags,
+    recentPosts[] {
+      id,
+      title,
+      date,
+      "image": image.asset->url,
+      "slug": slug.current
     }
   }`;
+
   return client.fetch(query);
 };
 
 export const fetchBlogDetails = async (slug) => {
   const query = `*[_type == "blogDetails" && slug.current == $slug][0]{
+    heroTitle,
+    sectionTitle,
     title,
+    endTitle,
+    summary,
+    articleTitle,
     "galleryImages": galleryImages[] {
-      "image": image.asset->url,
+      "src": image.asset->url,
       alt
     },
     "inlineImage": inlineImage.asset->url,
+    inlineImageAlt,
+    inlineImageAfterSection,
     intro,
     sections[] {
       heading,

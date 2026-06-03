@@ -71,6 +71,44 @@ export default defineType({
     //   ]
     // }),
     defineField({
+      name: 'imageGallery',
+      title: 'Image Gallery',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', title: 'Section Title', type: 'string' }),
+        defineField({ name: 'subtitle', title: 'Section Subtitle', type: 'text' }),
+        defineField({
+          name: 'images',
+          title: 'Images',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'image', title: 'Image', type: 'image', options: { hotspot: true } }),
+                defineField({ name: 'alt', title: 'Alt Text', type: 'string' }),
+                defineField({ name: 'caption', title: 'Caption', type: 'string' })
+              ],
+              preview: {
+                select: {
+                  title: 'caption',
+                  subtitle: 'alt',
+                  media: 'image'
+                },
+                prepare({ title, subtitle, media }) {
+                  return {
+                    title: title || subtitle || 'Gallery image',
+                    subtitle,
+                    media
+                  }
+                }
+              }
+            }
+          ]
+        })
+      ]
+    }),
+    defineField({
       name: 'finalCta', title: 'Final CTA', type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),

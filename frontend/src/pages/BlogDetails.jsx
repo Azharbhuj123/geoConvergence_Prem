@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import ShortHero from '../components/ShortHero';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import { useQuery } from '@tanstack/react-query';
 import { fetchBlogDetails, fetchBlogPage } from '../lib/api';
 import { pageData } from '../lib/data/page';
 import { RecentPosts } from './Blog';
-
-// ─── Sidebar Widget ───────────────────────────────────────────────────────────
 
 function SidebarWidget({ title, children }) {
   const { theme } = useThemeStore();
@@ -30,68 +28,89 @@ function SidebarWidget({ title, children }) {
     </div>
   );
 }
-// ─── Main Page ────────────────────────────────────────────────────────────────
+
+const renderEndTitle = (text) => {
+  return text
+    .split(/(info@geoconvergence\.com|LinkedIn)/g)
+    .map((part, index) => {
+      if (part === "info@geoconvergence.com") {
+        return (
+          <a
+            key={index}
+            href="mailto:info@geoconvergence.com"
+            className="text-blue-600 underline"
+          >
+            {part}
+          </a>
+        );
+      }
+
+      if (part === "LinkedIn") {
+        return (
+          <a
+            key={index}
+            href="https://www.linkedin.com/company/geoconvergence/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            LinkedIn
+          </a>
+        );
+      }
+
+      return part;
+    });
+};
 
 export default function BlogDetails() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
-  const { id } = useParams();
+  const { id: slug } = useParams();
   const [activeTag, setActiveTag] = useState(null);
 
-  // Fetch individual blog details
   const { data: detailsData } = useQuery({
-    queryKey: ['blogDetails', id],
-    queryFn: () => fetchBlogDetails(id),
-    enabled: !!id,
+    queryKey: ['blogDetails', slug],
+    queryFn: () => fetchBlogDetails(slug),
+    enabled: !!slug,
   });
 
-  // Fetch blog list for sidebar (tags/recent)
   const { data: blogPageData } = useQuery({
     queryKey: ['blogPage'],
     queryFn: fetchBlogPage,
   });
 
   const details = detailsData || pageData.blogDetailsPage;
-  const GALLERY_IMAGES = details.galleryImages;
-  const INLINE_IMAGE = details.inlineImage;
-  const INTRO = details.intro;
-  const SECTIONS = details.sections;
-
-  const blogContent = blogPageData?.blog || pageData.blogPage;
-  const POPULAR_TAGS = blogContent.popularTags;
-  const RECENT_POSTS = blogContent.recentPosts;
+  const galleryImages = details.galleryImages || [];
+  const intro = details.intro || [];
+  const sections = details.sections || [];
+  const blogContent = blogPageData || pageData.blogPage;
+  const popularTags = blogContent.popularTags || [];
+  const recentPosts = blogContent.recentPosts || [];
 
   return (
     <div className={darkMode ? 'dark' : ''}>
       <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-colors duration-200">
-
-        {/* Navbar */}
         <Navbar darkMode={darkMode} toggleDarkMode={toggleTheme} />
 
-        {/* Hero */}
-        <ShortHero title="Blogs Details" />
+        <ShortHero title={details.heroTitle || 'Blogs Details'} />
 
-        {/* ── Main Content Section ── */}
         <section className="px-6 lg:px-14 py-14">
           <div className="max-w-[1440px] mx-auto">
-            {/* Section heading */}
             <div className="mb-10">
-              <h2
-                className="heading-primary font-Web"
-              >
-                Our Latest News &amp; Blogs
+              <h2 className="heading-primary font-Web">
+                {details.sectionTitle || 'Our Latest News & Blogs'}
               </h2>
 
-              {/* 2×2 Image Gallery */}
               <div className="grid grid-cols-2 gap-3 pt-6 pb-8 lg:pb-p[60px] lg:pt-[36px]">
-                {GALLERY_IMAGES.map((img, i) => (
+                {galleryImages.map((img, i) => (
                   <div
-                    key={i}
+                    key={`${img.alt || 'gallery'}-${i}`}
                     className="overflow-hidden rounded-[12px] w-full h-[300px]"
                   >
                     <img
-                      src={img.src}
-                      alt={img.alt}
+                      src={img.src || img.image}
+                      alt={img.alt || details.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -99,64 +118,63 @@ export default function BlogDetails() {
               </div>
 
               <div className="flex flex-col gap-4 align-center justify-center py-7">
-                <h2 className="text-center text-[var(--heading)] text-lg md:text-xl xl:text-[36px] font-Web font-bold max-w-[1040px] m-auto" >Seat-Level Digital Twins: Scaling ArcGIS Indoors and Public Safety for Multi-Tiered Arenas</h2>
-                <p className="font-Inter text-center text-[var(--muted)] text-sm lg:text-lg">Goal: Bring 93 municipal buildings and the 260,000 sq. ft. Dignity Health Arena into a single ArcGIS Enterprise environment. The Challenge: 2D floor plans fail when applied to the overlapping concourses and sloped seating bowls of a massive entertainment venue. The Approach: Captured the arena with mobile LiDAR, processed it into a Revit BIM model, and fed it directly into an ArcGIS Indoors network. Public Safety: The routing-aware spatial data powers S/Planner, allowing security teams to simulate evacuations and spot bottlenecks without disrupting daily operations.</p>
+                <h2 className="text-center text-[var(--heading)] text-lg md:text-xl xl:text-[36px] font-Web font-bold max-w-[1040px] m-auto">
+                  {details.title}
+                </h2>
+                {details.summary && (
+                  <p className="font-Inter text-center text-[var(--muted)] text-sm lg:text-lg">
+                    {details.summary}
+                  </p>
+                )}
               </div>
             </div>
 
-            {/* 2-column layout: article + sidebar */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
-
-              {/* ── LEFT: Full Article ── */}
               <article className="flex flex-col gap-7 min-w-0">
+                {details.articleTitle && (
+                  <h1 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]">
+                    {details.articleTitle}
+                  </h1>
+                )}
 
-                {/* Article H1 */}
-                <h1
-                  className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]"
-                >
-                  From City Blocks to the Arena Floor
-                </h1>
-
-                {/* Intro */}
-                {INTRO.map((para, i) => (
-                  <p key={i} className="text-sm sm:text-lg leading-[1.85] text-[var(--muted)]">
+                {intro.map((para, i) => (
+                  <p key={`intro-${i}`} className="text-sm sm:text-lg leading-[1.85] text-[var(--muted)]">
                     {para}
                   </p>
                 ))}
 
-                {/* Divider */}
                 <div className="h-px bg-[var(--border)]" />
 
-                {/* Content Sections */}
-                {SECTIONS.map((section, idx) => (
-                  <div key={idx} className="flex flex-col gap-3">
-                    <h2
-                      className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]"
-                    >
+                {sections.map((section, idx) => (
+                  <div key={`${section.heading || 'section'}-${idx}`} className="flex flex-col gap-3">
+                    <h2 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-[36px]">
                       {section.heading}
                     </h2>
-                    {section.paras.map((para, j) => (
+                    {(section.paras || []).map((para, j) => (
                       <p
-                        key={j}
-                        className="text-sm sm:text-lg leading-[1.85] text-[var(--muted)]"
+                        key={`section-${idx}-para-${j}`}
+                        className="text-sm sm:text-lg leading-[1.45] text-[var(--muted)] whitespace-pre-line"
                       >
-                        {para}
+                        {para.replace(/•/g, "\n• ")}
                       </p>
                     ))}
-                    {/* Inline full-width image after section index 2 (Why Spatial Safety) */}
-                    {idx === 2 && (
+                    {idx === (details.inlineImageAfterSection ?? 2) && details.inlineImage && (
                       <div className="mt-3 rounded-[14px] overflow-hidden w-full">
                         <img
-                          src={INLINE_IMAGE}
-                          alt="Arena interior view"
+                          src={details.inlineImage}
+                          alt={details.inlineImageAlt || details.title}
                           className="w-full h-[260px] sm:h-[320px] object-cover"
                         />
                       </div>
                     )}
                   </div>
                 ))}
+                {details.endTitle && (
+                  <h6 className="text-sm sm:text-lg leading-[1.45] text-[var(--muted)]">
+                    {renderEndTitle(details.endTitle)}
+                  </h6>
+                )}
 
-                {/* Back link */}
                 <div className="pt-6 border-t border-[var(--border)]">
                   <Link
                     to="/blog"
@@ -178,13 +196,10 @@ export default function BlogDetails() {
                 </div>
               </article>
 
-              {/* ── RIGHT: Sidebar ── */}
               <aside className="flex flex-col gap-8 lg:sticky lg:top-8">
-
-                {/* Popular Tags */}
                 <SidebarWidget title="Popular Tags">
                   <div className="flex flex-wrap gap-2">
-                    {POPULAR_TAGS.map((tag) => (
+                    {popularTags.map((tag) => (
                       <button
                         key={tag}
                         onClick={() => setActiveTag(activeTag === tag ? null : tag)}
@@ -199,26 +214,19 @@ export default function BlogDetails() {
                   </div>
                 </SidebarWidget>
 
-                {/* Recent Posts */}
                 <SidebarWidget title="Recent Post">
-                  <RecentPosts
-                  recentPosts={RECENT_POSTS}
-                  />
+                  <RecentPosts recentPosts={recentPosts} />
                 </SidebarWidget>
-
               </aside>
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="">
+        <section>
           <Testimonials darkMode={darkMode} />
         </section>
-        {/* CTA */}
         <CTA darkMode={darkMode} />
 
-        {/* Footer */}
         <Footer darkMode={darkMode} />
       </div>
     </div>

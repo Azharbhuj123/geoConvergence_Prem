@@ -10,6 +10,7 @@ export const pageData = {
         date: 'April 10, 2025',
         image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75',
         tag: 'Facilities GIS',
+        slug: 'seat-level-digital-twins-scaling-arcgis-indoors-and-public-safety-for-multi-tiered-arenas',
       },
       {
         id: 2,
@@ -20,6 +21,7 @@ export const pageData = {
         date: 'February 26, 2025',
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75',
         tag: 'Partnership',
+        slug: 'geoconvergence-recognized-as-an-esri-cornerstone-partner',
       },
       {
         id: 3,
@@ -30,6 +32,7 @@ export const pageData = {
         date: 'January 14, 2025',
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75',
         tag: 'Indoor Mapping',
+        slug: 'helping-baltimore-county-public-schools-build-a-sustainable-indoor-gis-program',
       },
     ],
     popularTags: ['GIS', 'Arc', 'Indoor Mapping', 'tech', 'Scan2Twin', 'Digital Twin', 'ArcGIS'],
@@ -39,22 +42,29 @@ export const pageData = {
         title: 'Seat-Level Digital Twins…',
         date: 'April 10, 2025',
         image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=75',
+        slug: 'seat-level-digital-twins-scaling-arcgis-indoors-and-public-safety-for-multi-tiered-arenas',
       },
       {
         id: 2,
         title: 'geoConvergence Recognized…',
         date: 'February 26, 2025',
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&q=75',
+        slug: 'geoconvergence-recognized-as-an-esri-cornerstone-partner',
       },
       {
         id: 3,
         title: 'Helping Baltimore County Public…',
         date: 'January 14, 2025',
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&q=75',
+        slug: 'helping-baltimore-county-public-schools-build-a-sustainable-indoor-gis-program',
       },
     ],
   },
   blogDetailsPage: {
+    heroTitle: 'Blogs Details',
+    sectionTitle: 'Our Latest News & Blogs',
+    title: 'Seat-Level Digital Twins: Scaling ArcGIS Indoors and Public Safety for Multi-Tiered Arenas',
+    summary: 'Goal: Bring 93 municipal buildings and the 260,000 sq. ft. Dignity Health Arena into a single ArcGIS Enterprise environment. The Challenge: 2D floor plans fail when applied to overlapping concourses and sloped seating bowls. The Approach: Captured the arena with mobile LiDAR, processed it into a Revit BIM model, and fed it directly into an ArcGIS Indoors network.',
     galleryImages: [
       {
         src: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700&q=80',
@@ -74,6 +84,9 @@ export const pageData = {
       },
     ],
     inlineImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=80',
+    inlineImageAlt: 'Arena interior view',
+    inlineImageAfterSection: 2,
+    articleTitle: 'From City Blocks to the Arena Floor',
     intro: ["The City of Bakersfield’s Technology Services Division set out to modernize how it manages and navigates its facilities portfolio — spanning 93 city buildings and one of its most complex venues, the 260,000 sq. ft. Dignity Health Arena. The goal: a unified indoor mapping platform capable of supporting operations, wayfinding, and future smart-facility initiatives. ",
       "Working with geoConvergence, the project team implemented the ArcGIS Indoors Information Model across the City’s facilities and deployed ArcGIS Indoors within a production ArcGIS Enterprise environment. For most sites, existing GIS-based floor plan datasets were migrated through CAD into the Indoors information model. The Dignity Health Arena, however, required a different approach. Unlike standard buildings with flat floors and predictable hallways, the arena is a massive, continuous volume and accurately representing that physical reality inside the City’s GIS demanded a true digital twin."
     ],

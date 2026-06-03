@@ -11,6 +11,7 @@ import CoreValues from '../components/CoreValues';
 import Services from '../components/Services';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import ImageGallerySection from '../components/ImageGallerySection';
 
 export default function ReservAssistPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -90,6 +91,8 @@ export default function ReservAssistPage() {
             length={pageData.useCases.cards.length}
           />
         )} */}
+        <ImageGallerySection darkMode={isDark} pageData={pageData.imageGallery} />
+
         <section className=''>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
         </section>

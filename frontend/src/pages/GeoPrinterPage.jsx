@@ -12,6 +12,7 @@ import Services from '../components/Services';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import WorkProcessSection from '../components/WorkProcessSection';
+import ImageGallerySection from '../components/ImageGallerySection';
 
 import { Building2, Cog, Compass, Database, LayoutGrid, Search, Settings, ShieldCheck, Users } from 'lucide-react';
 import { GeoPrinterCard1, GeoPrinterCard2, GeoPrinterCard3 } from '../components/UI/Svgs';
@@ -134,6 +135,8 @@ export default function GeoPrinterPage() {
             length={workProcessSteps.length}
           />
         </section>
+
+        <ImageGallerySection darkMode={isDark} pageData={pageData.imageGallery} />
 
         <section className='pt-5'>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />

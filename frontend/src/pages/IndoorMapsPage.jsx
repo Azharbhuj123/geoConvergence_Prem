@@ -11,6 +11,7 @@ import Stats from "../components/Stats";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import { Services_Description } from "../components/Services_Description";
+import ImageGallerySection from "../components/ImageGallerySection";
 
 export default function IndoorMapsPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -107,7 +108,7 @@ export default function IndoorMapsPage() {
 
         {/* Capabilities */}
         {pageData.capabilities && (
-          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 pb-10`}>
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
             <SolutionBlock
               title={pageData.capabilities.title}
               description={pageData.capabilities.description}
@@ -120,6 +121,8 @@ export default function IndoorMapsPage() {
             />
           </section>
         )}
+
+        <ImageGallerySection darkMode={isDark} pageData={pageData.imageGallery} />
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />
       </main>
