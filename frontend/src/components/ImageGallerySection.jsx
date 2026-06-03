@@ -127,7 +127,6 @@ export default function ImageGallerySection({ darkMode, pageData, className }) {
             if (position === 0) {
               translateX = 0;
               scale = isMobile ? 1 : 1.08;
-              opacity = 1;
               zIndex = 30;
             } else if (position === 1) {
               // right
@@ -198,7 +197,7 @@ export default function ImageGallerySection({ darkMode, pageData, className }) {
                 {/* Gradient overlay */}
                 <div
                   className={clsx(
-                    "absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/55 transition-all duration-500",
+                    "absolute inset-0 transition-all duration-500",
                     isCenter &&
                       "group-hover:via-black/20 group-hover:to-black/75"
                   )}
