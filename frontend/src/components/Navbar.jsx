@@ -42,7 +42,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className="max-w-[1440px] mx-auto py-7 px-4 sm:px-8 lg:px-14 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto py-7 px-4 sm:px-8 lg:px-10 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none">
             <img src={darkMode ? dark_logo : logo} alt="" />
