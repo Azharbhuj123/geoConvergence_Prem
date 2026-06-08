@@ -205,7 +205,7 @@ export default function BlogPage() {
       const excerptMatch = post.excerpt?.toLowerCase().includes(search);
       const tagMatch = post.tag?.toLowerCase().includes(search);
       const categoryMatch = post.category?.toLowerCase().includes(search);
-      
+
       if (!titleMatch && !excerptMatch && !tagMatch && !categoryMatch) {
         return false;
       }

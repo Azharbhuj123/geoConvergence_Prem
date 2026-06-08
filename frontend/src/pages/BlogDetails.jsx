@@ -138,7 +138,7 @@ export default function BlogDetails() {
                 )}
 
                 {intro.map((para, i) => (
-                  <p key={`intro-${i}`} className="text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)]">
+                  <p key={`intro-${i}`} className="text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)] whitespace-pre-line">
                     {para}
                   </p>
                 ))}
@@ -155,7 +155,7 @@ export default function BlogDetails() {
                         key={`section-${idx}-para-${j}`}
                         className="text-sm sm:text-lg lg:text-xl leading-[1.45] text-[var(--muted)] whitespace-pre-line"
                       >
-                        {para.replace(/•/g, "\n• ")}
+                        {para}
                       </p>
                     ))}
                     {idx === (details.inlineImageAfterSection ?? 2) && details.inlineImage && (

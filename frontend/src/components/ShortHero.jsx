@@ -4,7 +4,7 @@ import Hero2 from "../assets/hero2.png";
 export default function ShortHero({ title }) {
   return (
     <section
-      className="relative h-[250px] sm:h-[451px]  w-full flex items-center overflow-hidden bg-cover bg-center px-6 lg:px-14 py-5"
+      className="relative h-[250px] sm:h-[250px]  w-full flex items-center overflow-hidden bg-cover bg-center px-6 lg:px-14 py-5"
       style={{
         backgroundImage: `url(${Hero2})`,
       }}

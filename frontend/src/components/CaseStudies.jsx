@@ -1,11 +1,13 @@
 import React from "react";
 import { urlFor } from "../lib/sanity";
 import Button from "./UI/Button";
+import { Link } from "react-router-dom";
 
 export default function CaseStudies({ data, darkMode }) {
   if (!data) return null;
 
   const { title, subtitle, studies } = data;
+
 
   return (
     <section className="bg-[#0D1B5E] py-20 px-6 sm:px-10 xl:px-14">
@@ -62,12 +64,14 @@ export default function CaseStudies({ data, darkMode }) {
                   {study.description}
                 </p>
 
-                <button className="text-[var(--text-)] underline text-base font-bold hover:text-blue-700 transition-colors duration-300 flex items-center gap-2 group">
-                  Know More
-                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+                <Link to={study?.link}>
+                  <button className="text-[var(--text-)] underline text-base font-bold hover:text-blue-700 transition-colors duration-300 flex items-center gap-2 group cursor-pointer">
+                    Know More
+                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

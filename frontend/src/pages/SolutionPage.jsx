@@ -32,7 +32,7 @@ export default function SolutionsPage() {
                     darkMode={theme === 'dark'}
                     hero={pageData.hero}
                     title="Solutions"
-                    minHeight="min-h-[451px]"
+                    minHeight="!min-h-[250px]"
                 />
 
                 {/* Services Intro */}
@@ -54,7 +54,7 @@ export default function SolutionsPage() {
                             imagePosition={index % 2 === 0 ? "left" : "right"}
                             className={index === 0 ? "bg-[#002052]" : ""}
                             isInverted={index === 0
-                                
+
                             }
                         />
                     ))}

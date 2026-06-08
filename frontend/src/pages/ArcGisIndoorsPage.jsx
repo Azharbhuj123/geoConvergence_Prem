@@ -107,7 +107,7 @@ export default function ArcGisIndoorsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="min-h-[451px]" className="!max-w-[1440px]" maxWidth="!max-w-[653px]" />
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "ArcGIS Indoors"} minHeight="!min-h-[500px]" className="!max-w-[1440px]" maxWidth="!max-w-[653px]" />
 
         <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 xl:py-10`}>
           {pageData.solutions?.map((solution, index) => (
@@ -158,7 +158,7 @@ export default function ArcGisIndoorsPage() {
             />
           </section>
         )}
-      
+
         <section className="bg-[var(--bg)] px-6 py-14 sm:px-10 lg:py-20 xl:px-14">
           <div className="mx-auto max-w-[1440px]">
             <Motion.h2

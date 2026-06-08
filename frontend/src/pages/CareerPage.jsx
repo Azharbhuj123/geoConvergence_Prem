@@ -50,7 +50,7 @@ export default function CareerPage() {
           darkMode={isDark}
           hero={pageData.hero}
           title={pageData.hero?.title || "Career"}
-          minHeight="min-h-[400px]"
+          minHeight="!min-h-[250px]"
         />
 
         {/* Meet the Team */}

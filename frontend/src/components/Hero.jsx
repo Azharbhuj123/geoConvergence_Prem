@@ -24,7 +24,7 @@ export default function Hero({ darkMode, hero, minHeight = '', className = '', m
 
   return (
     <section
-      className={`relative min-h-[420px] ${minHeight} flex items-end pb-20 sm:pb-24 overflow-hidden px-6 sm:px-8 lg:px-14 
+      className={`relative min-h-[420px] ${minHeight} flex items-center overflow-hidden px-6 sm:px-8 lg:px-14 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
@@ -54,9 +54,9 @@ export default function Hero({ darkMode, hero, minHeight = '', className = '', m
       {/* Hero content */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto">
         <div className={`max-w-[653px] ${className}`}>
-          <div className="flex flex-col gap-7 mb-12">
+          <div className="flex flex-col gap-7">
             <h1
-              className="text-white font-bold font-Web leading-[80px] text-[34px] xl:text-[65px]"
+              className="text-white font-bold font-Web leading-12 xl:leading-[80px] text-[34px] xl:text-[65px]"
             >
               {title}
             </h1>
@@ -71,23 +71,26 @@ export default function Hero({ darkMode, hero, minHeight = '', className = '', m
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          {btn1 && !btn1.pdfFile &&(
-            <Button href={btn1.link} size='sm' variant="primary"  >
-              {btn1.text}
-            </Button>
-          )}
-          {btn1 && btn1.pdfFile && (
-            <Button href={fileUrl(btn1.pdfFile)} target="_blank" size='sm' variant="primary" download >
-              {btn1.text}
-            </Button>
-          )}
-          {btn2 && (
-            <Button href={btn2.link} size='sm' variant="secondary" >
-              {btn2.text}
-            </Button>
-          )}
-        </div>
+
+        {(btn1 || btn2) && (
+          <div className="flex flex-col sm:flex-row gap-4 pt-12">
+            {btn1 && !btn1.pdfFile && (
+              <Button href={btn1.link} size='sm' variant="primary"  >
+                {btn1.text}
+              </Button>
+            )}
+            {btn1 && btn1.pdfFile && (
+              <Button href={fileUrl(btn1.pdfFile)} target="_blank" size='sm' variant="primary" download >
+                {btn1.text}
+              </Button>
+            )}
+            {btn2 && (
+              <Button href={btn2.link} size='sm' variant="secondary" >
+                {btn2.text}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   )

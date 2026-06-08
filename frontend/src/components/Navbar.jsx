@@ -64,7 +64,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
           {/* Right side */}
           <div className="hidden xl:flex items-center gap-4">
-            <Button size="sm" className="!text-base !py-2 !px-2" href="/contact">
+            <Button size="sm" className="!text-base !py-2 !px-4" href="/contact">
               Request Demo
             </Button>
 

@@ -58,7 +58,7 @@ export default function ScenarioPlannerPage() {
           </section>
         )}
         {pageData.secondSolution && (
-          <section className="bg-[var(--slate-bg)] px-6 sm:px-10 xl:px-14 pb-10 sm:pb-15">
+          <section className={`bg-[var(--slate-bg)] px-6 sm:px-10 xl:px-14 ${isDark ? "py-10 sm:py-15" : "pb-10 sm:pb-15"}`}>
             <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
