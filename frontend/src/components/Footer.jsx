@@ -140,7 +140,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web">Company</h4>
             {company.map((c) => (
-              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-lg font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {c.name}
               </Link>
             ))}
