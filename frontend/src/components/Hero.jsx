@@ -56,7 +56,7 @@ export default function Hero({ darkMode, hero, minHeight = '', className = '', m
         <div className={`max-w-[653px] ${className}`}>
           <div className="flex flex-col gap-7 mb-12">
             <h1
-              className="text-white font-bold font-Web leading-tight text-[34px] xl:text-[70px]"
+              className="text-white font-bold font-Web leading-[80px] text-[34px] xl:text-[65px]"
             >
               {title}
             </h1>

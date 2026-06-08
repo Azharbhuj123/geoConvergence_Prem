@@ -78,10 +78,21 @@ export const fetchIndoorMapsPage = async () => {
 export const fetchCareerPage = async () => {
   const query = `*[_type == "careerPage"][0]{
     hero,
-    easySteps,
+    keyFeatures,
     meetTheTeam,
     coreValues,
-    openPositions,
+    openPositions{
+      sectionTitle,
+      sectionSubtitle,
+      jobs[]{
+        title,
+        "slug": slug.current,
+        type,
+        location,
+        salary,
+        description
+      }
+    },
     finalCta
   }`;
   return client.fetch(query);
@@ -216,6 +227,7 @@ export const fetchCareerDetails = async (slug) => {
   }`;
   return client.fetch(query, { slug });
 };
+
 export const fetchWhyPage = async () => {
   const query = `*[_type == "whyPage"][0]{
     hero,
@@ -228,6 +240,7 @@ export const fetchWhyPage = async () => {
   }`;
   return client.fetch(query);
 };
+
 export const fetchGovernmentPage = async () => {
   const query = `*[_type == "governmentPage"][0]{
     hero,
@@ -238,4 +251,30 @@ export const fetchGovernmentPage = async () => {
     finalCta
   }`;
   return client.fetch(query);
+};
+
+export const submitContactForm = async (formData) => {
+  return await client.create({
+    _type: 'contactSubmission',
+    fullName: formData.firstName,
+    lastName: formData.lastName,
+    email: formData.email,
+    message: formData.message,
+    createdAt: new Date().toISOString()
+  });
+};
+
+export const subscribeNewsletter = async (email) => {
+  // Check for duplicate
+  const query = `*[_type == "newsletterSubscription" && email == $email][0]`;
+  const existing = await client.fetch(query, { email });
+  if (existing) {
+    throw new Error("Already subscribed");
+  }
+
+  return await client.create({
+    _type: 'newsletterSubscription',
+    email,
+    createdAt: new Date().toISOString()
+  });
 };

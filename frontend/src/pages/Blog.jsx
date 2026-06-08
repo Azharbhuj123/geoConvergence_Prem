@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import ShortHero from '../components/ShortHero';
@@ -76,45 +76,44 @@ function BlogCard({ post }) {
   );
 }
 
-function SearchBox({ darkMode }) {
-  const [q, setQ] = useState('');
+function SearchBox({ searchTerm, setSearchTerm }) {
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Search</h4>
-      <div className="flex items-center gap-2 border border-[var(--border)] rounded-[12px] px-4 py-2.5 bg-[var(--bg-secondary)] focus-within:border-[#326FB7] transition-colors">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[var(--muted)] flex-shrink-0">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
+    <div className="relative">
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full bg-[#f9fafb] font-Inter text-[#000942] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
+      />
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
         </svg>
-        <input
-          type="text"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search"
-          className="flex-1 bg-transparent outline-none text-[var(--text)] text-[14px] placeholder:text-[var(--muted)]"
-        />
       </div>
     </div>
   );
 }
 
-function PopularTags({ darkMode, popularTags }) {
-  const [active, setActive] = useState(null);
+function PopularTags({ darkMode, popularTags, selectedTag, setSelectedTag }) {
   return (
     <div className=" rounded-[20px] flex flex-col gap-6">
       <div className="flex flex-wrap gap-2">
-        {popularTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setActive(active === tag ? null : tag)}
-            className={`px-3 py-1.5 rounded-[8px] text-md sm:text-lg font-Inter border transition-all duration-200 ${active === tag
-              ? 'bg-[#326FB7] text-white border-[#326FB7]'
-              : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
-              }`}
-          >
-            {tag}
-          </button>
-        ))}
+        {popularTags.map((tag) => {
+          const isActive = selectedTag?.toLowerCase() === tag.toLowerCase();
+          return (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(isActive ? null : tag)}
+              className={`px-3 py-1.5 rounded-[8px] text-md sm:text-lg font-Inter border transition-all duration-200 ${isActive
+                ? 'bg-[#326FB7] text-white border-[#326FB7]'
+                : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
+                }`}
+            >
+              {tag}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -155,18 +154,68 @@ export default function BlogPage() {
   const darkMode = theme === 'dark';
   const [visibleCount, setVisibleCount] = useState(3);
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedTag = searchParams.get('tag');
+
+  const setSelectedTag = (tag) => {
+    if (tag) {
+      setSearchParams((prev) => {
+        const next = new URLSearchParams(prev);
+        next.set('tag', tag);
+        return next;
+      });
+    } else {
+      setSearchParams((prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete('tag');
+        return next;
+      });
+    }
+  };
+
   const { data } = useQuery({
     queryKey: ['blogPage'],
     queryFn: fetchBlogPage,
   });
 
   const blogContent = data || pageData.blogPage;
-  const BLOG_POSTS = blogContent.posts;
-  const POPULAR_TAGS = blogContent.popularTags;
-  const RECENT_POSTS = blogContent.recentPosts;
+  const BLOG_POSTS = blogContent.posts || [];
+  const POPULAR_TAGS = blogContent.popularTags || [];
+  const RECENT_POSTS = blogContent.recentPosts || [];
 
-  const visiblePosts = BLOG_POSTS.slice(0, visibleCount);
-  const hasMore = visibleCount < BLOG_POSTS.length;
+  // Validate selected tag against POPULAR_TAGS (case-insensitive check)
+  const isTagValid = selectedTag && POPULAR_TAGS.some(
+    (t) => t.toLowerCase() === selectedTag.toLowerCase()
+  );
+
+  // Derive filtered posts based on tag and search term
+  const filteredPosts = BLOG_POSTS.filter((post) => {
+    // 1. Tag filter
+    if (isTagValid) {
+      const postTag = post.tag || '';
+      if (postTag.toLowerCase() !== selectedTag.toLowerCase()) {
+        return false;
+      }
+    }
+
+    // 2. Search filter (title, excerpt, tag, category)
+    if (searchTerm.trim()) {
+      const search = searchTerm.toLowerCase().trim();
+      const titleMatch = post.title?.toLowerCase().includes(search);
+      const excerptMatch = post.excerpt?.toLowerCase().includes(search);
+      const tagMatch = post.tag?.toLowerCase().includes(search);
+      const categoryMatch = post.category?.toLowerCase().includes(search);
+      
+      if (!titleMatch && !excerptMatch && !tagMatch && !categoryMatch) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPosts.length;
 
   return (
     <div className={darkMode ? 'dark' : ''}>
@@ -194,19 +243,29 @@ export default function BlogPage() {
 
               {/* ── Left: Blog Cards ── */}
               <div className="flex flex-col gap-7">
-                {visiblePosts.map((post) => (
-                  <BlogCard key={post.id} post={post} />
-                ))}
+                {filteredPosts.length === 0 ? (
+                  <div className="text-center py-12 bg-[var(--card)] rounded-[16px] border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)]">
+                    <p className="text-lg text-[var(--muted)] font-Inter">
+                      No blog posts found.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    {visiblePosts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
 
-                {/* Load More */}
-                {hasMore && (
-                <div className="flex justify-center mt-4">
-                  <Button
-                    size='sm'
-                    onClick={() => setVisibleCount((c) => c + 3)}>
-                    View More
-                  </Button>
-                </div>
+                    {/* Load More */}
+                    {hasMore && (
+                      <div className="flex justify-center mt-4">
+                        <Button
+                          size='sm'
+                          onClick={() => setVisibleCount((c) => c + 3)}>
+                          View More
+                        </Button>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -216,25 +275,17 @@ export default function BlogPage() {
 
                 {/* Search Widget */}
                 <SidebarWidget title="Search">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-[#f9fafb] font-Inter text-[#000942] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
-                    />
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-                      </svg>
-                    </div>
-                  </div>
+                  <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 </SidebarWidget>
 
                 {/* Popular Tags Widget */}
                 <SidebarWidget title="Popular Tags">
-                  <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
+                  <PopularTags
+                    darkMode={darkMode}
+                    popularTags={POPULAR_TAGS}
+                    selectedTag={selectedTag}
+                    setSelectedTag={setSelectedTag}
+                  />
                 </SidebarWidget>
 
                 {/* Recent Posts Widget */}

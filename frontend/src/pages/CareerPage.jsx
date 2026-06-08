@@ -54,7 +54,7 @@ export default function CareerPage() {
         />
 
         {/* Meet the Team */}
-        {pageData.meetTheTeam && (
+        {/* {pageData.meetTheTeam && (
           <section
             className={`${theme === "dark" ? "dark" : ""} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-5`}
           >
@@ -68,10 +68,10 @@ export default function CareerPage() {
               variant="section"
             />
           </section>
-        )}
+        )} */}
 
         {/* Easy Steps Section */}
-        {pageData.keyFeatures && (
+        {/* {pageData.keyFeatures && (
           <section className={`px-6 sm:px-10 xl:px-14 pt-10`}>
             <Services_Description
               pageData={pageData.keyFeatures}
@@ -85,27 +85,27 @@ export default function CareerPage() {
               extraClass="!text-lg sm:!text-xl"
             />
           </section>
-        )}
+        )} */}
 
         {/* Core Values */}
-        {pageData.coreValues && (
+        {/* {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
             cards={pageData.coreValues.cards}
           />
-        )}
+        )} */}
 
         {/* Open Positions */}
         {pageData.openPositions && (
           <OpenPositions
-            title={"Currently Open Positions"}
+            title={pageData.openPositions.sectionTitle}
             subtitle={pageData.openPositions.sectionSubtitle}
             jobs={pageData.openPositions.jobs}
           />
         )}
 
         {/* Testimonials */}
-        <Testimonials darkMode={isDark} />
+        {/* <Testimonials darkMode={isDark} /> */}
 
         <CTA darkMode={isDark} CtaData={pageData.finalCta} />
       </main>

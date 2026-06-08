@@ -68,7 +68,7 @@ export default function CTA({ darkMode, CtaData }) {
                 {btn1.text}
               </Button>
 
-              <Button href={"/blog"} variant="secondary" size="lg">
+              <Button href="/blog?tag=Case%20Studies" variant="secondary" size="lg">
                 {btn2.text}
               </Button>
             </div>

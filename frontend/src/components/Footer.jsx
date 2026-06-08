@@ -2,9 +2,56 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo_Light.png'
 import { useThemeStore } from '../store/useThemeStore'
+import { subscribeNewsletter } from '../lib/api'
+import { PageToast } from './UI/PageLoader'
+import { Facebook, Instagram, Linkedin, Twitter } from './UI/Svgs'
+
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [statusMsg, setStatusMsg] = useState('')
+  const [statusType, setStatusType] = useState('') // 'success' | 'error'
   const { theme } = useThemeStore();
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatusMsg('');
+    setStatusType('');
+
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setStatusMsg('Please enter an email address.');
+      setStatusType('error');
+      setLoading(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setStatusMsg('Please enter a valid email address.');
+      setStatusType('error');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await subscribeNewsletter(trimmedEmail);
+      setStatusMsg('Successfully subscribed!');
+      setStatusType('success');
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+      if (err.message === 'Already subscribed') {
+        setStatusMsg('This email is already subscribed.');
+      } else {
+        setStatusMsg('Subscription failed. Try again.');
+      }
+      setStatusType('error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const services = [
     { name: 'Scan2Twin', path: '/scan2twin' },
@@ -18,7 +65,7 @@ export default function Footer({ darkMode }) {
     { name: 'Why geoConvergence', path: '/why' },
     { name: 'Products', path: '/products' },
     { name: 'Careers', path: '/career' },
-    { name: 'Resources', path: '/resources' },
+    { name: 'Blogs', path: '/blog' },
     { name: 'Contact Us', path: '/contact' },
   ]
   return (
@@ -33,19 +80,37 @@ export default function Footer({ darkMode }) {
           </h3>
 
           {/* Email input */}
-          <div className="flex items-center gap-0 bg-white/20 rounded-full border border-blue-700 pl-7 pr-3 py-3 w-full max-w-sm lg:max-w-[417px]">
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base  font-light font-Inter uppercase outline-none leading-6 min-w-0"
-            />
-            <button className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+          <div className="flex flex-col w-full max-w-sm lg:max-w-[417px] gap-2">
+            <form onSubmit={handleSubscribe} className="flex items-center gap-0 bg-white/20 rounded-full border border-blue-700 pl-7 pr-3 py-3 w-full">
+              <input
+                type="email"
+                placeholder="Subscribe to our Newsletter"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base font-light font-Inter outline-none leading-6 min-w-0"
+                disabled={loading}
+                required
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors disabled:opacity-50"
+              >
+                {loading ? (
+                  <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                )}
+              </button>
+            </form>
+            {statusMsg && (
+              <PageToast message={statusMsg} type={"success"} />
+            )}
           </div>
         </div>
 
@@ -65,7 +130,7 @@ export default function Footer({ darkMode }) {
           <div className="flex flex-col gap-2">
             <h4 className="text-white text-lg sm:text-xl font-bold font-Web leading-7">Services</h4>
             {services.map((s) => (
-              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-lg font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {s.name}
               </Link>
             ))}
@@ -87,11 +152,13 @@ export default function Footer({ darkMode }) {
             <div className="flex gap-3">
               {[
                 // LinkedIn
-                <svg key="li" width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>,
+                <Linkedin />,
+                // Facebook
+                <Facebook color={"black"} />,
                 // Instagram
-                <svg key="ig" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="black" stroke="none" /></svg>,
+                <Instagram />,
                 // Twitter/X
-                <svg key="x" width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>,
+                <Twitter />,
               ].map((icon, i) => (
                 <a
                   key={i}

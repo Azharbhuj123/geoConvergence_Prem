@@ -6,6 +6,9 @@ import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import { PhoneCallIcon, MailPlus, LocationEdit } from 'lucide-react';
 import Button from '../components/UI/Button';
+import { submitContactForm } from '../lib/api';
+import { PageToast } from '../components/UI/PageLoader';
+import { Facebook, Instagram, Linkedin, Twitter } from '../components/UI/Svgs';
 
 export default function ContactPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -26,6 +29,9 @@ export default function ContactPage() {
     email: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -34,10 +40,41 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted", formData);
-    // Real submission disabled locally, per instruction.
+    setLoading(true);
+    setSuccess(false);
+    setError('');
+
+    // Basic frontend validation
+    if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError("All fields are required.");
+      setLoading(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await submitContactForm(formData);
+      setSuccess(true);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+      });
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,6 +102,14 @@ export default function ContactPage() {
                   <p className="text-white/80 text-subtitle mb-8 max-w-lg">
                     Do you have questions? A complaint? Or need any help from our team? Write to us here.
                   </p>
+
+                  {success && (
+                    <PageToast message={"Thank you! Your message has been sent successfully. We'll get back to you soon."} type={"success"} />
+                  )}
+
+                  {error && (
+                    <PageToast message={error} type={"error"} />
+                  )}
 
                   <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                     <div className="flex flex-col sm:flex-row gap-5">
@@ -129,7 +174,9 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mt-4">
-                      <Button size='sm'>Submit Request</Button>
+                      <Button size='sm' type="submit" disabled={loading}>
+                        {loading ? 'Submitting...' : 'Submit Request'}
+                      </Button>
                     </div>
                   </form>
                 </div>
@@ -150,7 +197,11 @@ export default function ContactPage() {
                           </div>
                           <div>
                             <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Phone</p>
-                            <p className={`text-lg font-Inter text-[#64748b]`}>+1 (812) 650-2544</p>
+                            <p className={`text-lg font-Inter text-[#64748b]`}>
+                              <a href="tel:+18554473939" target="_blank" rel="noopener noreferrer">
+                                (855) 447 – 3939
+                              </a>
+                            </p>
                           </div>
                         </div>
 
@@ -159,8 +210,13 @@ export default function ContactPage() {
                             <MailPlus width={150} height={150} color="#09155F" />
                           </div>
                           <div>
-                            <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Email</p>
-                            <p className={`text-lg font-Inter text-[#64748b]`}>info@ geoconvergence.com</p>
+                            <p className="text-md font-bold uppercase tracking-wider text-[#09155F] pb-1">Email</p>
+                            <a
+                              href="mailto:info@geoconvergence.com"
+                              className="text-lg font-Inter text-[#64748b] break-all hover:underline"
+                            >
+                              info@geoconvergence.com
+                            </a>
                           </div>
                         </div>
 
@@ -170,7 +226,11 @@ export default function ContactPage() {
                           </div>
                           <div>
                             <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Location</p>
-                            <p className={`text-lg font-Inter text-[#64748b]`}>1675 West 4th Street, Cleveland, OH 44113</p>
+                            <p className={`text-lg font-Inter text-[#64748b] hover:underline`}>
+                              <a href="https://maps.app.goo.gl/qLow6bmGT4xpmnJcA" target="_blank" rel="noopener noreferrer">
+                                1675 West 4th Street, Cleveland, OH 44113
+                              </a>
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -183,14 +243,14 @@ export default function ContactPage() {
 
                       <div className="flex gap-3">
                         {[
+                          // LinkedIn
+                          <Linkedin color={"white"} />,
                           // Facebook
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                            <path d="M13 22V12h3l1-4h-4V6.5c0-1.2.3-2 2-2H18V1.2C17.5 1.1 16.2 1 14.7 1 11.6 1 9.5 2.9 9.5 6.2V8H7v4h2.5v10H13z" />
-                          </svg>,
+                          <Facebook color={"white"} />,
                           // Instagram
-                          <svg key="ig" width="18" height="18" viewBox="0 0 24 24" fill="white" stroke="black" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="black" stroke="none" /></svg>,
+                          <Instagram color={"white"} />,
                           // Twitter/X
-                          <svg key="x" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>,
+                          <Twitter color={"white"} />,
                         ].map((icon, i) => (
                           <a
                             key={i}

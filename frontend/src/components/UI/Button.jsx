@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { useThemeStore } from "../../store/useThemeStore";
 
 const variants = {
   primary:
@@ -37,4 +38,35 @@ export default function Button({
       {children}
     </Component>
   );
+}
+
+
+export const ThemeButton = () => {
+  const { theme, toggleTheme } = useThemeStore();
+  return (
+    <button
+      onClick={toggleTheme}
+      className={`
+    relative flex items-center
+    w-16 h-8 px-1 rounded-full
+    transition-all duration-300
+    cursor-pointer
+    ${theme === "dark" ? "bg-slate-700" : "bg-[#0f172a]"}
+  `}
+      aria-label="Toggle theme"
+    >
+      <span className="text-lg">☀️</span>
+
+      <span
+        className={`
+      absolute w-6 h-6 rounded-full
+      bg-white shadow-md
+      transition-transform duration-300
+      ${theme === "dark" ? "translate-x-8" : "translate-x-0"}
+    `}
+      />
+
+      <span className="ml-auto text-xs">🌙</span>
+    </button>
+  )
 }

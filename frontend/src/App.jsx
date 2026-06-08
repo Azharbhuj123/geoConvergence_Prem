@@ -5,6 +5,8 @@ import ScrollToTop from "./components/UI/ScrollToTop";
 import GovernmentPage from "./pages/GovernmentPage";
 import ArcGisDevelopmentPage from "./pages/ArcGisDevelopmentPage";
 import ArcGisEnterprisePage from "./pages/ArcGisEnterprisePage";
+import { useThemeStore } from "./store/useThemeStore";
+import { useEffect } from "react";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -26,7 +28,38 @@ const GeoPrinterPage = lazy(() => import("./pages/GeoPrinterPage"));
 const ScenarioPlannerPage = lazy(() => import("./pages/ScenarioPlannerPage"));
 const RoomReservPage = lazy(() => import("./pages/RoomReservPage"));
 
+
 function App() {
+  const { theme, setTheme } = useThemeStore();
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      "dark",
+      theme === "dark"
+    );
+  }, [theme]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    const handleThemeChange = (e) => {
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleThemeChange);
+
+    return () =>
+      mediaQuery.removeEventListener(
+        "change",
+        handleThemeChange
+      );
+  }, [setTheme]);
+
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
       <ScrollToTop />

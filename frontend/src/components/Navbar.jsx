@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/geoC_Logo_Dark.png";
 import dark_logo from "../assets/logo_Light.png";
-import Button from "./UI/Button";
+import Button, { ThemeButton } from "./UI/Button";
+import { useThemeStore } from "../store/useThemeStore";
+
 export default function Navbar({ darkMode, toggleDarkMode }) {
+  
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,7 +22,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     { name: "Products", path: "/products" },
     { name: "Why geoConvergence", path: "/why" },
     { name: "Government", path: "/government" },
-    { name: "Resources", path: "/blog" },
+    { name: "Blogs", path: "/blog" },
     { name: "Career", path: "/career" },
     { name: "Contact", path: "/contact" },
   ];
@@ -38,7 +42,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className="max-w-[1440px] mx-auto px-6 xl:px-14 py-7 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto py-7 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none">
             <img src={darkMode ? dark_logo : logo} alt="" />
@@ -50,7 +54,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-base font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${darkMode ? "text-slate-300" : "text-neutral-600"
+                className={`text-xl font-Inter transition-colors hover:text-blue-700 whitespace-nowrap ${darkMode ? "text-slate-300" : "text-neutral-600"
                   }`}
               >
                 {link.name}
@@ -71,33 +75,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             </Button>
 
             {/* Dark mode toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className={`w-14 h-6 rounded-full transition-all duration-300 relative flex items-center px-1  ${darkMode ? "bg-white" : "bg-blue-700/40"
-                }`}
-              aria-label="Toggle dark mode"
-            >
-              <span
-                className={`w-5 h-5 rounded-full   shadow-sm transition-transform duration-300 flex items-center bg-blue-700 justify-center text-xs ${darkMode ? "translate-x-7" : "translate-x-0"
-                  }`}
-              >
-                {darkMode ? "" : ""}
-              </span>
-            </button>
+            <ThemeButton/>
           </div>
 
           {/* Mobile hamburger */}
           <div className="flex xl:hidden items-center gap-3">
-            <button
-              onClick={toggleDarkMode}
-              className={`w-12 h-6 rounded-full relative flex items-center px-1 transition-all duration-300 ${darkMode ? "bg-blue-700" : "bg-blue-200"
-                }`}
-            >
-              <span
-                className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${darkMode ? "translate-x-6" : "translate-x-0"
-                  }`}
-              />
-            </button>
+            
+              <ThemeButton/>
+            
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`p-1 sm:p-2 rounded-lg ${darkMode ? "text-white" : "text-slate-900"}`}

@@ -3,25 +3,25 @@ import { useThemeStore } from '../store/useThemeStore';
 
 const testimonials = [
   {
-    name: 'Theodore James',
-    role: 'Facilities Director, DoD',
-    quote: 'geoConvergence transformed how we manage our entire portfolio. The scan-to-digital-twin pipeline cut our planning cycles by 60%.',
-    avatar: 'TJ',
-    color: 'from-blue-700 to-blue-900',
-  },
-  {
-    name: 'Liam Oliver',
-    role: 'GIS Manager, Indiana University',
-    quote: 'The ArcGIS Indoors integration was seamless. We had a fully operational indoor map of our campus within weeks of scanning.',
+    name: 'Air Force Recruiting Service (AFRS)',
+    role: 'Eric Carlson, Market Research Analyst',
+    quote: 'The AFRS recruiting force needs to be responsive, efficient, and effective in today’s challenging recruiting environment. geoConvergence’s mapping solution is helping us achieve our recruiting mission.',
     avatar: 'LO',
     color: 'from-sky-600 to-sky-900',
   },
   {
-    name: 'Charlotte Amelia',
-    role: 'Operations Lead, BCPS',
-    quote: 'Reserve Assist changed how our staff books spaces. We eliminated double-bookings entirely and improved utilization by 40%.',
+    name: 'Baltimore County Public Schools',
+    role: 'Debra Addicks, Facilities Information Systems',
+    quote: 'Throughout the project, the geoConvergence team has been professional, collaborative, and responsive, completing their work with minimal disruption to school operations. Their attention to detail and commitment to accuracy have been appreciated.',
     avatar: 'CA',
     color: 'from-indigo-700 to-indigo-900',
+  },
+  {
+    name: 'Air Force Recruiting Service (AFRS)',
+    role: 'Eric Carlson, Market Research Analyst',
+    quote: 'The AFRS recruiting force needs to be responsive, efficient, and effective in today’s challenging recruiting environment. geoConvergence’s mapping solution is helping us achieve our recruiting mission.',
+    avatar: 'LO',
+    color: 'from-sky-600 to-sky-900',
   },
 ];
 
