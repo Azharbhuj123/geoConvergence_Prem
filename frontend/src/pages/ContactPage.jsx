@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useThemeStore } from '../store/useThemeStore';
 
 import Navbar from '../components/Navbar';
@@ -8,7 +9,7 @@ import { PhoneCallIcon, MailPlus, LocationEdit } from 'lucide-react';
 import Button from '../components/UI/Button';
 import { submitContactForm } from '../lib/api';
 import { PageToast } from '../components/UI/PageLoader';
-import { Facebook, Instagram, Linkedin, Twitter } from '../components/UI/Svgs';
+import { Facebook, Instagram, Linkedin, Twitter, YouTube } from '../components/UI/Svgs';
 
 export default function ContactPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -32,6 +33,16 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const recaptchaRef = useRef(null);
+  const [recaptchaToken, setRecaptchaToken] = useState('');
+
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaToken('');
+  };
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -60,6 +71,13 @@ export default function ContactPage() {
       return;
     }
 
+    // CAPTCHA validation
+    if (!recaptchaToken) {
+      setError("Please complete the CAPTCHA verification.");
+      setLoading(false);
+      return;
+    }
+
     try {
       await submitContactForm(formData);
       setSuccess(true);
@@ -69,9 +87,13 @@ export default function ContactPage() {
         email: '',
         message: ''
       });
+      setRecaptchaToken('');
+      recaptchaRef.current?.reset();
     } catch (err) {
       console.error(err);
       setError("Something went wrong. Please try again later.");
+      recaptchaRef.current?.reset();
+      setRecaptchaToken('');
     } finally {
       setLoading(false);
     }
@@ -174,6 +196,16 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mt-4">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LeHxAcTAAAAAFn3WDHgAQC_q1FiRLmm56ac0xWY"}
+                        onChange={handleRecaptchaChange}
+                        onExpired={handleRecaptchaExpired}
+                        theme={isDark ? "dark" : "light"}
+                      />
+                    </div>
+
+                    <div className="mt-4">
                       <Button size='sm' type="submit" disabled={loading}>
                         {loading ? 'Submitting...' : 'Submit Request'}
                       </Button>
@@ -227,8 +259,8 @@ export default function ContactPage() {
                           <div>
                             <p className={`text-md font-bold uppercase tracking-wider text-[#09155F] pb-1`}>Location</p>
                             <p className={`text-lg font-Inter text-[#64748b] hover:underline`}>
-                              <a href="https://maps.app.goo.gl/qLow6bmGT4xpmnJcA" target="_blank" rel="noopener noreferrer">
-                                1675 West 4th Street, Cleveland, OH 44113
+                              <a href="https://maps.app.goo.gl/22o7bLdEDkFTr14x7" target="_blank" rel="noopener noreferrer">
+                                642 N Madison St, Bloomington, IN 47404
                               </a>
                             </p>
                           </div>
@@ -249,6 +281,8 @@ export default function ContactPage() {
                           <Facebook color={"white"} />,
                           // Instagram
                           <Instagram color={"white"} />,
+                          // YouTube
+                          <YouTube color={"white"} />,
                           // Twitter/X
                           <Twitter color={"white"} />,
                         ].map((icon, i) => (

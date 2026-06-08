@@ -55,7 +55,7 @@ export const ThemeButton = () => {
   `}
       aria-label="Toggle theme"
     >
-      <span className="text-lg">☀️</span>
+      <span className="text-lg">𖤓</span>
 
       <span
         className={`
@@ -66,7 +66,7 @@ export const ThemeButton = () => {
     `}
       />
 
-      <span className="ml-auto text-xs">🌙</span>
+      <span className="ml-auto text-xl text-white">☽</span>
     </button>
   )
 }

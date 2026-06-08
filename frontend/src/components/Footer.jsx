@@ -4,7 +4,7 @@ import logo from '../assets/logo_Light.png'
 import { useThemeStore } from '../store/useThemeStore'
 import { subscribeNewsletter } from '../lib/api'
 import { PageToast } from './UI/PageLoader'
-import { Facebook, Instagram, Linkedin, Twitter } from './UI/Svgs'
+import { Facebook, Instagram, Linkedin, Twitter, YouTube } from './UI/Svgs'
 
 export default function Footer({ darkMode }) {
   const [email, setEmail] = useState('')
@@ -155,8 +155,8 @@ export default function Footer({ darkMode }) {
                 <Linkedin />,
                 // Facebook
                 <Facebook color={"black"} />,
-                // Instagram
-                <Instagram />,
+                // YouTube
+                <YouTube color={"black"} />,
                 // Twitter/X
                 <Twitter />,
               ].map((icon, i) => (
