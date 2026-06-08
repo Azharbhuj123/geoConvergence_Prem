@@ -320,7 +320,9 @@ export default function CareerPage() {
         {/* <section className="pt-15">
           <Testimonials darkMode={theme === "dark"} />
         </section> */}
-        <CTA darkMode={theme === "dark"} />
+        <section className="pt-15">
+          <CTA darkMode={theme === "dark"} />
+        </section>
         <Footer darkMode={theme === "dark"} />
       </div>
     </div>
