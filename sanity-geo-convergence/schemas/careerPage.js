@@ -93,6 +93,15 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'title', type: 'string' }),
+                defineField({
+                  name: 'slug',
+                  title: 'Details Page Slug',
+                  type: 'slug',
+                  options: {
+                    source: 'title',
+                    maxLength: 96,
+                  },
+                }),
                 defineField({ name: 'type', type: 'string' }),
                 defineField({ name: 'location', type: 'string' }),
                 defineField({ name: 'salary', type: 'string' }),

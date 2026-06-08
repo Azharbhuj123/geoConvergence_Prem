@@ -24,6 +24,8 @@ import careerDetails from '../schemas/careerDetails'
 import solutionPage from '../schemas/solutionPage'
 import productPage from '../schemas/productPage'
 import governmentPage from '../schemas/governmentPage'
+import contactSubmission from '../schemas/contactSubmission'
+import newsletterSubscription from '../schemas/newsletterSubscription'
 
 export const schemaTypes = [
   hero,
@@ -49,4 +51,7 @@ export const schemaTypes = [
   roomReservPage,
   whyPage,
   governmentPage,
+  contactSubmission,
+  newsletterSubscription,
 ]
+

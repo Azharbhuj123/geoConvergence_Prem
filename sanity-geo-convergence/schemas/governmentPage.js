@@ -33,6 +33,7 @@ export default defineType({
             }
           ]
         }),
+        defineField({ name: 'button2', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({
           name: 'backgroundImage',
           type: 'image',
