@@ -6,7 +6,7 @@ import Button, { ThemeButton } from "./UI/Button";
 import { useThemeStore } from "../store/useThemeStore";
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
-  
+
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,14 +42,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className="max-w-[1440px] mx-auto py-7 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto py-7 px-4 sm:px-8 lg:px-14 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none">
             <img src={darkMode ? dark_logo : logo} alt="" />
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden xl:flex items-center gap-6 xl:gap-7">
+          <div className="hidden xl:flex items-center gap-6 xl:gap-7 px-4">
             {links.map((link) => (
               <Link
                 key={link.name}
@@ -64,25 +64,19 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
           {/* Right side */}
           <div className="hidden xl:flex items-center gap-4">
-            {/* <a
-              href="#"
-              className="px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl shadow-[0px_8px_10px_-6px_rgba(12,89,219,0.42),0px_20px_25px_-5px_rgba(12,89,219,0.45)] hover:from-blue-700 hover:to-blue-600 transition-all"
-            >
-              
-            </a> */}
-            <Button size="sm" className={""} href="/contact">
+            <Button size="sm" className="!text-base !py-2 !px-2" href="/contact">
               Request Demo
             </Button>
 
             {/* Dark mode toggle */}
-            <ThemeButton/>
+            <ThemeButton />
           </div>
 
           {/* Mobile hamburger */}
           <div className="flex xl:hidden items-center gap-3">
-            
-              <ThemeButton/>
-            
+
+            <ThemeButton />
+
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`p-1 sm:p-2 rounded-lg ${darkMode ? "text-white" : "text-slate-900"}`}
