@@ -244,7 +244,7 @@ export default function ContactPage() {
                           <div>
                             <p className="text-md font-bold uppercase tracking-wider text-[#09155F] pb-1">Email</p>
                             <a
-                              href="mailto:info@geoconvergence.com"
+                              href="mailto:info@geoconvergence.com" target="_blank" rel="noopener noreferrer"
                               className="text-lg font-Inter text-[#64748b] break-all hover:underline"
                             >
                               info@geoconvergence.com
@@ -279,8 +279,6 @@ export default function ContactPage() {
                           <Linkedin color={"white"} />,
                           // Facebook
                           <Facebook color={"white"} />,
-                          // Instagram
-                          <Instagram color={"white"} />,
                           // YouTube
                           <YouTube color={"white"} />,
                           // Twitter/X
