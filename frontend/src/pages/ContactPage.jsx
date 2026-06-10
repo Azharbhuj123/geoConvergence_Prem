@@ -74,11 +74,11 @@ export default function ContactPage() {
     }
 
     // CAPTCHA validation
-    // if (!recaptchaToken) {
-    //   setError("Please complete the CAPTCHA verification.");
-    //   setLoading(false);
-    //   return;
-    // }
+    if (!recaptchaToken) {
+      setError("Please complete the CAPTCHA verification.");
+      setLoading(false);
+      return;
+    }
 
     try {
       // Save to Sanity + send email to info@geoconvergence.com via Web3Forms — both in parallel
