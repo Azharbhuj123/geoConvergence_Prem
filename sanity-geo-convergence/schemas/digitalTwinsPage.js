@@ -70,6 +70,39 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'systemIntegrations',
+      title: 'System Integrations',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string', title: 'Section Title' }),
+        defineField({ name: 'subtitle', type: 'text', title: 'Subtitle (small text under title)' }),
+        defineField({
+          name: 'points',
+          title: 'Bullet Points',
+          type: 'array',
+          of: [{ type: 'string' }]
+        }),
+        defineField({
+          name: 'logos',
+          title: 'Integration Logos (up to 11)',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'name', type: 'string', title: 'Logo Name / Alt Text' }),
+                defineField({ name: 'image', type: 'image', title: 'Logo Image', options: { hotspot: true } })
+              ],
+              preview: {
+                select: { title: 'name', media: 'image' }
+              }
+            }
+          ],
+          validation: (Rule) => Rule.max(11)
+        })
+      ]
+    }),
+    defineField({
       name: 'finalCta', title: 'Final CTA', type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
@@ -81,3 +114,4 @@ export default defineType({
     })
   ]
 })
+

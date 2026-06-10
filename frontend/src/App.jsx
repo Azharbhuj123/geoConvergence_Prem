@@ -7,6 +7,7 @@ import ArcGisDevelopmentPage from "./pages/ArcGisDevelopmentPage";
 import ArcGisEnterprisePage from "./pages/ArcGisEnterprisePage";
 import { useThemeStore } from "./store/useThemeStore";
 import { useEffect } from "react";
+import FontPreviewPage from "./pages/FontPreviewPage";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -87,6 +88,7 @@ function App() {
           <Route path="/geo-printer" element={<GeoPrinterPage />} />
           <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
           <Route path="/room-reserv" element={<RoomReservPage />} />
+          <Route path="/font-preview" element={<FontPreviewPage />} />
         </Routes>
       </Suspense>
     </div>

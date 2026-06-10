@@ -20,7 +20,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
   const links = [
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },
-    { name: "Why geoConvergence", path: "/why" },
+    { name: "About Us", path: "/why" },
     { name: "Government", path: "/government" },
     { name: "Blogs", path: "/blog" },
     { name: "Career", path: "/career" },

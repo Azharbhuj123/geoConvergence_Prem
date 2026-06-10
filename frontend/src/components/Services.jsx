@@ -120,7 +120,7 @@ export default function Services({
                 className={`
   relative rounded-[20px]
   overflow-hidden
-  group cursor-pointer
+  group ${step?.link ? 'cursor-pointer' : ''}
   h-[400px] sm:h-[450px] xl:h-[545px]
   ${total !== 4 ? xlSpan : ""}
 `}

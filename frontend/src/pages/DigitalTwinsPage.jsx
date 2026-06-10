@@ -11,6 +11,7 @@ import CoreValues from '../components/CoreValues';
 import Services from '../components/Services';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import SystemIntegrations from '../components/SystemIntegrations';
 
 export default function DigitalTwinsPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -88,10 +89,11 @@ export default function DigitalTwinsPage() {
           />
         )}
 
+        {pageData.systemIntegrations && (
+          <SystemIntegrations data={pageData.systemIntegrations} darkMode={isDark} />
+        )}
 
-        <section className={`pt-10 sm:pt-20`}>
           <CTA darkMode={isDark} CtaData={pageData.finalCta} />
-        </section>
       </main>
 
       <Footer darkMode={isDark} />

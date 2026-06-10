@@ -303,7 +303,7 @@ export default function BlogPage() {
           <Testimonials darkMode={darkMode} /></section>
 
         {/* CTA */}
-        <CTA darkMode={darkMode} />
+        {/* <CTA darkMode={darkMode} /> */}
 
         {/* Footer */}
         <Footer darkMode={darkMode} />

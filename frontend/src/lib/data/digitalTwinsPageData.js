@@ -61,6 +61,28 @@ export const digitalTwinsPageData = {
       }
     ]
   },
+  systemIntegrations: {
+    title: 'System Integrations',
+    subtitle: 'Core Integration Ecosystem & Technology Stack',
+    points: [
+      'Enhance Autodesk workflows and provide geospatial context with GeoBIM',
+      'Improve Facility/Asset Management and Work Orders by integrating ArcGIS Indoors with IBM Maximo/Tririga',
+      'Operational efficiency in ServiceNow using ArcGIS Indoors with accurate IT asset locations',
+    ],
+    logos: [
+      { name: 'ArcGIS', image: null },
+      { name: 'GeoBIM', image: null },
+      { name: 'BIM 360', image: null },
+      { name: 'ArcGIS Pro', image: null },
+      { name: 'IBM Maximo', image: null },
+      { name: 'IBM Tririga', image: null },
+      { name: 'ServiceNow', image: null },
+      { name: 'Trimble', image: null },
+      { name: 'Autodesk', image: null },
+      { name: 'Revit', image: null },
+      { name: 'ArcGIS Indoors', image: null },
+    ]
+  },
   finalCta: {
     title: "Ready to define your digital dimension?",
     subtitle: "Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.",

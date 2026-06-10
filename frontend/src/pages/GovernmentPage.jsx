@@ -69,12 +69,12 @@ export default function GovernmentPage() {
                 </section>
 
                 {/* Final CTA */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]   pt-[2rem]`}>
+                {/* <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]   pt-[2rem]`}>
                     <CTA
                         darkMode={isDark}
                         CtaData={pageData.finalCta}
                     />
-                </section>
+                </section> */}
             </main>
 
             <Footer darkMode={isDark} />

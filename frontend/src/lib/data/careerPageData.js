@@ -26,7 +26,7 @@ export const careerPageData = {
         label: "Manage your personal profile, track your applications, and your job alert preferences.",
       },
       {
-        number: "CV/Resume",
+        number: "Resume",
         label: "Build a professional resume using our smart templates to catch the eye of top recruiters.",
       },
       {

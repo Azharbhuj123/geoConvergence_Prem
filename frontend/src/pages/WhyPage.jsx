@@ -68,12 +68,12 @@ export default function WhyPage() {
                 />
 
                 {/* Final CTA */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
+                {/* <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
                     <CTA
                         darkMode={isDark}
                         CtaData={pageData.finalCta}
                     />
-                </section>
+                </section> */}
             </main>
 
             <Footer darkMode={isDark} />

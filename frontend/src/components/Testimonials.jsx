@@ -117,7 +117,7 @@ export default function Testimonials({ darkMode, pageData }) {
               <div
                 key={t.name}
                 onClick={() => setActive(i)}
-                className={`cursor-pointer absolute transition-all duration-700 ease-out rounded-[20px] p-6 sm:p-8 flex flex-col gap-5 w-[92%] sm:w-full max-w-[480px] shadow-[0_0_40px_rgba(15,23,42,0.12)]
+                className={`cursor-context-menu absolute transition-all duration-700 ease-out rounded-[20px] p-6 sm:p-8 flex flex-col gap-5 w-[92%] sm:w-full max-w-[480px] shadow-[0_0_40px_rgba(15,23,42,0.12)]
                   ${darkMode
                     ? isCenter ? 'bg-white text-slate-900' : 'bg-slate-800 text-slate-100'
                     : isCenter ? 'bg-white text-slate-900' : 'bg-slate-200 text-slate-900'

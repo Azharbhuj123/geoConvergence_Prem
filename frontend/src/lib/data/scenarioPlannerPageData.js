@@ -84,7 +84,7 @@ export const scenarioPlannerPageData = {
         number: "Account",
       },
       {
-        number: "CV/Resume",
+        number: "Resume",
       },
       {
         number: "Quick Jobs",

@@ -51,6 +51,8 @@ export default function ContactPage() {
     }));
   };
 
+  const WEB3FORMS_KEY = '74f9081d-9d89-42b7-95d2-8217cbe360c7';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -72,21 +74,37 @@ export default function ContactPage() {
     }
 
     // CAPTCHA validation
-    if (!recaptchaToken) {
-      setError("Please complete the CAPTCHA verification.");
-      setLoading(false);
-      return;
-    }
+    // if (!recaptchaToken) {
+    //   setError("Please complete the CAPTCHA verification.");
+    //   setLoading(false);
+    //   return;
+    // }
 
     try {
-      await submitContactForm(formData);
+      // Save to Sanity + send email to info@geoconvergence.com via Web3Forms — both in parallel
+      const web3FormsPayload = {
+        access_key: WEB3FORMS_KEY,
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        message: formData.message,
+        subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
+      };
+
+      const [, web3Res] = await Promise.all([
+        submitContactForm(formData),
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(web3FormsPayload),
+        }).then((r) => r.json()),
+      ]);
+
+      if (web3Res.success !== true) {
+        throw new Error(web3Res.message || 'Email delivery failed.');
+      }
+
       setSuccess(true);
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''
-      });
+      setFormData({ firstName: '', lastName: '', email: '', message: '' });
       setRecaptchaToken('');
       recaptchaRef.current?.reset();
     } catch (err) {
@@ -278,7 +296,7 @@ export default function ContactPage() {
                           // LinkedIn
                           <Linkedin color={"white"} />,
                           // Facebook
-                          <Facebook color={"white"} />,
+                          // <Facebook color={"white"} />,
                           // YouTube
                           <YouTube color={"white"} />,
                           // Twitter/X

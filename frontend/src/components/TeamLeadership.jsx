@@ -134,6 +134,15 @@ export default function TeamLeadership({ data, darkMode }) {
                   >
                     {member.position}
                   </p>
+
+                  <p
+                    className={`text-lg mt-5 font-medium transition-colors duration-300 ${darkMode
+                      ? 'text-slate-400 group-hover:text-blue-200'
+                      : 'text-slate-600 group-hover:text-slate-300'
+                      }`}
+                  >
+                    {member.shortBio}
+                  </p>
                 </div>
               </div>
             ))}

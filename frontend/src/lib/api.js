@@ -135,7 +135,7 @@ export const fetchArcGisDevelopmentPage = async () => {
 
 export const fetchDigitalTwinsPage = async () => {
   const query = `*[_type == "digitalTwinsPage"][0]{
-    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, finalCta
+    hero, firstSolution, coreValues, howItWorks, secondSolution, useCases, systemIntegrations, finalCta
   }`;
   return client.fetch(query);
 };

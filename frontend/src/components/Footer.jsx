@@ -58,11 +58,11 @@ export default function Footer({ darkMode }) {
     { name: 'Indoor Mapping', path: '/indoormaps' },
     { name: 'LiDAR Scanning', path: '/lidar-scanning' },
     // { name: '3D Modeling', path: '/3d-modeling' },
-    { name: 'ArcGIS Indoors Implementation ', path: '/arcgis-indoors' },
+    { name: 'ArcGIS Development', path: '/arcgis-development' },
   ]
 
   const company = [
-    { name: 'Why geoConvergence', path: '/why' },
+    { name: 'About Us', path: '/why' },
     { name: 'Products', path: '/products' },
     { name: 'Careers', path: '/career' },
     { name: 'Blogs', path: '/blog' },
@@ -119,7 +119,9 @@ export default function Footer({ darkMode }) {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="" />
+              <Link to="/">
+                <img src={logo} alt="GeoConvergence" className="h-18 w-auto" />
+              </Link>
             </div>
             <p className="text-white/80 text-subtitle font-Inter leading-8 max-w-md">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
@@ -128,7 +130,7 @@ export default function Footer({ darkMode }) {
 
           {/* Services */}
           <div className="flex flex-col gap-2">
-            <h4 className="text-white text-lg sm:text-xl font-bold font-Web leading-7">Services</h4>
+            <h4 className="text-white text-lg sm:text-2xl font-bold font-Web leading-7">Services</h4>
             {services.map((s) => (
               <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {s.name}
@@ -138,7 +140,7 @@ export default function Footer({ darkMode }) {
 
           {/* Company */}
           <div className="flex flex-col gap-2">
-            <h4 className="text-white text-lg sm:text-xl font-bold font-Web">Company</h4>
+            <h4 className="text-white text-lg sm:text-2xl  font-bold font-Web">Company</h4>
             {company.map((c) => (
               <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
                 {c.name}
@@ -154,7 +156,7 @@ export default function Footer({ darkMode }) {
                 // LinkedIn
                 <Linkedin />,
                 // Facebook
-                <Facebook color={"black"} />,
+                // <Facebook color={"black"} />,
                 // YouTube
                 <YouTube color={"black"} />,
                 // Twitter/X

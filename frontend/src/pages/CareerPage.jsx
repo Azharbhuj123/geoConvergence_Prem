@@ -107,7 +107,7 @@ export default function CareerPage() {
         {/* Testimonials */}
         {/* <Testimonials darkMode={isDark} /> */}
 
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        {/* <CTA darkMode={isDark} CtaData={pageData.finalCta} /> */}
       </main>
 
       <Footer darkMode={isDark} />

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCareerDetails } from "../lib/api";
@@ -9,7 +8,7 @@ import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import ShortHero from "../components/ShortHero";
 import Testimonials from "../components/Testimonials";
-import Button from "../components/UI/Button";
+
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
@@ -21,51 +20,7 @@ function CheckIcon() {
   );
 }
 
-function CvIcon() {
-  return (
-    <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
-      <rect x="10" y="8" width="36" height="48" rx="4" fill="#FFF" />
-      <rect
-        x="16"
-        y="18"
-        width="24"
-        height="3"
-        rx="1.5"
-        fill="black"
-        opacity=".7"
-      />
-      <rect
-        x="16"
-        y="26"
-        width="24"
-        height="3"
-        rx="1.5"
-        fill="black"
-        opacity=".7"
-      />
-      <rect
-        x="16"
-        y="34"
-        width="16"
-        height="3"
-        rx="1.5"
-        fill="black"
-        opacity=".7"
-      />
-      <circle cx="46" cy="44" r="12" fill="#326FB7" />
-      <text
-        x="46"
-        y="49"
-        textAnchor="middle"
-        fontSize="13"
-        fill="black"
-        fontWeight="700"
-      >
-        CV
-      </text>
-    </svg>
-  );
-}
+
 
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
@@ -87,31 +42,6 @@ function HowToApply({ items }) {
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function SendCVCard() {
-  return (
-    <div className="bg-[var(--bg-secondary)] rounded-[20px] p-7 flex flex-col items-center gap-5 text-center">
-      <div className="w-[90px] h-[90px] rounded-full bg-[#e2e8f0] dark:bg-black flex items-center justify-center">
-        <CvIcon />
-      </div>
-      <h3 className="text-lg sm:text-xl xl:text-[30px] font-bold text-[var(--text)] font-Web">
-        Send us your C.V.
-      </h3>
-      <p className="text-[var(--muted)] text-lg sm:text-xl leading-relaxed max-w-[240px]">
-        Send us your C.V.
-        <br />
-        Do you want to work with us? Please, send your CV to{" "}
-        <a className="font-bold break-words" href="mailto:info@geoConvergence.com">
-          info@geoConvergence.com
-        </a>
-      </p>
-      <p className="text-[var(--muted)] font-bold text-base">OR</p>
-      <Button size="sm" href="/contact" target="_blank" rel="noopener noreferrer">
-        CONTACT US
-      </Button>
     </div>
   );
 }
@@ -231,36 +161,33 @@ function renderTabContent(content) {
   return <div className="flex flex-col gap-4">{renderedBlocks}</div>;
 }
 
-function JobTabs({ activeTab, setActiveTab, tabs, tabData }) {
+function JobSections({ tabs, tabData }) {
   if (!tabs || !tabData) return null;
   return (
-    <>
-      <div className="flex flex-wrap gap-2 mt-5 justify-around">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActiveTab(t.key)}
-            className={`px-4 py-2 rounded-[14px]  text-sm sm:text-lg font-Inter font-bold transition-all cursor-pointer  ${activeTab === t.key
-              ? "bg-[#000941] text-white"
-              : "bg-[var(--card)] text-[var(--muted)] text-sm sm:text-lg font-Inter outline outline-1 outline-[var(--border)]"
-              }`}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-      <div className="h-[2px] bg-[var(--border)] my-5" />
-      <div className="border border-[var(--border)] rounded-[14px] p-6 text-lg  leading-[1.75] text-[var(--text)] bg-[var(--card)] transition-colors duration-200">
-        {renderTabContent(tabData[activeTab])}
-      </div>
-    </>
+    <div className="flex flex-col gap-10 mt-5">
+      {tabs.map((t) => {
+        const content = tabData[t.key];
+        if (!content) return null;
+        return (
+          <div key={t.key}>
+            {/* Section heading */}
+            <h2 className="text-xl sm:text-2xl font-bold font-Web text-[var(--heading)] mb-3">
+              {t.label}
+            </h2>
+            <div className="h-[2px] bg-[var(--border)] mb-5" />
+            <div className="border border-[var(--border)] rounded-[14px] p-6 text-lg leading-[1.75] text-[var(--text)] bg-[var(--card)] transition-colors duration-200">
+              {renderTabContent(content)}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function CareerPage() {
-  const [activeTab, setActiveTab] = useState("overview");
   const { theme, toggleTheme } = useThemeStore();
   const { id } = useParams();
 
@@ -297,7 +224,6 @@ export default function CareerPage() {
             {/* Sidebar */}
             <div className="flex flex-col md:flex-row lg:flex-col gap-6 order-2 lg:order-1">
               <HowToApply items={APPLY_ITEMS} />
-              <SendCVCard />
             </div>
 
             {/* Main content */}
@@ -308,21 +234,30 @@ export default function CareerPage() {
                 className="w-full h-[220px] sm:h-[300px] lg:h-[360px] object-cover rounded-[20px]"
               /> */}
               <JobStats stats={STATS} />
-              <JobTabs
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
+              <JobSections
                 tabs={TABS}
                 tabData={TAB_DATA}
               />
+
+              {/* Apply notice */}
+              <p className="mt-8 text-[var(--muted)] text-base sm:text-lg font-Inter">
+                To apply, send your resume to{" "}
+                <a
+                  href="mailto:info@geoconvergence.com"
+                  className="font-semibold text-[#326FB7] hover:underline"
+                >
+                  info@geoconvergence.com
+                </a>
+              </p>
             </div>
           </div>
         </section>
         {/* <section className="pt-15">
           <Testimonials darkMode={theme === "dark"} />
         </section> */}
-        <section className="pt-15">
+        {/* <section className="pt-15">
           <CTA darkMode={theme === "dark"} />
-        </section>
+        </section> */}
         <Footer darkMode={theme === "dark"} />
       </div>
     </div>

@@ -161,6 +161,7 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'name', type: 'string' }),
+                defineField({ name: 'shortBio', type: 'string' }),
                 defineField({ name: 'position', type: 'string' }),
                 defineField({ name: 'image', type: 'image' })
               ]

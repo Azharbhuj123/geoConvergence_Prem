@@ -1,6 +1,6 @@
 export const whyPageData = {
   hero: {
-    title: "Why geoConvergence",
+    title: "About Us",
     subtitle:
       "geoConvergence delivers advanced geospatial intelligence, reality capture, and digital transformation solutions that help organizations make faster, smarter, and data-driven decisions.",
     button1: { text: "Solutions", link: "/solutions" },
