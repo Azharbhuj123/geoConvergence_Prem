@@ -240,15 +240,20 @@ export default function CareerPage() {
               />
 
               {/* Apply notice */}
-              <p className="mt-8 text-[var(--muted)] text-base sm:text-lg font-Inter">
-                To apply, send your resume to{" "}
-                <a
-                  href="mailto:info@geoconvergence.com"
-                  className="font-semibold text-[#326FB7] hover:underline"
-                >
-                  info@geoconvergence.com
-                </a>
-              </p>
+              <div className="mt-8 flex items-center gap-4 p-5 bg-[#326FB7]/5 dark:bg-[#326FB7]/10 border border-[#326FB7]/20 rounded-[14px] text-[var(--text)] text-base sm:text-lg font-Inter">
+                <svg className="w-6 h-6 flex-shrink-0 text-[#326FB7]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <p>
+                  To apply, send your resume to{" "}
+                  <a
+                    href="mailto:info@geoconvergence.com"
+                    className="font-semibold text-[#326FB7] hover:underline"
+                  >
+                    info@geoconvergence.com
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </section>

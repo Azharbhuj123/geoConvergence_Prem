@@ -299,8 +299,8 @@ export default function BlogPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="pt-15">
-          <Testimonials darkMode={darkMode} /></section>
+        {/* <section className="pt-15"> */}
+          {/* <Testimonials darkMode={darkMode} /></section> */}
 
         {/* CTA */}
         {/* <CTA darkMode={darkMode} /> */}

@@ -8,7 +8,8 @@ const FONTS = [
     fontName: 'Open Sans',
     note: 'Clean, modern & highly readable — great for corporate trust',
     headingStyle: {
-      fontFamily: "'Open Sans', sans-serif",
+      fontFamily: "Titillium Web, sans-serif",
+
       fontWeight: 800,
     },
     bodyStyle: {
@@ -25,8 +26,10 @@ const FONTS = [
     fontName: 'Graphik Wide',
     note: 'Bold, geometric & authoritative — projects confidence and scale',
     headingStyle: {
-      fontFamily: "'Graphik Wide', sans-serif",
-      fontWeight: 900,
+      fontFamily: "Titillium Web, sans-serif",
+
+      fontWeight: 800,
+
       letterSpacing: '-0.01em',
     },
     bodyStyle: {
@@ -43,12 +46,14 @@ const FONTS = [
     fontName: 'Recoleta',
     note: 'Warm, elegant & distinctive — sets GeoConvergence apart from tech norms',
     headingStyle: {
-      fontFamily: "'Recoleta'",
-      fontWeight: 700,
+      fontFamily: "Titillium Web, sans-serif",
+
+      fontWeight: 800,
+
       letterSpacing: '-0.02em',
     },
     bodyStyle: {
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'Recoleta', sans-serif",
       fontWeight: 400,
     },
     bg: 'linear-gradient(135deg, #0f0a20 0%, #1a0b40 60%, #0e1a50 100%)',
