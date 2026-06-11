@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Button from '../components/UI/Button';
 
 // ─── Font data ─────────────────────────────────────────────────────────────────
 const FONTS = [
@@ -142,12 +143,9 @@ function FontSection({ font, index }) {
         <h1
           style={{
             ...font.headingStyle,
-            fontSize: 'clamp(36px, 5.5vw, 70px)',
-            lineHeight: 1.1,
-            color: '#ffffff',
-            margin: '0 0 28px',
             maxWidth: 820,
           }}
+          className='text-white font-bold font-Web leading-12 xl:leading-[80px] text-[34px] xl:text-[65px] mb-[28px]'
         >
           {HERO_COPY.heading}
         </h1>
@@ -156,19 +154,15 @@ function FontSection({ font, index }) {
         <p
           style={{
             ...font.bodyStyle,
-            fontSize: 'clamp(17px, 1.6vw, 21px)',
-            lineHeight: 1.75,
-            color: 'rgba(255,255,255,0.75)',
-            maxWidth: 640,
-            margin: '0 0 48px',
           }}
+          className='text-white/80 text-lg md:text-[18px] xl:text-[20px] leading-8 max-w-[592px] mb-[40px]'
         >
           {HERO_COPY.subheading}
         </p>
 
         {/* CTA buttons */}
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 56 }}>
-          <button
+          {/* <button
             style={{
               fontFamily: font.bodyStyle.fontFamily,
               fontWeight: 600,
@@ -183,8 +177,13 @@ function FontSection({ font, index }) {
             }}
           >
             {HERO_COPY.cta1}
-          </button>
-          <button
+          </button> */}
+
+
+          <Button href="/" size='sm' variant="primary"  >
+            {HERO_COPY.cta1}
+          </Button>
+          {/* <button
             style={{
               fontFamily: font.bodyStyle.fontFamily,
               fontWeight: 600,
@@ -199,7 +198,14 @@ function FontSection({ font, index }) {
             }}
           >
             {HERO_COPY.cta2}
-          </button>
+          </button> */}
+          <Button href="/" size='sm' variant="secondary"
+            style={{
+              fontFamily: font.bodyStyle.fontFamily,
+            }}
+          >
+            {HERO_COPY.cta2}
+          </Button>
         </div>
 
         {/* Font note */}
