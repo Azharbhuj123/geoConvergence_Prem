@@ -11,6 +11,8 @@ const FONTS = [
       fontFamily: "Titillium Web, sans-serif",
 
       fontWeight: 700,
+
+      letterSpacing: '-0.01em',
     },
     bodyStyle: {
       fontFamily: "'Open Sans', sans-serif",
