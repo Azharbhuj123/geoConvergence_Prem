@@ -10,7 +10,7 @@ const FONTS = [
     headingStyle: {
       fontFamily: "Titillium Web, sans-serif",
 
-      fontWeight: 800,
+      fontWeight: 700,
     },
     bodyStyle: {
       fontFamily: "'Open Sans', sans-serif",
@@ -28,7 +28,7 @@ const FONTS = [
     headingStyle: {
       fontFamily: "Titillium Web, sans-serif",
 
-      fontWeight: 800,
+      fontWeight: 700,
 
       letterSpacing: '-0.01em',
     },
@@ -48,7 +48,7 @@ const FONTS = [
     headingStyle: {
       fontFamily: "Titillium Web, sans-serif",
 
-      fontWeight: 800,
+      fontWeight: 700,
 
       letterSpacing: '-0.02em',
     },
