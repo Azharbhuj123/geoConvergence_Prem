@@ -200,9 +200,6 @@ function FontSection({ font, index }) {
             {HERO_COPY.cta2}
           </button> */}
           <Button href="/" size='sm' variant="secondary"
-            style={{
-              fontFamily: font.bodyStyle.fontFamily,
-            }}
           >
             {HERO_COPY.cta2}
           </Button>
