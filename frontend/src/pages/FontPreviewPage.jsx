@@ -44,10 +44,10 @@ const FONTS = [
     badge: '#0f2060',
   },
   {
-    id: 'recolleta',
+    id: 'montserrat',
     label: 'Option C',
-    fontName: 'Recoleta',
-    note: 'Warm, elegant & distinctive — sets GeoConvergence apart from tech norms',
+    fontName: 'Montserrat',
+    note: 'Modern, versatile & highly readable - keeps GeoConvergence clean and professional',
     headingStyle: {
       fontFamily: "Titillium Web, sans-serif",
 
@@ -56,7 +56,7 @@ const FONTS = [
       letterSpacing: '-0.02em',
     },
     bodyStyle: {
-      fontFamily: "'Recoleta', sans-serif",
+      fontFamily: "'Montserrat', sans-serif",
       fontWeight: 400,
     },
     bg: 'linear-gradient(135deg, #0f0a20 0%, #1a0b40 60%, #0e1a50 100%)',
@@ -145,7 +145,7 @@ function FontSection({ font, index }) {
             ...font.headingStyle,
             maxWidth: 820,
           }}
-          className='text-white font-bold font-Web leading-12 xl:leading-[80px] text-[34px] xl:text-[65px] mb-[28px]'
+          className='text-white font-bold leading-12 xl:leading-[80px] text-[34px] xl:text-[65px] mb-[28px]'
         >
           {HERO_COPY.heading}
         </h1>
@@ -251,18 +251,11 @@ export default function FontPreviewPage() {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href =
-      'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap';
+      'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=DM+Serif+Display&display=swap';
     document.head.appendChild(link);
-
-    // Recoleta via Bunny Fonts (free CDN)
-    const link2 = document.createElement('link');
-    link2.rel = 'stylesheet';
-    link2.href = 'https://fonts.cdnfonts.com/css/recoleta';
-    document.head.appendChild(link2);
 
     return () => {
       document.head.removeChild(link);
-      document.head.removeChild(link2);
     };
   }, []);
 
