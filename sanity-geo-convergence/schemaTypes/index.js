@@ -26,6 +26,7 @@ import productPage from '../schemas/productPage'
 import governmentPage from '../schemas/governmentPage'
 import contactSubmission from '../schemas/contactSubmission'
 import newsletterSubscription from '../schemas/newsletterSubscription'
+import siteSettings from '../schemas/siteSettings.jsx'
 
 export const schemaTypes = [
   hero,
@@ -53,5 +54,6 @@ export const schemaTypes = [
   governmentPage,
   contactSubmission,
   newsletterSubscription,
+  siteSettings,
 ]
 

@@ -278,3 +278,12 @@ export const subscribeNewsletter = async (email) => {
     createdAt: new Date().toISOString()
   });
 };
+
+export const fetchSiteSettings = async () => {
+  const query = `*[_type == "siteSettings"][0]{
+    passwordEnabled,
+    passwordHash
+  }`;
+  return client.fetch(query);
+};
+

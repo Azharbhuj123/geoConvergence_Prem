@@ -8,6 +8,7 @@ import ArcGisEnterprisePage from "./pages/ArcGisEnterprisePage";
 import { useThemeStore } from "./store/useThemeStore";
 import { useEffect } from "react";
 import FontPreviewPage from "./pages/FontPreviewPage";
+import PasswordGate from "./components/PasswordGate";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
@@ -62,36 +63,38 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
-      <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/solutions" element={<SolutionsPage />} />
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="/why" element={<WhyPage />} />
-          <Route path="/government" element={<GovernmentPage />} />
-          <Route path="/career" element={<CareerPage />} />
-          <Route path="/career/:id" element={<CareerDetails />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/scan2twin" element={<Scan2TwinPage />} />
-          <Route path="/indoormaps" element={<IndoorMapsPage />} />
-          <Route path="/lidar-scanning" element={<LidarScanningPage />} />
-          {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
-          <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />
-          <Route path="/arcgis-development" element={<ArcGisDevelopmentPage />} />
-          <Route path="/arcgis-enterprise" element={<ArcGisEnterprisePage />} />
-          <Route path="/digital-twins" element={<DigitalTwinsPage />} />
-          <Route path="/reserv-assist" element={<ReservAssistPage />} />
-          <Route path="/geo-printer" element={<GeoPrinterPage />} />
-          <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
-          <Route path="/room-reserv" element={<RoomReservPage />} />
-          <Route path="/font-preview" element={<FontPreviewPage />} />
-        </Routes>
-      </Suspense>
-    </div>
+    <PasswordGate>
+      <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/products" element={<ProductPage />} />
+            <Route path="/why" element={<WhyPage />} />
+            <Route path="/government" element={<GovernmentPage />} />
+            <Route path="/career" element={<CareerPage />} />
+            <Route path="/career/:id" element={<CareerDetails />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogDetails />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/scan2twin" element={<Scan2TwinPage />} />
+            <Route path="/indoormaps" element={<IndoorMapsPage />} />
+            <Route path="/lidar-scanning" element={<LidarScanningPage />} />
+            {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
+            <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />
+            <Route path="/arcgis-development" element={<ArcGisDevelopmentPage />} />
+            <Route path="/arcgis-enterprise" element={<ArcGisEnterprisePage />} />
+            <Route path="/digital-twins" element={<DigitalTwinsPage />} />
+            <Route path="/reserv-assist" element={<ReservAssistPage />} />
+            <Route path="/geo-printer" element={<GeoPrinterPage />} />
+            <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
+            <Route path="/room-reserv" element={<RoomReservPage />} />
+            <Route path="/font-preview" element={<FontPreviewPage />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </PasswordGate>
   );
 }
 
