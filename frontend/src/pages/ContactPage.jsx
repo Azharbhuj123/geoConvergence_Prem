@@ -51,7 +51,8 @@ export default function ContactPage() {
     }));
   };
 
-  const WEB3FORMS_KEY = '74f9081d-9d89-42b7-95d2-8217cbe360c7';
+  // const WEB3FORMS_KEY = '74f9081d-9d89-42b7-95d2-8217cbe360c7';
+  const WEB3FORMS_KEY = '53f590f5-bc94-49a5-83d6-7ebf2f7b4e6b';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
