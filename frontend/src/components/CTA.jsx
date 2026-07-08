@@ -16,7 +16,7 @@ const finalCta = {
   },
 };
 
-export default function CTA({ darkMode, CtaData }) {
+export default function CTA({ darkMode, CtaData, showButton2=true }) {
   const { theme } = useThemeStore();
   const data = CtaData || finalCta;
 
@@ -68,9 +68,11 @@ export default function CTA({ darkMode, CtaData }) {
                 {btn1.text}
               </Button>
 
+              {showButton2 && (
               <Button href="/blog?tag=Case%20Studies" variant="secondary" size="lg">
                 {btn2.text}
               </Button>
+              )}
             </div>
           </div>
 

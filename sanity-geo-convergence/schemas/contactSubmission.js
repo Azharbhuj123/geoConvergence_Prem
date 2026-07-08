@@ -24,6 +24,11 @@ export default defineType({
       validation: Rule => Rule.required().email()
     }),
     defineField({
+      name: 'phone',
+      title: 'Phone Number',
+      type: 'string'
+    }),
+    defineField({
       name: 'message',
       title: 'Message',
       type: 'text',

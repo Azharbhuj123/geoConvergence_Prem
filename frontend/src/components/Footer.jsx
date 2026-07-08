@@ -1,28 +1,33 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo_Light.png'
+import defaultLogo from '../assets/logo_Light.png'
 import { useThemeStore } from '../store/useThemeStore'
 import { subscribeNewsletter } from '../lib/api'
 import { PageToast } from './UI/PageLoader'
 import { Facebook, Instagram, Linkedin, Twitter, YouTube } from './UI/Svgs'
+import { urlFor } from '../lib/sanity'
 
-export default function Footer({ darkMode }) {
+export default function Footer({
+  logo,
+  brandTitle,
+  partnerLabel,
+  copyright,
+  socialLinks,
+  partnerLogos,
+}) {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [statusMsg, setStatusMsg] = useState('')
-  const [statusType, setStatusType] = useState('') // 'success' | 'error'
   const { theme } = useThemeStore();
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatusMsg('');
-    setStatusType('');
 
     const trimmedEmail = email.trim();
     if (!trimmedEmail) {
       setStatusMsg('Please enter an email address.');
-      setStatusType('error');
       setLoading(false);
       return;
     }
@@ -30,7 +35,6 @@ export default function Footer({ darkMode }) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
       setStatusMsg('Please enter a valid email address.');
-      setStatusType('error');
       setLoading(false);
       return;
     }
@@ -38,7 +42,6 @@ export default function Footer({ darkMode }) {
     try {
       await subscribeNewsletter(trimmedEmail);
       setStatusMsg('Successfully subscribed!');
-      setStatusType('success');
       setEmail('');
     } catch (err) {
       console.error(err);
@@ -47,7 +50,6 @@ export default function Footer({ darkMode }) {
       } else {
         setStatusMsg('Subscription failed. Try again.');
       }
-      setStatusType('error');
     } finally {
       setLoading(false);
     }
@@ -68,6 +70,72 @@ export default function Footer({ darkMode }) {
     { name: 'Blogs', path: '/blog' },
     { name: 'Contact Us', path: '/contact' },
   ]
+
+  if (copyright || socialLinks?.length || partnerLogos?.length || brandTitle || partnerLabel || logo) {
+    return (
+      <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 py-12 text-[var(--text)] sm:px-8 lg:px-14`}>
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 text-center">
+          {(partnerLabel || partnerLogos?.length > 0) && (
+            <div className="flex flex-col items-center gap-6 sm:flex-row">
+              {partnerLabel && (
+                <p className="font-Web text-xl font-bold text-[#000941] text-[var(--text)]">
+                  {partnerLabel}
+                </p>
+              )}
+              {partnerLogos?.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-8">
+                  {partnerLogos.map((partner, index) => {
+                    const content = partner.logo ? (
+                      <img src={urlFor(partner.logo)} alt={partner.name || ''} className="h-12 w-auto object-contain bg-white" />
+                    ) : null
+
+                    return partner.link ? (
+                      <a key={partner.name || index} href={partner.link} target="_blank" rel="noopener noreferrer">
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={partner.name || index}>{content}</div>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {logo && <img src={urlFor(logo)} alt="" className="h-16 w-auto object-contain" />}
+          {brandTitle && (
+            <h2 className="font-Web text-4xl font-bold leading-tight text-[var(--text)] md:text-5xl">
+              {brandTitle}
+            </h2>
+          )}
+
+          {socialLinks?.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={social.platform || index}
+                  href={social.url || '#'}
+                  target={social.url ? '_blank' : undefined}
+                  rel={social.url ? 'noopener noreferrer' : undefined}
+                  aria-label={social.platform}
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-200 transition-colors hover:bg-slate-300"
+                >
+                  {social.icon && <img src={urlFor(social.icon)} alt="" className="h-20 w-20 object-contain" />}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {copyright && (
+            <p className="font-Inter text-sm leading-6 text-[var(--muted)]">
+              {copyright}
+            </p>
+          )}
+        </div>
+      </footer>
+    )
+  }
+
   return (
     <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--footer-bg)] px-6 sm:px-8 lg:px-14 text-white`} >
       <div className="max-w-[1440px] mx-auto pb-8 flex flex-col gap-7">
@@ -120,7 +188,7 @@ export default function Footer({ darkMode }) {
           <div className="sm:col-span-2 lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <Link to="/">
-                <img src={logo} alt="GeoConvergence" className="h-18 w-auto" />
+                <img src={defaultLogo} alt="GeoConvergence" className="h-18 w-auto" />
               </Link>
             </div>
             <p className="text-white/80 text-subtitle font-Inter leading-8 max-w-md">

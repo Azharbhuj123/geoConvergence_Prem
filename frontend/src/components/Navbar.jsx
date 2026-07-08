@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/geoC_Logo_Dark.png";
 import dark_logo from "../assets/logo_Light.png";
 import Button, { ThemeButton } from "./UI/Button";
-import { useThemeStore } from "../store/useThemeStore";
+import { urlFor } from "../lib/sanity";
 
-export default function Navbar({ darkMode, toggleDarkMode }) {
+export default function Navbar({ darkMode, logo: cmsLogo, ctaText, ctaLink, compact = false }) {
 
 
   const [scrolled, setScrolled] = useState(false);
@@ -29,11 +29,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
   return (
     <>
       {/* Top announcement bar */}
-      <div className="w-full bg-[#326FB7] text-white text-md text-center py-2 px-4 leading-6 z-50 relative">
-        <a href="/scan2twin">
-          {"Experience Scan2Twin in action book your live demo today."}
-        </a>
-      </div>
+      {!compact && (
+        <div className="w-full bg-[#326FB7] text-white text-md text-center py-2 px-4 leading-6 z-50 relative">
+          <a href="/scan2twin">
+            {"Experience Scan2Twin in action book your live demo today."}
+          </a>
+        </div>
+      )}
 
       {/* Main navbar */}
       <nav
@@ -42,14 +44,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className="max-w-[1440px] mx-auto py-7 px-4 sm:px-8 lg:px-10 flex justify-between items-center">
+        <div className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-10 flex justify-between items-center ${compact ? "py-4" : "py-7"}`}>
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none">
-            <img src={darkMode ? dark_logo : logo} alt="" />
+          <Link to="/" className={`flex items-center gap-2 flex-shrink-0 ${compact ? "max-w-[150px]" : "max-w-[160px] sm:max-w-[220px] xl:max-w-none"}`}>
+            <img src={cmsLogo ? urlFor(cmsLogo) : darkMode ? dark_logo : logo} alt="" className={compact ? " w-auto bg-white p-4 rounded" : ""} />
           </Link>
 
           {/* Desktop nav links */}
-          <div className="hidden xl:flex items-center gap-6 xl:gap-7 px-4">
+          {!compact && <div className="hidden xl:flex items-center gap-6 xl:gap-7 px-4">
             {links.map((link) => (
               <Link
                 key={link.name}
@@ -60,12 +62,12 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                 {link.name}
               </Link>
             ))}
-          </div>
+          </div>}
 
           {/* Right side */}
           <div className="hidden xl:flex items-center gap-4">
-            <Button size="sm" className="!text-base !py-2 !px-2" href="/contact">
-              Request Demo
+            <Button size="sm" className={compact ? "!text-sm !py-2 !px-2 !rounded-lg" : "!text-base !py-2 !px-2"} href={ctaLink || "/contact"}>
+              {ctaText || "Request Demo"}
             </Button>
 
             {/* Dark mode toggle */}
@@ -74,10 +76,15 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
           {/* Mobile hamburger */}
           <div className="flex xl:hidden items-center gap-3">
+            {compact && (
+              <Button size="sm" className="!text-xs !py-2 !px-3 !rounded-lg" href={ctaLink || "/contact"}>
+                {ctaText || "Request Demo"}
+              </Button>
+            )}
 
             <ThemeButton />
 
-            <button
+            {!compact && <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`p-1 sm:p-2 rounded-lg ${darkMode ? "text-white" : "text-slate-900"}`}
             >
@@ -95,7 +102,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                   <path d="M3 12h18M3 6h18M3 18h18" />
                 )}
               </svg>
-            </button>
+            </button>}
           </div>
         </div>
 
@@ -119,10 +126,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               </Link>
             ))}
             <a
-              href="#"
+              href={ctaLink || "/contact"}
               className="mt-2 px-6 py-3 bg-gradient-to-b from-blue-800 to-blue-700 text-white text-base font-Inter font-semibold rounded-2xl text-center"
             >
-              Request Demo
+              {ctaText || "Request Demo"}
             </a>
           </div>
         )}

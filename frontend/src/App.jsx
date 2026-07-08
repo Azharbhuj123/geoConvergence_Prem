@@ -9,8 +9,13 @@ import { useThemeStore } from "./store/useThemeStore";
 import { useEffect } from "react";
 import FontPreviewPage from "./pages/FontPreviewPage";
 import PasswordGate from "./components/PasswordGate";
+import FacilitEasePage from "./pages/FacilitEasePage";
+import ConnectArcGISPage from "./pages/ConnectArcGISPage";
+import CartinuumPage from "./pages/CartinuumPage";
+import ArcGISBuilderPage from "./pages/ArcGISBuilderPage";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
+const connectArcGISPage = lazy(() => import("./pages/ConnectArcGISPage"));
 const CareerDetails = lazy(() => import("./pages/CareerDetails"));
 const CareerPage = lazy(() => import("./pages/CareerPage"));
 const WhyPage = lazy(() => import("./pages/WhyPage"));
@@ -91,6 +96,11 @@ function App() {
             <Route path="/scenario-planner" element={<ScenarioPlannerPage />} />
             <Route path="/room-reserv" element={<RoomReservPage />} />
             <Route path="/font-preview" element={<FontPreviewPage />} />
+            <Route path="/facili-ease" element={<FacilitEasePage />} />
+            <Route path="/arcgis-connect" element={<ConnectArcGISPage />} />
+            <Route path="/cartinuum-widget" element={<CartinuumPage />} />
+            <Route path="/arcgis-builder" element={<ArcGISBuilderPage />} />
+      
           </Routes>
         </Suspense>
       </div>

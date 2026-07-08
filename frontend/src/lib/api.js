@@ -161,6 +161,169 @@ export const fetchScenarioPlannerPage = async () => {
   return client.fetch(query);
 };
 
+export const fetchFacilitEasePage = async () => {
+  const imageProjection = `{
+    ...,
+    asset->{_id, _ref, url}
+  }`;
+
+  const query = `*[_type == "facilitEasePage"][0]{
+    navbar{
+      logo${imageProjection},
+      ctaText,
+      ctaLink
+    },
+    hero{
+      title,
+      subtitle,
+      primaryBtnText,
+      primaryBtnLink,
+      secondBtnText,
+      secondBtnLink,
+      backgroundImage${imageProjection}
+    },
+    whyFacilitEase{
+      sectionTitle,
+      subtitle,
+      cards[]{
+        title,
+        description,
+        icon${imageProjection}
+      }
+    },
+    startYourJourney{
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image${imageProjection}
+    },
+    whatsIncluded{
+      sectionTitle,
+      subTitle,
+      cards[]{
+        title,
+        description,
+        link,
+        image${imageProjection}
+      }
+    },
+    facilitEaseInAction{
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image${imageProjection}
+    },
+    solutionsForEverySpace{
+      sectionTitle,
+      subTitle,
+      cards[]{
+        title,
+        description,
+        link,
+        image${imageProjection}
+      }
+    },
+    gettingStarted{
+      sectionTitle,
+      subTitle,
+      steps[]{
+        title,
+        description,
+        icon${imageProjection}
+      }
+    },
+    plansAndPricing{
+      sectionTitle,
+      subTitle,
+      plans[]{
+        planName,
+        price,
+        priceSuffix,
+        description,
+        isCustom,
+        isHighlighted,
+        features[],
+        ctaText,
+        ctaLink
+      }
+    },
+    faq{
+      sectionTitle,
+      subTitle,
+      questions[]{
+        question,
+        answer
+      }
+    },
+    ctaSection{
+      sectionTitle,
+      subTitle,
+      namePlaceholder,
+      lastNamePlaceholder,
+      emailPlaceholder,
+      phonePlaceholder,
+      messagePlaceholder,
+      submitBtnText,
+      backgroundImage${imageProjection}
+    },
+    footer{
+      logo${imageProjection},
+      brandTitle,
+      partnerLabel,
+      copyright,
+      socialLinks[]{
+        platform,
+        url,
+        icon${imageProjection}
+      },
+      partnerLogos[]{
+        name,
+        link,
+        logo${imageProjection}
+      },
+      buttons[]{
+        text,
+        link
+      }
+    }
+  }`;
+
+  return client.fetch(query);
+};
+
+export const connectArcGISPage = async () => {
+  const query = `*[_type == "connectArcGISPage"][0]{
+    "hero": hero,
+    "firstSolution": firstSolution, 
+    "featuredProducts": featuredProducts,
+    "finalCta": finalCta
+  }`;
+
+  return await client.fetch(query);
+};
+export const cartinuumPage = async () => {
+  const query = `*[_type == "cartinuumPage"][0]{
+    "hero": hero,
+    "firstSolution": firstSolution, 
+    "featuredProducts": featuredProducts,
+    "finalCta": finalCta
+  }`;
+
+  return await client.fetch(query);
+};
+export const arcGISBuilderPage = async () => {
+  const query = `*[_type == "arcGISBuilderPage"][0]{
+    "hero": hero,
+    "firstSolution": firstSolution, 
+    "featuredProducts": featuredProducts,
+    "finalCta": finalCta
+  }`;
+
+  return await client.fetch(query);
+};
+
 export const fetchRoomReservPage = async () => {
   const query = `*[_type == "roomReservPage"][0]{
     hero, firstSolution, coreValues, howItWorks, keyFeatures, useCases, finalCta
@@ -259,6 +422,7 @@ export const submitContactForm = async (formData) => {
     fullName: formData.firstName,
     lastName: formData.lastName,
     email: formData.email,
+    phone: formData.phone,
     message: formData.message,
     createdAt: new Date().toISOString()
   });

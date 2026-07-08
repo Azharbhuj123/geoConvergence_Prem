@@ -40,7 +40,6 @@ export default function Services({
   variant = "default",
   className,
   button = true,
-  length,
   maxWidth
 }) {
   const theme = variants[variant][darkMode ? "dark" : "light"];
@@ -77,7 +76,8 @@ export default function Services({
                 maxWidth
               )}
             >
-              {services?.sectionSubtitle ||
+              {services?.subTitle ||
+                services?.sectionSubtitle ||
                 "Bringing the gap from scan data to fully operational BIM models."}
             </p>
           </div>
@@ -101,19 +101,19 @@ export default function Services({
             "grid grid-cols-1 md:grid-cols-2 gap-7",
             services?.cards?.length === 4
               ? "xl:grid-cols-4"
-              : "xl:grid-cols-6"
+              : "xl:grid-cols-6",
+              services?.cards?.length === 2 && "xl:grid-cols-2"
           )}
         >
           {services?.cards?.map((step, index) => {
             const total = services?.cards?.length || 0;
 
-            let xlSpan = "xl:col-span-2";
+            let xlSpan = total === 2 ? "xl:col-span-3" : "xl:col-span-2";
 
             // Last 2 cards become 50/50 on xl
             if (total === 5 && index >= 3) {
               xlSpan = "xl:col-span-3";
             }
-            console.log("step", step)
             return (
               <div
                 key={step.title || index}
@@ -131,11 +131,15 @@ export default function Services({
                 }}
               >
                 {/* Background Image */}
-                <img
-                  src={step.image ? urlFor(step.image) : ""}
-                  alt={step.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75"
-                />
+                {step.image ? (
+                  <img
+                    src={urlFor(step.image)}
+                    alt={step.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-300 via-slate-500 to-[#000941]" />
+                )}
 
                 {/* Gradient Overlay - Darker on hover */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 transition-all duration-700 group-hover:to-black/85 group-hover:via-black/50" />

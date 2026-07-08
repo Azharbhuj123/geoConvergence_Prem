@@ -17,6 +17,7 @@ import geoPrinterPage from '../schemas/geoPrinterPage'
 import scenarioPlannerPage from '../schemas/scenarioPlannerPage'
 import roomReservPage from '../schemas/roomReservPage'
 import whyPage from '../schemas/whyPage'
+import facilitEasePage from '../schemas/facilitEasePage'
 
 import blog from '../schemas/Blog'
 import blogDetails from '../schemas/blogDetails'
@@ -27,6 +28,9 @@ import governmentPage from '../schemas/governmentPage'
 import contactSubmission from '../schemas/contactSubmission'
 import newsletterSubscription from '../schemas/newsletterSubscription'
 import siteSettings from '../schemas/siteSettings.jsx'
+import connectArcGISPage from '../schemas/connectArcGISPage.js'
+import cartinuumPage from '../schemas/cartinuumPage.js'
+import arcGISBuilderPage from '../schemas/arcGISBuilderPage.js'
 
 export const schemaTypes = [
   hero,
@@ -50,6 +54,10 @@ export const schemaTypes = [
   geoPrinterPage,
   scenarioPlannerPage,
   roomReservPage,
+  facilitEasePage,
+  connectArcGISPage,
+  cartinuumPage,
+  arcGISBuilderPage,
   whyPage,
   governmentPage,
   contactSubmission,

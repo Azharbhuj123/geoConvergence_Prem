@@ -56,6 +56,7 @@
   --darkblue-bg: #09155F;
   --carddark-bg: #f6f6f6;
   --keyServices-bg: #09155F;
+  --navblue-bg: #000941;
 }
 
 .dark {
@@ -73,6 +74,7 @@
   --darkblue-bg: #e2e8f0;
   --carddark-bg: #09155F;
   --keyServices-bg: #162556;
+  --navblue-bg: #0f172a;
 }
 
 @layer components {

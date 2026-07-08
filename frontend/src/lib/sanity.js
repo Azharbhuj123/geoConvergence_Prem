@@ -12,6 +12,10 @@ export const client = createClient({
 const builder = imageUrlBuilder(client)
 
 export function urlFor(source) {
+  if (!source) return ""
+  if (typeof source === "string") return source
+  if (source?.asset?.url) return source.asset.url
+
   return builder
     .image(source)
     .auto('format')
