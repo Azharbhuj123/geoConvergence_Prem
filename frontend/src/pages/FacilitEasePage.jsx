@@ -95,7 +95,7 @@ export default function FacilitEasePage() {
                   </h2>
                 )}
                 {pageData.whyFacilitEase.subtitle && (
-                  <p className="font-Inter mt-3 text-lg leading-8 text-[var(--muted)]">
+                  <p className="font-Inter mt-3 text-xl leading-8 text-[var(--muted)]">
                     {pageData.whyFacilitEase.subtitle}
                   </p>
                 )}

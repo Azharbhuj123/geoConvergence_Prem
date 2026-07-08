@@ -88,7 +88,7 @@ export default function FacilitCTA({
             </h2>
           )}
           {subTitle && (
-            <p className="font-Inter mt-5 text-lg leading-8 text-white/75">
+            <p className="font-Inter mt-5 text-[18px] sm:text-[20px] leading-8 text-white/75">
               {subTitle}
             </p>
           )}

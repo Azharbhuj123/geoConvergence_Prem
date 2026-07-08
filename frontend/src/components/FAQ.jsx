@@ -43,7 +43,7 @@ export default function FAQ({sectionTitle, subTitle, questions = []}) {
                 >
                   <div className="overflow-hidden">
                     {item.answer && (
-                      <p className="font-Inter px-6 pb-7 text-base leading-8 text-[var(--muted)] sm:px-8">
+                      <p className="font-Inter px-6 pb-7 text-[18px] sm:text-[20px] leading-8 text-[var(--muted)] sm:px-8">
                         {item.answer}
                       </p>
                     )}

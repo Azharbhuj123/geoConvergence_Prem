@@ -14,7 +14,7 @@ export default function GettingStarted({ sectionTitle, subTitle, steps = [] }) {
             </h2>
           )}
           {subTitle && (
-            <p className="font-Inter mt-4 text-lg leading-8 text-[var(--muted)]">
+            <p className="font-Inter mt-4 text-xl leading-8 text-[var(--muted)]">
               {subTitle}
             </p>
           )}
@@ -35,12 +35,12 @@ export default function GettingStarted({ sectionTitle, subTitle, steps = [] }) {
                     )}
                   </div>                  
                   {step.title && (
-                    <h3 className="font-Web mt-5 text-xl font-bold leading-tight text-[var(--heading)]">
+                    <h3 className="font-Web mt-5 text-2xl font-bold leading-tight text-[var(--heading)]">
                       {step.title}
                     </h3>
                   )}
                   {step.description && (
-                    <p className="font-Inter mt-3 max-w-[240px] text-sm leading-6 text-[var(--muted)]">
+                    <p className="font-Inter mt-3 max-w-[240px] text-[18px] sm:text-[20px] leading-6 text-[var(--muted)]">
                       {step.description}
                     </p>
                   )}

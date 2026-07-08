@@ -12,7 +12,7 @@ export default function PlansAndPricing({ sectionTitle, subTitle, plans = [] }) 
             </h2>
           )}
           {subTitle && (
-            <p className="font-Inter mt-4 text-lg leading-8 text-white/75">
+            <p className="font-Inter mt-4 text-xl leading-8 text-white/75">
               {subTitle}
             </p>
           )}
@@ -36,7 +36,7 @@ export default function PlansAndPricing({ sectionTitle, subTitle, plans = [] }) 
                   </h3>
                 )}
                 {plan.description && (
-                  <p className={`font-Inter mt-3 text-base leading-7 ${highlighted ? 'text-white/85' : 'text-[var(--muted)]'}`}>
+                  <p className={`font-Inter mt-3 text-[18px] sm:text-[20px] leading-7 ${highlighted ? 'text-white/85' : 'text-[var(--muted)]'}`}>
                     {plan.description}
                   </p>
                 )}
@@ -67,7 +67,7 @@ export default function PlansAndPricing({ sectionTitle, subTitle, plans = [] }) 
                 {plan.features?.length > 0 && (
                   <ul className="mt-7 flex flex-col gap-3">
                     {plan.features.map((feature, featureIndex) => (
-                      <li key={`${feature}-${featureIndex}`} className="font-Inter flex gap-3 text-base leading-6">
+                      <li key={`${feature}-${featureIndex}`} className="font-Inter text-[18px] sm:text-[20px] flex gap-3 text-base leading-6">
                         <Check className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
                         <span>{feature}</span>
                       </li>
