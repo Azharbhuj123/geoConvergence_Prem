@@ -44,10 +44,10 @@ export default function Navbar({ darkMode, logo: cmsLogo, ctaText, ctaLink, comp
           : "shadow-[0px_4px_18px_0px_rgba(0,28,71,0.15)]"
           } ${darkMode ? "bg-slate-900 border-b border-slate-800" : "bg-white border-b border-slate-100"}`}
       >
-        <div className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-10 flex justify-between items-center ${compact ? "py-4" : "py-7"}`}>
+        <div className={`max-w-[1440px] mx-auto flex justify-between items-center ${compact ? "px-2 py-3 min-[375px]:px-4 sm:px-8 sm:py-4 lg:px-10" : "px-4 py-7 sm:px-8 lg:px-10"}`}>
           {/* Logo */}
-          <Link to="/" className={`flex items-center gap-2 flex-shrink-0 ${compact ? "max-w-[150px]" : "max-w-[160px] sm:max-w-[220px] xl:max-w-none"}`}>
-            <img src={cmsLogo ? urlFor(cmsLogo) : darkMode ? dark_logo : logo} alt="" className={compact ? " w-auto bg-white p-4 rounded" : ""} />
+          <Link to="/" className={`flex items-center gap-2 ${compact ? "min-w-0 w-[clamp(5.5rem,32vw,9.375rem)] shrink" : "flex-shrink-0 max-w-[160px] sm:max-w-[220px] xl:max-w-none"}`}>
+            <img src={cmsLogo ? urlFor(cmsLogo) : darkMode ? dark_logo : logo} alt="" className={compact ? "block h-auto w-full rounded bg-white p-1.5 min-[375px]:p-2 sm:p-4" : ""} />
           </Link>
 
           {/* Desktop nav links */}
@@ -75,9 +75,9 @@ export default function Navbar({ darkMode, logo: cmsLogo, ctaText, ctaLink, comp
           </div>
 
           {/* Mobile hamburger */}
-          <div className="flex xl:hidden items-center gap-3">
+          <div className={`flex xl:hidden shrink-0 items-center ${compact ? "gap-1.5 min-[375px]:gap-3" : "gap-3"}`}>
             {compact && (
-              <Button size="sm" className="!text-xs !py-2 !px-3 !rounded-lg" href={ctaLink || "/contact"}>
+              <Button size="sm" className="whitespace-nowrap !rounded-lg !px-2 !py-1.5 !text-[11px] !leading-5 min-[375px]:!px-3 min-[375px]:!py-2 min-[375px]:!text-xs" href={ctaLink || "/contact"}>
                 {ctaText || "Request Demo"}
               </Button>
             )}
