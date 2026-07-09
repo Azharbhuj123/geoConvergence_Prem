@@ -3,14 +3,14 @@ import { useThemeStore } from "../store/useThemeStore";
 import Navbar from "../components/Navbar";
 import ShortHero from "../components/ShortHero";
 import MidSection from "../components/MidSection";
-import { NAVSEASeaportPageData } from "../lib/data/NAVSEASeaportPageData";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import { gSAMASPageData } from "../lib/data/gSAMAS";
 
 export default function GSAMasPage() {
   const { theme, toggleTheme } = useThemeStore();
   const isDark = theme === "dark";
-  const data = NAVSEASeaportPageData;
+  const data = gSAMASPageData;
 
   const categories = [
     {
@@ -83,37 +83,49 @@ export default function GSAMasPage() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
-      <ShortHero title={"GSA MAS"} />
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
-        <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-12 sm:gap-16 md:gap-20">
+      {/* <ShortHero title={"GSA MAS"} /> */}
+      <section className="px-0 lg:px-14 lg:pb-10">
+        <div className="max-w-[1440px] mx-auto ">
           <MidSection data={data} />
 
-          <div className="font-['Titillium_Web'] flex flex-col gap-8 sm:gap-10 md:gap-12">
-            <h2
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-center lg:text-left text-[var(--heading)]"
+
+          <div className="font-['Titillium_Web',sans-serif]">
+            <h1
+              className="text-[20px] sm:text-[30px] lg:text-[40px] font-bold mb-4"
+              style={{ color: "var(--heading)" }}
             >
               Information Technology – IT Services
-            </h2>
+            </h1>
 
-            <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12">
+            <div className="space-y-6">
               {categories.map((cat) => (
                 <div key={cat.code}>
                   {cat.showTab ? (
                     /* ── 518210C: tabbed card ── */
-                    <div className="overflow-hidden rounded-[32px] shadow-2xl border border-[var(--border)] transition-all duration-300 hover:shadow-blue-900/10 dark:hover:shadow-blue-500/5">
+                    <div className="overflow-hidden  rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]">
                       {/* Tab header row */}
                       <div
-                        className="flex flex-col sm:flex-row border-b border-[var(--border)] bg-slate-100 dark:bg-slate-900"
+                        className="flex"
+                        style={{ borderBottom: "1px solid var(--border)" }}
                       >
                         <div
-                          className="px-6 py-4 text-xs sm:text-sm font-black uppercase tracking-widest border-b sm:border-b-0 sm:border-r border-[var(--border)] text-blue-600 dark:text-blue-500"
+                          className="px-4 py-2 text-sm"
+                          style={{
+                            color: "var(--text)",
+                            borderRight: "1px solid var(--border)",
+                            background: "var(--f6f6f6)",
+                          }}
                         >
                           Category
                         </div>
                         <div
-                          className="px-6 py-4 text-sm sm:text-base font-extrabold text-[var(--text)]"
+                          className="px-4 py-2 text-sm font-medium"
+                          style={{
+                            color: "var(--text)",
+                            background: "var(--f6f6f6)",
+                          }}
                         >
                           {cat.code}
                         </div>
@@ -121,25 +133,38 @@ export default function GSAMasPage() {
 
                       {/* Description label */}
                       <div
-                        className="px-6 py-3 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] bg-slate-50 dark:bg-slate-800/50 border-b border-[var(--border)] text-slate-500"
+                        className="px-4 py-2 text-sm"
+                        style={{
+                          color: "var(--text)",
+                          background: "var(--bg-secondary)",
+                          borderBottom: "1px solid var(--border)",
+                        }}
                       >
                         Description
                       </div>
 
                       {/* Content */}
                       <div
-                        className="p-6 sm:p-10 md:p-12 lg:p-14 text-sm sm:text-base md:text-lg leading-relaxed text-[var(--text)] bg-[var(--card)] opacity-90"
+                        className="px-4 sm:px-[55px] py-[38px] text-md font-Inter leading-relaxed"
+                        style={{
+                          color: "var(--text)",
+                          background: "var(--card)",
+                        }}
                       >
                         {cat.description}
                       </div>
                     </div>
                   ) : (
                     /* ── 541370GEO / 54151S: badge above content box ── */
-                    <div className="flex flex-col gap-4">
+                    <div>
                       {/* Badge — inline width, sits above the box */}
-                      <div className="flex justify-center lg:justify-start">
+                      <div className="  inline-block">
                         <span
-                          className="inline-block px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-black uppercase tracking-widest rounded-xl bg-blue-600/10 text-blue-600 border border-blue-600/20"
+                          className="inline-block text-sm p-[16px] rounded"
+                          style={{
+                            color: "var(--text)",
+                            background: "var(--f6f6f6)",
+                          }}
                         >
                           {cat.code}
                         </span>
@@ -147,7 +172,11 @@ export default function GSAMasPage() {
 
                       {/* Separate content box */}
                       <div
-                        className="p-6 sm:p-10 md:p-12 lg:p-14 text-sm sm:text-base md:text-lg leading-relaxed rounded-[32px] shadow-2xl bg-[var(--card)] border border-[var(--border)] opacity-90 transition-all duration-300 hover:shadow-blue-900/10 dark:hover:shadow-blue-500/5"
+                        className="px-4 sm:px-[55px] py-[38px] text-md font-Inter leading-relaxed rounded-[20px] shadow-[0px_7px_29.700000762939453px_0px_rgba(172,172,172,0.20)]"
+                        style={{
+                          color: "var(--text)",
+                          background: "var(--card)",
+                        }}
                       >
                         {cat.description}
                       </div>
@@ -159,8 +188,8 @@ export default function GSAMasPage() {
           </div>
         </div>
       </section>
-      <CTA darkMode={theme === "dark"} />
-      <Footer darkMode={theme === "dark"} />
+      {/* <CTA darkMode={theme === "dark"} /> */}
+      {/* <Footer darkMode={theme === "dark"} /> */}
     </div>
   );
 }

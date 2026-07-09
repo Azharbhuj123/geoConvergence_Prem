@@ -1,116 +1,183 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { urlFor } from '../lib/sanity';
+import { Facebook, Instagram, Linkedin, Twitter } from './UI/Svgs';
 
 export default function TeamLeadership({ data, darkMode }) {
   if (!data) return null;
-  const { title, subtitle, members } = data;
-  const scrollRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const progress = (scrollLeft / (scrollWidth - clientWidth)) * 100;
-      setScrollProgress(progress || 0);
-    }
+  const { title, subtitle, members } = data;
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const intervalRef = useRef(null);
+
+  const icons = [Twitter, Linkedin, Facebook, Instagram];
+
+  // Responsive items per page
+  const getItemsPerPage = () => {
+    if (typeof window === 'undefined') return 3;
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1280) return 2;
+    return 3;
   };
 
+  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage());
+
   useEffect(() => {
-    const el = scrollRef.current;
-    if (el) {
-      el.addEventListener('scroll', handleScroll);
-      return () => el.removeEventListener('scroll', handleScroll);
-    }
+    const handleResize = () => setItemsPerPage(getItemsPerPage());
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Create an extended array for infinite scroll (repeated 4 times to be safe)
+  const extendedMembers = members?.length
+    ? [...members, ...members, ...members, ...members]
+    : [];
+
+  // Auto play
+  useEffect(() => {
+    if (!members?.length) return;
+
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setIsTransitioning(true);
+        setCurrentIndex((prev) => prev + 1);
+      }, 5000);
+    }
+
+    return () => clearInterval(intervalRef.current);
+  }, [isPaused, itemsPerPage, members?.length]);
+
+  // Handle infinite wrap
+  useEffect(() => {
+    if (!members?.length) return;
+
+    if (currentIndex >= members.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex((prev) => prev % members.length);
+      }, 700); // 700ms matches the transition duration
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, members?.length]);
+
+  const totalPages = Math.ceil((members?.length || 0) / itemsPerPage);
+  const normalizedIndex = currentIndex % (members?.length || 1);
+  const activeDot = Math.floor(normalizedIndex / itemsPerPage);
+
   return (
-    <section className={`py-12 sm:py-16 md:py-20 lg:py-24 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
-      <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14">
-        <div className="mb-10 sm:mb-12 md:mb-16 text-center lg:text-left">
-          <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold font-['Titillium_Web'] mb-4 sm:mb-6 leading-tight tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+    <section
+      className={`pt-20 pb-20 px-6 sm:px-10 xl:px-14 transition-colors duration-500 ${darkMode ? 'bg-slate-950' : 'bg-white'
+        }`}
+    >
+      <div className="max-w-[1440px] mx-auto">
+
+        {/* Header */}
+        <div className="mb-16 flex flex-col">
+          <h2 className={`font-Web heading-primary mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
             {title}
           </h2>
-          <p className={`text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed mx-auto lg:mx-0 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+          <p className={`text-lg sm:text-xl leading-relaxed max-w-3xl ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
             {subtitle}
           </p>
         </div>
 
-        {/* Scroll Container */}
-        <div className="relative group">
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-auto gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-8 snap-x snap-mandatory no-scrollbar"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {members?.map((member, index) => (
+        {/* Carousel */}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="overflow-hidden">
+            <div className="-mx-3">
               <div
-                key={index}
-                className={`flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px] lg:w-[360px] snap-start p-4 sm:p-5 md:p-6 rounded-3xl shadow-xl ${darkMode ? 'bg-slate-900 border border-slate-800' : 'bg-[#f4f6fb]'}`}
+                className={`flex ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                }}
               >
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-4 sm:mb-6">
-                  {member.image ? (
-                    <img
-                      src={urlFor(member.image)}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-700">
-                      <svg className="w-12 h-12 sm:w-16 sm:h-16 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
+                {extendedMembers?.map((member, index) => (
+                  <div
+                    key={index}
+                    className="w-full sm:w-1/2 xl:w-1/3 flex-shrink-0 px-3"
+                  >
+                    <div
+                      className={`group relative p-6 rounded-[2rem] transition-all duration-300 h-full
+                      ${darkMode ? 'bg-slate-900 border border-slate-800 hover:bg-white' : 'bg-[#f4f6fb] hover:bg-[#002052]'}`}
+                    >
 
-                <div className="px-1">
-                  <h3 className={`text-lg sm:text-xl md:text-2xl font-bold font-['Titillium_Web'] mb-1 sm:mb-2 leading-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                    {member.name}
-                  </h3>
-                  <p className={`text-sm sm:text-base md:text-lg font-medium leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                    {member.position}
-                  </p>
-                </div>
+                      {/* Image */}
+                      <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6">
+                        {member.image ? (
+                          <img
+                            src={urlFor(member.image)}
+                            alt={member.name}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-slate-200" />
+                        )}
+                      </div>
+
+                      {/* Text */}
+                      <div
+                        className={`p-5 rounded-2xl border transition-colors duration-300 ${darkMode
+                          ? 'border-blue-800/30 group-hover:border-blue-400'
+                          : 'border-blue-700 group-hover:border-blue-300'
+                          }`}
+                      >
+                        <h3
+                          className={`text-2xl xl:text-3xl font-bold mb-2 transition-colors duration-300 ${darkMode ? 'text-white group-hover:text-[#002052]' : 'text-slate-900 group-hover:text-white'
+                            }`}
+                        >
+                          {member.name}
+                        </h3>
+
+                        <p
+                          className={`text-lg font-medium transition-colors duration-300 ${darkMode
+                            ? 'text-slate-400 group-hover:text-blue-200'
+                            : 'text-slate-600 group-hover:text-slate-300'
+                            }`}
+                        >
+                          {member.position}
+                        </p>
+
+                        <p
+                          className={`text-lg mt-5 font-medium transition-colors duration-300 ${darkMode
+                            ? 'text-slate-400 group-hover:text-blue-200'
+                            : 'text-slate-600 group-hover:text-slate-300'
+                            }`}
+                        >
+                          {member.shortBio}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-4 sm:mt-6">
-            {members?.map((_, i) => {
-              const totalDots = members.length;
-              const activeIndex = Math.round((scrollProgress / 100) * (totalDots - 1)) || 0;
-              const isActive = i === activeIndex;
-
-              return (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (scrollRef.current && scrollRef.current.children[i]) {
-                      const child = scrollRef.current.children[i];
-                      scrollRef.current.scrollTo({
-                        left: child.offsetLeft - scrollRef.current.offsetLeft,
-                        behavior: 'smooth'
-                      });
-                    }
-                  }}
-                  className={`h-2 transition-all duration-300 rounded-full cursor-pointer hover:bg-blue-400 ${isActive
-                    ? 'w-8 sm:w-10 bg-[#0055FE]'
-                    : `w-2 ${darkMode ? 'bg-slate-700' : 'bg-slate-300'}`
-                    }`}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              );
-            })}
+          {/* Dots */}
+          <div className="flex justify-center gap-3 mt-12">
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setCurrentIndex(i * itemsPerPage);
+                }}
+                className={`h-2.5 rounded-full transition-all duration-500 ${i === activeDot
+                  ? 'w-12 bg-blue-600'
+                  : `w-2.5 ${darkMode ? 'bg-slate-700' : 'bg-slate-300'}`
+                  }`}
+              />
+            ))}
           </div>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}} />
     </section>
   );
 }

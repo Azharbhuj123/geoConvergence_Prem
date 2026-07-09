@@ -7,88 +7,8 @@ import Footer from '../components/Footer';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSolutionsPage } from '../lib/api';   // Create this query
-
-
-// You can put this in lib/data/solutionsData.js or use as fallback
-const solutionsPageData = {
-    announcement: {
-        text: "Experience Scan2Twin in action — book your live demo today."
-    },
-
-    hero: {
-        title: "Solutions",
-        backgroundImage: {
-            _type: "image",
-            asset: {
-                _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png"
-            }
-        }
-    },
-
-    servicesIntro: {
-        title: "Services",
-        description: "Powered by our Scan2Twin pipeline, these applications transform captured data into actionable, real-world solutions for operations, planning, and decision-making."
-    },
-
-    solutions: [
-        {
-            title: "Scan2Twin",
-            description: "Transform physical spaces into intelligent digital twins using advanced mobile mapping technology. Capture survey-grade 3D data of complex indoor environments—without disrupting operations. Our all-terrain systems and mobile LiDAR deliver ArcGIS-ready digital twins with automated privacy protection.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "Indoor Mapping & Digital Twins",
-            description: "geoConvergence creates comprehensive digital twins—intelligent virtual replicas of your physical facilities that enable better decision-making across your organization. From initial data capture through ongoing facility management, we deliver end-to-end digital twin solutions.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "LiDAR Scanning & Reality Capture",
-            description: "Unlock unparalleled precision and efficiency in your projects with our state-of-the-art 3D laser scanning services. Whether you’re an architect, engineer, or contractor, our solutions provide the detailed insights necessary to design, build, and maintain with confidence.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "3D Modeling & Point-to-BIM",
-            description: "Convert real-world physical environments into precise and data-rich digital models using advanced 3D modeling and Point-to-BIM workflows. This process takes raw spatial data from scans and measurements and transforms it into intelligent BIM-ready structures.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "ArcGIS Indoors Implementation",
-            description: "Custom ArcGIS applications that address your spatial data needs. We extend standard GIS capabilities with tools for data collection, custom internal dashboards, and public-facing maps that present spatial data effectively.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        }
-    ],
-
-    finalCta: {
-        title: "Ready to define your digital dimension?",
-        subtitle: "Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.",
-        button1: { text: "Schedule a Consultation", link: "#" },
-        button2: { text: "View Case Studies", link: "#" },
-        backgroundImage: {
-            _type: "image",
-            asset: { _ref: "image-9aedb38aefaf4d3ee8418015a0fbaccc866c1ed5-1320x532-png" }
-        }
-    }
-};
+import { solutionsPageData } from '../lib/data/solutionsPageData';
+import { Services_Description } from '../components/Services_Description';
 
 export default function SolutionsPage() {
     const { theme } = useThemeStore();
@@ -112,34 +32,30 @@ export default function SolutionsPage() {
                     darkMode={theme === 'dark'}
                     hero={pageData.hero}
                     title="Solutions"
-                    minHeight="min-h-[451px]"
+                    minHeight="!min-h-[250px]"
                 />
 
                 {/* Services Intro */}
-                <section className={`w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-                        <div className="max-w-4xl text-center lg:text-left flex flex-col gap-4 sm:gap-6">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-['Titillium_Web'] leading-tight tracking-tight text-[var(--text)]">
-                                {pageData.servicesIntro.title}
-                            </h2>
-                            <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text)] opacity-80">
-                                {pageData.servicesIntro.description}
-                            </p>
-                        </div>
-                    </div>
-                </section>
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] py-10 px-6 sm:px-10 sm:py-20 xl:px-14 xl:py-24`}>
+                    <Services_Description
+                        theme={theme}
+                        pageData={pageData.servicesIntro}
+                    />
 
-                {/* Solution Blocks */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    {pageData.solutions.map((solution, index) => (
+                    {/* Solution Blocks */}
+
+                    {pageData?.solutions?.map((solution, index) => (
                         <SolutionBlock
                             key={index}
-                            title={solution.title}
-                            description={solution.description}
-                            button={{ text: solution.buttonText, link: "#" }}
-                            image={solution.image}
-                            imagePosition={index % 2 === 0 ? "right" : "left"}
-                            darkMode={theme === 'dark'}
+                            title={solution?.title}
+                            description={solution?.description}
+                            button={{ text: solution?.button?.text, link: solution?.button?.link }}
+                            image={solution?.image}
+                            imagePosition={index % 2 === 0 ? "left" : "right"}
+                            className={index === 0 ? "bg-[#002052]" : ""}
+                            isInverted={index === 0
+
+                            }
                         />
                     ))}
                 </section>

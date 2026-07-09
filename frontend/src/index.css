@@ -1,5 +1,42 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* ─── Graphik Wide (local trial) ─── */
+@font-face {
+  font-family: 'Graphik Wide';
+  src: url('./font/graphik-trial/GraphikWide-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Graphik Wide';
+  src: url('./font/graphik-trial/GraphikWide-Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Graphik Wide';
+  src: url('./font/graphik-trial/GraphikWide-Semibold-Trial.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Graphik Wide';
+  src: url('./font/graphik-trial/GraphikWide-Bold-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Graphik Wide';
+  src: url('./font/graphik-trial/GraphikWide-Black-Trial.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ─── Theme tokens ─── */
 :root {
@@ -7,13 +44,18 @@
   --slate-bg: #ffffff;
 
   --f6f6f6: #f6f6f6;
-  --bg-secondary: #f8fafc;
+  --bg-secondary: #F6F6F6;
   --text: #111111;
   --heading: #0f172a;
   --muted: #64748b;
   --border: #e2e8f0;
   --card: #ffffff;
   --card-hover: #f1f5f9;
+  --footer-bg: #000942;
+  --darkblue-bg: #09155F;
+  --carddark-bg: #f6f6f6;
+  --keyServices-bg: #09155F;
+  --navblue-bg: #000941;
 }
 
 .dark {
@@ -27,6 +69,22 @@
   --border: #1e293b;
   --card: #1e293b;
   --card-hover: #334155;
+  --footer-bg: #002052;
+  --darkblue-bg: #e2e8f0;
+  --carddark-bg: #09155F;
+  --keyServices-bg: #162556;
+  --navblue-bg: #0f172a;
+}
+
+@layer components {
+  .heading-primary {
+    font-family: "Titillium Web", sans-serif;
+    @apply text-3xl md:text-4xl xl:text-[50px] font-bold font-['Titillium_Web'] text-[var(--heading)];
+  }
+
+  .text-subtitle {
+    @apply text-lg md:text-[18px] xl:text-[20px] max-w-3xl font-['Inter'] text-[var(--text)];
+  }
 }
 
 /* ─── Base ─── */
@@ -52,15 +110,17 @@ body {
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4 h5 h6 p li {
+p,
+li {
   font-family: "Inter", sans-serif;
 }
 
 .font-Inter {
   font-family: "Inter", sans-serif;
+}
+
+.font-Web {
+  font-family: "Titillium Web", sans-serif;
 }
 
 /* ─── Typography helpers ─── */
@@ -73,9 +133,11 @@ h4 h5 h6 p li {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 3px;
@@ -88,7 +150,7 @@ h4 h5 h6 p li {
 }
 
 /* ─── Marquee pause on hover ─── */
-.marquee-wrapper:hover > div {
+.marquee-wrapper:hover>div {
   animation-play-state: paused;
 }
 
@@ -98,6 +160,7 @@ h4 h5 h6 p li {
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
+
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);

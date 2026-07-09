@@ -1,5 +1,30 @@
 import { defineType, defineField } from 'sanity'
 
+const tabContentField = (name, title) => defineField({
+  name,
+  title,
+  type: 'array',
+  of: [
+    {
+      type: 'block',
+      styles: [
+        { title: 'Normal', value: 'normal' },
+        { title: 'Heading 2', value: 'h2' },
+        { title: 'Heading 3', value: 'h3' },
+      ],
+      lists: [
+        { title: 'Bullet', value: 'bullet' },
+      ],
+      marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+        ],
+      },
+    },
+  ],
+})
+
 export default defineType({
   name: 'careerDetails',
   title: 'Career Details',
@@ -24,10 +49,10 @@ export default defineType({
       title: 'Tab Content',
       type: 'object',
       fields: [
-        { name: 'overview', type: 'text' },
-        { name: 'summary', type: 'text' },
-        { name: 'responsibilities', type: 'text' },
-        { name: 'qualifications', type: 'text' },
+        tabContentField('overview', 'Overview'),
+        tabContentField('summary', 'Summary'),
+        tabContentField('responsibilities', 'Responsibilities'),
+        tabContentField('qualifications', 'Qualifications'),
       ]
     }),
     defineField({

@@ -34,16 +34,21 @@ export default defineType({
 
     defineField({
       name: 'solutionBlock',
-      title: 'Solution Block Section',
+      title: 'Our Expertise Section',
       type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'description', type: 'text' }),
         defineField({
-          name: 'image',
-          type: 'image',
-          options: { hotspot: true }
+          name: 'highlightText',
+          type: 'string'
         }),
+        defineField({
+          name: 'listItems',
+          type: 'array',
+          of: [{ type: 'string' }]
+        }),
+        defineField({ name: 'description2', type: 'text' }),
         defineField({
           name: 'button',
           type: 'object',
@@ -51,7 +56,13 @@ export default defineType({
             { name: 'text', type: 'string' },
             { name: 'link', type: 'string' }
           ]
-        })
+        }),
+        defineField({
+          name: 'image',
+          type: 'image',
+          options: { hotspot: true }
+        }),
+
       ]
     }),
 
@@ -74,6 +85,14 @@ export default defineType({
               ]
             }
           ]
+        }),
+        defineField({
+          name: 'button',
+          type: 'object',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
         })
       ]
     }),
@@ -93,7 +112,8 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'name', type: 'string' }),
-                defineField({ name: 'description', type: 'text' })
+                defineField({ name: 'description', type: 'text' }),
+                defineField({ name: 'image', type: 'image' })
               ]
             }
           ]
@@ -141,6 +161,7 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'name', type: 'string' }),
+                defineField({ name: 'shortBio', type: 'string' }),
                 defineField({ name: 'position', type: 'string' }),
                 defineField({ name: 'image', type: 'image' })
               ]
@@ -150,6 +171,7 @@ export default defineType({
       ]
     }),
 
+    // ==================== FINAL CTA ====================
     defineField({
       name: 'finalCta',
       title: 'Final Call to Action',
@@ -160,11 +182,13 @@ export default defineType({
         defineField({
           name: 'backgroundImage',
           type: 'image',
+          title: 'Background Image',
           options: { hotspot: true }
         }),
         defineField({
           name: 'button1',
           type: 'object',
+          title: 'Primary Button',
           fields: [
             { name: 'text', type: 'string' },
             { name: 'link', type: 'string' }
@@ -173,6 +197,7 @@ export default defineType({
         defineField({
           name: 'button2',
           type: 'object',
+          title: 'Secondary Button',
           fields: [
             { name: 'text', type: 'string' },
             { name: 'link', type: 'string' }

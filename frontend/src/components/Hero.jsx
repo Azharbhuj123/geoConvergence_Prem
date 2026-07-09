@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { client, urlFor } from '../lib/sanity'
+import { client, fileUrl, urlFor } from '../lib/sanity'
 import Button from './UI/Button'
 import { useWindowSize } from '../store/useThemeStore'
 
-export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min-h-screen' }) {
+export default function Hero({ darkMode, hero, minHeight = '', className = '', maxWidth = '' }) {
   const [loading, setLoading] = useState(false)
 
   if (loading) return (
@@ -17,6 +17,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min
 
   const title = hero?.title
   const subtitle = hero?.subtitle
+  const description = hero?.description
   const btn1 = hero?.button1
   const btn2 = hero?.button2
   const bgImage = hero?.backgroundImage ? urlFor(hero.backgroundImage) : null
@@ -25,7 +26,7 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min
 
   return (
     <section
-      className={`relative ${minHeight} flex items-center lg:items-end py-20 sm:py-24 md:py-28 lg:pb-24 xl:pb-28 overflow-hidden 
+      className={`relative min-h-[420px] ${minHeight} flex items-center overflow-hidden px-6 sm:px-8 lg:px-14 
         ${darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
       style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
@@ -52,30 +53,45 @@ export default function Hero({ darkMode, hero, minHeight = 'min-h-[600px] md:min
       )}
 
       {/* Hero content */}
-      <div className="relative z-10 w-full max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-4xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left gap-8 sm:gap-10 md:gap-12 transition-all">
-          <div className="flex flex-col gap-6 sm:gap-7 lg:gap-8 max-w-[760px]">
-            <h1 className="text-white font-extrabold font-['Titillium_Web'] leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl drop-shadow-2xl">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto">
+        <div className={`max-w-[653px] ${className}`}>
+          <div className="flex flex-col gap-7">
+            <h1
+              className="text-white font-bold font-Web leading-12 xl:leading-[80px] text-[34px] xl:text-[65px]"
+            >
               {title}
             </h1>
-            <p className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium font-Inter leading-relaxed drop-shadow-xl max-w-2xl">
+            <p className={`text-white/80 text-lg md:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] ${maxWidth} `}>
               {subtitle}
             </p>
+            {description && (
+              <p className={`text-white/80 text-lg md:text-[18px] xl:text-[20px] font-Inter leading-8 max-w-[592px] ${maxWidth} pt-2`}>
+                {description}
+              </p>
+            )}
           </div>
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start w-full sm:w-auto">
-            {btn1 && (
-              <Button href={btn1.link} variant="primary" size={isLarge ? "lg" : "sm"} className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
+
+        {(btn1 || btn2) && (
+          <div className="flex flex-col sm:flex-row gap-4 pt-12">
+            {btn1 && !btn1.pdfFile && (
+              <Button href={btn1.link} size='sm' variant="primary"  >
+                {btn1.text}
+              </Button>
+            )}
+            {btn1 && btn1.pdfFile && (
+              <Button href={fileUrl(btn1.pdfFile)} target="_blank" size='sm' variant="primary" download >
                 {btn1.text}
               </Button>
             )}
             {btn2 && (
-              <Button href={btn2.link} variant="secondary" size={isLarge ? "lg" : "sm"} className="w-full sm:w-auto min-w-[180px] sm:min-w-[220px]">
+              <Button href={btn2.link} size='sm' variant="secondary" >
                 {btn2.text}
               </Button>
             )}
           </div>
-        </div>
+        )}
       </div>
     </section>
   )

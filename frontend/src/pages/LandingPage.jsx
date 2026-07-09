@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Services from '../components/Services'
 import Stats from '../components/Stats'
+import LogoSlider from '../components/LogoSlider'
 import ProjectsMap from '../components/ProjectsMap'
 import FeaturedProducts from '../components/FeaturedProducts'
 import Clients from '../components/Clients'
@@ -11,7 +12,6 @@ import Testimonials from '../components/Testimonials'
 import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import { useThemeStore } from '../store/useThemeStore'
-import { client } from '../lib/sanity'
 import { useQuery } from '@tanstack/react-query'
 import { fetchLandingPage } from '../lib/api'
 
@@ -21,20 +21,53 @@ export default function LandingPage() {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['landingPage'],
         queryFn: fetchLandingPage,
-    })  
-    
+    })
+
+
+    const parsedStatsData = data?.stats?.cards?.map(card => {
+        const valueStr = card?.number?.replace(/[^0-9]/g, '');
+        const value = parseInt(valueStr) || null;
+        const suffix = card?.number?.replace(/[0-9]/g, '');
+        return {
+            value,
+            suffix,
+            label: card?.label,
+            iconImage: card?.iconImage,
+        };
+    });
     return (
-        <div style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
+        <div className={theme === 'dark' ? "dark" : ""}
+        style={{ background: 'var(--bg)', color: 'var(--text)', transition: 'all 0.3s ease' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
             <main>
-                <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-screen !items-center" />
+                <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-[620px] xl:min-h-[720px] items-center" />
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
-                <ProjectsMap darkMode={theme === 'dark'} />
-                <Stats darkMode={theme === 'dark'} />
-                <Clients darkMode={theme === 'dark'} />
+                <ProjectsMap 
+                darkMode={theme === 'dark'}
+                    title={data?.projectsMap?.title}
+                    description={data?.projectsMap?.description}
+                    button={data?.projectsMap?.button ? { text: data?.projectsMap?.button.text, link: data?.projectsMap?.button.link } : null}
+                />
+                <Stats darkMode={theme === 'dark'}
+                    statsData={parsedStatsData}
+                />
+                <LogoSlider darkMode={theme === 'dark'} sliders={data?.logoSlider?.cards} />
                 <Services darkMode={theme === 'dark'} services={data?.featuredProducts} variant='blue' />
+
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] pt-10 sm:pt-20`}>
+                <Clients darkMode={theme === 'dark'}
+                    title={data?.clients?.title}
+                    subTitle={data?.clients?.subTitle}
+                    logos={data?.clients?.cards}
+                />
+                </section>
                 <Events darkMode={theme === 'dark'} eventsData={data?.events} />
-                <Testimonials darkMode={theme === 'dark'} />
+
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] pt-10`}>
+                <Testimonials darkMode={theme === 'dark'}
+                    pageData={data?.testimonials}
+                />
+                </section>
                 <CTA darkMode={theme === 'dark'} CtaData={data?.finalCta} />
             </main>
             <Footer darkMode={theme === 'dark'} />

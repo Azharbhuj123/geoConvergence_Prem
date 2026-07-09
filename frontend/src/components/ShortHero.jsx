@@ -4,15 +4,19 @@ import Hero2 from "../assets/hero2.png";
 export default function ShortHero({ title }) {
   return (
     <section
-      className="relative h-[200px] sm:h-[280px] md:h-[360px] lg:h-[451px] w-full flex items-center overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(${Hero2})` }}
+      className="relative h-[250px] sm:h-[250px]  w-full flex items-center overflow-hidden bg-cover bg-center px-6 lg:px-14 py-5"
+      style={{
+        backgroundImage: `url(${Hero2})`,
+      }}
     >
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0a192f]/90 via-[#0a192f]/50 to-transparent" />
 
-      {/* Content Container */}
-      <div className="relative z-10 w-full max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-2xl">
+      {/* Container: Using your site's specific max-width and padding.
+          'w-full' ensures the container occupies the space so 'mx-auto' can center it.
+      */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto">
+        <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
           {title}
         </h1>
       </div>

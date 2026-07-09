@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { motion as Motion } from 'framer-motion';
+import { urlFor } from "../lib/sanity";
 
 function useCountUp(target, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
@@ -19,7 +21,7 @@ function useCountUp(target, duration = 2000, start = false) {
   return count;
 }
 
-function StatCard({ value, suffix, label, icon, darkMode, animate }) {
+function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate, extraClass }) {
   const count = useCountUp(value, 2200, animate);
 
   return (
@@ -29,26 +31,26 @@ function StatCard({ value, suffix, label, icon, darkMode, animate }) {
       `}
     >
       <div
-        className={`font-bold font-['Titillium_Web'] leading-tight tabular-nums text-slate-100`}
-        style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+        className={`heading-primary font-Web ${extraClass}`}
       >
-        {count.toLocaleString()}
-        {suffix}
+        {count}{suffix}
       </div>
-      <div className={`text-sm sm:text-base font-semibold font-Inter uppercase tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'
+      <div className={`text-sm sm:text-lg font-semibold font-Inter uppercase tracking-widest min-h-[60px] ${darkMode ? 'text-slate-400' : 'text-slate-500'
         }`}>
         {label}
       </div>
-      <div className="w-full flex items-center justify-center md:justify-end mt-2 md:mt-0">
-        <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-          {icon}
-        </div>
+      <div className="w-full flex items-center justify-end">
+        {iconImage &&
+          <div className="w-14 h-14 sm:w-18 sm:h-18 xl:w-[76px] xl:h-[76px] flex items-center justify-center flex-shrink-0">
+            <img src={urlFor(iconImage)} className="w-full h-full" />
+          </div>
+        }
       </div>
     </div>
   );
 }
 
-export default function Stats({ darkMode, statsData }) {
+export default function Stats({ darkMode, statsData, className, extraClass }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -112,17 +114,25 @@ export default function Stats({ darkMode, statsData }) {
   return (
     <section
       ref={ref}
-      className={`py-16 md:py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${darkMode ? "bg-slate-950" : "bg-white"}`}
+      className={`pb-16 pt-15 lg:pb-20 px-6 sm:px-8 lg:px-14 ${darkMode ? "#0f172a" : "bg-white"} ${className}`}
     >
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-wrap gap-5 sm:gap-7 justify-center md:justify-start">
           {stats.map((stat) => (
-            <StatCard
+            <Motion.article
               key={stat.label}
-              {...stat}
-              darkMode={darkMode}
-              animate={visible}
-            />
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
+              className="flex-1 min-w-[240px] rounded-2xl flex flex-col gap-3 transition-all duration-300
+        bg-[var(--slate-bg)]">
+              <StatCard
+                key={stat.label}
+                {...stat}
+                darkMode={darkMode}
+                animate={visible}
+                extraClass={extraClass}
+              />
+            </Motion.article>
           ))}
         </div>
       </div>

@@ -1,29 +1,35 @@
-import { useEffect, useState } from 'react';
-import { create } from 'zustand'
+import { create } from "zustand";
 
-export const useThemeStore = create((set) => ({
-  theme: 'light',
-  toggleTheme: () =>
-    set((state) => ({
-      theme: state.theme === 'light' ? 'dark' : 'light',
-    })),
+const getInitialTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
 
-  isLarge: false,
-  setIsLarge: (isLarge) => set({ isLarge }),
-}))
+  if (savedTheme) {
+    return savedTheme;
+  }
 
-export function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-  });
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize({ width: window.innerWidth });
-    }
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  return windowSize;
-}
+export const useThemeStore = create((set, get) => ({
+  theme: getInitialTheme(),
+
+  toggleTheme: () => {
+    const nextTheme = get().theme === "light" ? "dark" : "light";
+
+    localStorage.setItem("theme", nextTheme);
+
+    set({
+      theme: nextTheme,
+    });
+  },
+
+  setTheme: (theme) => {
+    localStorage.setItem("theme", theme);
+
+    set({
+      theme,
+    });
+  },
+}));

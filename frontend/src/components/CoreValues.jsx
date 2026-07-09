@@ -1,43 +1,133 @@
-import { useThemeStore } from '../store/useThemeStore';
+import { urlFor } from "../lib/sanity";
+import { useThemeStore } from "../store/useThemeStore";
+import { motion as Motion } from 'framer-motion';
 
-export default function CoreValues({ title, cards }) {
+export default function CoreValues({
+  title,
+  subTitle,
+  cards = [],
+  className = "",
+  lastRowHeight = null,
+  maxWidth
+}) {
   const { theme } = useThemeStore();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
+
+  const getRows = () => {
+    const total = cards.length;
+
+    if (total <= 3) return [cards];
+
+    const firstRow = cards.slice(0, 3);
+    const remaining = cards.slice(3);
+
+    return [firstRow, remaining];
+  };
+
+  const rows = getRows();
 
   return (
-    <section className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 ${isDark ? 'bg-slate-950' : 'bg-blue-950'}`}>
-      <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold font-['Titillium_Web'] text-white mb-10 sm:mb-14 md:mb-16 lg:mb-20 text-center tracking-tight leading-tight">
-          {title || "Our Core Values"}
+    <section
+      className={`py-20 lg:py-24 px-6 sm:px-8 lg:px-14 ${isDark ? "bg-slate-950" : "bg-[#09155F]"
+        } ${className}`}
+    >
+      <div className="max-w-[1440px] mx-auto">
+        {/* Heading */}
+        <h2 className="heading-primary font-Web text-white mb-6">
+          {title}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-          {cards?.map((card, idx) => (
-            <div
-              key={idx}
-              className={`p-6 sm:p-8 md:p-10 rounded-[28px] flex flex-col justify-between gap-8 h-auto min-h-[280px] sm:min-h-[320px] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-2 border border-white/5 ${
-                isDark ? 'bg-slate-900' : 'bg-white/10 backdrop-blur-sm'
-              }`}
-            >
-              <div>
-                <h3 className={`text-xl sm:text-2xl font-extrabold font-['Titillium_Web'] uppercase tracking-wider mb-3 sm:mb-4 leading-tight text-white`}>
-                  {card.title}
-                </h3>
-                <p className={`text-sm sm:text-base font-medium font-Inter leading-relaxed text-white/80`}>
-                  {card.description}
-                </p>
-              </div>
+        {/* Subtitle */}
+        {subTitle && (
+          <p className={`text-subtitle text-slate-300 mb-12 ${maxWidth}`}>
+            {subTitle}
+          </p>
+        )}
 
-              {/* Icon Circle */}
-              <div className="flex items-center justify-end mt-auto">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-900/40">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                  </svg>
+        {/* Cards */}
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-6"> */}
+        <div
+          className={`
+    grid grid-cols-1 md:grid-cols-2 gap-6
+    ${cards.length === 4
+              ? "xl:grid-cols-4"
+              : "xl:grid-cols-6"
+            }
+  `}
+        >
+          {cards.map((card, idx) => {
+            const total = cards.length;
+
+            let xlSpan =
+              total === 4
+                ? "xl:col-span-1"
+                : "xl:col-span-2";
+
+            // 5 cards last row = 50/50
+            if (total === 5 && idx >= 3) {
+              xlSpan = "xl:col-span-3";
+            }
+            return (
+              <Motion.article
+                key={idx}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.1, ease: "easeOut" }}
+                style={{
+                  minHeight: lastRowHeight || undefined,
+                  width: "100%",
+                }}
+                className={`
+          relative min-h-[240px]
+          rounded-[20px]
+          p-6 md:p-8
+          overflow-hidden
+          transition-all duration-300 hover:shadow-xl
+          ${xlSpan}
+          ${isDark ? "bg-slate-800" : "bg-white"}
+        `}
+              >
+                {/* Text */}
+                <div className="">
+                  <h3 className="font-Web text-xl xl:text-2xl font-bold uppercase leading-tight text-[var(--text)]">
+                    {card.title}
+                  </h3>
+
+                  <p
+                    className={`mt-4 pr-22 font-Inter text-base xl:text-xl leading-6 ${isDark ? "text-slate-300" : "text-slate-600"
+                      }`}
+                  >
+                    {card.description}
+                  </p>
                 </div>
-              </div>
-            </div>
-          ))}
+
+                {/* Icon */}
+                <div className="absolute bottom-6 right-6">
+                  {card.iconImage ? (
+                    <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg">
+                      <img
+                        src={urlFor(card.iconImage)}
+                        alt={card.title}
+                        className="w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain"
+                      />
+                    </span>
+                  ) : (
+                    <span className="flex h-16 w-16 sm:h-20 sm:w-20 xl:h-24 xl:w-24 items-center justify-center rounded-lg bg-[#2f80d1] shadow-lg shadow-black/20">
+                      <svg
+                        width="40"
+                        height="40"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                      >
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                      </svg>
+                    </span>
+                  )}
+                </div>
+              </Motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import ShortHero from '../components/ShortHero';
@@ -9,14 +9,20 @@ import Footer from '../components/Footer';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBlogPage } from '../lib/api';
 import { pageData } from '../lib/data/page';
+import Button from '../components/UI/Button';
 
 function SidebarWidget({ title, children }) {
+  const { theme } = useThemeStore();
+  const isDark = theme === 'dark';
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center gap-3">
-        {/* The blue accent bar from your reference image */}
-        <div className="w-[3px] h-6 bg-[#326FB7]" />
-        <h4 className="text-[20px] font-bold text-[#001D3D]">{title}</h4>
+        <div className={`w-[3px] h-6 ${isDark ? 'bg-white' : 'bg-[#000942]'}`} />
+
+        <h4 className={`text-md sm:text-lg xl:text-[30px] font-bold ${isDark ? 'text-white' : 'text-[#000942]'}`}>
+          {title}
+        </h4>
       </div>
       <div>{children}</div>
     </div>
@@ -34,35 +40,31 @@ function CategoryBadge({ label }) {
 }
 
 function BlogCard({ post }) {
+  const postPath = `/blog/${post.slug || post.id}`;
+
   return (
-    <article className="flex flex-col sm:flex-row bg-[var(--card)] rounded-[16px] overflow-hidden border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_28px_rgba(50,111,183,0.14)] transition-all duration-300 group">
+    <article className="flex flex-col bg-[var(--card)] rounded-[16px] overflow-hidden border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_28px_rgba(50,111,183,0.14)] transition-all duration-300 group">
       {/* ── Left: Image ── */}
-      <div className="relative flex-shrink-0 w-full sm:w-[44%] h-[200px] sm:h-auto overflow-hidden">
+      <div className="relative flex-shrink-0 w-full h-[200px] sm:h-[280px] xl:h-[420px] overflow-hidden">
         <img
           src={post.image}
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {/* Gradient overlay at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        {/* Category badge bottom-left of image */}
-        <div className="absolute bottom-4 left-4">
-          <CategoryBadge label={post.category} />
-        </div>
       </div>
 
       {/* ── Right: Content ── */}
       <div className="flex flex-col justify-center gap-3 px-6 py-6 flex-1">
-        <p className="text-[12px] text-[var(--muted)] font-medium">{post.date}</p>
-        <h3 className="text-[16px] sm:text-[17px] font-bold text-[var(--heading)] leading-[1.4] group-hover:text-[#326FB7] transition-colors duration-200 line-clamp-3">
+        <button className="text-lg text-[var(--text)] bg-[#0C59DB73] text-center px-2 py-2 max-w-[200px] font-Inter border rounded-lg border-[var(--border)]">{post.date}</button>
+        <h3 className="text-lg sm:text-xl font-Web font-bold text-[var(--heading)] leading-[1.4] line-clamp-2">
           {post.title}
         </h3>
-        <p className="text-[13px] sm:text-[14px] text-[var(--muted)] leading-[1.7] line-clamp-3">
+        <p className="text-sm sm:text-lg text-[var(--muted)] leading-[1.7] line-clamp-3">
           {post.excerpt}
         </p>
         <Link
-          to={`/blog/${post.id}`}
-          className="self-start mt-1 text-[#326FB7] dark:text-[#60a5fa] text-[13px] font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
+          to={postPath}
+          className="self-start mt-1 text-[var(--text)] text-lg xl:text-[20px] font-Web font-semibold flex items-center gap-1.5 hover:gap-3 transition-all duration-200 group/btn"
         >
           View More
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/btn:translate-x-1 transition-transform duration-200">
@@ -74,71 +76,71 @@ function BlogCard({ post }) {
   );
 }
 
-function SearchBox({ darkMode }) {
-  const [q, setQ] = useState('');
+function SearchBox({ searchTerm, setSearchTerm }) {
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Search</h4>
-      <div className="flex items-center gap-2 border border-[var(--border)] rounded-[12px] px-4 py-2.5 bg-[var(--bg-secondary)] focus-within:border-[#326FB7] transition-colors">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[var(--muted)] flex-shrink-0">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
+    <div className="relative">
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full bg-[#f9fafb] font-Inter text-[#000942] border border-gray-200 rounded-xl py-3.5 px-5 outline-none focus:border-[#326FB7] transition-all"
+      />
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
         </svg>
-        <input
-          type="text"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search"
-          className="flex-1 bg-transparent outline-none text-[var(--text)] text-[14px] placeholder:text-[var(--muted)]"
-        />
       </div>
     </div>
   );
 }
 
-function PopularTags({ darkMode, popularTags }) {
-  const [active, setActive] = useState(null);
+function PopularTags({ darkMode, popularTags, selectedTag, setSelectedTag }) {
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Popular Tags</h4>
+    <div className=" rounded-[20px] flex flex-col gap-6">
       <div className="flex flex-wrap gap-2">
-        {popularTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setActive(active === tag ? null : tag)}
-            className={`px-3 py-1.5 rounded-[8px] text-[12px] font-semibold border transition-all duration-200 ${
-              active === tag
+        {popularTags.map((tag) => {
+          const isActive = selectedTag?.toLowerCase() === tag.toLowerCase();
+          return (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(isActive ? null : tag)}
+              className={`px-3 py-1.5 rounded-[8px] text-md sm:text-lg font-Inter border transition-all duration-200 ${isActive
                 ? 'bg-[#326FB7] text-white border-[#326FB7]'
                 : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
-            }`}
-          >
-            {tag}
-          </button>
-        ))}
+                }`}
+            >
+              {tag}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function RecentPosts({ darkMode, recentPosts }) {
+export function RecentPosts({ darkMode, recentPosts }) {
   return (
-    <div className="bg-[var(--card)] rounded-[20px] p-6 border border-[var(--border)] shadow-[0_2px_12px_rgba(0,0,0,0.05)] dark:shadow-none flex flex-col gap-4">
-      <h4 className="text-[16px] font-bold text-[var(--heading)]">Recent Post</h4>
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         {recentPosts.map((post) => (
-          <div key={post.id} className="flex items-start gap-3 group cursor-pointer">
+          <Link
+            key={post.slug || post.id}
+            to={`/blog/${post.slug || post.id}`}
+            className="flex items-start gap-3 group cursor-pointer"
+          >
             <img
               src={post.image}
               alt={post.title}
-              className="w-[64px] h-[52px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
+              className="w-18 h-18 sm:w-[112px] sm:h-[114px] object-cover rounded-[10px] flex-shrink-0 group-hover:opacity-80 transition-opacity"
             />
             <div className="flex flex-col gap-1 min-w-0">
-              <p className="text-[13px] font-semibold text-[var(--heading)] leading-snug group-hover:text-[#326FB7] transition-colors line-clamp-2">
+              <p className="text-md sm:text-xl font-Web font-semibold text-[var(--heading)] leading-snug  line-clamp-2">
                 {post.title}
               </p>
-              <p className="text-[11px] text-[var(--muted)]">{post.date}</p>
+              <p className="text-sm sm:text-lg text-[var(--muted)]">{post.date}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -151,19 +153,69 @@ export default function BlogPage() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
   const [visibleCount, setVisibleCount] = useState(3);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedTag = searchParams.get('tag');
+
+  const setSelectedTag = (tag) => {
+    if (tag) {
+      setSearchParams((prev) => {
+        const next = new URLSearchParams(prev);
+        next.set('tag', tag);
+        return next;
+      });
+    } else {
+      setSearchParams((prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete('tag');
+        return next;
+      });
+    }
+  };
 
   const { data } = useQuery({
     queryKey: ['blogPage'],
     queryFn: fetchBlogPage,
   });
 
-  const blogContent = data?.blog || pageData.blogPage;
-  const BLOG_POSTS = blogContent.posts;
-  const POPULAR_TAGS = blogContent.popularTags;
-  const RECENT_POSTS = blogContent.recentPosts;
+  const blogContent = data || pageData.blogPage;
+  const BLOG_POSTS = blogContent.posts || [];
+  const POPULAR_TAGS = blogContent.popularTags || [];
+  const RECENT_POSTS = blogContent.recentPosts || [];
 
-  const visiblePosts = BLOG_POSTS.slice(0, visibleCount);
-  const hasMore = visibleCount < BLOG_POSTS.length;
+  // Validate selected tag against POPULAR_TAGS (case-insensitive check)
+  const isTagValid = selectedTag && POPULAR_TAGS.some(
+    (t) => t.toLowerCase() === selectedTag.toLowerCase()
+  );
+
+  // Derive filtered posts based on tag and search term
+  const filteredPosts = BLOG_POSTS.filter((post) => {
+    // 1. Tag filter
+    if (isTagValid) {
+      const postTag = post.tag || '';
+      if (postTag.toLowerCase() !== selectedTag.toLowerCase()) {
+        return false;
+      }
+    }
+
+    // 2. Search filter (title, excerpt, tag, category)
+    if (searchTerm.trim()) {
+      const search = searchTerm.toLowerCase().trim();
+      const titleMatch = post.title?.toLowerCase().includes(search);
+      const excerptMatch = post.excerpt?.toLowerCase().includes(search);
+      const tagMatch = post.tag?.toLowerCase().includes(search);
+      const categoryMatch = post.category?.toLowerCase().includes(search);
+
+      if (!titleMatch && !excerptMatch && !tagMatch && !categoryMatch) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPosts.length;
 
   return (
     <div className={darkMode ? 'dark' : ''}>
@@ -172,54 +224,84 @@ export default function BlogPage() {
         <ShortHero title="Blogs" />
 
         {/* ── Blog Section ── */}
-        <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-            <div className="mb-10 sm:mb-14 md:mb-16 text-center lg:text-left flex flex-col items-center lg:items-start gap-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[var(--heading)] font-['Titillium_Web'] tracking-tight leading-tight">
-                Our Latest News & Blogs
+        <section className="px-6 lg:px-14 py-8 sm:py-14 mt-4">
+          <div className="max-w-[1440px] mx-auto ">
+            <div className="mb-10">
+              <h2
+                className="heading-primary font-Web"
+              >
+                Our Latest News &amp; Blogs
               </h2>
-              <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 shadow-lg shadow-blue-500/20" />
             </div>
 
             {/* Grid: posts left + sidebar right */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-10 sm:gap-14 xl:gap-16 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
 
               {/* ── Left: Blog Cards ── */}
-              <div className="flex flex-col gap-8 sm:gap-10">
-                {visiblePosts.map((post) => (
-                  <BlogCard key={post.id} post={post} />
-                ))}
-
-                {/* Load More */}
-                {hasMore && (
-                  <div className="flex justify-center mt-6">
-                    <button
-                      onClick={() => setVisibleCount((c) => c + 3)}
-                      className="px-10 py-4 rounded-2xl bg-gradient-to-br from-blue-700 to-blue-500 text-white font-extrabold text-base shadow-xl shadow-blue-600/20 hover:scale-105 active:scale-95 transition-all duration-300"
-                    >
-                      View More Posts
-                    </button>
+              <div className="flex flex-col gap-7">
+                {filteredPosts.length === 0 ? (
+                  <div className="text-center py-12 bg-[var(--card)] rounded-[16px] border border-[var(--border)] shadow-[0_2px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_14px_rgba(0,0,0,0.25)]">
+                    <p className="text-lg text-[var(--muted)] font-Inter">
+                      No blog posts found.
+                    </p>
                   </div>
+                ) : (
+                  <>
+                    {visiblePosts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
+
+                    {/* Load More */}
+                    {hasMore && (
+                      <div className="flex justify-center mt-4">
+                        <Button
+                          size='sm'
+                          onClick={() => setVisibleCount((c) => c + 3)}>
+                          View More
+                        </Button>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
               {/* ── Right: Sidebar ── */}
-              <aside className="flex flex-col gap-10 lg:gap-12 lg:sticky lg:top-8">
+              {/* Right Column: Sidebar */}
+              <aside className="flex flex-col gap-12 lg:sticky lg:top-8">
+
                 {/* Search Widget */}
-                <SearchBox darkMode={darkMode} />
+                <SidebarWidget title="Search">
+                  <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                </SidebarWidget>
 
                 {/* Popular Tags Widget */}
-                <PopularTags darkMode={darkMode} popularTags={POPULAR_TAGS} />
+                <SidebarWidget title="Popular Tags">
+                  <PopularTags
+                    darkMode={darkMode}
+                    popularTags={POPULAR_TAGS}
+                    selectedTag={selectedTag}
+                    setSelectedTag={setSelectedTag}
+                  />
+                </SidebarWidget>
 
                 {/* Recent Posts Widget */}
-                <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
+                <SidebarWidget title="Recent Post">
+                  <RecentPosts darkMode={darkMode} recentPosts={RECENT_POSTS} />
+                </SidebarWidget>
+
               </aside>
             </div>
           </div>
         </section>
 
-        <Testimonials darkMode={darkMode} />
-        <CTA darkMode={darkMode} />
+        {/* Testimonials */}
+        {/* <section className="pt-15"> */}
+          {/* <Testimonials darkMode={darkMode} /></section> */}
+
+        {/* CTA */}
+        {/* <CTA darkMode={darkMode} /> */}
+
+        {/* Footer */}
         <Footer darkMode={darkMode} />
       </div>
     </div>

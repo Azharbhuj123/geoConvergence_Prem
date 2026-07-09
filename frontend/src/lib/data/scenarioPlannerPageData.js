@@ -2,16 +2,31 @@ export const scenarioPlannerPageData = {
   hero: {
     title: "Scenario Planner",
     subtitle: "Advanced solutions in Scenario Planner to redefine physical and digital transformations.",
+    button1: { text: "Explore Services", link: "#" },
+    button2: { text: "Learn More", link: "#" },
     backgroundImage: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
   },
   firstSolution: {
     title: "Discover Scenario Planner",
     description: "Transform your workflows and unlock unprecedented operational efficiency with Scenario Planner. We bridge the gap between physical reality and digital excellence.",
-    buttonText: "Learn More",
+    description2: "Our solutions help organizations streamline operations, enhance decision-making, and achieve measurable improvements in performance and productivity.",
+    image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+  },
+  secondSolution: {
+    title: "Why choose Scenario Planner?",
+    description: "Built for speed, scale, and uncompromising accuracy. Ensure your teams are fully equipped to handle whatever comes next.",
+    description2: "Our solutions help organizations streamline operations, enhance decision-making, and achieve measurable improvements in performance and productivity.",
+    highlightText: "Scalability and Adaptability.",
+    listItems: [
+      "Seamless Integration with existing systems.",
+      "AI-Powered Insights for predictive analytics.",
+      "Scalability and Adaptability for growing needs."
+    ],
     image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
   },
   coreValues: {
     sectionTitle: "Our Core Values",
+    subTitle: "Delivering Excellence Through a Framework of Integrity, Innovation, and Precision.",
     cards: [
       { title: "Innovation", description: "Pushing boundaries", iconColor: "blue" },
       { title: "Accuracy", description: "Precision in every detail", iconColor: "blue" },
@@ -40,12 +55,6 @@ export const scenarioPlannerPageData = {
       }
     ]
   },
-  secondSolution: {
-    title: "Why choose Scenario Planner?",
-    description: "Built for speed, scale, and uncompromising accuracy. Ensure your teams are fully equipped to handle whatever comes next.",
-    buttonText: "See Capabilities",
-    image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
-  },
   useCases: {
     sectionTitle: "Use Cases",
     sectionSubtitle: "Empowering a diverse range of operational requirements.",
@@ -64,6 +73,24 @@ export const scenarioPlannerPageData = {
         title: "Healthcare Facilities",
         description: "Robust tracking for mission critical zones.",
         image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+      }
+    ]
+  },
+  keyFeatures: {
+    title: "Just 3 Easy Steps to new Capabilities ",
+    description: "Follow a simple, streamlined process designed to unlock new capabilities quickly and efficiently.From start to finish, each step is crafted to help you grow, adapt, and achieve better results effortlessly.",
+    cards: [
+      {
+        number: "Account",
+      },
+      {
+        number: "Resume",
+      },
+      {
+        number: "Quick Jobs",
+      },
+      {
+        number: "Apply Them",
       }
     ]
   },

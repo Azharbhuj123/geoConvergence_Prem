@@ -11,16 +11,27 @@ export default defineType({
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'subtitle', type: 'text' }),
+        defineField({ name: 'button1', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
+        defineField({ name: 'button2', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({ name: 'backgroundImage', type: 'image', options: { hotspot: true } })
+      ]
+    }),
+    defineField({
+      name: 'meetTheTeam', title: 'Meet The Team', type: 'object',
+      fields: [
+        defineField({ name: 'title', type: 'string' }),
+        defineField({ name: 'description', type: 'text' }),
+        defineField({ name: 'image', type: 'image', options: { hotspot: true } })
       ]
     }),
     defineField({
       name: 'coreValues', title: 'Core Values', type: 'object',
       fields: [
         defineField({ name: 'sectionTitle', type: 'string' }),
+        defineField({ name: 'subTitle', type: 'string' }),
         defineField({
           name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [ defineField({ name: 'title', type: 'string' }), defineField({ name: 'description', type: 'text' }), defineField({ name: 'iconColor', type: 'string' }) ] }
+            { type: 'object', fields: [defineField({ name: 'title', type: 'string' }), defineField({ name: 'description', type: 'text' }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
           ]
         })
       ]
@@ -33,36 +44,86 @@ export default defineType({
       ]
     }),
     defineField({
-      name: 'solutions', title: 'Solution Blocks', type: 'array',
+      name: 'services',
+      title: 'Services',
+      type: 'array',
       of: [
-        { type: 'object', fields: [
-          defineField({ name: 'title', type: 'string' }),
-          defineField({ name: 'description', type: 'text' }),
-          defineField({ name: 'buttonText', type: 'string' }),
-          defineField({ name: 'image', type: 'image', options: { hotspot: true } })
-        ] }
-      ]
-    }),
-    defineField({
-      name: 'stats', title: 'Stats', type: 'object',
-      fields: [
-        defineField({ name: 'sectionTitle', type: 'string' }),
-        defineField({ name: 'sectionSubtitle', type: 'text' }),
         defineField({
-          name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [ defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string' }) ] }
-          ]
-        })
-      ]
+          name: 'serviceSection',
+          title: 'Service Section',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'sectionTitle',
+              title: 'Section Title',
+              type: 'string',
+            }),
+
+            defineField({
+              name: 'sectionSubtitle',
+              title: 'Section Subtitle',
+              type: 'string',
+            }),
+
+            defineField({
+              name: 'cards',
+              title: 'Cards',
+              type: 'array',
+              of: [
+                defineField({
+                  name: 'card',
+                  title: 'Card',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'image',
+                      title: 'Image',
+                      type: 'image',
+                      options: { hotspot: true },
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
     }),
+    // defineField({
+    //   name: 'solutions', title: 'Solution Blocks', type: 'array',
+    //   of: [
+    //     {
+    //       type: 'object', fields: [
+    //         defineField({ name: 'title', type: 'string' }),
+    //         defineField({ name: 'description', type: 'text' }),
+    //         defineField({ name: 'listItems', type: 'array', of: [{ type: 'string' }] }),
+    //         defineField({ name: 'description2', type: 'string' }),
+    //         defineField({ name: 'buttonText', type: 'string' }),
+    //         defineField({ name: 'image', type: 'image', options: { hotspot: true } })
+    //       ]
+    //     }
+    //   ]
+    // }),
+    // defineField({
+    //   name: 'stats', title: 'Industries We Serve', type: 'object',
+    //   fields: [
+    //     defineField({ name: 'title', type: 'string' }),
+    //     defineField({ name: 'description', type: 'text' }),
+    //     defineField({
+    //       name: 'cards', type: 'array', of: [
+    //         { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
+    //       ]
+    //     })
+    //   ]
+    // }),
     defineField({
       name: 'finalCta', title: 'Final CTA', type: 'object',
       fields: [
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'subtitle', type: 'text' }),
+        defineField({ name: 'button1', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
+        defineField({ name: 'button2', type: 'object', fields: [{ name: 'text', type: 'string' }, { name: 'link', type: 'string' }] }),
         defineField({ name: 'backgroundImage', type: 'image', options: { hotspot: true } }),
-        defineField({ name: 'button1', type: 'object', fields: [ { name: 'text', type: 'string' }, { name: 'link', type: 'string' } ] }),
-        defineField({ name: 'button2', type: 'object', fields: [ { name: 'text', type: 'string' }, { name: 'link', type: 'string' } ] })
       ]
     })
   ]

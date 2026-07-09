@@ -18,20 +18,19 @@ export default function EightStarPage() {
       className={isDark ? "dark" : ""}
       style={{ background: "var(--bg)", color: "var(--text)" }}
     >
-      <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
+      {/* <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} /> */}
 
       <main>
-        <ShortHero title={data.hero.title} />
+        {/* <ShortHero title={data.hero.title} /> */}
 
         {/* Main Content Section */}
-        <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]">
-          <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex flex-col gap-10 sm:gap-14 md:gap-16">
-            
+        <section className="px-0 lg:px-14 lg:pb-10">
+          <div className="max-w-[1440px] mx-auto ">
             {/* Top Row: Card and Description */}
             <MidSection data={data} />
 
-            {/* Bottom Row: Data Table */}
-            <div className="flex flex-col gap-4 sm:gap-6">
+            {/* Bottom Row: Data Table Refactored to match Image 1 */}
+            <div className="flex flex-col gap-3">
               {data.tableData.map((row, idx) => (
                 <div
                   key={idx}
@@ -77,10 +76,10 @@ export default function EightStarPage() {
           </div>
         </section>
 
-        <CTA darkMode={isDark} />
+        {/* <CTA darkMode={isDark} /> */}
       </main>
 
-      <Footer darkMode={isDark} />
+      {/* <Footer darkMode={isDark} /> */}
     </div>
   );
 }

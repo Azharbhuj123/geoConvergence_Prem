@@ -1,245 +1,328 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { useThemeStore } from '../store/useThemeStore';
 import Navbar from '../components/Navbar';
 import ShortHero from '../components/ShortHero';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import { useQuery } from '@tanstack/react-query';
 import { fetchBlogDetails, fetchBlogPage } from '../lib/api';
 import { pageData } from '../lib/data/page';
-
-// ─── Sidebar Widget ───────────────────────────────────────────────────────────
+import { RecentPosts } from './Blog';
 
 function SidebarWidget({ title, children }) {
+  const { theme } = useThemeStore();
+  const isDark = theme === 'dark';
+
   return (
-    <div className="flex flex-col gap-4">
-      {/* Title row with left blue accent bar */}
-      <div className="flex items-center gap-3 pb-3 border-b border-[var(--border)]">
-        <div className="w-1 h-6 rounded-sm bg-[#326FB7] flex-shrink-0" />
-        <h4 className="text-[17px] font-bold text-[var(--heading)]">{title}</h4>
+    <div className="flex flex-col gap-5">
+      <div className="flex items-center gap-3">
+        <div className={`w-[3px] h-6 ${isDark ? 'bg-white' : 'bg-[#000942]'}`} />
+
+        <h4 className={`text-md sm:text-lg xl:text-[30px] font-bold ${isDark ? 'text-white' : 'text-[#000942]'}`}>
+          {title}
+        </h4>
       </div>
-      {children}
+      <div>{children}</div>
     </div>
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+const renderEndTitle = (text) => {
+  return text
+    .split(/(info@geoconvergence\.com|LinkedIn)/g)
+    .map((part, index) => {
+      if (part === "info@geoconvergence.com") {
+        return (
+          <a
+            key={index}
+            href="mailto:info@geoconvergence.com"
+            className="text-blue-600 underline"
+          >
+            {part}
+          </a>
+        );
+      }
+
+      if (part === "LinkedIn") {
+        return (
+          <a
+            key={index}
+            href="https://www.linkedin.com/company/geoconvergence/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            LinkedIn
+          </a>
+        );
+      }
+
+      return part;
+    });
+};
+
+function renderTextChild(child, index) {
+  let content = child.text || '';
+
+  if (child.marks?.includes('strong')) {
+    content = <strong className="font-bold">{content}</strong>;
+  }
+
+  if (child.marks?.includes('em')) {
+    content = <em>{content}</em>;
+  }
+
+  return <span key={child._key || index}>{content}</span>;
+}
+
+function renderPortableContent(content, {
+  defaultClassName = '',
+  defaultElement = 'p',
+  headingClassName = '',
+  wrapperClassName = 'flex flex-col gap-4',
+} = {}) {
+  if (!content) return null;
+
+  const renderDefaultElement = (children, key) => (
+    defaultElement === 'h1'
+      ? <h1 key={key} className={defaultClassName}>{children}</h1>
+      : <p key={key} className={defaultClassName}>{children}</p>
+  );
+
+  if (typeof content === 'string') {
+    return renderDefaultElement(content);
+  }
+
+  if (!Array.isArray(content)) {
+    return null;
+  }
+
+  if (content.every((item) => typeof item === 'string')) {
+    return (
+      <div className={wrapperClassName}>
+        {content.map((item, index) => (
+          renderDefaultElement(item, index)
+        ))}
+      </div>
+    );
+  }
+
+  const renderedBlocks = [];
+
+  for (let index = 0; index < content.length; index += 1) {
+    const block = content[index];
+    if (!block || block._type !== 'block') continue;
+
+    if (block.listItem === 'bullet') {
+      const listItems = [];
+
+      while (content[index]?._type === 'block' && content[index].listItem === 'bullet') {
+        const currentBlock = content[index];
+        listItems.push(
+          <li key={currentBlock._key || index}>
+            {currentBlock.children?.map(renderTextChild)}
+          </li>
+        );
+        index += 1;
+      }
+
+      index -= 1;
+      renderedBlocks.push(
+        <ul key={`list-${index}`} className={`${defaultClassName} list-disc space-y-2 pl-6`}>
+          {listItems}
+        </ul>
+      );
+      continue;
+    }
+
+    const children = block.children?.map(renderTextChild);
+    const key = block._key || index;
+
+    if (block.style === 'h2') {
+      renderedBlocks.push(<h2 key={key} className={headingClassName}>{children}</h2>);
+    } else if (block.style === 'h3') {
+      renderedBlocks.push(<h3 key={key} className={headingClassName}>{children}</h3>);
+    } else {
+      renderedBlocks.push(renderDefaultElement(children, key));
+    }
+  }
+
+  return <div className={wrapperClassName}>{renderedBlocks}</div>;
+}
 
 export default function BlogDetails() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
-  const { id } = useParams();
+  const { id: slug } = useParams();
   const [activeTag, setActiveTag] = useState(null);
 
-  // Fetch individual blog details
   const { data: detailsData } = useQuery({
-    queryKey: ['blogDetails', id],
-    queryFn: () => fetchBlogDetails(id),
-    enabled: !!id,
+    queryKey: ['blogDetails', slug],
+    queryFn: () => fetchBlogDetails(slug),
+    enabled: !!slug,
   });
 
-  // Fetch blog list for sidebar (tags/recent)
   const { data: blogPageData } = useQuery({
     queryKey: ['blogPage'],
     queryFn: fetchBlogPage,
   });
 
   const details = detailsData || pageData.blogDetailsPage;
-  const GALLERY_IMAGES = details.galleryImages;
-  const INLINE_IMAGE = details.inlineImage;
-  const INTRO = details.intro;
-  const SECTIONS = details.sections;
-
-  const blogContent = blogPageData?.blog || pageData.blogPage;
-  const POPULAR_TAGS = blogContent.popularTags;
-  const RECENT_POSTS = blogContent.recentPosts;
+  const galleryImages = details.galleryImages || [];
+  const sections = details.sections || [];
+  const blogContent = blogPageData || pageData.blogPage;
+  const popularTags = blogContent.popularTags || [];
+  const recentPosts = blogContent.recentPosts || [];
 
   return (
     <div className={darkMode ? 'dark' : ''}>
       <div className="bg-[var(--bg)] mx-auto overflow-x-hidden transition-colors duration-200">
-
-        {/* Navbar */}
         <Navbar darkMode={darkMode} toggleDarkMode={toggleTheme} />
 
-        {/* Hero */}
-        <ShortHero title="Blogs Details" />
+        <ShortHero title={details.heroTitle || 'Blogs Details'} />
 
-        {/* ── Main Content Section ── */}
-        <section className="max-w-[1440px] mx-auto px-6 lg:px-14 py-14">
+        <section className="px-6 lg:px-14 py-14">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="mb-10">
+              <h2 className="heading-primary font-Web">
+                {details.sectionTitle || 'Our Latest News & Blogs'}
+              </h2>
 
-          {/* Section heading */}
-          <div className="mb-10">
-            <h2
-              className="font-bold text-[var(--heading)] font-['Titillium_Web']"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}
-            >
-              Our Latest News &amp; Blogs
-            </h2>
-            <div className="mt-2 w-16 h-[3px] rounded-full bg-[#326FB7]" />
-          </div>
-
-          {/* 2-column layout: article + sidebar */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_300px] gap-12 items-start">
-
-            {/* ── LEFT: Full Article ── */}
-            <article className="flex flex-col gap-7 min-w-0">
-
-              {/* 2×2 Image Gallery */}
-              <div className="grid grid-cols-2 gap-3">
-                {GALLERY_IMAGES.map((img, i) => (
+              <div className={`grid gap-3 pt-6 pb-8 lg:pb-[60px] lg:pt-[36px] ${
+                galleryImages.length === 1 ? 'grid-cols-1' : 'grid-cols-2'
+              }`}>
+                {galleryImages.map((img, i) => (
                   <div
-                    key={i}
-                    className="overflow-hidden rounded-[12px] aspect-[4/3]"
+                    key={`${img.alt || 'gallery'}-${i}`}
+                    className={`overflow-hidden rounded-[12px] w-full ${
+                      galleryImages.length === 1 ? 'h-[400px] lg:h-[560px]' : 'h-[300px]'
+                    }`}
                   >
                     <img
-                      src={img.src}
-                      alt={img.alt}
+                      src={img.src || img.image}
+                      alt={img.alt || details.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 ))}
               </div>
 
-              {/* Category + date */}
-              <div className="flex items-center gap-3 flex-wrap mt-1">
-                <span className="inline-block px-3 py-[5px] text-[10px] font-bold tracking-widest uppercase text-white rounded-[6px] bg-[#326FB7]">
-                  FACILITIES GIS
-                </span>
-                <span className="text-[13px] text-[var(--muted)] font-medium">April 10, 2025</span>
+              <div className="flex flex-col gap-4 align-center justify-center py-7">
+                <h2 className="text-center text-[var(--heading)] text-lg md:text-xl xl:text-3xl font-Web font-bold max-w-[1040px] m-auto">
+                  {details.title}
+                </h2>
+                {details.summary && (
+                  renderPortableContent(details.summary, {
+                    defaultClassName: 'font-Inter text-left text-[var(--muted)] text-sm lg:text-xl',
+                    headingClassName: 'font-Web text-left font-bold text-[var(--heading)] text-lg lg:text-2xl',
+                  })
+                )}
               </div>
+            </div>
 
-              {/* Article H1 */}
-              <h1
-                className="font-bold text-[var(--heading)] font-['Titillium_Web'] leading-[1.3]"
-                style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.9rem)' }}
-              >
-                Seat-Level Digital Twins: Scaling ArcGIS Indoors and Public Safety for Multi-Tiered Arenas
-              </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
+              <article className="flex flex-col gap-7 min-w-0">
+                {details.articleTitle && (
+                  renderPortableContent(details.articleTitle, {
+                    defaultClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                    defaultElement: 'h1',
+                    headingClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                    wrapperClassName: 'flex flex-col gap-3',
+                  })
+                )}
 
-              {/* Intro */}
-              <p className="text-[14px] sm:text-[15px] leading-[1.85] text-[var(--muted)]">
-                {INTRO}
-              </p>
+                {renderPortableContent(details.intro, {
+                  defaultClassName: 'text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)] whitespace-pre-line',
+                  headingClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                  wrapperClassName: 'flex flex-col gap-7',
+                })}
 
-              {/* Divider */}
-              <div className="h-px bg-[var(--border)]" />
+                <div className="h-px bg-[var(--border)]" />
 
-              {/* Content Sections */}
-              {SECTIONS.map((section, idx) => (
-                <div key={idx} className="flex flex-col gap-3">
-                  <h2
-                    className="font-bold text-[var(--heading)] font-['Titillium_Web']"
-                    style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}
-                  >
-                    {section.heading}
-                  </h2>
-                  {section.paras.map((para, j) => (
-                    <p
-                      key={j}
-                      className="text-[14px] sm:text-[15px] leading-[1.85] text-[var(--muted)]"
-                    >
-                      {para}
-                    </p>
-                  ))}
-                  {/* Inline full-width image after section index 2 (Why Spatial Safety) */}
-                  {idx === 2 && (
-                    <div className="mt-3 rounded-[14px] overflow-hidden w-full">
-                      <img
-                        src={INLINE_IMAGE}
-                        alt="Arena interior view"
-                        className="w-full h-[260px] sm:h-[320px] object-cover"
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {/* Back link */}
-              <div className="pt-6 border-t border-[var(--border)]">
-                <Link
-                  to="/blog"
-                  className="inline-flex items-center gap-2 text-[#326FB7] text-[13px] font-semibold hover:gap-4 transition-all duration-200 group"
-                >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    className="group-hover:-translate-x-1 transition-transform duration-200"
-                  >
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  Back to All Blogs
-                </Link>
-              </div>
-            </article>
-
-            {/* ── RIGHT: Sidebar ── */}
-            <aside className="flex flex-col gap-8 lg:sticky lg:top-8">
-
-              {/* Popular Tags */}
-              <SidebarWidget title="Popular Tags">
-                <div className="flex flex-wrap gap-2 mt-1">
-                  {POPULAR_TAGS.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                      className={`px-3 py-1.5 rounded-[7px] text-[12px] font-semibold border transition-all duration-200 ${
-                        activeTag === tag
-                          ? 'bg-[#326FB7] text-white border-[#326FB7]'
-                          : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </SidebarWidget>
-
-              {/* Recent Posts */}
-              <SidebarWidget title="Recent Post">
-                <div className="flex flex-col gap-5 mt-1">
-                  {RECENT_POSTS.map((post) => (
-                    <Link
-                      key={post.id}
-                      to={`/blog/${post.id}`}
-                      className="flex items-start gap-3 group"
-                    >
-                      {/* Thumbnail */}
-                      <div className="w-[68px] h-[54px] rounded-[9px] overflow-hidden flex-shrink-0">
+                {sections.map((section, idx) => (
+                  <div key={`${section.heading || 'section'}-${idx}`} className="flex flex-col gap-3">
+                    <h2 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl">
+                      {section.heading}
+                    </h2>
+                    {(section.paras || []).map((para, j) => (
+                      <p
+                        key={`section-${idx}-para-${j}`}
+                        className="text-sm sm:text-lg lg:text-xl leading-[1.45] text-[var(--muted)] whitespace-pre-line"
+                      >
+                        {para}
+                      </p>
+                    ))}
+                    {idx === (details.inlineImageAfterSection ?? 2) && details.inlineImage && (
+                      <div className="mt-3 rounded-[14px] overflow-hidden w-full">
                         <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          src={details.inlineImage}
+                          alt={details.inlineImageAlt || details.title}
+                          className="w-full h-[260px] sm:h-[320px] object-cover"
                         />
                       </div>
-                      {/* Text */}
-                      <div className="flex flex-col gap-1 min-w-0 flex-1">
-                        <p className="text-[12px] sm:text-[13px] font-semibold text-[var(--heading)] leading-snug line-clamp-2 group-hover:text-[#326FB7] transition-colors">
-                          {post.title}
-                        </p>
-                        <p className="text-[11px] text-[var(--muted)]">{post.date}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </SidebarWidget>
+                    )}
+                  </div>
+                ))}
+                {details.endTitle && (
+                  <h6 className="text-sm sm:text-lg lg:text-xl leading-[1.45] text-[var(--muted)]">
+                    {renderEndTitle(details.endTitle)}
+                  </h6>
+                )}
 
-            </aside>
+                <div className="pt-6 border-t border-[var(--border)]">
+                  <Link
+                    to="/blog"
+                    className="inline-flex items-center gap-2 text-[#326FB7] text-sm font-semibold hover:gap-4 transition-all duration-200 group"
+                  >
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      className="group-hover:-translate-x-1 transition-transform duration-200"
+                    >
+                      <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to All Blogs
+                  </Link>
+                </div>
+              </article>
+
+              <aside className="flex flex-col gap-8 lg:sticky lg:top-8">
+                <SidebarWidget title="Popular Tags">
+                  <div className="flex flex-wrap gap-2">
+                    {popularTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                        className={`px-3 py-1.5 rounded-[8px] text-md sm:text-lg font-Inter border transition-all duration-200 ${activeTag === tag
+                          ? 'bg-[#326FB7] text-white border-[#326FB7]'
+                          : 'bg-[var(--bg-secondary)] text-[var(--muted)] border-[var(--border)] hover:border-[#326FB7] hover:text-[#326FB7]'
+                          }`}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </SidebarWidget>
+
+                <SidebarWidget title="Recent Post">
+                  <RecentPosts recentPosts={recentPosts} />
+                </SidebarWidget>
+              </aside>
+            </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <Testimonials darkMode={darkMode} />
-
-        {/* CTA */}
+        <section>
+          <Testimonials darkMode={darkMode} />
+        </section>
         <CTA darkMode={darkMode} />
 
-        {/* Footer */}
         <Footer darkMode={darkMode} />
       </div>
     </div>

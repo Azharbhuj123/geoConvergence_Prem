@@ -1,5 +1,6 @@
-import { useThemeStore, useWindowSize } from '../store/useThemeStore';
-import Button from './UI/Button'; // Assuming UI/Button exists, as it's used elsewhere for buttons
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import { useThemeStore } from '../store/useThemeStore';
 
 export default function OpenPositions({ title, subtitle, jobs }) {
   const { theme } = useThemeStore();
@@ -8,10 +9,10 @@ export default function OpenPositions({ title, subtitle, jobs }) {
   const isLarge = width >= 1024;
 
   return (
-    <section className={`py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-[var(--bg)]`}>
-      <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20 max-w-4xl mx-auto flex flex-col gap-4 sm:gap-6">
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold font-['Titillium_Web'] text-[var(--text)] leading-tight tracking-tight`}>
+    <section className="py-20 lg:py-24 px-6 sm:px-8 lg:px-10 xl:px-14 bg-[var(--bg)]">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold font-Web mb-6 text-[var(--text)]">
             {title || "Currently Open Positions"}
           </h2>
           {subtitle && (
@@ -21,48 +22,65 @@ export default function OpenPositions({ title, subtitle, jobs }) {
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-          {jobs?.map((job, idx) => (
-            <div
-              key={idx}
-              className={`p-6 sm:p-8 md:p-10 rounded-[32px] flex flex-col sm:flex-row gap-8 justify-between border-t-[6px] border-blue-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 ${isDark ? 'bg-slate-900' : 'bg-white'
-                }`}
-            >
-              <div className="flex-1 flex flex-col justify-between gap-6">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <h3 className={`text-lg sm:text-xl md:text-2xl font-extrabold font-['Titillium_Web'] uppercase tracking-wider ${isDark ? 'text-white' : 'text-slate-900'
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {jobs?.map((job, idx) => {
+            const slug = job.slug?.current || job.slug;
+
+            return (
+              <div
+                key={slug || idx}
+                className={`p-8 rounded-2xl flex flex-col md:flex-row gap-6 justify-between border-t-4 border-blue-600 transition-colors ${isDark ? 'bg-slate-800' : 'bg-slate-50'
+                  }`}
+              >
+                <div className="flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex flex-col items-start gap-3 mb-3">
+                      <h3 className={`text-2xl font-bold font-Web uppercase ${isDark ? 'text-white' : 'text-slate-900'
+                        }`}>
+                        {job.title}
+                      </h3>
+                      <span className="text-blue-800 text-sm font-semibold uppercase tracking-wide">
+                        {job.type}
+                      </span>
+                    </div>
+                    <p className={`text-lg mb-6 line-clamp-2 ${isDark ? 'text-slate-300' : 'text-slate-600'
                       }`}>
-                      {job.title}
-                    </h3>
-                    <span className="px-3 py-1 bg-blue-600/10 text-blue-600 text-xs font-bold rounded-full uppercase tracking-widest border border-blue-600/20">
-                      {job.type}
-                    </span>
+                      {job.description}
+                    </p>
                   </div>
-                  <p className={`text-sm sm:text-base leading-relaxed line-clamp-3 mb-6 opacity-80 ${isDark ? 'text-slate-300' : 'text-slate-600'
+
+                  <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'
                     }`}>
-                    {job.description}
-                  </p>
-                </div>
-
-                <div className={`flex flex-wrap items-center gap-x-6 gap-y-3 font-semibold text-xs sm:text-sm uppercase tracking-wider ${isDark ? 'text-slate-500' : 'text-slate-400'
-                  }`}>
-                  <div className="flex items-center gap-2">
-                    <span className="text-blue-600">📍</span> {job.location}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-blue-600">💰</span> {job.salary}
+                    <div className="flex items-center gap-2">
+                      <span>Location:</span> {job.location}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span>Salary:</span> {job.salary}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center justify-start sm:justify-end shrink-0">
-                <Button href="#" size={isLarge ? "lg" : "sm"} className="w-full shadow-lg hover:shadow-blue-600/20 transition-all">
-                  Apply Today
-                </Button>
+                {slug ? (
+                  <Link
+                    to={`/career/${slug}`}
+                    aria-label={`View ${job.title} details`}
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:shadow-lg transition-transform hover:-translate-y-1"
+                  >
+                    <ArrowUpRight size={22} strokeWidth={2.5} />
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    aria-label={`${job.title} details unavailable`}
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center cursor-not-allowed bg-slate-400 text-white opacity-60"
+                  >
+                    <ArrowUpRight size={22} strokeWidth={2.5} />
+                  </button>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

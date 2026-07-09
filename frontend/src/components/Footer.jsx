@@ -1,82 +1,235 @@
 import { useState } from 'react'
-import logo from '../assets/footer_logo.png'
-export default function Footer({ darkMode }) {
-  const [email, setEmail] = useState('')
+import { Link } from 'react-router-dom'
+import defaultLogo from '../assets/logo_Light.png'
+import { useThemeStore } from '../store/useThemeStore'
+import { subscribeNewsletter } from '../lib/api'
+import { PageToast } from './UI/PageLoader'
+import { Facebook, Instagram, Linkedin, Twitter, YouTube } from './UI/Svgs'
+import { urlFor } from '../lib/sanity'
 
-  const services = ['Scan2Twin', 'Indoor Mapping', 'LiDAR Scanning', '3D Modeling', 'ArcGIS Indoors Implementation']
-  const company = ['Why geoConvergence', 'Products', 'Careers', 'Resources', 'Contact Us']
+export default function Footer({
+  logo,
+  brandTitle,
+  partnerLabel,
+  copyright,
+  socialLinks,
+  partnerLogos,
+}) {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [statusMsg, setStatusMsg] = useState('')
+  const { theme } = useThemeStore();
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatusMsg('');
+
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setStatusMsg('Please enter an email address.');
+      setLoading(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setStatusMsg('Please enter a valid email address.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await subscribeNewsletter(trimmedEmail);
+      setStatusMsg('Successfully subscribed!');
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+      if (err.message === 'Already subscribed') {
+        setStatusMsg('This email is already subscribed.');
+      } else {
+        setStatusMsg('Subscription failed. Try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const services = [
+    { name: 'Scan2Twin', path: '/scan2twin' },
+    { name: 'FacilitEase', path: '/FacilitEase' },
+    { name: 'LiDAR Scanning', path: '/lidar-scanning' },
+    // { name: '3D Modeling', path: '/3d-modeling' },
+    { name: 'ArcGIS Development', path: '/arcgis-development' },
+  ]
+
+  const company = [
+    { name: 'About Us', path: '/about-us' },
+    { name: 'Products', path: '/products' },
+    { name: 'Careers', path: '/career' },
+    { name: 'Blogs', path: '/blog' },
+    { name: 'Contact Us', path: '/contact' },
+  ]
+
+  if (copyright || socialLinks?.length || partnerLogos?.length || brandTitle || partnerLabel || logo) {
+    return (
+      <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 py-12 text-[var(--text)] sm:px-8 lg:px-14`}>
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 text-center">
+          {(partnerLabel || partnerLogos?.length > 0) && (
+            <div className="flex flex-col items-center gap-6 sm:flex-row">
+              {partnerLabel && (
+                <p className="font-Web text-xl font-bold text-[#000941] text-[var(--text)]">
+                  {partnerLabel}
+                </p>
+              )}
+              {partnerLogos?.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-8">
+                  {partnerLogos.map((partner, index) => {
+                    const content = partner.logo ? (
+                      <img src={urlFor(partner.logo)} alt={partner.name || ''} className="h-12 w-auto object-contain bg-white" />
+                    ) : null
+
+                    return partner.link ? (
+                      <a key={partner.name || index} href={partner.link} target="_blank" rel="noopener noreferrer">
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={partner.name || index}>{content}</div>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {logo && <img src={urlFor(logo)} alt="" className="h-16 w-auto object-contain" />}
+          {brandTitle && (
+            <h2 className="font-Web text-4xl font-bold leading-tight text-[var(--text)] md:text-5xl">
+              {brandTitle}
+            </h2>
+          )}
+
+          {socialLinks?.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={social.platform || index}
+                  href={social.url || '#'}
+                  target={social.url ? '_blank' : undefined}
+                  rel={social.url ? 'noopener noreferrer' : undefined}
+                  aria-label={social.platform}
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-200 transition-colors hover:bg-slate-300"
+                >
+                  {social.icon && <img src={urlFor(social.icon)} alt="" className="h-20 w-20 object-contain" />}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {copyright && (
+            <p className="font-Inter text-sm leading-6 text-[var(--muted)]">
+              {copyright}
+            </p>
+          )}
+        </div>
+      </footer>
+    )
+  }
 
   return (
-    <footer className="dark bg-[var(--bg)] text-white">
-      <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 flex flex-col gap-10 sm:gap-12 lg:gap-16">
+    <footer className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--footer-bg)] px-6 sm:px-8 lg:px-14 text-white`} >
+      <div className="max-w-[1440px] mx-auto pb-8 flex flex-col gap-7">
         {/* Newsletter + divider */}
-        <div className="pb-10 border-b border-white/20 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 text-center lg:text-left">
-          <h3 className="text-slate-100 font-extrabold font-['Titillium_Web'] uppercase leading-tight text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-2xl">
+        <div className="py-7 border-b border-white flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
+          <h3
+            className="text-white text-lg sm:text-[30px] font-semibold xl:text-[30px] font-Web uppercase max-w-[437px] leading-[1.1]"
+          >
             Stay Ahead with Digital Twin Insights
           </h3>
 
           {/* Email input */}
-          <div className="flex items-center gap-0 bg-white/10 rounded-full border border-blue-700/50 pl-6 sm:pl-7 pr-2 sm:pr-3 py-2 sm:py-3 w-full max-w-sm lg:max-w-md mx-auto lg:mx-0 transition-all focus-within:border-blue-500 focus-within:bg-white/20">
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent text-white placeholder:text-white/60 text-sm sm:text-base font-medium font-Inter uppercase outline-none leading-relaxed min-w-0"
-            />
-            <button className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 active:scale-95 transition-all">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+          <div className="flex flex-col w-full max-w-sm lg:max-w-[417px] gap-2">
+            <form onSubmit={handleSubscribe} className="flex items-center gap-0 bg-white/20 rounded-full border border-blue-700 pl-7 pr-3 py-3 w-full">
+              <input
+                type="email"
+                placeholder="Subscribe to our Newsletter"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 bg-transparent text-white placeholder:text-white/60 text-base font-light font-Inter outline-none leading-6 min-w-0"
+                disabled={loading}
+                required
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-blue-600 transition-colors disabled:opacity-50"
+              >
+                {loading ? (
+                  <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                )}
+              </button>
+            </form>
+            {statusMsg && (
+              <PageToast message={statusMsg} type={"success"} />
+            )}
           </div>
         </div>
 
         {/* Main footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16 lg:gap-8 text-center lg:text-left">
+        <div className="pt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-6 items-center lg:items-start text-center lg:text-left">
+          <div className="sm:col-span-2 lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="geoConvergence logo" className="h-8 sm:h-10 w-auto object-contain" />
+              <Link to="/">
+                <img src={defaultLogo} alt="GeoConvergence" className="h-18 w-auto" />
+              </Link>
             </div>
-            <p className="text-white/80 text-sm sm:text-base font-Inter leading-relaxed max-w-xs lg:max-w-full">
+            <p className="text-white/80 text-subtitle font-Inter leading-8 max-w-md">
               Building the foundation for the future of indoor intelligence through high-precision mapping and digital twin technology.
             </p>
           </div>
 
           {/* Services */}
-          <div className="flex flex-col gap-4 items-center lg:items-start">
-            <h4 className="text-white text-lg sm:text-xl font-extrabold font-['Titillium_Web'] uppercase tracking-wider">Services</h4>
-            <div className="flex flex-col gap-2">
-              {services.map((s) => (
-                <a key={s} href="#" className="text-white/70 text-sm sm:text-base font-Inter hover:text-white hover:translate-x-1 lg:hover:translate-x-2 transition-all">
-                  {s}
-                </a>
-              ))}
-            </div>
+          <div className="flex flex-col gap-2">
+            <h4 className="text-white text-lg sm:text-2xl font-bold font-Web leading-7">Services</h4>
+            {services.map((s) => (
+              <Link key={s} to={s.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+                {s.name}
+              </Link>
+            ))}
           </div>
 
           {/* Company */}
-          <div className="flex flex-col gap-4 items-center lg:items-start">
-            <h4 className="text-white text-lg sm:text-xl font-extrabold font-['Titillium_Web'] uppercase tracking-wider">Company</h4>
-            <div className="flex flex-col gap-2">
-              {company.map((c) => (
-                <a key={c} href="#" className="text-white/70 text-sm sm:text-base font-Inter hover:text-white hover:translate-x-1 lg:hover:translate-x-2 transition-all">
-                  {c}
-                </a>
-              ))}
-            </div>
+          <div className="flex flex-col gap-2">
+            <h4 className="text-white text-lg sm:text-2xl  font-bold font-Web">Company</h4>
+            {company.map((c) => (
+              <Link key={c} to={c.path} className="text-white/75 text-sm sm:text-xl font-Inter hover:text-white transition-colors xl:leading-[1.5]">
+                {c.name}
+              </Link>
+            ))}
           </div>
 
           {/* Social */}
-          <div className="flex flex-col justify-between gap-8 items-center lg:items-start">
-            <h4 className="text-white text-lg sm:text-xl font-extrabold font-['Titillium_Web'] uppercase tracking-wider lg:hidden">Follow Us</h4>
-            <div className="flex gap-4">
+          <div className="flex flex-col justify-between items-end gap-6">
+            <div />
+            <div className="flex gap-3">
               {[
-                { key: "li", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg> },
-                { key: "ig", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" /></svg> },
-                { key: "x", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> },
-              ].map(({ key, icon }) => (
+                // LinkedIn
+                <Linkedin />,
+                // Facebook
+                // <Facebook color={"black"} />,
+                // YouTube
+                <YouTube color={"black"} />,
+                // Twitter/X
+                <Twitter />,
+              ].map((icon, i) => (
                 <a
                   key={key}
                   href="#"

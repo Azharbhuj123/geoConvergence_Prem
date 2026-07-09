@@ -1,175 +1,166 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import SolutionBlock from '../components/SolutionBlock';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import { useThemeStore } from '../store/useThemeStore';
 import { useQuery } from '@tanstack/react-query';
-import { fetchProductPage } from '../lib/api';   // Create this query
+import { fetchProductPage } from '../lib/api';
 import Events from '../components/Events';
+import { Services_Description } from '../components/Services_Description';
+import { ProductPageData } from '../lib/data/productPageData';
+import { urlFor } from '../lib/sanity';
+import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
 
+/* =========================
+   CARD COMPONENT
+========================= */
+function ServicesCardPreview({ card, index }) {
+    return (
+        <Link to={card.button?.link || "#"}>
+            <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-10% 0px -20% 0px" }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.23, 1, 0.32, 1],
+                    delay: 0.1
+                }}
+                className="relative rounded-[30px] overflow-hidden group cursor-pointer h-[500px] lg:h-[650px] w-full shadow-2xl"
+            >
+                {/* Background Image with Parallax-like hover effect */}
+                <img
+                    src={card.image ? urlFor(card.image) : ""}
+                    alt={card.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-75"
+                />
 
-// You can put this in lib/data/solutionsData.js or use as fallback
-const ProductPageData = {
-    announcement: {
-        text: "Experience Scan2Twin in action — book your live demo today."
-    },
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80 transition-all duration-700 group-hover:to-black/90 group-hover:via-black/40" />
 
-    hero: {
-        title: "Feature Page",
-        backgroundImage: {
-            _type: "image",
-            asset: {
-                _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png"
-            }
-        }
-    },
+                {/* Content Container */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+                    {/* DEFAULT CONTENT */}
+                    <div className="backdrop-blur-md bg-black/10 rounded-2xl p-6 lg:p-8 transition-opacity duration-.15 group-hover:opacity-0 group-hover:translate-y-10">
+                        <h3 className="text-white text-3xl lg:text-5xl font-bold font-Web leading-tight mb-4">
+                            {card.title}
+                        </h3>
+                        <span className="block text-lg px-4 py-1 rounded-full text-white text-sm font-bold mb-4 uppercase tracking-wider">
+                            {card.subTitle}
+                        </span>
+                        <p className="text-white/80 text-lg lg:text-xl font-Inter leading-relaxed line-clamp-2">
+                            {card.description || "Experience the next level of digital transformation with our integrated solutions."}
+                        </p>
+                    </div>
 
-    servicesIntro: {
-        title: "Services",
-        description: "Powered by our Scan2Twin pipeline, these applications transform captured data into actionable, real-world solutions for operations, planning, and decision-making."
-    },
-
-    solutions: [
-        {
-            title: "Scan2Twin",
-            description: "Transform physical spaces into intelligent digital twins using advanced mobile mapping technology. Capture survey-grade 3D data of complex indoor environments—without disrupting operations. Our all-terrain systems and mobile LiDAR deliver ArcGIS-ready digital twins with automated privacy protection.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "Indoor Mapping & Digital Twins",
-            description: "geoConvergence creates comprehensive digital twins—intelligent virtual replicas of your physical facilities that enable better decision-making across your organization. From initial data capture through ongoing facility management, we deliver end-to-end digital twin solutions.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "LiDAR Scanning & Reality Capture",
-            description: "Unlock unparalleled precision and efficiency in your projects with our state-of-the-art 3D laser scanning services. Whether you’re an architect, engineer, or contractor, our solutions provide the detailed insights necessary to design, build, and maintain with confidence.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "3D Modeling & Point-to-BIM",
-            description: "Convert real-world physical environments into precise and data-rich digital models using advanced 3D modeling and Point-to-BIM workflows. This process takes raw spatial data from scans and measurements and transforms it into intelligent BIM-ready structures.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        },
-        {
-            title: "ArcGIS Indoors Implementation",
-            description: "Custom ArcGIS applications that address your spatial data needs. We extend standard GIS capabilities with tools for data collection, custom internal dashboards, and public-facing maps that present spatial data effectively.",
-            buttonText: "View More",
-            image: {
-                _type: "image",
-                asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-            }
-        }
-    ],
-
-    events: {
-        title: "Specialty Tools",
-        description: "Powerful tools designed to handle specific tasks with precision and efficiency. Enhance your workflow with advanced features built to deliver accurate and reliable results."
-    },
-
-    finalCta: {
-        title: "Ready to define your digital dimension?",
-        subtitle: "Join hundreds of organizations using geoConvergence to unlock the full potential of their physical assets.",
-        button1: { text: "Schedule a Consultation", link: "#" },
-        button2: { text: "View Case Studies", link: "#" },
-        backgroundImage: {
-            _type: "image",
-            asset: { _ref: "image-9aedb38aefaf4d3ee8418015a0fbaccc866c1ed5-1320x532-png" }
-        }
-    }
-};
-
-export const Services_Description = ({pageData, theme}) => {
-    return(
-        <section className={`w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 ${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-            <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-                <div className="max-w-4xl text-center lg:text-left flex flex-col gap-4 sm:gap-6">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold font-['Titillium_Web'] leading-tight tracking-tight text-[var(--text)]">
-                        {pageData.servicesIntro.title}
-                    </h2>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text)] opacity-80">
-                        {pageData.servicesIntro.description}
-                    </p>
+                    {/* HOVER OVERLAY (Revealed on hover) */}
+                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end opacity-0 translate-y-20 transition-all duration-300 delay-.15 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                        <span className="inline-block w-fit px-4 py-1 rounded-full bg-white text-blue-900 text-sm font-bold mb-4 uppercase tracking-wider hover:bg-[#09155F] hover:text-white transition-colors duration-300">
+                            <a href={card.button?.link}>
+                                {card.button?.text}
+                            </a>
+                        </span>
+                        <h3 className="text-white text-3xl lg:text-5xl font-bold font-Web leading-tight mb-4">
+                            {card.title}
+                        </h3>
+                        <p className="text-white/90 text-lg lg:text-xl font-Inter leading-relaxed">
+                            {card.description || "Our advanced mapping and modeling tools provide unparalleled precision and insight for your enterprise assets."}
+                        </p>
+                        <div className="mt-8 h-1 w-24 bg-white rounded-full origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-300" />
+                    </div>
                 </div>
-            </div>
-        </section>
-    )
+            </motion.div>
+        </Link>
+    );
 }
 
+/* =========================
+   PAGE
+========================= */
 export default function ProductPage() {
-    const { theme } = useThemeStore();
-    const { toggleTheme } = useThemeStore();
+    const { theme, toggleTheme } = useThemeStore();
 
-    const { data, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ['productPage'],
         queryFn: fetchProductPage,
     });
 
-    // Use fetched data or fallback
     const pageData = data || ProductPageData;
 
     return (
-        <div style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+        <div className={theme === 'dark' ? 'dark' : ''} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
             <Navbar darkMode={theme === 'dark'} toggleDarkMode={toggleTheme} />
 
             <main>
-                {/* Hero */}
+                {/* HERO */}
                 <Hero
                     darkMode={theme === 'dark'}
                     hero={pageData.hero}
-                    title="Solutions"
-                    minHeight="min-h-[451px]"
+                    title="Our Products"
+                    minHeight="!min-h-[250px]"
                 />
 
-                {/* Services Intro */}
-               <Services_Description
-               pageData={pageData}
-               theme={theme}
-               />
+                {/* =========================
+                    MAIN SECTION
+                ========================= */}
+                <section className={`${theme === 'dark' ? 'dark' : ''}
+               bg-[var(--bg)] px-6 py-20 sm:px-10 relative`}
+                >
+                    <div className="max-w-[1440px] mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
-                {/* Solution Blocks */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                    {pageData.solutions.map((solution, index) => (
-                        <SolutionBlock
-                            key={index}
-                            title={solution.title}
-                            description={solution.description}
-                            button={{ text: solution.buttonText, link: "#" }}
-                            image={solution.image}
-                            imagePosition={index % 2 === 0 ? "right" : "left"}
+                            {/* =========================
+                                LEFT - STICKY (FIXED)
+                            ========================= */}
+                            <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                                    className="rounded-3xl p-8 lg:p-12 
+                               shadow-[0_0_40px_rgba(15,23,42,0.12)] border-2 border-white 
+                               mt-16"
+                                >
+                                    <Services_Description
+                                        pageData={pageData.servicesIntro}
+                                        theme={theme}
+                                    />
+                                </motion.div>
+                            </div>
+
+                            {/* =========================
+                                RIGHT - SCROLL CARDS
+                            ========================= */}
+                            <div className="lg:col-span-7 space-y-28 lg:space-y-36 pt-0 lg:pt-16 xl:pt-24">
+                                {pageData.howItWorks?.cards?.map((card, index) => (
+                                    <div key={index} className="flex flex-col">
+                                        <ServicesCardPreview
+                                            card={card}
+                                            index={index}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                {/* EVENTS */}
+                {/* <section className="bg-[var(--slate-bg)] py-24">
+                    <div className="max-w-[1440px] mx-auto">
+                        <Events
                             darkMode={theme === 'dark'}
+                            eventsData={pageData.events}
+                            extraClass="!py-0"
                         />
-                    ))}
-                </section>
+                    </div>
+                </section> */}
 
-
-                {/* Solution Blocks */}
-                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
-                  <Events 
-                  darkMode={theme === 'dark'} 
-                  className="text-center"
-                  eventsData={pageData.events}
-                   />
-                </section>
-
-                {/* Final CTA */}
+                {/* CTA */}
                 <CTA
                     darkMode={theme === 'dark'}
                     CtaData={pageData.finalCta}

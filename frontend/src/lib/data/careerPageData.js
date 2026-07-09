@@ -1,47 +1,43 @@
 export const careerPageData = {
   hero: {
     title: "Career",
-    subtitle: "Join our mission to redefine how the world understands physical spaces through cutting-edge technology.",
     backgroundImage: {
       _type: "image",
       asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
     }
   },
-
-  easySteps: {
-    sectionTitle: "Just 3 Easy Steps to new Capabilities",
-    sectionSubtitle: "Follow a simple, streamlined process designed to unlock new capabilities quickly and efficiently.",
+  meetTheTeam: {
+    title: "Meet the Team",
+    description: "Join our passionate team of innovators and collaborators who are shaping the future of geospatial technology.",
+    listItems: [
+      "Competitive compensation and benefits",
+      "Opportunities for professional growth and development",
+      "Dynamic and inclusive work environment",
+      "Chance to work on cutting-edge projects"
+    ],
+    image: { _type: "image", asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" } }
+  },
+  keyFeatures: {
+    title: "Just 3 Easy Steps to new Capabilities ",
+    description: "Follow a simple, streamlined process designed to unlock new capabilities quickly and efficiently.From start to finish, each step is crafted to help you grow, adapt, and achieve better results effortlessly.",
     cards: [
       {
-        title: "Account",
-        description: "Manage your personal profile, track your applications, and customize your job alert preferences.",
-        icon: "account" // or image
+        number: "Account",
+        label: "Manage your personal profile, track your applications, and your job alert preferences.",
       },
       {
-        title: "CV/Resume",
-        description: "Build a professional resume using our smart templates designed to catch the eye of top recruiters.",
-        icon: "resume"
+        number: "Resume",
+        label: "Build a professional resume using our smart templates to catch the eye of top recruiters.",
       },
       {
-        title: "Quick Jobs",
-        description: "Access a curated list of immediate openings that match your skills for a faster hiring process.",
-        icon: "jobs"
+        number: "Quick Jobs",
+        label: "Access a curated list of immediate openings that match your skills for a faster hiring process.",
       },
       {
-        title: "Apply Them",
-        description: "Submit your applications with a single click and keep track of your status in real-time.",
-        icon: "apply"
+        number: "Apply Them",
+        label: "Submit your applications with a single click and keep track of your status in real-time.",
       }
     ]
-  },
-
-  meetTheTeam: {
-    title: "Meet the team behind our success",
-    description: "Meet the team behind our success — a group of passionate professionals dedicated to excellence. Each member brings unique skills, creativity, and experience to every project.",
-    image: {
-      _type: "image",
-      asset: { _ref: "image-c955cfd6715d317da550e3d38bf9c631911364a5-1440x872-png" }
-    }
   },
 
   coreValues: {

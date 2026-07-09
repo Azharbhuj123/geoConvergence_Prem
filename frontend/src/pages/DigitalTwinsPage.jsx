@@ -11,10 +11,11 @@ import CoreValues from '../components/CoreValues';
 import Services from '../components/Services';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import SystemIntegrations from '../components/SystemIntegrations';
 
 export default function DigitalTwinsPage() {
   const { theme, toggleTheme } = useThemeStore();
-  
+
   const { data } = useQuery({
     queryKey: ['digitalTwinsPage'],
     queryFn: fetchDigitalTwinsPage,
@@ -28,56 +29,71 @@ export default function DigitalTwinsPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "Digital Twins"} minHeight="min-h-[550px]" />
 
         {pageData.firstSolution && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
               title={pageData.firstSolution.title}
               description={pageData.firstSolution.description}
               button={pageData.firstSolution.buttonText ? { text: pageData.firstSolution.buttonText, link: "#" } : null}
               image={pageData.firstSolution.image}
-              imagePosition="right"
+              imagePosition="left"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
 
         {pageData.coreValues && (
-          <CoreValues 
-            title={pageData.coreValues.sectionTitle} 
-            cards={pageData.coreValues.cards} 
+          <CoreValues
+            title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
+            cards={pageData.coreValues.cards}
+            lastRowHeight="140px"
           />
         )}
 
-        {pageData.howItWorks && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.howItWorks} 
-            variant="default" 
+        {/* {pageData.howItWorks && (
+          <Services
+            darkMode={isDark}
+            services={pageData.howItWorks}
+            button={null}
+            variant="default"
+            length={pageData.howItWorks.cards.length}
           />
-        )}
+        )} */}
 
         {pageData.secondSolution && (
-             <SolutionBlock
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10`}>
+            <SolutionBlock
               title={pageData.secondSolution.title}
               description={pageData.secondSolution.description}
+              description2={pageData.secondSolution.description2}
               button={pageData.secondSolution.buttonText ? { text: pageData.secondSolution.buttonText, link: "#" } : null}
               image={pageData.secondSolution.image}
               imagePosition="left"
               darkMode={isDark}
+              variant='section'
             />
+          </section>
         )}
 
         {pageData.useCases && (
-          <Services 
-            darkMode={isDark} 
-            services={pageData.useCases} 
-            variant="blue" 
+          <Services
+            darkMode={isDark}
+            services={pageData.useCases}
+            variant="blue"
+            length={pageData.useCases.cards.length}
+            button={false}
           />
         )}
 
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        {pageData.systemIntegrations && (
+          <SystemIntegrations data={pageData.systemIntegrations} darkMode={isDark} />
+        )}
+
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
       </main>
 
       <Footer darkMode={isDark} />

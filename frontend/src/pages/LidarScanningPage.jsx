@@ -7,11 +7,12 @@ import { lidarScanningPageData } from '../lib/data/lidarScanningPageData';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import CoreValues from '../components/CoreValues';
-import Services_Description from '../components/Services_Description';
 import SolutionBlock from '../components/SolutionBlock';
 import Stats from '../components/Stats';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import { Services_Description } from '../components/Services_Description';
+import Services from '../components/Services';
 
 export default function LidarScanningPage() {
   const { theme, toggleTheme } = useThemeStore();
@@ -25,18 +26,14 @@ export default function LidarScanningPage() {
   const isDark = theme === 'dark';
 
   const parsedStatsData = pageData.stats?.cards?.map(card => {
-    const valueStr = card.number.replace(/[^0-9]/g, '');
-    const value = parseInt(valueStr) || 0;
-    const suffix = card.number.replace(/[0-9]/g, '');
+    const valueStr = card?.number?.replace(/[^0-9]/g, '');
+    const value = parseInt(valueStr) || null;
+    const suffix = card?.number?.replace(/[0-9]/g, '');
     return {
       value,
       suffix,
-      label: card.label,
-      icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      )
+      label: card?.label,
+      iconImage: card?.iconImage,
     };
   });
 
@@ -45,62 +42,79 @@ export default function LidarScanningPage() {
       <Navbar darkMode={isDark} toggleDarkMode={toggleTheme} />
 
       <main>
-        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} minHeight="min-h-[451px]"/>
+        <Hero darkMode={isDark} hero={pageData.hero} title={pageData.hero?.title || "LiDAR Scanning"} minHeight="min-h-[500px]" />
 
         {pageData.meetTheTeam && (
-          <section className="bg-[var(--bg)]">
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14 py-10 sm:py-20`}>
             <SolutionBlock
               title={pageData.meetTheTeam.title}
               description={pageData.meetTheTeam.description}
               image={pageData.meetTheTeam.image}
               imagePosition="left"
               darkMode={isDark}
+              variant='section'
             />
           </section>
         )}
+        <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 xl:px-14`}>
+          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
+          {/* How It Works */}
+          {pageData?.services?.map((item, index) => (
+            <div key={index}>
+              <Services
+                darkMode={isDark}
+                services={item}
+                variant="default"
+                button={false}
+              />
+            </div>
+          ))}
+        </section>
+
 
         {pageData.coreValues && (
           <CoreValues
             title={pageData.coreValues.sectionTitle}
+            subTitle={pageData.coreValues.subTitle}
             cards={pageData.coreValues.cards}
+            length={pageData.coreValues.cards.length}
           />
         )}
 
-        <Services_Description pageData={pageData} theme={theme} />
 
-        <section className={`bg-[var(--bg)]`}>
+        {/* <section className={`bg-[var(--bg)] px-6 py-10 sm:px-10 sm:pt-20 xl:px-14 xl:pt-24`}>
+          <Services_Description pageData={pageData.servicesDescription} theme={theme} />
           {pageData.solutions?.map((solution, index) => (
             <div key={index} className={index === 1 ? 'bg-[var(--slate-bg)]' : ''}>
               <SolutionBlock
                 title={solution.title}
                 description={solution.description}
-                button={solution.buttonText ? { text: solution.buttonText, link: "#" } : null}
+                listItems={solution.listItems}
+                description2={solution.description2}
+                button={solution.button ? { text: solution.button.text, link: solution?.button.link } : null}
                 image={solution.image}
                 imagePosition={index % 2 === 0 ? "right" : "left"}
                 darkMode={isDark}
               />
             </div>
           ))}
-        </section>
+        </section> */}
 
-        {pageData.stats && (
-          <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg)]">
-            <div className="max-w-screen-xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-12 text-center lg:text-left flex flex-col gap-4 sm:gap-6">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold font-['Titillium_Web'] text-[var(--text)] leading-tight tracking-tight">
-                {pageData.stats.sectionTitle}
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--text)] opacity-80 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
-                {pageData.stats.sectionSubtitle}
-              </p>
-            </div>
+        {/* {pageData.stats && (
+          <section className={`bg-[var(--bg)] px-6 sm:px-10 xl:px-14`}>
+            <Services_Description pageData={pageData.stats} theme={theme} />
             <Stats
               darkMode={isDark}
               statsData={parsedStatsData}
+              className={"!px-0 !pt-5"}
+              extraClass="!text-lg sm:!text-xl"
             />
-          </div>
-        )}
+          </section>
+        )} */}
+        <section className="pt-10 sm:pt-20">
+          <CTA darkMode={isDark} CtaData={pageData.finalCta} />
+        </section>
 
-        <CTA darkMode={isDark} CtaData={pageData.finalCta} />
       </main>
 
       <Footer darkMode={isDark} />

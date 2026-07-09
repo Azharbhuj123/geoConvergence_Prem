@@ -83,7 +83,7 @@ export default function FeaturedProducts({ darkMode }) {
               {/* Hover arrow */}
               <div className="absolute bottom-6 right-6 w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </div>
             </div>

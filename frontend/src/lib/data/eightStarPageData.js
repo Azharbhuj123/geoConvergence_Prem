@@ -8,7 +8,11 @@ export const eightStarPageData = {
     subtitle: "Contract Information:",
     description: "True North Joint Venture, LLC",
     phone: "(855) 447-3939",
-    bottomText: "True North Joint Venture, LLC"
+    bottomText: "True North Joint Venture, LLC",
+    image: {
+      _type: "image",
+      asset: { _ref: "image-9b975c89a53cda9d5693f6463dea113f5161815c-198x83-png" }
+    }
   },
   mainDescription: [
     "True North Joint Venture, LLC, an SBA 8(a) Certified Joint Venture with its managing partner being geoConvergence, has been awarded a coveted spot on the GSA 8(a) STARS III contract vehicle. 8(a) STARS III is a $50 billion, Best-in-Class contract vehicle that is designed to give 8(a) companies a chance to compete for governmentwide contracts.",
@@ -22,8 +26,8 @@ export const eightStarPageData = {
     { label: "Phone:", value: "(855) 447-3939" },
     { label: "Email:", value: "stars3@truenorthjv.com" },
     { label: "Capability Statement:", value: "Download", isLink: true, link: "#" },
-    { 
-      label: "Websites:", 
+    {
+      label: "Websites:",
       value: [
         { text: "8(a) STARS III", link: "#" },
         { text: "True North Joint Venture, LLC", link: "#" },

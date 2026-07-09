@@ -36,35 +36,24 @@ export default function WhyPage() {
                     darkMode={isDark}
                     hero={pageData.hero}
                     title={pageData.hero.title}
-                    minHeight="min-h-[451px]"
+                    minHeight="sm:min-h-[550px]"
                 />
 
                 {/* Solution Block */}
-                <SolutionBlock
-                    title={pageData.solutionBlock.title}
-                    description={pageData.solutionBlock.description}
-                    highlightText={pageData.solutionBlock.highlightText}
-                    listItems={pageData.solutionBlock.listItems}
-                    button={pageData.solutionBlock.button}
-                    image={pageData.solutionBlock.image}
-                    imagePosition="left"
-                    darkMode={isDark}
-                />
-
-                {/* Certifications */}
-                <Certifications
-                    data={pageData.certifications}
-                    darkMode={isDark}
-                />
-
-                {/* Clients Section */}
-                <Clients darkMode={isDark} />
-
-                {/* Contract Vehicles */}
-                <ContractVehicles
-                    data={pageData.contractVehicles}
-                    darkMode={isDark}
-                />
+                <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)] px-6 sm:px-10 xl:px-14 xl:py-20`}>
+                    <SolutionBlock
+                        title={pageData.solutionBlock.title}
+                        description={pageData.solutionBlock.description}
+                        description2={pageData.solutionBlock.description2}
+                        highlightText={pageData.solutionBlock.highlightText}
+                        listItems={pageData.solutionBlock.listItems}
+                        button={null}
+                        image={pageData.solutionBlock.image}
+                        imagePosition="left"
+                        darkMode={isDark}
+                        variant='section'
+                    />
+                </section>
 
                 {/* Case Studies */}
                 <CaseStudies
@@ -79,10 +68,12 @@ export default function WhyPage() {
                 />
 
                 {/* Final CTA */}
-                <CTA
-                    darkMode={isDark}
-                    CtaData={pageData.finalCta}
-                />
+                {/* <section className={`${theme === 'dark' ? 'dark' : ''} bg-[var(--bg)]`}>
+                    <CTA
+                        darkMode={isDark}
+                        CtaData={pageData.finalCta}
+                    />
+                </section> */}
             </main>
 
             <Footer darkMode={isDark} />

@@ -16,6 +16,25 @@ export default defineType({
         defineField({ name: 'title', type: 'string', title: 'Main Title' }),
         defineField({ name: 'subtitle', type: 'text', title: 'Subtitle' }),
         defineField({
+          name: 'button1',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            {
+              name: 'text',
+              type: 'string'
+            },
+            {
+              name: 'pdfFile',
+              title: 'PDF File',
+              type: 'file',
+              options: {
+                accept: '.pdf'
+              }
+            }
+          ]
+        }),
+        defineField({
           name: 'backgroundImage',
           type: 'image',
           title: 'Background Image',
@@ -53,10 +72,17 @@ export default defineType({
         defineField({ name: 'title', type: 'string' }),
         defineField({ name: 'description', type: 'text' }),
         defineField({
-          name: 'image',
-          type: 'image',
-          options: { hotspot: true }
-        })
+          name: 'cards',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'image', type: 'image' })
+              ]
+            }
+          ]
+        }),
       ]
     }),
 
@@ -102,7 +128,26 @@ export default defineType({
           type: 'array',
           of: [{ type: 'string' }]
         }),
-        defineField({ name: 'buttonText', type: 'string' }),
+        defineField({
+          name: 'buttonText',
+          type: 'object',
+          title: 'Primary Button',
+          fields: [
+            { name: 'text', type: 'string' },
+            { name: 'link', type: 'string' }
+          ]
+        }),
+        defineField({
+          name: 'highlightText',
+          type: 'string',
+          title: 'Highlight Text'
+        }),
+        defineField({
+          name: 'listItems',
+          type: 'array',
+          title: 'List Items',
+          of: [{ type: 'string' }]
+        }),
         defineField({
           name: 'image',
           type: 'image',
@@ -127,6 +172,7 @@ export default defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'title', type: 'string' }),
+                defineField({ name: 'description', type: 'text' }),
                 defineField({
                   name: 'image',
                   type: 'image',
