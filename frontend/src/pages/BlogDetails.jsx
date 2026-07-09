@@ -63,6 +63,95 @@ const renderEndTitle = (text) => {
     });
 };
 
+function renderTextChild(child, index) {
+  let content = child.text || '';
+
+  if (child.marks?.includes('strong')) {
+    content = <strong className="font-bold">{content}</strong>;
+  }
+
+  if (child.marks?.includes('em')) {
+    content = <em>{content}</em>;
+  }
+
+  return <span key={child._key || index}>{content}</span>;
+}
+
+function renderPortableContent(content, {
+  defaultClassName = '',
+  defaultElement = 'p',
+  headingClassName = '',
+  wrapperClassName = 'flex flex-col gap-4',
+} = {}) {
+  if (!content) return null;
+
+  const renderDefaultElement = (children, key) => (
+    defaultElement === 'h1'
+      ? <h1 key={key} className={defaultClassName}>{children}</h1>
+      : <p key={key} className={defaultClassName}>{children}</p>
+  );
+
+  if (typeof content === 'string') {
+    return renderDefaultElement(content);
+  }
+
+  if (!Array.isArray(content)) {
+    return null;
+  }
+
+  if (content.every((item) => typeof item === 'string')) {
+    return (
+      <div className={wrapperClassName}>
+        {content.map((item, index) => (
+          renderDefaultElement(item, index)
+        ))}
+      </div>
+    );
+  }
+
+  const renderedBlocks = [];
+
+  for (let index = 0; index < content.length; index += 1) {
+    const block = content[index];
+    if (!block || block._type !== 'block') continue;
+
+    if (block.listItem === 'bullet') {
+      const listItems = [];
+
+      while (content[index]?._type === 'block' && content[index].listItem === 'bullet') {
+        const currentBlock = content[index];
+        listItems.push(
+          <li key={currentBlock._key || index}>
+            {currentBlock.children?.map(renderTextChild)}
+          </li>
+        );
+        index += 1;
+      }
+
+      index -= 1;
+      renderedBlocks.push(
+        <ul key={`list-${index}`} className={`${defaultClassName} list-disc space-y-2 pl-6`}>
+          {listItems}
+        </ul>
+      );
+      continue;
+    }
+
+    const children = block.children?.map(renderTextChild);
+    const key = block._key || index;
+
+    if (block.style === 'h2') {
+      renderedBlocks.push(<h2 key={key} className={headingClassName}>{children}</h2>);
+    } else if (block.style === 'h3') {
+      renderedBlocks.push(<h3 key={key} className={headingClassName}>{children}</h3>);
+    } else {
+      renderedBlocks.push(renderDefaultElement(children, key));
+    }
+  }
+
+  return <div className={wrapperClassName}>{renderedBlocks}</div>;
+}
+
 export default function BlogDetails() {
   const { theme, toggleTheme } = useThemeStore();
   const darkMode = theme === 'dark';
@@ -82,7 +171,6 @@ export default function BlogDetails() {
 
   const details = detailsData || pageData.blogDetailsPage;
   const galleryImages = details.galleryImages || [];
-  const intro = details.intro || [];
   const sections = details.sections || [];
   const blogContent = blogPageData || pageData.blogPage;
   const popularTags = blogContent.popularTags || [];
@@ -102,11 +190,15 @@ export default function BlogDetails() {
                 {details.sectionTitle || 'Our Latest News & Blogs'}
               </h2>
 
-              <div className="grid grid-cols-2 gap-3 pt-6 pb-8 lg:pb-p[60px] lg:pt-[36px]">
+              <div className={`grid gap-3 pt-6 pb-8 lg:pb-[60px] lg:pt-[36px] ${
+                galleryImages.length === 1 ? 'grid-cols-1' : 'grid-cols-2'
+              }`}>
                 {galleryImages.map((img, i) => (
                   <div
                     key={`${img.alt || 'gallery'}-${i}`}
-                    className="overflow-hidden rounded-[12px] w-full h-[300px]"
+                    className={`overflow-hidden rounded-[12px] w-full ${
+                      galleryImages.length === 1 ? 'h-[400px] lg:h-[560px]' : 'h-[300px]'
+                    }`}
                   >
                     <img
                       src={img.src || img.image}
@@ -122,9 +214,10 @@ export default function BlogDetails() {
                   {details.title}
                 </h2>
                 {details.summary && (
-                  <p className="font-Inter text-center text-[var(--muted)] text-sm lg:text-xl">
-                    {details.summary}
-                  </p>
+                  renderPortableContent(details.summary, {
+                    defaultClassName: 'font-Inter text-left text-[var(--muted)] text-sm lg:text-xl',
+                    headingClassName: 'font-Web text-left font-bold text-[var(--heading)] text-lg lg:text-2xl',
+                  })
                 )}
               </div>
             </div>
@@ -132,16 +225,19 @@ export default function BlogDetails() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_540px] gap-10 items-start">
               <article className="flex flex-col gap-7 min-w-0">
                 {details.articleTitle && (
-                  <h1 className="font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl">
-                    {details.articleTitle}
-                  </h1>
+                  renderPortableContent(details.articleTitle, {
+                    defaultClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                    defaultElement: 'h1',
+                    headingClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                    wrapperClassName: 'flex flex-col gap-3',
+                  })
                 )}
 
-                {intro.map((para, i) => (
-                  <p key={`intro-${i}`} className="text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)] whitespace-pre-line">
-                    {para}
-                  </p>
-                ))}
+                {renderPortableContent(details.intro, {
+                  defaultClassName: 'text-sm sm:text-lg lg:text-xl leading-[1.85] text-[var(--muted)] whitespace-pre-line',
+                  headingClassName: 'font-bold text-[var(--heading)] font-Web leading-[1.3] text-lg sm:text-xl xl:text-3xl',
+                  wrapperClassName: 'flex flex-col gap-7',
+                })}
 
                 <div className="h-px bg-[var(--border)]" />
 

@@ -2,6 +2,33 @@ import { defineType, defineField } from 'sanity'
 
 const requiredString = (Rule) => Rule.required().min(2)
 
+const tabContentField = (name, title, description) => defineField({
+  name,
+  title,
+  description,
+  type: 'array',
+  of: [
+    {
+      type: 'block',
+      styles: [
+        { title: 'Normal', value: 'normal' },
+        { title: 'Heading 2', value: 'h2' },
+        { title: 'Heading 3', value: 'h3' },
+      ],
+      lists: [
+        { title: 'Bullet', value: 'bullet' },
+      ],
+      marks: {
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+        ],
+      },
+    },
+  ],
+  validation: (Rule) => Rule.required().min(1),
+})
+
 export default defineType({
   name: 'blogDetails',
   title: 'Blog Details',
@@ -43,14 +70,11 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'summary',
-      title: 'Summary',
-      type: 'text',
-      rows: 4,
-      description: 'Short overview shown under the post title.',
-      validation: (Rule) => Rule.required().min(30).max(600),
-    }),
+    tabContentField(
+      'summary',
+      'Summary',
+      'Short overview shown under the post title.',
+    ),
     defineField({
       name: 'galleryImages',
       title: 'Gallery Images',
@@ -79,28 +103,16 @@ export default defineType({
       ],
       validation: (Rule) => Rule.required().min(1),
     }),
-    defineField({
-      name: 'articleTitle',
-      title: 'Article Title',
-      type: 'string',
-      description: 'Heading shown above the article intro.',
-      validation: (Rule) => Rule.required().min(5).max(140),
-    }),
-    defineField({
-      name: 'intro',
-      title: 'Introduction Paragraphs',
-      type: 'array',
-      of: [
-        defineField({
-          name: 'paragraph',
-          title: 'Paragraph',
-          type: 'text',
-          rows: 4,
-          validation: (Rule) => Rule.required().min(20),
-        }),
-      ],
-      validation: (Rule) => Rule.required().min(1),
-    }),
+    tabContentField(
+      'articleTitle',
+      'Article Title',
+      'Heading shown above the article intro.',
+    ),
+    tabContentField(
+      'intro',
+      'Introduction',
+      'Introductory content shown below the article title.',
+    ),
     defineField({
       name: 'inlineImage',
       title: 'Inline Image',
