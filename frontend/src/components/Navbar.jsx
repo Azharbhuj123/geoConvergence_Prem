@@ -20,7 +20,7 @@ export default function Navbar({ darkMode, logo: cmsLogo, ctaText, ctaLink, comp
   const links = [
     { name: "Solutions", path: "/solutions" },
     { name: "Products", path: "/products" },
-    { name: "About Us", path: "/why" },
+    { name: "About Us", path: "/about-us" },
     { name: "Government", path: "/government" },
     { name: "Blogs", path: "/blog" },
     { name: "Career", path: "/career" },
