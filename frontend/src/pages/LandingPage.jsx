@@ -42,12 +42,12 @@ export default function LandingPage() {
             <main>
                 <Hero darkMode={theme === 'dark'} hero={data?.hero} minHeight="min-h-[620px] xl:min-h-[720px] items-center" />
                 <Services darkMode={theme === 'dark'} services={data?.services} variant='default' />
-                <ProjectsMap 
+                {/* <ProjectsMap 
                 darkMode={theme === 'dark'}
                     title={data?.projectsMap?.title}
                     description={data?.projectsMap?.description}
                     button={data?.projectsMap?.button ? { text: data?.projectsMap?.button.text, link: data?.projectsMap?.button.link } : null}
-                />
+                /> */}
                 <Stats darkMode={theme === 'dark'}
                     statsData={parsedStatsData}
                 />

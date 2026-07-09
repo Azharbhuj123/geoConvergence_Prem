@@ -29,18 +29,17 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
         </div>
 
         {/* Map placeholder */}
+        {/* 
         <div
           className={`w-full rounded-[20px] overflow-hidden flex items-center justify-center relative 
             h-[280px] sm:h-[40vw] xl:h-[734px]
             ${darkMode ? 'bg-slate-800' : 'bg-slate-800'
             }`}
         >
-          {/* US Map SVG silhouette placeholder */}
           <div className="absolute inset-0 flex items-center justify-center opacity-20">
             <img src={ProjectMap} alt="" srcset="" />
           </div>
 
-          {/* Map pins */}
           {[
             { x: '30%', y: '35%' }, { x: '45%', y: '30%' }, { x: '60%', y: '40%' },
             { x: '75%', y: '35%' }, { x: '20%', y: '55%' }, { x: '55%', y: '55%' },
@@ -71,14 +70,14 @@ export default function ProjectsMap({ darkMode, title, description, button }) {
             </div>
           ))}
 
-          {/* Overlay label */}
-          {/* <div className="absolute bottom-6 left-6 flex items-center gap-3">
+          <div className="absolute bottom-6 left-6 flex items-center gap-3">
             <div className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white" />
             <span className={`text-sm font-Inter font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
               Active project locations
             </span>
-          </div> */}
+          </div>
         </div>
+        */}
       </div>
     </section>
   )
