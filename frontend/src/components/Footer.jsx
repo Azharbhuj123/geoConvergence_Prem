@@ -57,7 +57,7 @@ export default function Footer({
 
   const services = [
     { name: 'Scan2Twin', path: '/scan2twin' },
-    { name: 'Indoor Mapping', path: '/indoormaps' },
+    { name: 'FacilitEase', path: '/FacilitEase' },
     { name: 'LiDAR Scanning', path: '/lidar-scanning' },
     // { name: '3D Modeling', path: '/3d-modeling' },
     { name: 'ArcGIS Development', path: '/arcgis-development' },

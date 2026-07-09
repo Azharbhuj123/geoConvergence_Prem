@@ -84,7 +84,7 @@ function App() {
             <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/scan2twin" element={<Scan2TwinPage />} />
-            <Route path="/indoormaps" element={<IndoorMapsPage />} />
+            <Route path="/FacilitEase" element={<IndoorMapsPage />} />
             <Route path="/lidar-scanning" element={<LidarScanningPage />} />
             {/* <Route path="/3d-modeling" element={<ThreeDModelingPage />} /> */}
             <Route path="/arcgis-indoors" element={<ArcGisIndoorsPage />} />
@@ -100,7 +100,7 @@ function App() {
             <Route path="/arcgis-connect" element={<ConnectArcGISPage />} />
             <Route path="/cartinuum-widget" element={<CartinuumPage />} />
             <Route path="/arcgis-builder" element={<ArcGISBuilderPage />} />
-      
+
           </Routes>
         </Suspense>
       </div>
