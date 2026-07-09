@@ -25,9 +25,9 @@ export default function LandingPage() {
 
 
     const parsedStatsData = data?.stats?.cards?.map(card => {
-        const valueStr = card?.number?.replace(/[^0-9]/g, '');
-        const value = parseInt(valueStr) || null;
-        const suffix = card?.number?.replace(/[0-9]/g, '');
+        const valueStr = card?.number?.replace(/[^0-9.]/g, '');
+        const value = parseFloat(valueStr) || null;
+        const suffix = (card?.suffix || card?.number?.replace(/[0-9.]/g, ''))?.trim();
         return {
             value,
             suffix,

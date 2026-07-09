@@ -144,7 +144,7 @@ export default defineType({
       fields: [
         defineField({
           name: 'cards', type: 'array', of: [
-            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
+            { type: 'object', fields: [defineField({ name: 'number', type: 'string' }), defineField({ name: 'suffix', type: 'string', title: 'Suffix (e.g. %, M+)' }), defineField({ name: 'label', type: 'string', }), defineField({ name: 'iconImage', type: 'image', options: { hotspot: true } })] }
           ]
         })
       ]

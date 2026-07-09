@@ -6,13 +6,23 @@ function useCountUp(target, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!start) return;
+    if (!start || target == null) return;
     let startTime = null;
+    const isFloat = target % 1 !== 0;
+    const decimals = isFloat ? (target.toString().split('.')[1]?.length || 1) : 0;
+
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
+      let current = eased * target;
+      
+      if (!isFloat) {
+        setCount(Math.floor(current));
+      } else {
+        setCount(current.toFixed(decimals));
+      }
+
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
@@ -33,7 +43,16 @@ function StatCard({ value, suffix, label, icon, iconImage, darkMode, animate, ex
       <div
         className={`heading-primary font-Web ${extraClass}`}
       >
-        {count}{suffix}
+        {count}
+        {suffix && (
+          <Motion.span
+            initial={{ opacity: 0 }}
+            animate={animate ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {suffix}
+          </Motion.span>
+        )}
       </div>
       <div className={`text-sm sm:text-lg font-semibold font-Inter uppercase tracking-widest min-h-[60px] ${darkMode ? 'text-slate-400' : 'text-slate-500'
         }`}>
